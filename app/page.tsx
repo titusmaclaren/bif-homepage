@@ -1,10 +1,17 @@
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
-import { TrustStrip } from "./components/TrustStrip";
-import { Services } from "./components/Services";
-import { Work } from "./components/Work";
-import { About } from "./components/About";
-import { CTA } from "./components/CTA";
+import { ClientsStrip } from "./components/ClientsStrip";
+import { ResearchSection } from "./components/ResearchSection";
+import { CaseStudies } from "./components/CaseStudies";
+import { ProcessSteps } from "./components/ProcessSteps";
+import { PortfolioIntro } from "./components/PortfolioIntro";
+import { SoundFamiliar } from "./components/SoundFamiliar";
+import { BlogTeasers } from "./components/BlogTeasers";
+import { ServicesIntro } from "./components/ServicesIntro";
+import { Testimonials } from "./components/Testimonials";
+import { CreativeAlly } from "./components/CreativeAlly";
+import { FAQ } from "./components/FAQ";
+import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
 
 export default function HomePage() {
@@ -13,11 +20,18 @@ export default function HomePage() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <TrustStrip />
-        <Work />
-        <Services />
-        <About />
-        <CTA />
+        <ClientsStrip />
+        <ResearchSection />
+        <CaseStudies />
+        <ProcessSteps />
+        <PortfolioIntro />
+        <SoundFamiliar />
+        <BlogTeasers />
+        <ServicesIntro />
+        <Testimonials />
+        <CreativeAlly />
+        <FAQ />
+        <FinalCTA />
       </main>
       <Footer />
     </>
