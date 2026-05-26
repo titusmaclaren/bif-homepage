@@ -7,14 +7,14 @@ const stats = [
 
 export function TrustStrip() {
   return (
-    <section className="border-y border-fog/60 bg-off-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6">
+    <section className="border-y border-white/10 bg-[#050505]">
+      <div className="mx-auto max-w-[1260px] px-6 lg:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-light text-navy tracking-tight">
+            <span className="text-3xl md:text-4xl font-light text-white tracking-tight">
               {s.value}
             </span>
-            <span className="mt-1 text-[12px] uppercase tracking-[0.16em] text-slate font-medium">
+            <span className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/50 font-medium">
               {s.label}
             </span>
           </div>
