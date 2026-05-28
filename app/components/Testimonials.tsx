@@ -1,7 +1,11 @@
-// Real testimonials pulled from the Inffuse Praise app (Wix project
-// proj_I1bby8XndKYpeafQfJSlm), the same source that renders on
-// blackirisfilms.com. Author names, job titles, company names, avatar
-// images, and quote text come straight from that data store.
+"use client";
+
+// Testimonials section: opens with the "Working with Black Iris Films |
+// What our Clients had to Say" reel (Vimeo 943964025) as a hero, followed by
+// the nine quote cards pulled from the Inffuse Praise app (Wix project
+// proj_I1bby8XndKYpeafQfJSlm).
+
+import { VideoTrigger } from "./VideoLightbox";
 
 type Testimonial = {
   rating: number;
@@ -20,7 +24,7 @@ const testimonials: Testimonial[] = [
     name: "Catherine Allison",
     jobTitle: "Director of Marketing",
     company: "ACS",
-    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
+    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
   },
   {
     rating: 5,
@@ -28,7 +32,7 @@ const testimonials: Testimonial[] = [
     name: "Ian Lowe",
     jobTitle: "CEO",
     company: "Dacxi Group",
-    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
+    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
   },
   {
     rating: 5,
@@ -36,7 +40,7 @@ const testimonials: Testimonial[] = [
     name: "Scott Newton",
     jobTitle: "Marketing Director",
     company: "Game Plus",
-    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
+    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
   },
   {
     rating: 5,
@@ -44,7 +48,7 @@ const testimonials: Testimonial[] = [
     name: "Marlon Marescia",
     jobTitle: "Facebook Ads Strategist",
     company: "Sales Driven",
-    image: "https://static.wixstatic.com/media/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg",
+    image: "https://static.wixstatic.com/media/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg",
   },
   {
     rating: 5,
@@ -52,7 +56,7 @@ const testimonials: Testimonial[] = [
     name: "Jess Smith",
     jobTitle: "Chief Marketing Officer",
     company: "Ergo Health",
-    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
+    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
   },
   {
     rating: 5,
@@ -60,7 +64,7 @@ const testimonials: Testimonial[] = [
     name: "Leon Matti",
     jobTitle: "Founder",
     company: "Smart Makeover",
-    image: "https://static.wixstatic.com/media/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg",
+    image: "https://static.wixstatic.com/media/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg",
   },
   {
     rating: 5,
@@ -68,7 +72,7 @@ const testimonials: Testimonial[] = [
     name: "Will Aslett",
     jobTitle: "Development Executive",
     company: "Freelance",
-    image: "https://static.wixstatic.com/media/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg",
+    image: "https://static.wixstatic.com/media/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg",
   },
   {
     rating: 5,
@@ -76,7 +80,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah Taylor",
     jobTitle: "Owner / Director",
     company: "Meetings Into Minutes",
-    image: "https://static.wixstatic.com/media/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg",
+    image: "https://static.wixstatic.com/media/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg",
   },
   {
     rating: 5,
@@ -84,10 +88,14 @@ const testimonials: Testimonial[] = [
     name: "Eva Williams",
     jobTitle: "Journalist",
     company: "FixThePhoto.com",
-    image: "https://static.wixstatic.com/media/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png/v1/fill/w_160,h_160,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png",
+    image: "https://static.wixstatic.com/media/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png",
     link: "https://fixthephoto.com/black-iris-films-review.html",
   },
 ];
+
+const REEL_VIMEO_ID = "943964025";
+const REEL_POSTER =
+  "https://i.vimeocdn.com/video/1848605450-154b78b56511fd4a0c139cf6ce86da333ca77d217c1773c6e5c54f5278382fe8-d_640?region=us";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -115,9 +123,7 @@ function Card({ t }: { t: Testimonial }) {
   const inner = (
     <div className="bg-off-white border border-fog/60 rounded-2xl p-7 md:p-8 break-inside-avoid mb-5 md:mb-6 transition-colors hover:border-fog">
       <Stars rating={t.rating} />
-      <p className="mt-5 text-navy text-[15px] leading-relaxed">
-        “{t.text}”
-      </p>
+      <p className="mt-5 text-navy text-[15px] leading-relaxed">“{t.text}”</p>
       <div className="mt-7 pt-5 border-t border-fog/60 flex items-center gap-3.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -126,7 +132,7 @@ function Card({ t }: { t: Testimonial }) {
           className="w-11 h-11 rounded-full object-cover bg-fog/40 shrink-0"
           loading="lazy"
         />
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="text-navy font-bold text-[14px] leading-tight truncate">
             {t.name}
           </div>
@@ -135,6 +141,17 @@ function Card({ t }: { t: Testimonial }) {
             {t.company ? <span className="text-slate/70">, {t.company}</span> : null}
           </div>
         </div>
+        {t.link && (
+          <span
+            className="text-mint text-[10px] uppercase tracking-[0.16em] font-bold inline-flex items-center gap-1 whitespace-nowrap"
+            aria-hidden
+          >
+            Read review
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+          </span>
+        )}
       </div>
     </div>
   );
@@ -159,8 +176,8 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="text-center mb-14 max-w-3xl mx-auto">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-5">
             What people say
           </p>
           <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
@@ -168,7 +185,46 @@ export function Testimonials() {
           </h2>
         </div>
 
-        {/* Masonry-style column layout balances varying card heights. */}
+        {/* Hero reel: the "What our Clients had to Say" video. */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <VideoTrigger
+            video={{
+              vimeoId: REEL_VIMEO_ID,
+              category: "Client Testimonials",
+              title: "Working with Black Iris Films",
+              description:
+                "Two minutes with the clients we've built films for, talking about what working together was actually like.",
+              related: null,
+            }}
+            className="group relative w-full aspect-video rounded-2xl overflow-hidden border border-fog/60 block bg-navy-midnight focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+            aria-label="Play the Working with Black Iris Films testimonial reel"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={REEL_POSTER}
+              alt="Working with Black Iris Films testimonial reel"
+              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="h-20 w-20 rounded-full bg-mint flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div className="absolute left-6 right-6 bottom-5 text-left">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-white/80 font-bold mb-1.5">
+                Watch the reel · 2 min
+              </div>
+              <div className="text-white text-lg md:text-xl font-bold leading-tight">
+                What our clients had to say
+              </div>
+            </div>
+          </VideoTrigger>
+        </div>
+
+        {/* Quote grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-5 md:gap-6">
           {testimonials.map((t) => (
             <Card key={t.name} t={t} />
@@ -178,7 +234,7 @@ export function Testimonials() {
         <div className="mt-12 text-center">
           <a
             href="https://quiz.blackirisfilms.com/"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-semibold uppercase tracking-wider text-white transition-colors"
+            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-bold uppercase tracking-wider text-white transition-colors"
           >
             Get an estimate in 1-min
           </a>

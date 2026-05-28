@@ -6,7 +6,7 @@ const cases = [
       "+ 2% engagement rate on paid boost (above B2B benchmark)",
       "+ High comment activity and reshares from partners and attendees",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/",
+    href: "https://stories.blackirisfilms.com/case-studies/mary-technology/",
     image: "https://static.wixstatic.com/media/a2a11d_847e8f6b74824140b4c41d4bb683665b~mv2.jpg/v1/fill/w_960,h_540,fp_0.43_0.32,q_90,enc_avif,quality_auto/a2a11d_847e8f6b74824140b4c41d4bb683665b~mv2.jpg",
   },
   {
@@ -16,7 +16,7 @@ const cases = [
       "+ Up to ~15% internal engagement on top-performing posts",
       "+ Content reshared by CEO and senior leadership",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/",
+    href: "https://stories.blackirisfilms.com/case-studies/amplitel/",
     image: "https://static.wixstatic.com/media/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png/v1/fit/w_960,h_541,q_90,enc_avif,quality_auto/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png",
   },
   {
@@ -26,7 +26,7 @@ const cases = [
       "+ Improved brand credibility across investor and founder communities",
       "+ Supported successful funding continuation and global platform launch",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/",
+    href: "https://stories.blackirisfilms.com/case-studies/dacxi-chain/",
     image: "https://static.wixstatic.com/media/a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg/v1/fit/w_960,h_541,q_90,enc_avif,quality_auto/a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg",
   },
 ];
@@ -45,15 +45,20 @@ export function CaseStudies() {
               key={i}
               className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
             >
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-fog/40 border border-fog/60">
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-[16/9] rounded-2xl overflow-hidden bg-fog/40 border border-fog/60 block"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={c.image}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-              </div>
+              </a>
               <div>
                 <p className="text-xl md:text-2xl font-bold text-navy leading-snug tracking-tight">
                   {c.intro}
@@ -65,7 +70,9 @@ export function CaseStudies() {
                 </ul>
                 <a
                   href={c.href}
-                  className="mt-7 inline-flex items-center gap-2 text-mint hover:text-mint-bright font-medium text-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-7 inline-flex items-center gap-2 text-mint hover:text-mint-bright font-bold text-sm"
                 >
                   → View full case study
                 </a>

@@ -22,7 +22,7 @@ export function ProcessSteps() {
             <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
               You approve at each stage.
               <br />
-              <span className="font-light text-slate">We do the heavy lifting.</span>
+              <span className="text-slate">We do the heavy lifting.</span>
             </h2>
           </div>
           <div className="md:col-span-5 md:text-right">

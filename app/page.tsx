@@ -7,7 +7,7 @@ import { ProcessSteps } from "./components/ProcessSteps";
 import { PortfolioIntro } from "./components/PortfolioIntro";
 import { SoundFamiliar } from "./components/SoundFamiliar";
 import { BlogTeasers } from "./components/BlogTeasers";
-import { ServicesIntro } from "./components/ServicesIntro";
+import { ServicesGrid } from "./components/ServicesGrid";
 import { Testimonials } from "./components/Testimonials";
 import { CreativeAlly } from "./components/CreativeAlly";
 import { FAQ } from "./components/FAQ";
@@ -27,7 +27,7 @@ export default function HomePage() {
         <PortfolioIntro />
         <SoundFamiliar />
         <BlogTeasers />
-        <ServicesIntro />
+        <ServicesGrid />
         <Testimonials />
         <CreativeAlly />
         <FAQ />
