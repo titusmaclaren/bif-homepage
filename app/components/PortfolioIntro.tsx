@@ -1,52 +1,62 @@
 "use client";
 
-import { VideoTrigger } from "./VideoLightbox";
+import { VideoTrigger, type VideoSource } from "./VideoLightbox";
 
-// Curated portfolio items from the Wix Pro Gallery, with Vimeo IDs matched from
-// the public blackirisfilms Vimeo channel where confident. Items without a confirmed
-// Vimeo match fall back to the live Wix work page link.
-const items: Array<{
-  title: string;
-  description: string;
+// Industry-targeted portfolio. Each item maps to a confirmed Vimeo video on the
+// blackirisfilms channel. Categories and project names come from the Wix Pro
+// Gallery item metadata (gallery 4a848975-b310-4b2d-ac69-6288a25524c5).
+type PortfolioItem = VideoSource & {
   thumb: string;
-  vimeoId?: string;
-  fallbackUrl?: string;
-}> = [
+};
+
+const items: PortfolioItem[] = [
   {
-    title: "BRAND HERO VIDEO",
-    description: "The Power of the Dacxi Chain",
+    category: "BRAND HERO VIDEO",
+    title: "The Power of the Dacxi Chain",
+    description: "Brand hero film positioning a global crowdfunding network for retail investors.",
+    industry: "Finance",
     thumb: "https://static.wixstatic.com/media/a2a11d_70dc6df59e59410ea533f798ee4dc342~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_70dc6df59e59410ea533f798ee4dc342~mv2.jpg",
-    vimeoId: "977299657",
+    vimeoId: "742487127",
   },
   {
-    title: "ANIMATED EXPLAINER",
-    description: "Amplitel",
-    thumb: "https://static.wixstatic.com/media/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png",
-    vimeoId: "1060728418",
-  },
-  {
-    title: "SERVICE VIDEO",
-    description: "Doltone House Corporate Events",
-    thumb: "https://static.wixstatic.com/media/a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg",
-    vimeoId: "1065385276",
-  },
-  {
-    title: "CORPORATE VIDEO",
-    description: "Dacxi Chain eCF Pitch",
+    category: "CORPORATE VIDEO",
+    title: "Dacxi Chain eCF Pitch",
+    description: "Founder-led explainer for the global equity crowdfunding network.",
+    industry: "Finance",
     thumb: "https://static.wixstatic.com/media/a2a11d_859e588ef5974cdb86fc050b7e04b838~mv2.png/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_859e588ef5974cdb86fc050b7e04b838~mv2.png",
     vimeoId: "860013506",
   },
   {
-    title: "SOCIAL MEDIA COMMERCIAL",
-    description: "Smart Makeover | Kitchen Makeovers",
-    thumb: "https://static.wixstatic.com/media/a2a11d_e3854cb838164f3fb8e9431cc381aa52~mv2.png/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_e3854cb838164f3fb8e9431cc381aa52~mv2.png",
-    vimeoId: "898505109",
+    category: "ANIMATED EXPLAINER",
+    title: "Amplitel Customer Portal",
+    description: "Animated rollout video for the customer portal of Australia's largest mobile tower infrastructure provider.",
+    industry: "Tech",
+    thumb: "https://static.wixstatic.com/media/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png",
+    vimeoId: "1060728418",
   },
   {
-    title: "EVENT VIDEO",
-    description: "The Magic Goes On | Little Red Hood",
-    thumb: "https://static.wixstatic.com/media/a2a11d_5d24f983e0e14d4495ec45478724d2eb~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_5d24f983e0e14d4495ec45478724d2eb~mv2.jpg",
-    vimeoId: "894854950",
+    category: "BRAND HERO VIDEO",
+    title: "Find Your Wealth | Wealth 99",
+    description: "Brand film for the long-term wealth-building platform.",
+    industry: "Finance",
+    thumb: "https://static.wixstatic.com/media/a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg",
+    vimeoId: "776884299",
+  },
+  {
+    category: "CUSTOMER SUCCESS STORY",
+    title: "Eddie Prickett | AIE Graduate",
+    description: "Graduate testimonial for the Academy of Interactive Entertainment recruitment campaign.",
+    industry: "Higher education",
+    thumb: "https://static.wixstatic.com/media/a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg",
+    vimeoId: "1181599296",
+  },
+  {
+    category: "CORPORATE VIDEO",
+    title: "Microsoft Dynamics CRM at SSW",
+    description: "Software consultancy positioning film for SSW's Dynamics CRM practice.",
+    industry: "Tech",
+    thumb: "https://static.wixstatic.com/media/a2a11d_a38f971881434c1993120599d2f3d057~mv2.jpg/v1/fill/w_900,h_507,q_90,enc_avif,quality_auto/a2a11d_a38f971881434c1993120599d2f3d057~mv2.jpg",
+    vimeoId: "911075713",
   },
 ];
 
@@ -75,7 +85,7 @@ export function PortfolioIntro() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {items.map((it) => (
-            <PortfolioCard key={it.description} item={it} />
+            <PortfolioCard key={it.vimeoId || it.title} item={it} />
           ))}
         </div>
 
@@ -95,63 +105,38 @@ export function PortfolioIntro() {
   );
 }
 
-type Item = {
-  title: string;
-  description: string;
-  thumb: string;
-  vimeoId?: string;
-  fallbackUrl?: string;
-};
-
-function PortfolioCard({ item }: { item: Item }) {
-  const inner = (
-    <>
+function PortfolioCard({ item }: { item: PortfolioItem }) {
+  return (
+    <VideoTrigger
+      video={item}
+      className="group relative aspect-[16/9] rounded-xl overflow-hidden bg-fog/40 border border-fog/60 block w-full text-left"
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={item.thumb}
-        alt={item.description}
+        alt={item.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
       <div className="absolute top-5 right-5 h-12 w-12 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-mint transition-all duration-300">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
           <path d="M8 5v14l11-7z" />
         </svg>
       </div>
+      {item.industry && (
+        <span className="absolute top-5 left-5 inline-flex items-center text-[10px] uppercase tracking-[0.18em] text-white/85 font-semibold bg-black/35 backdrop-blur-md rounded-full px-3 py-1">
+          {item.industry}
+        </span>
+      )}
       <div className="absolute left-5 bottom-5 right-5 text-left">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-white/70 font-semibold mb-1.5">
+        <div className="text-[10px] uppercase tracking-[0.18em] text-white/75 font-semibold mb-1.5">
+          {item.category}
+        </div>
+        <div className="text-white text-base md:text-lg font-bold leading-tight">
           {item.title}
         </div>
-        <div className="text-white text-base md:text-lg font-medium leading-tight">
-          {item.description}
-        </div>
       </div>
-    </>
-  );
-
-  const className =
-    "group relative aspect-[16/9] rounded-xl overflow-hidden bg-fog/40 border border-fog/60 block w-full text-left";
-
-  if (item.vimeoId) {
-    return (
-      <VideoTrigger
-        video={{ vimeoId: item.vimeoId, title: `${item.title} — ${item.description}` }}
-        className={className}
-      >
-        {inner}
-      </VideoTrigger>
-    );
-  }
-
-  return (
-    <a
-      href={item.fallbackUrl || "https://www.blackirisfilms.com/work"}
-      className={className}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {inner}
-    </a>
+    </VideoTrigger>
   );
 }

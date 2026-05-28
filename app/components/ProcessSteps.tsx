@@ -27,7 +27,12 @@ export function ProcessSteps() {
           </div>
           <div className="md:col-span-5 md:text-right">
             <VideoTrigger
-              video={{ vimeoId: "943964025", title: "Working with Black Iris Films" }}
+              video={{
+                vimeoId: "280487304",
+                category: "Process",
+                title: "How we work, in 90 seconds",
+                description: "The five-stage process behind every Black Iris Films project, from kick-off to delivery.",
+              }}
               className="inline-flex items-center gap-3 text-sm font-medium text-navy hover:text-mint group"
             >
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-navy/20 group-hover:border-mint group-hover:bg-mint transition-all">
