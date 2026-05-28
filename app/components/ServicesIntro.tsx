@@ -12,7 +12,7 @@ export function ServicesIntro() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
               Our services
             </p>
-            <h2 className="font-light text-white text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            <h2 className="font-bold text-white text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Strategic video, photography, graphic design, AI imagery, copy, animation...
             </h2>
           </div>

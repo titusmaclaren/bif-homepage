@@ -19,8 +19,8 @@ export function ResearchSection() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mb-6">
               New original research
             </p>
-            <h2 className="font-light text-white text-4xl md:text-5xl leading-[1.05] tracking-tight">
-              The (Social Media)
+            <h2 className="font-bold text-white text-4xl md:text-5xl leading-[1.05] tracking-tight">
+              <span className="font-light">The (Social Media)</span>
               <br />
               <span className="text-gold">Theory of Everything</span>
             </h2>

@@ -7,8 +7,8 @@ export function Hero() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-slate font-medium mb-6">
               Home
             </p>
-            <h1 className="font-light text-navy text-[clamp(2.4rem,5.6vw,4.6rem)] leading-[1.05] tracking-tight">
-              Your customers decide in seconds. We make those seconds count.
+            <h1 className="font-bold text-navy text-[clamp(2.4rem,5.6vw,4.6rem)] leading-[1.05] tracking-tight">
+              Your customers decide in seconds. <span className="font-light text-slate">We make those seconds count.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg md:text-xl text-slate font-light leading-relaxed">
               Fixed-price emotion-led video production for Australian SMEs in finance,

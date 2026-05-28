@@ -1,3 +1,7 @@
+"use client";
+
+import { VideoTrigger } from "./VideoLightbox";
+
 const steps = [
   { n: 1, title: "Kick-off", blurb: "Goals, budget and timing locked" },
   { n: 2, title: "Creative", blurb: "Message & visuals agreed" },
@@ -15,17 +19,15 @@ export function ProcessSteps() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
               How it works
             </p>
-            <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
               You approve at each stage.
               <br />
-              <span className="text-slate">We do the heavy lifting.</span>
+              <span className="font-light text-slate">We do the heavy lifting.</span>
             </h2>
           </div>
           <div className="md:col-span-5 md:text-right">
-            <a
-              href="https://vimeo.com/943964025"
-              target="_blank"
-              rel="noopener noreferrer"
+            <VideoTrigger
+              video={{ vimeoId: "943964025", title: "Working with Black Iris Films" }}
               className="inline-flex items-center gap-3 text-sm font-medium text-navy hover:text-mint group"
             >
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-navy/20 group-hover:border-mint group-hover:bg-mint transition-all">
@@ -33,11 +35,11 @@ export function ProcessSteps() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span>
+              <span className="text-left">
                 <span className="block">Watch the 90 sec process</span>
                 <span className="block text-xs text-slate font-normal mt-1">See why campaigns blow out elsewhere and not here.</span>
               </span>
-            </a>
+            </VideoTrigger>
           </div>
         </div>
 

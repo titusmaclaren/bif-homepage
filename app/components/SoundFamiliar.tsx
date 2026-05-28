@@ -21,7 +21,7 @@ export function SoundFamiliar() {
           <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
             Common marketing challenges
           </p>
-          <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
+          <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Sound familiar?
           </h2>
           <p className="mt-7 text-lg text-slate font-light leading-relaxed">

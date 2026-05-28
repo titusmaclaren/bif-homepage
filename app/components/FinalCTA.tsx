@@ -11,7 +11,7 @@ export function FinalCTA() {
         <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-6">
           Let&apos;s do this
         </p>
-        <h2 className="font-light text-white text-[clamp(2.2rem,5.2vw,4.5rem)] leading-[1.05] tracking-tighter max-w-4xl mx-auto">
+        <h2 className="font-bold text-white text-[clamp(2.2rem,5.2vw,4.5rem)] leading-[1.05] tracking-tighter max-w-4xl mx-auto">
           We can&apos;t wait to hear from you.
         </h2>
 

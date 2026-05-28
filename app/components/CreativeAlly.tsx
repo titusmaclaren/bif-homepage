@@ -10,7 +10,7 @@ export function CreativeAlly() {
             <div className="text-[11px] uppercase tracking-[0.22em] text-slate font-medium mb-5">
               Professional video production
             </div>
-            <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Your Creative Ally in Storytelling.
             </h2>
           </div>

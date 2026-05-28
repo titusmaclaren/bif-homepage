@@ -35,7 +35,7 @@ export function CaseStudies() {
   return (
     <section className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl mb-14">
+        <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl mb-14">
           Results that speak for themselves
         </h2>
 
@@ -55,7 +55,7 @@ export function CaseStudies() {
                 />
               </div>
               <div>
-                <p className="text-xl md:text-2xl font-light text-navy leading-snug tracking-tight">
+                <p className="text-xl md:text-2xl font-bold text-navy leading-snug tracking-tight">
                   {c.intro}
                 </p>
                 <ul className="mt-6 space-y-3 text-slate text-[15px] leading-relaxed">

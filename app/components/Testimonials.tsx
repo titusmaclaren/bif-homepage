@@ -6,7 +6,7 @@ export function Testimonials() {
           <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
             What people say
           </p>
-          <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
+          <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
             Trusted by brands worldwide.
           </h2>
         </div>

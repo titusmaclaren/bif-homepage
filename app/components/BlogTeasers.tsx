@@ -27,7 +27,7 @@ export function BlogTeasers() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
               The thinking behind the work
             </p>
-            <h2 className="font-light text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
+            <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Ideas worth your time.
             </h2>
           </div>
@@ -69,7 +69,7 @@ export function BlogTeasers() {
 
         <div className="mt-16 grid md:grid-cols-12 gap-10 items-center bg-off-white rounded-2xl p-8 md:p-10 border border-fog/60">
           <div className="md:col-span-7">
-            <h3 className="text-navy text-2xl md:text-3xl font-light leading-tight tracking-tight">
+            <h3 className="text-navy text-2xl md:text-3xl font-bold leading-tight tracking-tight">
               Get notified about new posts.
             </h3>
             <p className="text-slate mt-3 text-[15px]">

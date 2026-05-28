@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { VideoLightboxProvider } from "./components/VideoLightbox";
 
 const montserrat = localFont({
   src: [
@@ -8,6 +9,7 @@ const montserrat = localFont({
     { path: "./fonts/Montserrat-Regular.otf", weight: "400", style: "normal" },
     { path: "./fonts/Montserrat-Italic.otf", weight: "400", style: "italic" },
     { path: "./fonts/Montserrat-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/Montserrat-Bold.otf", weight: "700", style: "normal" },
   ],
   variable: "--font-montserrat",
   display: "swap",
@@ -59,7 +61,7 @@ export default function RootLayout({
       className={`${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-navy">
-        {children}
+        <VideoLightboxProvider>{children}</VideoLightboxProvider>
       </body>
     </html>
   );
