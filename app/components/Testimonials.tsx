@@ -1,11 +1,7 @@
-"use client";
-
 // Testimonials section: opens with the "Working with Black Iris Films |
-// What our Clients had to Say" reel (Vimeo 943964025) as a hero, followed by
-// the nine quote cards pulled from the Inffuse Praise app (Wix project
-// proj_I1bby8XndKYpeafQfJSlm).
-
-import { VideoTrigger } from "./VideoLightbox";
+// What our Clients had to Say" reel (Vimeo 943964025) embedded inline as the
+// hero of the section, followed by the nine quote cards pulled from the
+// Inffuse Praise app (Wix project proj_I1bby8XndKYpeafQfJSlm).
 
 type Testimonial = {
   rating: number;
@@ -94,8 +90,6 @@ const testimonials: Testimonial[] = [
 ];
 
 const REEL_VIMEO_ID = "943964025";
-const REEL_POSTER =
-  "https://i.vimeocdn.com/video/1848605450-154b78b56511fd4a0c139cf6ce86da333ca77d217c1773c6e5c54f5278382fe8-d_640?region=us";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -185,43 +179,21 @@ export function Testimonials() {
           </h2>
         </div>
 
-        {/* Hero reel: the "What our Clients had to Say" video. */}
+        {/* Hero reel: the "What our Clients had to Say" video, embedded inline. */}
         <div className="max-w-4xl mx-auto mb-16">
-          <VideoTrigger
-            video={{
-              vimeoId: REEL_VIMEO_ID,
-              category: "Client Testimonials",
-              title: "Working with Black Iris Films",
-              description:
-                "Two minutes with the clients we've built films for, talking about what working together was actually like.",
-              related: null,
-            }}
-            className="group relative w-full aspect-video rounded-2xl overflow-hidden border border-fog/60 block bg-navy-midnight focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
-            aria-label="Play the Working with Black Iris Films testimonial reel"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={REEL_POSTER}
-              alt="Working with Black Iris Films testimonial reel"
-              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-fog/60 bg-navy-midnight shadow-xl">
+            <iframe
+              src={`https://player.vimeo.com/video/${REEL_VIMEO_ID}?title=0&byline=0&portrait=0&color=61B383&dnt=1`}
+              title="Working with Black Iris Films: What our clients had to say"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              allowFullScreen
+              loading="lazy"
+              className="absolute inset-0 w-full h-full border-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="h-20 w-20 rounded-full bg-mint flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-            <div className="absolute left-6 right-6 bottom-5 text-left">
-              <div className="text-[10px] uppercase tracking-[0.22em] text-white/80 font-bold mb-1.5">
-                Watch the reel · 2 min
-              </div>
-              <div className="text-white text-lg md:text-xl font-bold leading-tight">
-                What our clients had to say
-              </div>
-            </div>
-          </VideoTrigger>
+          </div>
+          <p className="text-center text-slate text-[13px] mt-4 italic">
+            Two minutes with the clients we&apos;ve built films for, on what working together was actually like.
+          </p>
         </div>
 
         {/* Quote grid */}
