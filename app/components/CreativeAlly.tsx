@@ -13,6 +13,19 @@ export function CreativeAlly() {
             <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] tracking-tight">
               Your Creative Ally in Storytelling.
             </h2>
+
+            <div className="mt-10 overflow-hidden rounded-lg border border-fog/70 bg-navy-midnight shadow-xl">
+              <div className="relative aspect-video">
+                <iframe
+                  src="https://player.vimeo.com/video/981278175?title=0&byline=0&portrait=0&color=61B383&dnt=1"
+                  title="Black Iris Films brand video"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  allowFullScreen
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full border-0"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="md:col-span-6 md:col-start-7 space-y-5 text-slate text-lg font-light leading-relaxed">

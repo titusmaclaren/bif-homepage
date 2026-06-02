@@ -8,6 +8,7 @@ import { PortfolioIntro } from "./components/PortfolioIntro";
 import { SoundFamiliar } from "./components/SoundFamiliar";
 import { BlogTeasers } from "./components/BlogTeasers";
 import { ServicesGrid } from "./components/ServicesGrid";
+import { ContentSystem } from "./components/ContentSystem";
 import { Testimonials } from "./components/Testimonials";
 import { CreativeAlly } from "./components/CreativeAlly";
 import { FAQ } from "./components/FAQ";
@@ -28,6 +29,7 @@ export default function HomePage() {
         <SoundFamiliar />
         <BlogTeasers />
         <ServicesGrid />
+        <ContentSystem />
         <Testimonials />
         <CreativeAlly />
         <FAQ />

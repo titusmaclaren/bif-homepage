@@ -57,6 +57,11 @@ const tiles: Tile[] = [
     href: "https://services.blackirisfilms.com/linkedin-video-production-sydney",
     image: W("a2a11d_9bbe0636b2f84cab82f668122e3b26d7~mv2.jpg"),
   },
+  {
+    label: "AI Powered Content Studio",
+    href: "https://services.blackirisfilms.com/ai-powered-content-studio-v2",
+    image: W("a2a11d_859e588ef5974cdb86fc050b7e04b838~mv2.png"),
+  },
 ];
 
 export function ServicesGrid() {
