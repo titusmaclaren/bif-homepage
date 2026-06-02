@@ -72,17 +72,16 @@ export function ServicesGrid() {
           </h2>
           <p className="mt-7 text-lg text-slate font-light leading-relaxed max-w-3xl mx-auto">
             We go beyond video. Our creative content services span Financial Services,
-            Tech, Higher Education and everything else.{" "}
-            <span className="text-navy font-medium">From $1,500 excl. GST.</span>
+            Tech, Higher Education and everything else.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
           {tiles.map((t) => (
             <a
               key={t.label}
               href={t.href}
-              className="group relative block aspect-[4/3] rounded-xl overflow-hidden bg-fog/40 border border-fog/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+              className="group relative block h-20 md:h-24 rounded-lg overflow-hidden bg-fog/40 border border-fog/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -91,16 +90,11 @@ export function ServicesGrid() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                <h3 className="text-white text-lg md:text-xl font-bold leading-tight drop-shadow-sm">
+              <div className="absolute inset-0 bg-navy/60 group-hover:bg-navy/45 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center px-3 text-center">
+                <h3 className="text-white text-[13px] md:text-sm font-bold leading-tight drop-shadow-sm">
                   {t.label}
                 </h3>
-              </div>
-              <div className="absolute top-5 right-5 h-9 w-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7M7 7h10v10"/>
-                </svg>
               </div>
             </a>
           ))}
