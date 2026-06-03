@@ -54,10 +54,10 @@ const regularSnippets: ClientSnippet[] = [
   },
   {
     quote:
-      "They always have new ideas and are always thinking of new ways of achieving goals.",
-    name: "Marlon Marescia",
-    role: "Facebook Ads Strategist, Sales Driven",
-    image: "https://static.wixstatic.com/media/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg",
+      "Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer.",
+    name: "Jess Smith",
+    role: "Chief Marketing Officer, Ergo Health",
+    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
   },
 ];
 
