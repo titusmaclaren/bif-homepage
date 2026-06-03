@@ -63,34 +63,34 @@ const visuals: Record<ContentCard["visual"], { src: string; alt: string }> = {
 
 export function ContentSystem() {
   return (
-    <section id="content-system" className="bg-off-white py-24 md:py-32 border-y border-fog/60 overflow-hidden">
+    <section id="content-system" className="bg-off-white py-16 md:py-20 border-y border-fog/60 overflow-hidden">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="mx-auto max-w-4xl text-center mb-12">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-5">
+        <div className="mx-auto max-w-4xl text-center mb-9">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-4">
             The Black Iris Content System
           </p>
-          <h2 className="font-bold text-navy text-3xl md:text-4xl lg:text-5xl leading-[1.05]">
+          <h2 className="font-bold text-navy text-3xl md:text-4xl lg:text-[42px] leading-[1.06]">
             Turn one strong story into a library of brand assets
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-5 md:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 md:gap-5">
           {cards.map((card, index) => (
             <article
               key={card.title}
-              className={`group flex flex-col rounded-lg border border-fog/70 bg-white p-5 shadow-[0_18px_55px_rgba(41,51,77,0.06)] md:p-6 ${
+              className={`group flex flex-col rounded-lg border border-fog/70 bg-white p-4 shadow-[0_14px_42px_rgba(41,51,77,0.05)] md:p-5 ${
                 index < 3 ? "xl:col-span-2" : "xl:col-span-3"
               }`}
             >
-              <div className="flex h-full flex-col gap-5">
-                <div className="min-h-[150px] md:min-h-[166px]">
+              <div className="flex h-full flex-col gap-4">
+                <div>
                   <div className="grid grid-cols-[auto_1fr] items-start gap-3">
                     <IconBubble icon={card.icon} />
                     <div>
-                      <h3 className="max-w-[22rem] text-[17px] leading-snug font-bold text-navy md:text-[19px]">
+                      <h3 className="max-w-[22rem] text-[16px] leading-snug font-bold text-navy md:text-[17px]">
                         {card.title}
                       </h3>
-                      <p className="mt-4 max-w-[34rem] text-[13px] leading-[1.68] text-slate">
+                      <p className="mt-3 max-w-[34rem] text-[12.5px] leading-[1.58] text-slate">
                         {card.body}
                       </p>
                     </div>
@@ -104,10 +104,10 @@ export function ContentSystem() {
           ))}
         </div>
 
-        <div className="mt-14 text-center">
+        <div className="mt-9 text-center">
           <a
             href="/why-black-iris-films"
-            className="inline-flex items-center gap-3 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-bold uppercase tracking-wider text-white transition-colors"
+            className="inline-flex items-center gap-3 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
           >
             Learn more
             <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -124,22 +124,20 @@ export function ContentSystem() {
 function CardVisual({ type }: { type: ContentCard["visual"] }) {
   if (type === "strategy") {
     return (
-      <div className="rounded-md bg-slate-ice/55 p-2">
-        <div className="relative h-40 overflow-hidden rounded-md md:h-44">
+      <div className="rounded-md bg-slate-ice/55 p-1.5">
+        <div className="relative aspect-[3/1] overflow-hidden rounded-md">
           <ImageTile src={visuals.strategy.src} alt={visuals.strategy.alt} className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-y-0 left-0 flex w-[38%] items-center bg-gradient-to-r from-navy/88 to-navy/10 px-4">
-            <p className="max-w-24 text-[12px] font-bold leading-snug text-white md:text-[13px]">What do we want them to feel?</p>
+          <div className="absolute inset-y-0 left-0 flex w-[32%] items-center bg-gradient-to-r from-navy/88 to-navy/10 px-3">
+            <p className="max-w-24 text-[10px] font-bold leading-snug text-white md:text-[11px]">What do we want them to feel?</p>
           </div>
-        </div>
-        <div className="mt-2 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-fog/70 bg-fog/70">
-          {["Audience", "Business goal", "Feeling"].map((label, index) => (
-            <div key={label} className="bg-white px-2 py-2.5 text-center">
-              <div className="mx-auto mb-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-mint/12 text-mint">
+          <div className="absolute bottom-2 right-2 flex gap-1.5">
+            {["Audience", "Goal", "Feeling"].map((label, index) => (
+              <span key={label} className="inline-flex items-center gap-1 rounded-md bg-white/92 px-2 py-1 text-[8.5px] font-bold text-navy shadow-[0_8px_18px_rgba(41,51,77,0.12)]">
                 <MiniMetricIcon index={index} />
-              </div>
-              <div className="text-[9px] font-semibold leading-tight text-navy">{label}</div>
-            </div>
-          ))}
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -147,16 +145,16 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "direction") {
     return (
-      <div className="rounded-md bg-white">
-        <div className="relative h-52 overflow-hidden rounded-md border border-fog/70">
+      <div className="rounded-md bg-white p-1.5">
+        <div className="relative aspect-[3/1] overflow-hidden rounded-md border border-fog/70">
           <ImageTile src={visuals.direction.src} alt={visuals.direction.alt} className="absolute inset-0 h-full w-full" />
-        </div>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          {["Homepage film", "Founder clips", "Campaign assets"].map((label) => (
-            <div key={label} className="rounded-md bg-slate-ice/70 px-2 py-2 text-center text-[9px] font-semibold leading-tight text-navy">
-              {label}
-            </div>
-          ))}
+          <div className="absolute bottom-2 left-2 flex flex-wrap gap-1.5">
+            {["Homepage film", "Founder clips", "Campaign assets"].map((label) => (
+              <span key={label} className="rounded-md bg-slate-ice/90 px-2 py-1 text-[8.5px] font-bold leading-tight text-navy shadow-[0_8px_18px_rgba(41,51,77,0.12)]">
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -164,16 +162,16 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "production") {
     return (
-      <div className="rounded-md bg-navy p-2">
-        <div className="relative h-52 overflow-hidden rounded-md">
+      <div className="rounded-md bg-navy p-1.5">
+        <div className="relative aspect-[3/1] overflow-hidden rounded-md">
           <ImageTile src={visuals.production.src} alt={visuals.production.alt} className="absolute inset-0 h-full w-full" />
-        </div>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {["Live-action", "Photography", "Animation", "Motion graphics"].map((label) => (
-            <span key={label} className="rounded-md bg-white/92 px-3 py-1.5 text-[9px] font-semibold text-navy">
-              {label}
-            </span>
-          ))}
+          <div className="absolute bottom-2 left-2 flex flex-wrap gap-1.5">
+            {["Live-action", "Photography", "Animation", "Motion graphics"].map((label) => (
+              <span key={label} className="rounded-md bg-white/92 px-2 py-1 text-[8.5px] font-bold text-navy">
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -181,28 +179,28 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "multiplication") {
     return (
-      <div className="rounded-md bg-slate-ice/55 p-2">
-        <div className="relative h-60 overflow-hidden rounded-md border border-fog/70 bg-white">
+      <div className="rounded-md bg-slate-ice/55 p-1.5">
+        <div className="relative aspect-[3/1] overflow-hidden rounded-md border border-fog/70 bg-white">
           <ImageTile src={visuals.multiplication.src} alt={visuals.multiplication.alt} className="absolute inset-0 h-full w-full" />
-        </div>
-        <div className="mt-2 grid grid-cols-4 gap-2">
-          {["Hero", "Cutdowns", "Loops", "Stills"].map((label) => (
-            <div key={label} className="rounded-md bg-white px-2 py-2 text-center text-[9px] font-semibold text-navy">
-              {label}
-            </div>
-          ))}
+          <div className="absolute bottom-2 left-2 flex gap-1.5">
+            {["Hero", "Cutdowns", "Loops", "Stills"].map((label) => (
+              <span key={label} className="rounded-md bg-white/92 px-2 py-1 text-[8.5px] font-bold text-navy shadow-[0_8px_18px_rgba(41,51,77,0.12)]">
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-md bg-white p-2">
-      <div className="relative h-64 overflow-hidden rounded-md border border-fog/70 bg-white">
-        <ImageTile src={visuals.value.src} alt={visuals.value.alt} className="absolute inset-0 h-full w-full object-contain" />
-        <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
+    <div className="rounded-md bg-white p-1.5">
+      <div className="relative aspect-[3/1] overflow-hidden rounded-md border border-fog/70 bg-white">
+        <ImageTile src={visuals.value.src} alt={visuals.value.alt} className="absolute inset-0 h-full w-full" />
+        <div className="absolute bottom-2 left-2 flex flex-wrap gap-1.5">
           {["Hero videos", "Social clips", "Stills", "Audio"].map((label) => (
-            <span key={label} className="rounded-md bg-white/90 px-2.5 py-1.5 text-[9px] font-semibold text-navy shadow-[0_8px_24px_rgba(41,51,77,0.12)]">
+            <span key={label} className="rounded-md bg-white/92 px-2 py-1 text-[8.5px] font-bold text-navy shadow-[0_8px_18px_rgba(41,51,77,0.12)]">
               {label}
             </span>
           ))}
