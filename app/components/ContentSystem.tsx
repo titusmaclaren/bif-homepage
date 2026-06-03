@@ -78,27 +78,27 @@ export function ContentSystem() {
           {cards.map((card, index) => (
             <article
               key={card.title}
-              className={`group rounded-lg border border-fog/70 bg-white p-5 shadow-[0_18px_55px_rgba(41,51,77,0.06)] md:p-6 ${
+              className={`group flex flex-col rounded-lg border border-fog/70 bg-white p-5 shadow-[0_18px_55px_rgba(41,51,77,0.06)] md:p-6 ${
                 index < 3 ? "xl:col-span-2" : "xl:col-span-3"
               }`}
             >
-              <div
-                className={`grid h-full gap-5 ${
-                  index < 3 ? "sm:grid-cols-[1.08fr_0.92fr]" : "sm:grid-cols-[0.92fr_1.08fr]"
-                }`}
-              >
-                <div>
-                  <div className="flex items-start gap-3">
+              <div className="flex h-full flex-col gap-5">
+                <div className="min-h-[150px] md:min-h-[166px]">
+                  <div className="grid grid-cols-[auto_1fr] items-start gap-3">
                     <IconBubble icon={card.icon} />
-                    <h3 className="text-[16px] leading-snug font-bold text-navy md:text-[17px]">
-                      {card.title}
-                    </h3>
+                    <div>
+                      <h3 className="max-w-[22rem] text-[17px] leading-snug font-bold text-navy md:text-[19px]">
+                        {card.title}
+                      </h3>
+                      <p className="mt-4 max-w-[34rem] text-[13px] leading-[1.68] text-slate">
+                        {card.body}
+                      </p>
+                    </div>
                   </div>
-                  <p className="mt-4 text-[13px] leading-[1.68] text-slate">
-                    {card.body}
-                  </p>
                 </div>
-                <CardVisual type={card.visual} />
+                <div className="mt-auto">
+                  <CardVisual type={card.visual} />
+                </div>
               </div>
             </article>
           ))}
@@ -124,16 +124,16 @@ export function ContentSystem() {
 function CardVisual({ type }: { type: ContentCard["visual"] }) {
   if (type === "strategy") {
     return (
-      <div className="min-h-64 rounded-md bg-slate-ice/55 p-2">
-        <div className="relative h-36 overflow-hidden rounded-md">
+      <div className="rounded-md bg-slate-ice/55 p-2">
+        <div className="relative h-40 overflow-hidden rounded-md md:h-44">
           <ImageTile src={visuals.strategy.src} alt={visuals.strategy.alt} className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-y-0 left-0 flex w-[46%] items-center bg-gradient-to-r from-navy/88 to-navy/10 px-3">
-            <p className="max-w-24 text-[12px] font-bold leading-snug text-white">What do we want them to feel?</p>
+          <div className="absolute inset-y-0 left-0 flex w-[38%] items-center bg-gradient-to-r from-navy/88 to-navy/10 px-4">
+            <p className="max-w-24 text-[12px] font-bold leading-snug text-white md:text-[13px]">What do we want them to feel?</p>
           </div>
         </div>
         <div className="mt-2 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-fog/70 bg-fog/70">
           {["Audience", "Business goal", "Feeling"].map((label, index) => (
-            <div key={label} className="bg-white px-1.5 py-2.5 text-center">
+            <div key={label} className="bg-white px-2 py-2.5 text-center">
               <div className="mx-auto mb-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-mint/12 text-mint">
                 <MiniMetricIcon index={index} />
               </div>
@@ -147,13 +147,13 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "direction") {
     return (
-      <div className="min-h-64 rounded-md bg-white">
-        <div className="relative h-48 overflow-hidden rounded-md border border-fog/70">
+      <div className="rounded-md bg-white">
+        <div className="relative h-52 overflow-hidden rounded-md border border-fog/70">
           <ImageTile src={visuals.direction.src} alt={visuals.direction.alt} className="absolute inset-0 h-full w-full" />
         </div>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {["Homepage film", "Founder clips", "Campaign assets"].map((label) => (
-            <div key={label} className="rounded-md bg-slate-ice/70 px-1.5 py-2 text-[9px] font-semibold leading-tight text-navy">
+            <div key={label} className="rounded-md bg-slate-ice/70 px-2 py-2 text-center text-[9px] font-semibold leading-tight text-navy">
               {label}
             </div>
           ))}
@@ -164,13 +164,13 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "production") {
     return (
-      <div className="min-h-64 rounded-md bg-navy p-2">
-        <div className="relative h-44 overflow-hidden rounded-md">
+      <div className="rounded-md bg-navy p-2">
+        <div className="relative h-52 overflow-hidden rounded-md">
           <ImageTile src={visuals.production.src} alt={visuals.production.alt} className="absolute inset-0 h-full w-full" />
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {["Live-action", "Photography", "Animation", "Motion graphics"].map((label) => (
-            <span key={label} className="rounded-md bg-white/92 px-2.5 py-1.5 text-[9px] font-semibold text-navy">
+            <span key={label} className="rounded-md bg-white/92 px-3 py-1.5 text-[9px] font-semibold text-navy">
               {label}
             </span>
           ))}
@@ -181,8 +181,8 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
   if (type === "multiplication") {
     return (
-      <div className="min-h-64 rounded-md bg-slate-ice/55 p-2">
-        <div className="relative h-52 overflow-hidden rounded-md border border-fog/70 bg-white">
+      <div className="rounded-md bg-slate-ice/55 p-2">
+        <div className="relative h-60 overflow-hidden rounded-md border border-fog/70 bg-white">
           <ImageTile src={visuals.multiplication.src} alt={visuals.multiplication.alt} className="absolute inset-0 h-full w-full" />
         </div>
         <div className="mt-2 grid grid-cols-4 gap-2">
@@ -197,8 +197,8 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
   }
 
   return (
-    <div className="min-h-64 rounded-md bg-white p-2">
-      <div className="relative h-60 overflow-hidden rounded-md border border-fog/70 bg-white">
+    <div className="rounded-md bg-white p-2">
+      <div className="relative h-64 overflow-hidden rounded-md border border-fog/70 bg-white">
         <ImageTile src={visuals.value.src} alt={visuals.value.alt} className="absolute inset-0 h-full w-full object-contain" />
         <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
           {["Hero videos", "Social clips", "Stills", "Audio"].map((label) => (
