@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Testimonial = {
   rating: number;
@@ -89,7 +89,8 @@ const testimonials: Testimonial[] = [
 ];
 
 const REEL_VIMEO_ID = "943964025";
-const TESTIMONIALS_PER_PAGE = 3;
+const DESKTOP_VISIBLE_TESTIMONIALS = 3;
+const SLIDE_GAP_PX = 20;
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -157,21 +158,103 @@ function Card({ t }: { t: Testimonial }) {
 }
 
 export function Testimonials() {
-  const pageCount = Math.ceil(testimonials.length / TESTIMONIALS_PER_PAGE);
-  const [activePage, setActivePage] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const firstSlideRef = useRef<HTMLDivElement>(null);
+  const secondSlideRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(DESKTOP_VISIBLE_TESTIMONIALS);
+  const [slideOffset, setSlideOffset] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const loopedTestimonials = useMemo(
+    () => [...testimonials, ...testimonials.slice(0, cardsPerView)],
+    [cardsPerView],
+  );
 
   useEffect(() => {
+    const updateCardsPerView = () => {
+      setCardsPerView(window.matchMedia("(min-width: 768px)").matches ? DESKTOP_VISIBLE_TESTIMONIALS : 1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    const measureSlideOffset = () => {
+      if (!firstSlideRef.current || !secondSlideRef.current) return;
+      setSlideOffset(secondSlideRef.current.offsetLeft - firstSlideRef.current.offsetLeft);
+    };
+
+    measureSlideOffset();
+
+    const resizeObserver =
+      typeof window.ResizeObserver === "function" ? new window.ResizeObserver(measureSlideOffset) : null;
+
+    if (viewportRef.current) resizeObserver?.observe(viewportRef.current);
+    window.addEventListener("resize", measureSlideOffset);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", measureSlideOffset);
+    };
+  }, [cardsPerView]);
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      const frame = window.requestAnimationFrame(() => setIsTransitioning(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+  }, [isTransitioning]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const interval = window.setInterval(() => {
-      setActivePage((current) => (current + 1) % pageCount);
-    }, 6500);
+      setIsTransitioning(true);
+      setActiveIndex((current) => current + 1);
+    }, 5200);
 
     return () => window.clearInterval(interval);
-  }, [pageCount]);
+  }, []);
 
-  const visibleTestimonials = useMemo(() => {
-    const start = activePage * TESTIMONIALS_PER_PAGE;
-    return testimonials.slice(start, start + TESTIMONIALS_PER_PAGE);
-  }, [activePage]);
+  const slideBasis =
+    cardsPerView === 1
+      ? "100%"
+      : `calc((100% - ${(cardsPerView - 1) * SLIDE_GAP_PX}px) / ${cardsPerView})`;
+
+  const activeDot = activeIndex % testimonials.length;
+
+  function goToPrevious() {
+    if (activeIndex === 0) {
+      setIsTransitioning(false);
+      setActiveIndex(testimonials.length);
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          setIsTransitioning(true);
+          setActiveIndex(testimonials.length - 1);
+        });
+      });
+      return;
+    }
+
+    setIsTransitioning(true);
+    setActiveIndex((current) => current - 1);
+  }
+
+  function goToNext() {
+    setIsTransitioning(true);
+    setActiveIndex((current) => current + 1);
+  }
+
+  function handleTransitionEnd() {
+    if (activeIndex >= testimonials.length) {
+      setIsTransitioning(false);
+      setActiveIndex(0);
+    }
+  }
 
   return (
     <section id="testimonials" className="bg-white py-16 md:py-20">
@@ -204,7 +287,7 @@ export function Testimonials() {
         <div className="flex items-center justify-between gap-3 mb-4">
           <button
             type="button"
-            onClick={() => setActivePage((current) => (current - 1 + pageCount) % pageCount)}
+            onClick={goToPrevious}
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-fog text-navy hover:border-mint hover:text-mint transition-colors"
             aria-label="Previous testimonials"
           >
@@ -213,22 +296,25 @@ export function Testimonials() {
             </svg>
           </button>
           <div className="flex items-center justify-center gap-2">
-            {Array.from({ length: pageCount }).map((_, index) => (
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
+                key={testimonial.name}
                 type="button"
-                onClick={() => setActivePage(index)}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setActiveIndex(index);
+                }}
                 className={`h-2.5 rounded-full transition-all ${
-                  activePage === index ? "w-8 bg-mint" : "w-2.5 bg-fog hover:bg-mint/55"
+                  activeDot === index ? "w-8 bg-mint" : "w-2.5 bg-fog hover:bg-mint/55"
                 }`}
-                aria-label={`Show testimonial group ${index + 1}`}
-                aria-current={activePage === index}
+                aria-label={`Start at testimonial ${index + 1}`}
+                aria-current={activeDot === index}
               />
             ))}
           </div>
           <button
             type="button"
-            onClick={() => setActivePage((current) => (current + 1) % pageCount)}
+            onClick={goToNext}
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-fog text-navy hover:border-mint hover:text-mint transition-colors"
             aria-label="Next testimonials"
           >
@@ -238,10 +324,28 @@ export function Testimonials() {
           </button>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3" aria-live="polite">
-          {visibleTestimonials.map((t) => (
-            <Card key={t.name} t={t} />
-          ))}
+        <div ref={viewportRef} className="overflow-hidden" aria-live="off">
+          <div
+            className={`flex items-stretch will-change-transform ${
+              isTransitioning ? "transition-transform duration-700 ease-out" : ""
+            }`}
+            style={{
+              gap: `${SLIDE_GAP_PX}px`,
+              transform: `translate3d(-${activeIndex * slideOffset}px, 0, 0)`,
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {loopedTestimonials.map((t, index) => (
+              <div
+                key={`${t.name}-${index}`}
+                ref={index === 0 ? firstSlideRef : index === 1 ? secondSlideRef : undefined}
+                className="shrink-0"
+                style={{ flexBasis: slideBasis }}
+              >
+                <Card t={t} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-9 text-center">
