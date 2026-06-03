@@ -130,7 +130,7 @@ export function Nav() {
             </div>
 
             <a href="https://www.blackirisfilms.com/#work" className="nav-link">WORK</a>
-            <a href="https://www.blackirisfilms.com/#about" className="nav-link">ABOUT</a>
+            <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
           </nav>
 
           <a
@@ -171,7 +171,7 @@ export function Nav() {
             </div>
           </details>
           <a href="https://www.blackirisfilms.com/#work" className="mobile-link" onClick={closeMenu}>WORK</a>
-          <a href="https://www.blackirisfilms.com/#about" className="mobile-link" onClick={closeMenu}>ABOUT</a>
+          <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
           <a
             href="https://quiz.blackirisfilms.com/"
             className="inline-block text-center bg-bif-green hover:bg-bif-green-hover text-white text-[13px] font-bold uppercase tracking-wider px-5 py-3 rounded-sm transition-colors mt-2"

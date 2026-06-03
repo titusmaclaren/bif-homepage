@@ -106,10 +106,10 @@ export function ContentSystem() {
 
         <div className="mt-14 text-center">
           <a
-            href="https://quiz.blackirisfilms.com/"
+            href="/why-black-iris-films"
             className="inline-flex items-center gap-3 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-bold uppercase tracking-wider text-white transition-colors"
           >
-            Build your content library
+            Learn more
             <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14" />
               <path d="m13 6 6 6-6 6" />
