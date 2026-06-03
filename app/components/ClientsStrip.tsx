@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+
 // Real client logos pulled from the BIF Wix logos gallery.
 const logoBase = (id: string) =>
   `https://static.wixstatic.com/media/${id}/v1/fit/w_240,h_240,q_90,enc_avif,quality_auto/${id}`;
@@ -25,7 +29,133 @@ const logoIds = [
 
 const logos = logoIds.map(logoBase);
 
+type ClientSnippet = {
+  quote: string;
+  name: string;
+  role: string;
+};
+
+const regularSnippets: ClientSnippet[] = [
+  {
+    quote:
+      "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative.",
+    name: "Catherine Allison",
+    role: "Director of Marketing, ACS",
+  },
+  {
+    quote:
+      "He captured exciting footage and engaging interviews through warm interactions with the guests.",
+    name: "Scott Newton",
+    role: "Marketing Director, Game Plus",
+  },
+  {
+    quote:
+      "They always have new ideas and are always thinking of new ways of achieving goals.",
+    name: "Marlon Marescia",
+    role: "Facebook Ads Strategist, Sales Driven",
+  },
+];
+
+const dacxiSnippets: ClientSnippet[] = [
+  {
+    quote:
+      "This is a group of accessible, really polished professionals that have taken all of our video content to the next level.",
+    name: "Ian Lowe",
+    role: "CEO, Dacxi Group",
+  },
+  {
+    quote:
+      "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with. Anyone connecting is in for profound insights from a true master of the craft! \u{1F3A5}\u{1F31F}",
+    name: "Vicky Barker",
+    role: "CMO, Dacxi Chain",
+  },
+];
+
+const CLIENT_SNIPPETS_VISIBLE = 3;
+const SNIPPET_GAP_PX = 16;
+
 export function ClientsStrip() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [dacxiVariant, setDacxiVariant] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(CLIENT_SNIPPETS_VISIBLE);
+  const [slideOffset, setSlideOffset] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const firstSlideRef = useRef<HTMLDivElement>(null);
+  const secondSlideRef = useRef<HTMLDivElement>(null);
+
+  const snippets = useMemo(
+    () => [dacxiSnippets[dacxiVariant], ...regularSnippets],
+    [dacxiVariant],
+  );
+
+  const loopedSnippets = useMemo(
+    () => [...snippets, ...snippets.slice(0, cardsPerView)],
+    [cardsPerView, snippets],
+  );
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      setCardsPerView(window.matchMedia("(min-width: 768px)").matches ? CLIENT_SNIPPETS_VISIBLE : 1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    const measureSlideOffset = () => {
+      if (!firstSlideRef.current || !secondSlideRef.current) return;
+      setSlideOffset(secondSlideRef.current.offsetLeft - firstSlideRef.current.offsetLeft);
+    };
+
+    measureSlideOffset();
+
+    const resizeObserver =
+      typeof window.ResizeObserver === "function" ? new window.ResizeObserver(measureSlideOffset) : null;
+
+    if (viewportRef.current) resizeObserver?.observe(viewportRef.current);
+    window.addEventListener("resize", measureSlideOffset);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", measureSlideOffset);
+    };
+  }, [cardsPerView]);
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      const frame = window.requestAnimationFrame(() => setIsTransitioning(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+  }, [isTransitioning]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const interval = window.setInterval(() => {
+      setIsTransitioning(true);
+      setActiveIndex((current) => current + 1);
+    }, 5600);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const slideBasis =
+    cardsPerView === 1
+      ? "100%"
+      : `calc((100% - ${(cardsPerView - 1) * SNIPPET_GAP_PX}px) / ${cardsPerView})`;
+
+  function handleTransitionEnd() {
+    if (activeIndex >= snippets.length) {
+      setIsTransitioning(false);
+      setActiveIndex(0);
+      setDacxiVariant((current) => (current + 1) % dacxiSnippets.length);
+    }
+  }
+
   return (
     <section id="clients" className="bg-off-white border-y border-fog/60 py-8 md:py-10 overflow-hidden">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10 mb-6">
@@ -59,6 +189,32 @@ export function ClientsStrip() {
         </div>
       </div>
 
+      <div className="mx-auto mt-7 max-w-[1120px] px-6 lg:px-10">
+        <div ref={viewportRef} className="overflow-hidden" aria-live="off">
+          <div
+            className={`flex items-stretch will-change-transform ${
+              isTransitioning ? "transition-transform duration-700 ease-out" : ""
+            }`}
+            style={{
+              gap: `${SNIPPET_GAP_PX}px`,
+              transform: `translate3d(-${activeIndex * slideOffset}px, 0, 0)`,
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {loopedSnippets.map((snippet, index) => (
+              <div
+                key={`${snippet.name}-${index}`}
+                ref={index === 0 ? firstSlideRef : index === 1 ? secondSlideRef : undefined}
+                className="shrink-0"
+                style={{ flexBasis: slideBasis }}
+              >
+                <ClientSnippetCard snippet={snippet} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="text-center mt-6">
         <a
           href="https://www.blackirisfilms.com/get-a-quote#testimonials"
@@ -68,5 +224,19 @@ export function ClientsStrip() {
         </a>
       </div>
     </section>
+  );
+}
+
+function ClientSnippetCard({ snippet }: { snippet: ClientSnippet }) {
+  return (
+    <figure className="flex h-full flex-col rounded-lg border border-fog/70 bg-white p-5 shadow-[0_12px_32px_rgba(41,51,77,0.04)]">
+      <blockquote className="flex-1 text-[13.5px] leading-relaxed text-navy">
+        &ldquo;{snippet.quote}&rdquo;
+      </blockquote>
+      <figcaption className="mt-4 border-t border-fog/70 pt-3">
+        <div className="text-[13px] font-bold leading-tight text-navy">{snippet.name}</div>
+        <div className="mt-1 text-[12px] leading-tight text-slate">{snippet.role}</div>
+      </figcaption>
+    </figure>
   );
 }
