@@ -1,6 +1,5 @@
 // Industry-and-format service grid. Image fills each tile, label sits in the
-// bottom-left, and the image gently zooms on hover. Imagery is reused from
-// the Wix Pro Gallery thumbnails as representative samples per category.
+// centre, and the image gently zooms on hover.
 
 const W = (id: string, w = 800, h = 600) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
@@ -9,6 +8,7 @@ type Tile = {
   label: string;
   href: string;
   image: string;
+  objectPosition?: string;
 };
 
 const tiles: Tile[] = [
@@ -60,7 +60,8 @@ const tiles: Tile[] = [
   {
     label: "AI Powered Content Studio",
     href: "https://services.blackirisfilms.com/ai-powered-content-studio-v2",
-    image: W("a2a11d_859e588ef5974cdb86fc050b7e04b838~mv2.png"),
+    image: "/services/ai-powered-content-studio-character-sheet.png",
+    objectPosition: "50% 34%",
   },
 ];
 
@@ -93,6 +94,7 @@ export function ServicesGrid() {
                 src={t.image}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+                style={t.objectPosition ? { objectPosition: t.objectPosition } : undefined}
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-navy/60 group-hover:bg-navy/45 transition-colors" />
