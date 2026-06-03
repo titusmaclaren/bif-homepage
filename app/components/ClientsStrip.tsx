@@ -33,6 +33,8 @@ type ClientSnippet = {
   quote: string;
   name: string;
   role: string;
+  image?: string;
+  initials?: string;
 };
 
 const regularSnippets: ClientSnippet[] = [
@@ -41,18 +43,21 @@ const regularSnippets: ClientSnippet[] = [
       "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative.",
     name: "Catherine Allison",
     role: "Director of Marketing, ACS",
+    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
   },
   {
     quote:
       "He captured exciting footage and engaging interviews through warm interactions with the guests.",
     name: "Scott Newton",
     role: "Marketing Director, Game Plus",
+    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
   },
   {
     quote:
       "They always have new ideas and are always thinking of new ways of achieving goals.",
     name: "Marlon Marescia",
     role: "Facebook Ads Strategist, Sales Driven",
+    image: "https://static.wixstatic.com/media/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg",
   },
 ];
 
@@ -62,12 +67,13 @@ const dacxiSnippets: ClientSnippet[] = [
       "This is a group of accessible, really polished professionals that have taken all of our video content to the next level.",
     name: "Ian Lowe",
     role: "CEO, Dacxi Group",
+    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
   },
   {
-    quote:
-      "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with. Anyone connecting is in for profound insights from a true master of the craft! \u{1F3A5}\u{1F31F}",
+    quote: "For our corporate videos, Titus is unparalleled in his filmmaking prowess.",
     name: "Vicky Barker",
     role: "CMO, Dacxi Chain",
+    image: "https://dacxichain.com/wp-content/uploads/2024/02/1237@2x.png",
   },
 ];
 
@@ -230,13 +236,47 @@ export function ClientsStrip() {
 function ClientSnippetCard({ snippet }: { snippet: ClientSnippet }) {
   return (
     <figure className="flex h-full flex-col rounded-lg border border-fog/70 bg-white p-5 shadow-[0_12px_32px_rgba(41,51,77,0.04)]">
-      <blockquote className="flex-1 text-[13.5px] leading-relaxed text-navy">
+      <div className="flex items-center gap-3">
+        {snippet.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={snippet.image}
+            alt={snippet.name}
+            className="h-11 w-11 shrink-0 rounded-full bg-fog/40 object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint/12 text-[13px] font-bold text-mint">
+            {snippet.initials}
+          </div>
+        )}
+        <div className="min-w-0">
+          <div className="text-[13px] font-bold leading-tight text-navy">{snippet.name}</div>
+          <div className="mt-1 text-[12px] leading-tight text-slate">{snippet.role}</div>
+        </div>
+      </div>
+      <Stars />
+      <blockquote className="mt-4 flex-1 text-[13.5px] leading-relaxed text-navy">
         &ldquo;{snippet.quote}&rdquo;
       </blockquote>
-      <figcaption className="mt-4 border-t border-fog/70 pt-3">
-        <div className="text-[13px] font-bold leading-tight text-navy">{snippet.name}</div>
-        <div className="mt-1 text-[12px] leading-tight text-slate">{snippet.role}</div>
-      </figcaption>
     </figure>
+  );
+}
+
+function Stars() {
+  return (
+    <div className="mt-4 flex gap-0.5 text-mint" aria-label="5 out of 5 stars">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <svg
+          key={index}
+          aria-hidden="true"
+          className="h-3.5 w-3.5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+      ))}
+    </div>
   );
 }

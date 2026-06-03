@@ -65,18 +65,13 @@ export function ContentSystem() {
   return (
     <section id="content-system" className="bg-off-white py-24 md:py-32 border-y border-fog/60 overflow-hidden">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="mx-auto max-w-4xl text-center mb-14 md:mb-16">
+        <div className="mx-auto max-w-4xl text-center mb-12">
           <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-5">
             The Black Iris Content System
           </p>
           <h2 className="font-bold text-navy text-3xl md:text-4xl lg:text-5xl leading-[1.05]">
             Turn one strong story into a library of brand assets
           </h2>
-          <p className="mt-7 text-lg text-slate font-light leading-relaxed max-w-3xl mx-auto">
-            We help brands create emotionally resonant video, photography and social content
-            that works across websites, campaigns, sales conversations and everyday marketing,
-            so every production delivers more value long after the shoot is over.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-5 md:gap-7">
@@ -89,17 +84,17 @@ export function ContentSystem() {
             >
               <div
                 className={`grid h-full gap-5 ${
-                  index < 3 ? "sm:grid-cols-[0.92fr_1.08fr]" : "sm:grid-cols-[0.82fr_1.18fr]"
+                  index < 3 ? "sm:grid-cols-[1.08fr_0.92fr]" : "sm:grid-cols-[0.92fr_1.08fr]"
                 }`}
               >
                 <div>
                   <div className="flex items-start gap-3">
                     <IconBubble icon={card.icon} />
-                    <h3 className="text-[17px] leading-snug font-bold text-navy md:text-lg">
+                    <h3 className="text-[16px] leading-snug font-bold text-navy md:text-[17px]">
                       {card.title}
                     </h3>
                   </div>
-                  <p className="mt-5 text-[14.5px] leading-relaxed text-slate">
+                  <p className="mt-4 text-[13px] leading-[1.68] text-slate">
                     {card.body}
                   </p>
                 </div>
@@ -132,17 +127,17 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
       <div className="min-h-64 rounded-md bg-slate-ice/55 p-2">
         <div className="relative h-36 overflow-hidden rounded-md">
           <ImageTile src={visuals.strategy.src} alt={visuals.strategy.alt} className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-y-0 left-0 flex w-1/2 items-center bg-gradient-to-r from-navy/88 to-navy/10 px-4">
-            <p className="max-w-28 text-[13px] font-bold leading-snug text-white">What do we want them to feel?</p>
+          <div className="absolute inset-y-0 left-0 flex w-[46%] items-center bg-gradient-to-r from-navy/88 to-navy/10 px-3">
+            <p className="max-w-24 text-[12px] font-bold leading-snug text-white">What do we want them to feel?</p>
           </div>
         </div>
         <div className="mt-2 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-fog/70 bg-fog/70">
           {["Audience", "Business goal", "Feeling"].map((label, index) => (
-            <div key={label} className="bg-white px-2 py-3 text-center">
-              <div className="mx-auto mb-2 flex h-7 w-7 items-center justify-center rounded-full bg-mint/12 text-mint">
+            <div key={label} className="bg-white px-1.5 py-2.5 text-center">
+              <div className="mx-auto mb-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-mint/12 text-mint">
                 <MiniMetricIcon index={index} />
               </div>
-              <div className="text-[10px] font-semibold leading-tight text-navy">{label}</div>
+              <div className="text-[9px] font-semibold leading-tight text-navy">{label}</div>
             </div>
           ))}
         </div>
@@ -158,7 +153,7 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
         </div>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {["Homepage film", "Founder clips", "Campaign assets"].map((label) => (
-            <div key={label} className="rounded-md bg-slate-ice/70 px-2 py-2 text-[10px] font-semibold leading-tight text-navy">
+            <div key={label} className="rounded-md bg-slate-ice/70 px-1.5 py-2 text-[9px] font-semibold leading-tight text-navy">
               {label}
             </div>
           ))}
@@ -175,7 +170,7 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {["Live-action", "Photography", "Animation", "Motion graphics"].map((label) => (
-            <span key={label} className="rounded-md bg-white/92 px-2.5 py-1.5 text-[10px] font-semibold text-navy">
+            <span key={label} className="rounded-md bg-white/92 px-2.5 py-1.5 text-[9px] font-semibold text-navy">
               {label}
             </span>
           ))}
@@ -192,7 +187,7 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
         </div>
         <div className="mt-2 grid grid-cols-4 gap-2">
           {["Hero", "Cutdowns", "Loops", "Stills"].map((label) => (
-            <div key={label} className="rounded-md bg-white px-2 py-2 text-center text-[10px] font-semibold text-navy">
+            <div key={label} className="rounded-md bg-white px-2 py-2 text-center text-[9px] font-semibold text-navy">
               {label}
             </div>
           ))}
@@ -207,7 +202,7 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
         <ImageTile src={visuals.value.src} alt={visuals.value.alt} className="absolute inset-0 h-full w-full object-contain" />
         <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
           {["Hero videos", "Social clips", "Stills", "Audio"].map((label) => (
-            <span key={label} className="rounded-md bg-white/90 px-2.5 py-1.5 text-[10px] font-semibold text-navy shadow-[0_8px_24px_rgba(41,51,77,0.12)]">
+            <span key={label} className="rounded-md bg-white/90 px-2.5 py-1.5 text-[9px] font-semibold text-navy shadow-[0_8px_24px_rgba(41,51,77,0.12)]">
               {label}
             </span>
           ))}
@@ -231,14 +226,14 @@ function ImageTile({ src, alt, className }: { src: string; alt: string; classNam
 
 function IconBubble({ icon }: { icon: ContentCard["icon"] }) {
   return (
-    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-mint/12 text-mint">
+    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-mint/12 text-mint">
       <IconGlyph icon={icon} />
     </span>
   );
 }
 
 function IconGlyph({ icon }: { icon: ContentCard["icon"] }) {
-  const common = "h-5 w-5";
+  const common = "h-4 w-4";
 
   if (icon === "heart") {
     return (
@@ -292,7 +287,7 @@ function IconGlyph({ icon }: { icon: ContentCard["icon"] }) {
 function MiniMetricIcon({ index }: { index: number }) {
   if (index === 0) {
     return (
-      <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg aria-hidden="true" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M16 20v-2a4 4 0 0 0-8 0v2" />
         <circle cx="12" cy="8" r="4" />
       </svg>
@@ -301,7 +296,7 @@ function MiniMetricIcon({ index }: { index: number }) {
 
   if (index === 1) {
     return (
-      <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg aria-hidden="true" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <circle cx="12" cy="12" r="8" />
         <circle cx="12" cy="12" r="3" />
         <path d="m16 8 3-3" />
@@ -310,7 +305,7 @@ function MiniMetricIcon({ index }: { index: number }) {
   }
 
   return (
-    <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg aria-hidden="true" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M20.8 4.6a5.2 5.2 0 0 0-7.4 0L12 6l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 20.8l8.8-8.8a5.2 5.2 0 0 0 0-7.4Z" />
     </svg>
   );
