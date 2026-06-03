@@ -46,10 +46,10 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white/60 pt-14 pb-10 text-sm">
-      <div className="max-w-[1160px] mx-auto px-6 flex flex-wrap justify-between gap-12">
+    <footer className="bg-black text-white/60 pt-10 pb-8 text-sm">
+      <div className="max-w-[1160px] mx-auto px-6 flex flex-wrap justify-between gap-8">
         <div className="flex-1 min-w-[300px]">
-          <nav className="flex flex-wrap gap-6 mb-6">
+          <nav className="flex flex-wrap gap-5 mb-4">
             {footerNav.map((l) => (
               <a
                 key={l.href}
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="flex-none text-right md:text-right max-md:text-left">
-          <div className="mb-5 space-y-1">
+          <div className="mb-4 space-y-1">
             <p>
               <a href="tel:+610282013504" className="text-white/70 hover:text-white transition-colors">
                 Contact: (02) 8201 3504
@@ -91,7 +91,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex gap-3 mb-5 justify-end max-md:justify-start">
+          <div className="flex gap-3 mb-4 justify-end max-md:justify-start">
             {socials.map((s) => (
               <a
                 key={s.label}

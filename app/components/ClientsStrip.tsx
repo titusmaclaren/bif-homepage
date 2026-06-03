@@ -1,5 +1,4 @@
-// Real client logos pulled from the BIF Wix logos gallery (4a48bcd6-dbf5-4f99-84cc-209d2f05fc86).
-// Filtered to square-ish images that look like brand marks (excluded the 866x650 photo).
+// Real client logos pulled from the BIF Wix logos gallery.
 const logoBase = (id: string) =>
   `https://static.wixstatic.com/media/${id}/v1/fit/w_240,h_240,q_90,enc_avif,quality_auto/${id}`;
 
@@ -28,18 +27,14 @@ const logos = logoIds.map(logoBase);
 
 export function ClientsStrip() {
   return (
-    <section id="clients" className="bg-off-white border-y border-fog/60 py-12 md:py-14 overflow-hidden">
-      <div className="mx-auto max-w-[1260px] px-6 lg:px-10 mb-9">
-        <p className="text-center text-slate text-[15px] md:text-base font-light tracking-wide">
-          Trusted by 30+ industries · 15+ years experience · Fixed price, every time
+    <section id="clients" className="bg-off-white border-y border-fog/60 py-8 md:py-10 overflow-hidden">
+      <div className="mx-auto max-w-[1260px] px-6 lg:px-10 mb-6">
+        <p className="text-center text-slate text-[13px] md:text-sm font-light tracking-wide">
+          Trusted by 30+ industries | 15+ years experience | Fixed price, every time
         </p>
       </div>
 
-      {/* Marquee */}
-      <div
-        className="relative"
-        aria-label="Black Iris Films client logos"
-      >
+      <div className="relative" aria-label="Black Iris Films client logos">
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-16 z-10"
           style={{ background: "linear-gradient(to right, #FAFAF8, transparent)" }}
@@ -53,18 +48,18 @@ export function ClientsStrip() {
           {[...logos, ...logos].map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              key={i}
+              key={`${src}-${i}`}
               src={src}
               alt=""
               aria-hidden={i >= logos.length}
-              className="h-14 md:h-16 w-auto object-contain shrink-0 mx-8 md:mx-12"
+              className="h-10 md:h-12 w-auto object-contain shrink-0 mx-6 md:mx-8"
               loading="lazy"
             />
           ))}
         </div>
       </div>
 
-      <div className="text-center mt-10">
+      <div className="text-center mt-6">
         <a
           href="https://www.blackirisfilms.com/get-a-quote#testimonials"
           className="text-[12px] uppercase tracking-[0.18em] text-mint hover:text-mint-bright font-medium"

@@ -14,14 +14,14 @@ type ProcessIcon = (typeof steps)[number]["icon"];
 
 export function ProcessSteps() {
   return (
-    <section className="bg-off-white py-24 md:py-32 border-y border-fog/60">
+    <section className="bg-off-white py-16 md:py-20 border-y border-fog/60">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="grid md:grid-cols-12 gap-10 mb-14 items-end">
+        <div className="grid md:grid-cols-12 gap-8 mb-9 items-end">
           <div className="md:col-span-7">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-5">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-4">
               How it works
             </p>
-            <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05]">
+            <h2 className="font-bold text-navy text-3xl md:text-4xl leading-[1.08]">
               You approve at each stage.
               <br />
               <span className="text-slate">We do the heavy lifting.</span>
@@ -37,7 +37,7 @@ export function ProcessSteps() {
               }}
               className="inline-flex items-center gap-3 text-sm font-medium text-navy hover:text-mint group"
             >
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-navy/20 group-hover:border-mint group-hover:bg-mint transition-all">
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-navy/20 group-hover:border-mint group-hover:bg-mint transition-all">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-navy group-hover:text-white">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -52,17 +52,17 @@ export function ProcessSteps() {
 
         <ol className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-fog/70 bg-fog/70 sm:grid-cols-2 md:grid-cols-5">
           {steps.map((s) => (
-            <li key={s.n} className="bg-white p-7 md:p-8">
+            <li key={s.n} className="bg-white p-5 md:p-6">
               <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-mint/12 text-mint">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-mint/12 text-mint">
                   <StepIcon icon={s.icon} />
                 </span>
-                <span className="text-[12px] font-bold uppercase tracking-[0.18em] text-mint">
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-mint">
                   {String(s.n).padStart(2, "0")}
                 </span>
               </div>
-              <div className="mt-5 text-navy font-medium text-base">{s.title}</div>
-              <div className="mt-2 text-slate text-[13.5px] leading-relaxed">{s.blurb}</div>
+              <div className="mt-4 text-navy font-medium text-[15px]">{s.title}</div>
+              <div className="mt-1.5 text-slate text-[13px] leading-relaxed">{s.blurb}</div>
             </li>
           ))}
         </ol>
@@ -72,7 +72,7 @@ export function ProcessSteps() {
 }
 
 function StepIcon({ icon }: { icon: ProcessIcon }) {
-  const common = "h-5 w-5";
+  const common = "h-4 w-4";
 
   if (icon === "flag") {
     return (

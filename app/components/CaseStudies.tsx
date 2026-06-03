@@ -36,25 +36,20 @@ const cases = [
 
 export function CaseStudies() {
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-white py-16 md:py-20">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <h2 className="font-bold text-navy text-4xl md:text-5xl leading-[1.05] max-w-3xl mb-14">
+        <h2 className="font-bold text-navy text-3xl md:text-4xl leading-[1.08] max-w-3xl mb-9">
           Results that speak for themselves
         </h2>
 
-        <div className="grid gap-10 md:gap-14">
-          {cases.map((c, i) => (
-            <div
-              key={c.href}
-              className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${
-                i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
-              }`}
-            >
+        <div className="grid gap-6 md:grid-cols-3">
+          {cases.map((c) => (
+            <article key={c.href} className="flex h-full flex-col overflow-hidden rounded-lg border border-fog/60 bg-off-white">
               <a
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[16/9] rounded-lg overflow-hidden bg-fog/40 border border-fog/60 block"
+                className="group relative aspect-[16/9] overflow-hidden bg-fog/40 block"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -64,11 +59,11 @@ export function CaseStudies() {
                   loading="lazy"
                 />
               </a>
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-navy leading-snug">
+              <div className="flex flex-1 flex-col p-5 md:p-6">
+                <p className="text-lg font-bold text-navy leading-snug">
                   {c.intro}
                 </p>
-                <ul className="mt-6 space-y-3 text-slate text-[15px] leading-relaxed">
+                <ul className="mt-4 space-y-2.5 text-slate text-[13.5px] leading-relaxed">
                   {c.results.map((r) => (
                     <li key={r}>{r}</li>
                   ))}
@@ -77,7 +72,7 @@ export function CaseStudies() {
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-7 inline-flex items-center gap-2 text-mint hover:text-mint-bright font-bold text-sm"
+                  className="mt-auto pt-5 inline-flex items-center gap-2 text-mint hover:text-mint-bright font-bold text-sm"
                 >
                   <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14" />
@@ -86,7 +81,7 @@ export function CaseStudies() {
                   View full case study
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

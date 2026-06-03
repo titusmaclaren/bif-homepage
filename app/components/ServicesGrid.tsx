@@ -67,16 +67,16 @@ const tiles: Tile[] = [
 
 export function ServicesGrid() {
   return (
-    <section id="services" className="bg-white py-24 md:py-32">
+    <section id="services" className="bg-white py-16 md:py-20">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="text-center max-w-4xl mx-auto mb-14">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-5">
+        <div className="text-center max-w-4xl mx-auto mb-9">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-4">
             Our services
           </p>
-          <h2 className="font-bold text-navy text-3xl md:text-4xl lg:text-5xl leading-[1.05] tracking-tight">
+          <h2 className="font-bold text-navy text-3xl md:text-4xl leading-[1.08]">
             Strategic video, photography, graphic design, AI imagery, copy and animation.
           </h2>
-          <p className="mt-7 text-lg text-slate font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-5 text-base text-slate font-light leading-relaxed max-w-3xl mx-auto">
             We go beyond video. Our creative content services span Financial Services,
             Tech, Higher Education and everything else.
           </p>
@@ -87,7 +87,7 @@ export function ServicesGrid() {
             <a
               key={t.label}
               href={t.href}
-              className="group relative block h-20 md:h-24 rounded-lg overflow-hidden bg-fog/40 border border-fog/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+              className="group relative block h-[72px] md:h-20 rounded-lg overflow-hidden bg-fog/40 border border-fog/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -107,10 +107,10 @@ export function ServicesGrid() {
           ))}
         </div>
 
-        <div className="mt-14 text-center">
+        <div className="mt-9 text-center">
           <a
             href="https://quiz.blackirisfilms.com/"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-bold uppercase tracking-wider text-white transition-colors"
+            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
           >
             Get an estimate in 1-min
           </a>

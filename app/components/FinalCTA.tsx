@@ -1,24 +1,24 @@
 export function FinalCTA() {
   return (
-    <section id="estimate" className="bg-navy text-white py-24 md:py-32 relative overflow-hidden">
+    <section id="estimate" className="bg-navy text-white py-16 md:py-20 relative overflow-hidden">
       <div
         aria-hidden
-        className="absolute -bottom-40 left-1/2 -translate-x-1/2 h-[640px] w-[1100px] rounded-full opacity-20 blur-3xl"
+        className="absolute -bottom-32 left-1/2 -translate-x-1/2 h-[360px] w-[720px] rounded-full opacity-16 blur-3xl"
         style={{ background: "radial-gradient(circle, #61B383 0%, transparent 60%)" }}
       />
 
       <div className="relative mx-auto max-w-[1260px] px-6 lg:px-10 text-center">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-6">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-semibold mb-4">
           Let&apos;s do this
         </p>
-        <h2 className="font-bold text-white text-[clamp(2.2rem,5.2vw,4.5rem)] leading-[1.05] tracking-tighter max-w-4xl mx-auto">
+        <h2 className="font-bold text-white text-3xl md:text-4xl leading-[1.06] max-w-4xl mx-auto">
           We can&apos;t wait to hear from you.
         </h2>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-5">
+        <div className="mt-7 flex flex-wrap justify-center gap-5">
           <a
             href="https://quiz.blackirisfilms.com/"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-7 py-4 text-[13px] font-semibold uppercase tracking-wider text-white transition-colors"
+            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-colors"
           >
             Get an estimate in 1-min
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -27,14 +27,14 @@ export function FinalCTA() {
           </a>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto text-left md:text-center">
+        <div className="mt-9 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto text-left md:text-center">
           <div>
             <div className="text-[11px] uppercase tracking-[0.2em] text-white/55 mb-2">
               Call us
             </div>
             <a
               href="tel:+610282013504"
-              className="text-white text-2xl md:text-3xl font-light hover:text-mint transition-colors"
+              className="text-white text-xl md:text-2xl font-light hover:text-mint transition-colors"
             >
               (02) 8201 3504
             </a>
@@ -45,7 +45,7 @@ export function FinalCTA() {
             </div>
             <a
               href="mailto:info@blackirisfilms.com?subject=Video%20Enquiry"
-              className="text-white text-2xl md:text-3xl font-light hover:text-mint transition-colors break-all"
+              className="text-white text-xl md:text-2xl font-light hover:text-mint transition-colors break-all"
             >
               info@blackirisfilms.com
             </a>
