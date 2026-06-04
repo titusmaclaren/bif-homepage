@@ -53,6 +53,13 @@ const comparisonRows = [
     bif: "Always",
   },
   {
+    label: "Easy, low-friction production process",
+    freelancer: "Varies",
+    inHouse: "Depends on capacity",
+    agency: "Often heavier",
+    bif: "Always",
+  },
+  {
     label: "Reusable brand assets beyond the hero video",
     freelancer: "Rare",
     inHouse: "Sometimes",
