@@ -61,7 +61,7 @@ const visuals: Record<ContentCard["visual"], { src: string; alt: string }> = {
   },
 };
 
-export function ContentSystem() {
+export function ContentSystem({ showCta = true }: { showCta?: boolean } = {}) {
   return (
     <section id="content-system" className="bg-off-white py-16 md:py-20 border-y border-fog/60 overflow-hidden">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
@@ -104,18 +104,20 @@ export function ContentSystem() {
           ))}
         </div>
 
-        <div className="mt-9 text-center">
-          <a
-            href="/why-black-iris-films"
-            className="inline-flex items-center gap-3 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
-          >
-            Learn more
-            <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14" />
-              <path d="m13 6 6 6-6 6" />
-            </svg>
-          </a>
-        </div>
+        {showCta && (
+          <div className="mt-9 text-center">
+            <a
+              href="/why-black-iris-films"
+              className="inline-flex items-center gap-3 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
+            >
+              Learn more
+              <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
