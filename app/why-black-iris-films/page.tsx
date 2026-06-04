@@ -153,7 +153,37 @@ function ComparisonSection() {
           </p>
         </div>
 
-        <div className="overflow-x-auto rounded-lg border border-fog/70 bg-off-white">
+        <div className="grid gap-4 md:hidden">
+          {comparisonRows.map((row) => (
+            <article key={row.label} className="rounded-lg border border-fog/70 bg-off-white p-4">
+              <h3 className="text-[15px] font-bold leading-snug text-navy">{row.label}</h3>
+              <div className="mt-4 grid gap-2">
+                {[
+                  ["Freelancer", row.freelancer],
+                  ["In-house creator", row.inHouse],
+                  ["Large agency", row.agency],
+                  ["Black Iris Films", row.bif],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className={`flex items-center justify-between gap-4 rounded-md border px-3 py-2.5 text-[12px] ${
+                      label === "Black Iris Films"
+                        ? "border-mint/35 bg-mint/10"
+                        : "border-fog/70 bg-white"
+                    }`}
+                  >
+                    <span className={`font-bold ${label === "Black Iris Films" ? "text-mint" : "text-navy"}`}>
+                      {label}
+                    </span>
+                    <span className="text-right font-medium text-slate">{value}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="hidden overflow-x-auto rounded-lg border border-fog/70 bg-off-white md:block">
           <table className="w-full min-w-[780px] border-collapse text-left text-[13px]">
             <thead>
               <tr className="border-b border-fog/70 bg-white text-navy">
