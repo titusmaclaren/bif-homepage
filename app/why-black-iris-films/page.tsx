@@ -17,26 +17,28 @@ const proofPoints = [
   { value: "1", label: "senior creative partner from brief to delivery" },
 ];
 
+type ComparisonStatus = "Rare" | "Sometimes" | "Always";
+
 const comparisonRows = [
   {
     label: "Emotion-first strategy",
     freelancer: "Sometimes",
-    inHouse: "Depends on capacity",
-    agency: "Often slow",
+    inHouse: "Sometimes",
+    agency: "Sometimes",
     bif: "Always",
   },
   {
     label: "Filmmaking shaped by marketing-team experience",
     freelancer: "Sometimes",
     inHouse: "Sometimes",
-    agency: "Varies by team",
+    agency: "Sometimes",
     bif: "Always",
   },
   {
     label: "Live-action, photography, animation and social assets",
     freelancer: "Rare",
-    inHouse: "Limited",
-    agency: "Often",
+    inHouse: "Sometimes",
+    agency: "Always",
     bif: "Always",
   },
   {
@@ -55,9 +57,9 @@ const comparisonRows = [
   },
   {
     label: "Easy, low-friction production process",
-    freelancer: "Varies",
-    inHouse: "Depends on capacity",
-    agency: "Often heavier",
+    freelancer: "Sometimes",
+    inHouse: "Sometimes",
+    agency: "Sometimes",
     bif: "Always",
   },
   {
@@ -67,7 +69,19 @@ const comparisonRows = [
     agency: "Sometimes",
     bif: "Always",
   },
-];
+] satisfies Array<{
+  label: string;
+  freelancer: ComparisonStatus;
+  inHouse: ComparisonStatus;
+  agency: ComparisonStatus;
+  bif: ComparisonStatus;
+}>;
+
+const statusStyles: Record<ComparisonStatus, string> = {
+  Rare: "bg-[#F04438]",
+  Sometimes: "bg-gold",
+  Always: "bg-mint",
+};
 
 const elements = [
   {
@@ -174,15 +188,15 @@ function ComparisonSection() {
             <article key={row.label} className="rounded-lg border border-fog/70 bg-off-white p-4">
               <h3 className="text-[15px] font-bold leading-snug text-navy">{row.label}</h3>
               <div className="mt-4 grid gap-2">
-                {[
+                {([
                   ["Freelancer", row.freelancer],
                   ["In-house creator", row.inHouse],
                   ["Large agency", row.agency],
                   ["Black Iris Films", row.bif],
-                ].map(([label, value]) => (
+                ] as Array<[string, ComparisonStatus]>).map(([label, value]) => (
                   <div
                     key={label}
-                    className={`flex items-center justify-between gap-4 rounded-md border px-3 py-2.5 text-[12px] ${
+                    className={`flex items-center justify-between gap-4 rounded-md border px-3 py-2.5 ${
                       label === "Black Iris Films"
                         ? "border-mint/35 bg-mint/10"
                         : "border-fog/70 bg-white"
@@ -191,7 +205,7 @@ function ComparisonSection() {
                     <span className={`font-bold ${label === "Black Iris Films" ? "text-mint" : "text-navy"}`}>
                       {label}
                     </span>
-                    <span className="text-right font-medium text-slate">{value}</span>
+                    <StatusLabel status={value} />
                   </div>
                 ))}
               </div>
@@ -214,10 +228,10 @@ function ComparisonSection() {
               {comparisonRows.map((row) => (
                 <tr key={row.label} className="border-b border-fog/60 last:border-b-0">
                   <td className="px-5 py-4 font-bold text-navy">{row.label}</td>
-                  <td className="px-5 py-4 text-slate">{row.freelancer}</td>
-                  <td className="px-5 py-4 text-slate">{row.inHouse}</td>
-                  <td className="px-5 py-4 text-slate">{row.agency}</td>
-                  <td className="px-5 py-4 font-bold text-navy">{row.bif}</td>
+                  <td className="px-5 py-4"><StatusLabel status={row.freelancer} /></td>
+                  <td className="px-5 py-4"><StatusLabel status={row.inHouse} /></td>
+                  <td className="px-5 py-4"><StatusLabel status={row.agency} /></td>
+                  <td className="px-5 py-4"><StatusLabel status={row.bif} strong /></td>
                 </tr>
               ))}
             </tbody>
@@ -225,6 +239,26 @@ function ComparisonSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function StatusLabel({
+  status,
+  strong = false,
+}: {
+  status: ComparisonStatus;
+  strong?: boolean;
+}) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 text-[12px] ${strong ? "font-bold text-navy" : "font-medium text-slate"}`}
+    >
+      <span
+        aria-hidden="true"
+        className={`h-3 w-3 rounded-full ${statusStyles[status]}`}
+      />
+      {status}
+    </span>
   );
 }
 
