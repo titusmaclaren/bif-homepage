@@ -7,7 +7,10 @@ const stats = [
 
 export function ResearchSection() {
   return (
-    <section className="bg-navy-midnight text-white py-16 md:py-20 relative overflow-hidden">
+    <section
+      id="social-media-theory-of-everything"
+      className="bg-navy-midnight text-white py-16 md:py-20 relative overflow-hidden"
+    >
       <div
         aria-hidden
         className="absolute -top-24 right-0 h-[360px] w-[360px] rounded-full opacity-18 blur-3xl"
@@ -66,6 +69,44 @@ export function ResearchSection() {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function ResearchStrip() {
+  return (
+    <section className="border-y border-white/10 bg-navy-midnight text-white">
+      <div className="mx-auto flex max-w-[1260px] flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
+            New original research
+          </p>
+          <p className="mt-1 text-[13px] font-medium leading-snug text-white/78 md:text-sm">
+            The (Social Media) Theory of Everything: 742 videos, 48 brands, 5 sectors.
+            Emotion-led posts were 2.1x more likely to break out.
+          </p>
+        </div>
+
+        <a
+          href="/why-black-iris-films#social-media-theory-of-everything"
+          className="inline-flex shrink-0 items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold transition-colors hover:text-[#FFD700]"
+        >
+          See the research
+          <svg
+            aria-hidden="true"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.4"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </section>
   );

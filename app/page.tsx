@@ -1,7 +1,7 @@
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { ClientsStrip } from "./components/ClientsStrip";
-import { ResearchSection } from "./components/ResearchSection";
+import { ResearchStrip } from "./components/ResearchSection";
 import { CaseStudies } from "./components/CaseStudies";
 import { ProcessSteps } from "./components/ProcessSteps";
 import { PortfolioIntro } from "./components/PortfolioIntro";
@@ -20,7 +20,7 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <ClientsStrip />
-        <ResearchSection />
+        <ResearchStrip />
         <CaseStudies />
         <ProcessSteps />
         <PortfolioIntro />

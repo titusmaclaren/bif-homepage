@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nav } from "../components/Nav";
 import { CreativeAlly } from "../components/CreativeAlly";
 import { SoundFamiliar } from "../components/SoundFamiliar";
+import { ResearchSection } from "../components/ResearchSection";
 import { Footer } from "../components/Footer";
 
 export const metadata: Metadata = {
@@ -98,6 +99,7 @@ export default function WhyBlackIrisFilmsPage() {
         <ComparisonSection />
         <ElementsSection />
         <WhyCta />
+        <ResearchSection />
       </main>
       <Footer />
     </>
