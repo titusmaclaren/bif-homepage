@@ -25,6 +25,13 @@ const comparisonRows = [
     bif: "Always",
   },
   {
+    label: "Filmmaking shaped by marketing-team experience",
+    freelancer: "Sometimes",
+    inHouse: "Sometimes",
+    agency: "Varies by team",
+    bif: "Always",
+  },
+  {
     label: "Live-action, photography, animation and social assets",
     freelancer: "Rare",
     inHouse: "Limited",
@@ -56,20 +63,20 @@ const comparisonRows = [
 
 const elements = [
   {
-    title: "Start with the feeling",
-    body: "We begin with what your audience needs to understand, believe and feel before we shape format, visuals or production choices.",
+    title: "Marketing-aware filmmaking",
+    body: "The marketing brain shows up before the camera does, from pre-planning and interview questions to lighting, edit choices and delivery formats.",
   },
   {
-    title: "Build around the channels",
-    body: "Homepage films, campaign edits, social clips, website loops and sales assets are planned together so every shoot works harder.",
+    title: "Authentic marketing",
+    body: "We are not interested in tricks or over-polished spin. The work should present your strongest side while still feeling believable and human.",
   },
   {
-    title: "Keep the team flexible",
-    body: "You get senior creative direction with the right mix of production, post, animation and photography for the brief.",
+    title: "Hands-free, but tailored",
+    body: "We keep the process light for your team while still building a custom solution around your goals, audience and internal workflow.",
   },
   {
-    title: "Leave a usable library",
-    body: "The final delivery is more than a finished video. It is a practical content library your team can keep using.",
+    title: "Advice without ego",
+    body: "We will bring clear recommendations, but you have to live with the result. Final decisions stay with you, and the process respects that.",
   },
 ];
 
@@ -103,8 +110,8 @@ function WhyHero() {
           </h1>
           <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-white/72 md:text-lg">
             Black Iris Films is built for teams who need more than a beautiful video.
-            We help you clarify the story, create the work and leave with a practical
-            library of assets for websites, campaigns, social and sales.
+            We combine filmmaking craft with marketing-team experience, then leave you
+            with a practical library of assets for websites, campaigns, social and sales.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
@@ -221,7 +228,7 @@ function ElementsSection() {
             The operating system
           </p>
           <h2 className="text-3xl font-bold leading-[1.08] text-navy md:text-4xl">
-            Four principles behind stronger content libraries.
+            Four principles behind the way we work.
           </h2>
         </div>
 
