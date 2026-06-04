@@ -1,94 +1,267 @@
 "use client";
 
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type TransitionEvent,
+} from "react";
 import { VideoTrigger } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
-const featuredPortfolioItems = PORTFOLIO_ITEMS.slice(0, 6);
+const topPortfolioItems = PORTFOLIO_ITEMS.slice(0, 12);
+const middlePortfolioItems = PORTFOLIO_ITEMS.slice(12, 25);
+const bottomPortfolioItems = PORTFOLIO_ITEMS.slice(25);
 
 export function PortfolioIntro() {
   return (
-    <section id="portfolio" className="bg-black text-white py-16 md:py-20 relative overflow-hidden">
-      {/* Soft accent glow at the top */}
-      <div
-        aria-hidden
-        className="absolute -top-32 left-1/2 -translate-x-1/2 h-[460px] w-[1100px] rounded-full opacity-[0.12] blur-3xl"
-        style={{ background: "radial-gradient(circle, #61B383 0%, transparent 60%)" }}
-      />
-
-      <div className="relative mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="max-w-4xl mb-9">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-mint font-bold mb-4">
-            Recent work
-          </p>
-          <h2 className="font-bold text-white text-3xl md:text-4xl leading-[1.1]">
-            Marketing videos, social media videos, brand films, corporate videos and TV commercials.
-          </h2>
-          <p className="mt-5 text-base text-white/70 font-light leading-relaxed max-w-3xl">
-            We use video marketing science to cut through the noise and connect with
-            your customers. You focus on what you do best. We&apos;ll make sure people
-            get why it matters. Click any thumbnail to watch.
+    <section
+      id="portfolio"
+      className="relative overflow-hidden bg-black py-14 text-white md:py-16"
+    >
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="grid gap-5 md:grid-cols-[minmax(0,0.78fr)_minmax(300px,0.42fr)] md:items-end">
+          <div>
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-mint">
+              Portfolio
+            </p>
+            <h2 className="max-w-3xl text-3xl font-bold leading-[1.06] text-white md:text-4xl">
+              Selected work, in motion.
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm font-light leading-relaxed text-white/68 md:text-right">
+            Brand films, commercials, explainers, event videos and social content.
+            Click any thumbnail to watch the project.
           </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {featuredPortfolioItems.map((item) => (
-            <PortfolioCard key={item.vimeoId} item={item} />
-          ))}
-        </div>
+      <div className="mt-8 space-y-4 md:mt-9 md:space-y-5">
+        <SteppedPortfolioRow items={topPortfolioItems} />
+        <PortfolioMarqueeRow
+          items={middlePortfolioItems}
+          speed="42s"
+          hoverSpeed="96s"
+        />
+        <PortfolioMarqueeRow
+          items={bottomPortfolioItems}
+          speed="68s"
+          hoverSpeed="132s"
+        />
+      </div>
 
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-5">
-          <a
-            href="https://quiz.blackirisfilms.com/"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
+      <div className="mx-auto mt-8 flex max-w-[1440px] justify-center px-6 lg:px-10">
+        <a
+          href="https://quiz.blackirisfilms.com/"
+          className="inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-navy transition-colors hover:bg-mint-bright"
+        >
+          Get an estimate in 1-min
+          <svg
+            aria-hidden="true"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.4"
           >
-            Get an estimate in 1-min
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M13 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </section>
   );
 }
 
-function PortfolioCard({ item }: { item: PortfolioItem }) {
+function SteppedPortfolioRow({ items }: { items: PortfolioItem[] }) {
+  const loopedItems = useMemo(() => [...items, ...items], [items]);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const firstCardRef = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [isInstant, setIsInstant] = useState(false);
+
+  useEffect(() => {
+    const measure = () => {
+      const track = trackRef.current;
+      const firstCard = firstCardRef.current;
+      if (!track || !firstCard) return;
+
+      const styles = window.getComputedStyle(track);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+      setStep(firstCard.getBoundingClientRect().width + gap);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useEffect(() => {
+    if (!step || !items.length) return undefined;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) return undefined;
+
+    const timer = window.setInterval(() => {
+      setIndex((current) => current + 1);
+    }, 3900);
+
+    return () => window.clearInterval(timer);
+  }, [items.length, step]);
+
+  const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
+    if (index < items.length) return;
+
+    setIsInstant(true);
+    setIndex(0);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setIsInstant(false));
+    });
+  };
+
+  return (
+    <div className="overflow-hidden">
+      <div
+        ref={trackRef}
+        className="flex w-max gap-4 px-6 md:gap-5 lg:px-10"
+        onTransitionEnd={handleTransitionEnd}
+        style={{
+          transform: `translate3d(-${index * step}px, 0, 0)`,
+          transition: isInstant
+            ? "none"
+            : "transform 740ms cubic-bezier(0.2, 0.7, 0.2, 1)",
+        }}
+      >
+        {loopedItems.map((item, itemIndex) => (
+          <div
+            key={`${item.vimeoId}-${itemIndex}`}
+            ref={itemIndex === 0 ? firstCardRef : undefined}
+            className="shrink-0"
+          >
+            <PortfolioThumbCard item={item} size="large" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PortfolioMarqueeRow({
+  items,
+  speed,
+  hoverSpeed,
+}: {
+  items: PortfolioItem[];
+  speed: string;
+  hoverSpeed: string;
+}) {
+  const loopedItems = useMemo(() => [...items, ...items], [items]);
+  const style = {
+    "--portfolio-speed": speed,
+    "--portfolio-hover-speed": hoverSpeed,
+  } as CSSProperties;
+
+  return (
+    <div
+      className="portfolio-marquee-row overflow-hidden px-6 lg:px-10"
+      style={style}
+    >
+      <div className="portfolio-marquee-track flex w-max gap-4">
+        {loopedItems.map((item, itemIndex) => (
+          <PortfolioThumbCard
+            key={`${item.vimeoId}-${itemIndex}`}
+            item={item}
+            size="medium"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PortfolioThumbCard({
+  item,
+  size,
+}: {
+  item: PortfolioItem;
+  size: "large" | "medium";
+}) {
+  const isLarge = size === "large";
+
   return (
     <VideoTrigger
       video={item}
-      className="group relative aspect-[16/9] rounded-lg overflow-hidden bg-white/5 border border-white/10 block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+      className={[
+        "group block shrink-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-mint",
+        isLarge
+          ? "w-[78vw] sm:w-[540px] lg:w-[660px]"
+          : "w-[260px] sm:w-[320px] lg:w-[360px]",
+      ].join(" ")}
       aria-label={`Play ${item.category}: ${item.title}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={item.thumb}
-        alt={item.title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-        loading="lazy"
-      />
+      <span
+        className={[
+          "relative block aspect-[16/9] overflow-hidden rounded-[14px] border border-white/10 bg-navy-midnight shadow-[0_18px_50px_rgba(0,0,0,0.26)]",
+          isLarge ? "md:rounded-2xl" : "",
+        ].join(" ")}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.thumb}
+          alt={item.title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+          loading="lazy"
+        />
+        <span className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-black/0" />
+        <span className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/18" />
 
-      {/* Default state: subtle bottom gradient so play affordance reads. */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
-
-      {/* Hover state: dark veil + caption + central play button. */}
-      <div className="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="h-12 w-12 rounded-full bg-mint flex items-center justify-center shadow-xl">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="absolute left-4 right-4 bottom-4 text-left translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-white/85 font-bold mb-1.5">
+        <span className="absolute left-3 top-3 rounded-full bg-white/88 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-navy shadow-sm md:left-4 md:top-4">
           {item.category}
-        </div>
-        <div className="text-white text-[15px] md:text-base font-bold leading-tight">
-          {item.title}
-        </div>
-      </div>
+        </span>
+
+        <span className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-4 md:bottom-4 md:left-4 md:right-4">
+          <span className="min-w-0">
+            <span
+              className={[
+                "block font-bold leading-tight text-white",
+                isLarge ? "text-lg md:text-[22px]" : "line-clamp-2 text-sm",
+              ].join(" ")}
+            >
+              {item.title}
+            </span>
+            {isLarge && (
+              <span className="mt-1.5 block text-[12px] font-medium text-white/68">
+                {item.client}
+              </span>
+            )}
+          </span>
+
+          <span
+            className={[
+              "grid shrink-0 place-items-center rounded-full bg-mint text-white shadow-xl transition-transform duration-300 group-hover:scale-105",
+              isLarge ? "h-11 w-11 md:h-12 md:w-12" : "h-9 w-9",
+            ].join(" ")}
+            aria-hidden="true"
+          >
+            <svg
+              width={isLarge ? 16 : 12}
+              height={isLarge ? 16 : 12}
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </span>
+      </span>
     </VideoTrigger>
   );
 }

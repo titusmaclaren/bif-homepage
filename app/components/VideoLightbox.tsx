@@ -5,6 +5,8 @@ import { PORTFOLIO_ITEMS, getRelated, type PortfolioItem } from "../data/portfol
 
 export type VideoSource = {
   vimeoId?: string;
+  /** Private/unlisted Vimeo hash, e.g. the `h` value from a Vimeo share URL. */
+  vimeoHash?: string;
   youtubeId?: string;
   src?: string;
   /** Short uppercase category like "Brand Hero Video". */
@@ -65,7 +67,14 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
 
   const embedSrc = video
     ? video.vimeoId
-      ? `https://player.vimeo.com/video/${video.vimeoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`
+      ? `https://player.vimeo.com/video/${video.vimeoId}?${new URLSearchParams({
+          ...(video.vimeoHash ? { h: video.vimeoHash } : {}),
+          autoplay: "1",
+          title: "0",
+          byline: "0",
+          portrait: "0",
+          dnt: "1",
+        }).toString()}`
       : video.youtubeId
       ? `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1`
       : video.src
@@ -198,7 +207,7 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
                   style={{ width: "100%", aspectRatio: "16 / 9" }}
                 >
                   <iframe
-                    key={video.vimeoId || video.youtubeId || video.src}
+                    key={`${video.vimeoId || video.youtubeId || video.src}-${video.vimeoHash || ""}`}
                     src={embedSrc}
                     title={video.title || "Video"}
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
