@@ -73,7 +73,7 @@ const dacxiSnippets: ClientSnippet[] = [
     quote: "For our corporate videos, Titus is unparalleled in his filmmaking prowess.",
     name: "Vicky Barker",
     role: "CMO, Dacxi Chain",
-    image: "https://dacxichain.com/wp-content/uploads/2024/02/1237@2x.png",
+    image: "/testimonials/vicky-barker.png",
   },
 ];
 

@@ -19,7 +19,7 @@ const testimonials: Testimonial[] = [
     name: "Vicky Barker",
     jobTitle: "CMO",
     company: "Dacxi Chain",
-    image: "https://dacxichain.com/wp-content/uploads/2024/02/1237@2x.png",
+    image: "/testimonials/vicky-barker.png",
   },
   {
     rating: 5,

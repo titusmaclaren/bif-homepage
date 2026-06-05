@@ -124,11 +124,11 @@ type WhyTestimonial = {
 const whyTestimonials: WhyTestimonial[] = [
   {
     quote:
-      "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with. Anyone connecting is in for profound insights from a true master of the craft! 🎥🌟",
+      "Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with.",
     name: "Vicky Barker",
     role: "CMO",
     company: "Dacxi Chain",
-    image: "https://dacxichain.com/wp-content/uploads/2024/02/1237@2x.png",
+    image: "/testimonials/vicky-barker.png",
   },
   {
     quote:
@@ -529,12 +529,10 @@ function WhyTestimonials() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {whyTestimonials.map((testimonial, index) => (
+          {whyTestimonials.map((testimonial) => (
             <figure
               key={testimonial.name}
-              className={`rounded-lg border border-fog/70 bg-off-white p-5 shadow-[0_14px_34px_rgba(41,51,77,0.04)] ${
-                index === 0 ? "xl:col-span-2 xl:grid xl:grid-cols-[auto_1fr] xl:gap-5" : ""
-              }`}
+              className="rounded-lg border border-fog/70 bg-off-white p-5 shadow-[0_14px_34px_rgba(41,51,77,0.04)]"
             >
               <div className="flex items-center gap-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -553,7 +551,7 @@ function WhyTestimonials() {
                   </p>
                 </div>
               </div>
-              <div className={index === 0 ? "mt-5 xl:mt-0" : "mt-5"}>
+              <div className="mt-5">
                 <TestimonialStars />
                 <blockquote className="mt-4 text-[14px] leading-relaxed text-navy">
                   &ldquo;{testimonial.quote}&rdquo;
@@ -587,7 +585,7 @@ function TestimonialStars() {
 
 function PricingCallout() {
   return (
-    <section className="bg-[linear-gradient(to_bottom,#ffffff_0%,#ffffff_50%,#000000_50%,#000000_100%)] px-6 pb-2">
+    <section className="-mt-1 bg-[linear-gradient(to_bottom,#0F1826_0%,#0F1826_50%,#000000_50%,#000000_100%)] px-6 pb-2">
       <div className="mx-auto flex max-w-[940px] flex-col gap-6 rounded-lg border border-[#e8e8e8] bg-white px-6 py-7 shadow-[0_18px_45px_rgba(0,0,0,0.12)] sm:px-8 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-2xl font-extrabold leading-tight text-black">
