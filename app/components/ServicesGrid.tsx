@@ -74,11 +74,11 @@ export function ServicesGrid() {
             Our services
           </p>
           <h2 className="font-bold text-navy text-3xl md:text-4xl leading-[1.08]">
-            Strategic video, photography, graphic design, AI imagery, copy and animation.
+            Video production for brands that need people to care
           </h2>
           <p className="mt-5 text-base text-slate font-light leading-relaxed max-w-3xl mx-auto">
-            We go beyond video. Our creative content services span Financial Services,
-            Tech, Higher Education and everything else.
+            From brand films and explainers to social content, photography and animation,
+            we create polished assets that help your message feel clear, credible and human.
           </p>
         </div>
 
