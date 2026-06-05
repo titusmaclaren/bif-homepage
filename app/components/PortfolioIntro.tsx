@@ -41,13 +41,13 @@ export function PortfolioIntro() {
         <SteppedPortfolioRow items={topPortfolioItems} />
         <PortfolioMarqueeRow
           items={middlePortfolioItems}
-          speed={96}
-          hoverSpeed={28}
+          speed={48}
+          hoverSpeed={18}
         />
         <PortfolioMarqueeRow
           items={bottomPortfolioItems}
           speed={58}
-          hoverSpeed={20}
+          hoverSpeed={22}
         />
       </div>
 
@@ -282,38 +282,33 @@ function PortfolioThumbCard({
           {item.category}
         </span>
 
-        <span className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-4 md:bottom-4 md:left-4 md:right-4">
+        <span
+          className={[
+            "absolute right-3 top-3 grid shrink-0 place-items-center rounded-full bg-white/82 text-slate shadow-sm transition-colors duration-300 group-hover:bg-mint group-hover:text-white md:right-4 md:top-4",
+            isLarge ? "h-8 w-8 md:h-9 md:w-9" : "h-7 w-7",
+          ].join(" ")}
+          aria-hidden="true"
+        >
+          <svg
+            width={isLarge ? 11 : 9}
+            height={isLarge ? 11 : 9}
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+
+        <span className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4">
           <span className="min-w-0">
             <span
               className={[
                 "block font-bold leading-tight text-white",
-                isLarge ? "text-lg md:text-[22px]" : "line-clamp-2 text-sm",
+                isLarge ? "text-base md:text-lg" : "line-clamp-2 text-[12px] md:text-[13px]",
               ].join(" ")}
             >
-              {item.title}
+              {item.client}
             </span>
-            {isLarge && (
-              <span className="mt-1.5 block text-[12px] font-medium text-white/68">
-                {item.client}
-              </span>
-            )}
-          </span>
-
-          <span
-            className={[
-              "grid shrink-0 place-items-center rounded-full bg-mint text-white shadow-xl transition-transform duration-300 group-hover:scale-105",
-              isLarge ? "h-11 w-11 md:h-12 md:w-12" : "h-9 w-9",
-            ].join(" ")}
-            aria-hidden="true"
-          >
-            <svg
-              width={isLarge ? 16 : 12}
-              height={isLarge ? 16 : 12}
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
           </span>
         </span>
       </span>
