@@ -1,15 +1,19 @@
+"use client";
+
+import { useState } from "react";
+
 const posts = [
   {
     title: "Why Emotionally Connected Customers Spend 2× More",
     href: "https://www.blackirisfilms.com/post/why-emotionally-connected-customers-spend-2-more",
     date: "Oct 21, 2025",
-    image: "https://static.wixstatic.com/media/a2a11d_b3f7b3e589f34c80a46758bf2b775a22~mv2.png",
+    image: "https://static.wixstatic.com/media/a2a11d_b3f7b3e5b85b446cbe233862e0ac5778~mv2.png/v1/fill/w_420,h_280,al_c,q_85,enc_avif,quality_auto/a2a11d_b3f7b3e5b85b446cbe233862e0ac5778~mv2.png",
   },
   {
     title: "How $8k in Video Marketing Can Earn a Brand $34m ROI",
     href: "https://www.blackirisfilms.com/post/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi",
     date: "Mar 14, 2024",
-    image: "https://static.wixstatic.com/media/a2a11d_b6ce2f083033435e88a3e2f8f1c4063e~mv2.jpg",
+    image: "https://static.wixstatic.com/media/a2a11d_b6ce2f081cb840bc9654f9fe49e21b56~mv2.jpg/v1/fill/w_420,h_280,al_c,q_85,enc_avif,quality_auto/a2a11d_b6ce2f081cb840bc9654f9fe49e21b56~mv2.jpg",
   },
   {
     title:
@@ -17,10 +21,13 @@ const posts = [
     href: "https://www.blackirisfilms.com/post/social-media-video-production-a-comprehensive-guide-to-captivate-and-convert-prospects",
     date: "Feb 14, 2024",
     image: "https://i.ytimg.com/vi/2AjJhIFTj8E/sddefault.jpg",
+    youtubeId: "2AjJhIFTj8E",
   },
 ];
 
 export function BlogTeasers() {
+  const [hoveredVideoId, setHoveredVideoId] = useState<string | null>(null);
+
   return (
     <section className="border-y border-fog/60 bg-white py-9 md:py-10">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
@@ -61,6 +68,10 @@ export function BlogTeasers() {
               key={post.title}
               href={post.href}
               className="group flex min-h-[104px] gap-3 rounded-lg border border-fog/70 bg-off-white/65 p-2.5 transition-colors hover:border-mint/45 hover:bg-white"
+              onMouseEnter={() => setHoveredVideoId(post.youtubeId ?? null)}
+              onMouseLeave={() => setHoveredVideoId(null)}
+              onFocus={() => setHoveredVideoId(post.youtubeId ?? null)}
+              onBlur={() => setHoveredVideoId(null)}
             >
               <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-md bg-fog/50 md:h-24 md:w-28">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -70,6 +81,15 @@ export function BlogTeasers() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   loading="lazy"
                 />
+                {post.youtubeId && hoveredVideoId === post.youtubeId && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${post.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${post.youtubeId}&playsinline=1&rel=0&modestbranding=1`}
+                    title={`${post.title} preview`}
+                    className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35]"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                )}
               </div>
 
               <div className="min-w-0 py-1">
