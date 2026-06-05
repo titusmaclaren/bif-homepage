@@ -41,6 +41,12 @@ body {
 
 main { padding-top: 72px; }
 
+main h1:not(.bif-hero-h1),
+main h2,
+.balanced-heading {
+  text-wrap: balance;
+}
+
 /* ────────────────────────────────────────────────────────────
    Hero: spherical video mosaic
    Ported from the BIF Hero animation handoff bundle. Tiles sit on
