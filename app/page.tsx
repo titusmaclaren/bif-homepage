@@ -12,6 +12,7 @@ import { Testimonials } from "./components/Testimonials";
 import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
+import { GoogleReviewsBadge } from "./components/GoogleReviewsBadge";
 
 export default function HomePage() {
   return (
@@ -31,6 +32,7 @@ export default function HomePage() {
         <FAQ />
         <FinalCTA />
       </main>
+      <GoogleReviewsBadge />
       <Footer />
     </>
   );
