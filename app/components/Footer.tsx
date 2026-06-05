@@ -1,9 +1,9 @@
 const footerNav = [
-  { href: "https://www.blackirisfilms.com/get-a-quote", label: "Contact us" },
-  { href: "https://www.blackirisfilms.com/#portfolio", label: "Portfolio" },
-  { href: "https://www.blackirisfilms.com/get-a-quote#testimonials", label: "Testimonials" },
+  { href: "/contact", label: "Contact us" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#testimonials", label: "Testimonials" },
   { href: "https://stories.blackirisfilms.com/case-studies/", label: "Case Studies" },
-  { href: "https://www.blackirisfilms.com/learn", label: "Blog" },
+  { href: "/#blog", label: "Blog" },
 ];
 
 const socials = [

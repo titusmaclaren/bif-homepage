@@ -101,7 +101,7 @@ export function Nav() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black h-[72px]">
         <div className="max-w-[1260px] mx-auto px-6 h-full flex items-center justify-between">
           <a
-            href="https://www.blackirisfilms.com/"
+            href="/"
             className="flex items-center shrink-0 leading-none"
             aria-label="Black Iris Films"
           >
@@ -109,8 +109,8 @@ export function Nav() {
           </a>
 
           <nav className="hidden lg:flex items-center gap-7" aria-label="Site">
-            <a href="https://www.blackirisfilms.com/learn" className="nav-link">LEARN</a>
-            <a href="https://www.blackirisfilms.com/#faq" className="nav-link">FAQ</a>
+            <a href="/#blog" className="nav-link">LEARN</a>
+            <a href="/#faq" className="nav-link">FAQ</a>
 
             <div className="group relative flex items-center">
               <button type="button" className="nav-link cursor-default" aria-haspopup="true">
@@ -129,8 +129,9 @@ export function Nav() {
               </div>
             </div>
 
-            <a href="https://www.blackirisfilms.com/#work" className="nav-link">WORK</a>
+            <a href="/#portfolio" className="nav-link">WORK</a>
             <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
+            <a href="/contact" className="nav-link">CONTACT</a>
           </nav>
 
           <a
@@ -153,8 +154,8 @@ export function Nav() {
 
       {open && (
         <nav className="fixed top-[72px] left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 max-h-[calc(100vh-72px)] overflow-y-auto">
-          <a href="https://www.blackirisfilms.com/learn" className="mobile-link" onClick={closeMenu}>LEARN</a>
-          <a href="https://www.blackirisfilms.com/#faq" className="mobile-link" onClick={closeMenu}>FAQ</a>
+          <a href="/#blog" className="mobile-link" onClick={closeMenu}>LEARN</a>
+          <a href="/#faq" className="mobile-link" onClick={closeMenu}>FAQ</a>
           <details>
             <summary className="mobile-link list-none cursor-pointer">SERVICES</summary>
             <div className="grid gap-2.5 mt-3.5 pt-3.5 pb-0.5 pl-3.5 border-l border-white/15">
@@ -170,8 +171,9 @@ export function Nav() {
               ))}
             </div>
           </details>
-          <a href="https://www.blackirisfilms.com/#work" className="mobile-link" onClick={closeMenu}>WORK</a>
+          <a href="/#portfolio" className="mobile-link" onClick={closeMenu}>WORK</a>
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
+          <a href="/contact" className="mobile-link" onClick={closeMenu}>CONTACT</a>
           <a
             href="https://quiz.blackirisfilms.com/"
             className="inline-block text-center bg-bif-green hover:bg-bif-green-hover text-white text-[13px] font-bold uppercase tracking-wider px-5 py-3 rounded-sm transition-colors mt-2"

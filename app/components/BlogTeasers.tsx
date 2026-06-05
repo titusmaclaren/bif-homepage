@@ -29,7 +29,7 @@ export function BlogTeasers() {
   const [hoveredVideoId, setHoveredVideoId] = useState<string | null>(null);
 
   return (
-    <section className="border-y border-fog/60 bg-white py-9 md:py-10">
+    <section id="blog" className="border-y border-fog/60 bg-white py-9 md:py-10">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
         <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>

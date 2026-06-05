@@ -63,7 +63,7 @@ export function CreativeAlly() {
                 Let&apos;s start your project
               </a>
               <a
-                href="https://www.blackirisfilms.com/get-a-quote"
+                href="/contact"
                 className="inline-flex items-center gap-2 text-navy hover:text-mint text-sm font-medium py-3"
               >
                 Book a free consultation. Let&apos;s talk video.
