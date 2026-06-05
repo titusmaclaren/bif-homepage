@@ -104,14 +104,14 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
       {children}
       {video && embedSrc && (
         <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8 bg-black/80"
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8 bg-black/85"
           onClick={close}
           role="dialog"
           aria-modal="true"
           aria-label={video.title || "Video player"}
         >
           <div
-            className="relative w-full max-w-[1100px] max-h-[min(640px,88vh)] bg-[#0c1220] rounded-2xl shadow-2xl border border-white/5 flex flex-col text-white"
+            className="relative w-full max-w-[1100px] max-h-[min(640px,88vh)] bg-black rounded-2xl shadow-2xl border border-white/10 flex flex-col text-white"
             onClick={(e) => e.stopPropagation()}
           >
             <button

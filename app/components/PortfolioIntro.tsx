@@ -5,7 +5,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type TransitionEvent,
 } from "react";
 import { VideoTrigger } from "./VideoLightbox";
@@ -42,13 +41,13 @@ export function PortfolioIntro() {
         <SteppedPortfolioRow items={topPortfolioItems} />
         <PortfolioMarqueeRow
           items={middlePortfolioItems}
-          speed="42s"
-          hoverSpeed="96s"
+          speed={96}
+          hoverSpeed={28}
         />
         <PortfolioMarqueeRow
           items={bottomPortfolioItems}
-          speed="68s"
-          hoverSpeed="132s"
+          speed={58}
+          hoverSpeed={20}
         />
       </div>
 
@@ -160,21 +159,77 @@ function PortfolioMarqueeRow({
   hoverSpeed,
 }: {
   items: PortfolioItem[];
-  speed: string;
-  hoverSpeed: string;
+  speed: number;
+  hoverSpeed: number;
 }) {
   const loopedItems = useMemo(() => [...items, ...items], [items]);
-  const style = {
-    "--portfolio-speed": speed,
-    "--portfolio-hover-speed": hoverSpeed,
-  } as CSSProperties;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isHoveringRef = useRef(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) return undefined;
+
+    let frameId = 0;
+    let lastTime = performance.now();
+    let offset = 0;
+    let currentSpeed = speed;
+    let loopWidth = track.scrollWidth / 2;
+
+    const measure = () => {
+      loopWidth = track.scrollWidth / 2;
+      if (loopWidth > 0) offset %= loopWidth;
+    };
+
+    const resizeObserver =
+      typeof window.ResizeObserver === "function"
+        ? new window.ResizeObserver(measure)
+        : null;
+
+    resizeObserver?.observe(track);
+    window.addEventListener("resize", measure);
+    measure();
+
+    const tick = (time: number) => {
+      const deltaSeconds = Math.min(0.05, (time - lastTime) / 1000);
+      lastTime = time;
+
+      const targetSpeed = isHoveringRef.current ? hoverSpeed : speed;
+      currentSpeed += (targetSpeed - currentSpeed) * 0.08;
+
+      if (loopWidth > 0) {
+        offset = (offset + currentSpeed * deltaSeconds) % loopWidth;
+        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
+      }
+
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    frameId = window.requestAnimationFrame(tick);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", measure);
+      resizeObserver?.disconnect();
+    };
+  }, [hoverSpeed, speed, items.length]);
 
   return (
     <div
       className="portfolio-marquee-row overflow-hidden px-6 lg:px-10"
-      style={style}
+      onMouseEnter={() => {
+        isHoveringRef.current = true;
+      }}
+      onMouseLeave={() => {
+        isHoveringRef.current = false;
+      }}
     >
-      <div className="portfolio-marquee-track flex w-max gap-4">
+      <div ref={trackRef} className="flex w-max gap-4 will-change-transform">
         {loopedItems.map((item, itemIndex) => (
           <PortfolioThumbCard
             key={`${item.vimeoId}-${itemIndex}`}

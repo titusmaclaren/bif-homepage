@@ -3,15 +3,13 @@ const posts = [
     title: "Why Emotionally Connected Customers Spend 2× More",
     href: "https://www.blackirisfilms.com/post/why-emotionally-connected-customers-spend-2-more",
     date: "Oct 21, 2025",
-    image:
-      "https://static.wixstatic.com/media/a2a11d_b3f7b3e589f34c80a46758bf2b775a22~mv2.png/v1/fill/w_454,h_340,fp_0.50_0.50,q_90,enc_avif,quality_auto/a2a11d_b3f7b3e589f34c80a46758bf2b775a22~mv2.webp",
+    image: "https://static.wixstatic.com/media/a2a11d_b3f7b3e589f34c80a46758bf2b775a22~mv2.png",
   },
   {
     title: "How $8k in Video Marketing Can Earn a Brand $34m ROI",
     href: "https://www.blackirisfilms.com/post/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi",
     date: "Mar 14, 2024",
-    image:
-      "https://static.wixstatic.com/media/a2a11d_b6ce2f083033435e88a3e2f8f1c4063e~mv2.jpg/v1/fill/w_454,h_340,fp_0.50_0.50,q_90,enc_avif,quality_auto/a2a11d_b6ce2f083033435e88a3e2f8f1c4063e~mv2.webp",
+    image: "https://static.wixstatic.com/media/a2a11d_b6ce2f083033435e88a3e2f8f1c4063e~mv2.jpg",
   },
   {
     title:

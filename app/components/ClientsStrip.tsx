@@ -82,7 +82,7 @@ const SNIPPET_GAP_PX = 16;
 
 export function ClientsStrip() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [dacxiVariant, setDacxiVariant] = useState(0);
+  const [dacxiVariant, setDacxiVariant] = useState(1);
   const [cardsPerView, setCardsPerView] = useState(CLIENT_SNIPPETS_VISIBLE);
   const [slideOffset, setSlideOffset] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);

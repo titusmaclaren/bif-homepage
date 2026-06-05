@@ -123,7 +123,8 @@ type WhyTestimonial = {
 
 const whyTestimonials: WhyTestimonial[] = [
   {
-    quote: "For our corporate videos, Titus is unparalleled in his filmmaking prowess.",
+    quote:
+      "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with. Anyone connecting is in for profound insights from a true master of the craft! 🎥🌟",
     name: "Vicky Barker",
     role: "CMO",
     company: "Dacxi Chain",

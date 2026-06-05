@@ -15,6 +15,14 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     rating: 5,
+    text: "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with. Anyone connecting is in for profound insights from a true master of the craft! 🎥🌟",
+    name: "Vicky Barker",
+    jobTitle: "CMO",
+    company: "Dacxi Chain",
+    image: "https://dacxichain.com/wp-content/uploads/2024/02/1237@2x.png",
+  },
+  {
+    rating: 5,
     text: "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative. Highly recommended and would definitely use them again.",
     name: "Catherine Allison",
     jobTitle: "Director of Marketing",

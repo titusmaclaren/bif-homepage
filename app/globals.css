@@ -251,24 +251,6 @@ main { padding-top: 72px; }
   animation-play-state: paused;
 }
 
-@keyframes portfolio-marquee-left {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
-.portfolio-marquee-track {
-  animation: portfolio-marquee-left var(--portfolio-speed, 60s) linear infinite;
-  will-change: transform;
-}
-
-.portfolio-marquee-row:hover .portfolio-marquee-track {
-  animation-duration: var(--portfolio-hover-speed, 120s);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-marquee-track { animation: none; }
-}
-
 :focus-visible {
   outline: 2px solid var(--color-mint);
   outline-offset: 2px;
