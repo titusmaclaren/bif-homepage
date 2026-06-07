@@ -135,10 +135,10 @@ export function Nav() {
           </nav>
 
           <a
-            href="https://quiz.blackirisfilms.com/"
+            href="/contact"
             className="hidden lg:inline-flex items-center bg-bif-green hover:bg-bif-green-hover text-white text-[13px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-sm transition-colors shrink-0"
           >
-            GET AN ESTIMATE
+            GET IN TOUCH
           </a>
 
           <button
@@ -175,11 +175,11 @@ export function Nav() {
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
           <a href="/contact" className="mobile-link" onClick={closeMenu}>CONTACT</a>
           <a
-            href="https://quiz.blackirisfilms.com/"
+            href="/contact"
             className="inline-block text-center bg-bif-green hover:bg-bif-green-hover text-white text-[13px] font-bold uppercase tracking-wider px-5 py-3 rounded-sm transition-colors mt-2"
             onClick={closeMenu}
           >
-            GET AN ESTIMATE
+            GET IN TOUCH
           </a>
         </nav>
       )}
