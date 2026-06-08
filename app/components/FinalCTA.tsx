@@ -2,7 +2,7 @@ export function FinalCTA() {
   return (
     <section
       id="estimate"
-      className="px-6 pb-2"
+      className="pricing-callout-section px-6 pb-2"
       style={{
         background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%)",
       }}

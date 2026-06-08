@@ -4,7 +4,7 @@ slug: "why-emotionally-connected-customers-spend-2-more"
 date: "2025-10-21"
 description: "Why emotional connection matters more than satisfaction, and how the FEEL, SHOW, DELIVER framework helps brands create video content people actually care about."
 author: "Black Iris Films"
-thumbnail: "/blog/why-emotionally-connected-customers-spend-2-more.svg"
+thumbnail: "/blog/why-emotionally-connected-customers-spend-2-more-hero.png"
 tags:
   - Video Marketing
   - Engagement
@@ -21,6 +21,8 @@ You're in a clothing store.
 You slip on a shirt.
 
 You feel confident. Proud. A new you.
+
+![A shopper looking in a mirror while making an emotional buying decision](/blog/why-emotionally-connected-customers-spend-2-more-1.jpg)
 
 And in that instant, you've already decided: I want this.
 
@@ -53,6 +55,8 @@ You don't tell your friends: "The airline successfully transported me from Point
 You tell them: "They surprised me with champagne when my seat broke."
 
 Disappointment. Frustration. Surprise. Relief. Exuberance.
+
+![A film viewer crying in a cinema seat](/blog/why-emotionally-connected-customers-spend-2-more-3.jpg)
 
 ## The trailer problem we kept seeing
 
@@ -108,6 +112,8 @@ This isn't just consumer behaviour in shops. It's universal storytelling.
 - We laugh at Michael Scott because he's painfully human. That's vulnerability.
 
 The same mechanics work in ads. The best campaigns don't lecture you with facts. They make you feel something, then tie that feeling to the brand.
+
+![A row of expressive toy heads showing different emotional reactions](/blog/why-emotionally-connected-customers-spend-2-more-4.png)
 
 ## Practical audit for CMOs and marketing managers
 

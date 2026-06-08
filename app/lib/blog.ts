@@ -178,7 +178,7 @@ function requireStringArray(
 }
 
 function getReadingTime(content: string) {
-  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  const words = getWordCount(content);
   const minutes = Math.max(1, Math.ceil(words / 220));
   return `${minutes} min read`;
 }
@@ -200,6 +200,17 @@ function markdownToHtml(markdown: string) {
     if (heading) {
       const level = heading[1].length;
       html.push(`<h${level}>${formatInline(heading[2])}</h${level}>`);
+      index += 1;
+      continue;
+    }
+
+    const image = line.match(/^!\[([^\]]*)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)$/);
+    if (image) {
+      html.push(
+        `<figure class="blog-article-figure"><img src="${escapeHtml(image[2])}" alt="${escapeHtml(
+          image[1],
+        )}" loading="lazy" /></figure>`,
+      );
       index += 1;
       continue;
     }
@@ -240,7 +251,65 @@ function markdownToHtml(markdown: string) {
     html.push(`<p>${formatInline(paragraph.join(" "))}</p>`);
   }
 
-  return html.join("\n");
+  return injectEstimateCtas(html, markdown).join("\n");
+}
+
+function injectEstimateCtas(blocks: string[], markdown: string) {
+  const ctaCount = getWordCount(markdown) >= 900 ? 2 : 1;
+  const output = [...blocks];
+  const candidates = output
+    .map((block, index) => ({ block, index }))
+    .filter(
+      ({ block, index }) =>
+        index > 3 &&
+        !block.startsWith("<h") &&
+        !block.startsWith("<figure") &&
+        index < output.length - 2,
+    );
+
+  if (candidates.length === 0) {
+    return output;
+  }
+
+  const targets =
+    ctaCount === 2
+      ? [Math.floor(output.length * 0.34), Math.floor(output.length * 0.68)]
+      : [Math.floor(output.length * 0.52)];
+
+  let inserted = 0;
+  let lastIndex = -1;
+
+  for (const target of targets) {
+    const candidate =
+      candidates.find(({ index }) => index >= target && index > lastIndex + 3) ??
+      candidates.find(({ index }) => index > lastIndex + 3);
+
+    if (!candidate) continue;
+
+    const insertionIndex = candidate.index + 1 + inserted;
+    output.splice(insertionIndex, 0, getInlineEstimateCta());
+    lastIndex = candidate.index;
+    inserted += 1;
+  }
+
+  return output;
+}
+
+function getInlineEstimateCta() {
+  return `<aside class="blog-inline-estimate" aria-label="Video project estimate">
+  <div class="blog-inline-estimate-copy">
+    <h2>Get an estimate for your video project in 1 minute</h2>
+    <p>Answer a few quick questions and see a tailored pricing range for your project.</p>
+    <a class="blog-inline-estimate-button" href="https://quiz.blackirisfilms.com/">Start quiz <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="blog-inline-estimate-media">
+    <img src="/blog/estimate-lightbulb.jpg" alt="" loading="lazy" />
+  </div>
+</aside>`;
+}
+
+function getWordCount(content: string) {
+  return content.trim().split(/\s+/).filter(Boolean).length;
 }
 
 function formatInline(value: string) {

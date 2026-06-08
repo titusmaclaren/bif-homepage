@@ -1,8 +1,9 @@
-import { BlogPost, formatPostDate } from "../lib/blog";
+import type { BlogPost } from "../lib/blog";
+import { formatPostDate } from "../lib/blog";
 import { FinalCTA } from "./FinalCTA";
 import { Footer } from "./Footer";
-import { GoogleReviewsBadge } from "./GoogleReviewsBadge";
 import { Nav } from "./Nav";
+import { StickyQuizCTA } from "./StickyQuizCTA";
 
 type BlogPostLayoutProps = {
   post: BlogPost;
@@ -51,7 +52,7 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
                 </div>
               </div>
 
-              <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.32)]">
+              <div className="relative aspect-[1000/367] overflow-hidden rounded-lg border border-white/10 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.32)]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={post.thumbnail}
@@ -89,7 +90,7 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
         </article>
         <FinalCTA />
       </main>
-      <GoogleReviewsBadge />
+      <StickyQuizCTA />
       <Footer />
     </>
   );

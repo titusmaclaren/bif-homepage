@@ -101,6 +101,254 @@ main h2,
   text-underline-offset: 0.18em;
 }
 
+.blog-article-figure {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(213,216,222,0.72);
+  background: #0F1826;
+  box-shadow: 0 18px 48px rgba(15,24,38,0.1);
+}
+
+.blog-article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.blog-inline-estimate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.46fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: center;
+  max-width: 920px;
+  margin: 2.7rem 0;
+  padding: clamp(28px, 5vw, 48px);
+  border-radius: 6px;
+  background: #dcefe4;
+  color: #101623;
+}
+
+.blog-inline-estimate-copy h2 {
+  margin: 0;
+  max-width: 13ch;
+  color: #05070b;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.15;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.blog-inline-estimate-copy p {
+  max-width: 54ch;
+  margin-top: 1.45rem;
+  color: #1d2635;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.blog-inline-estimate-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-width: 172px;
+  margin-top: 1.7rem;
+  padding: 0.92rem 1.4rem;
+  border-radius: 5px;
+  background: #61B383;
+  color: #ffffff !important;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none !important;
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.blog-inline-estimate-button:hover {
+  background: #3d9e5f;
+  transform: translateY(-1px);
+}
+
+.blog-inline-estimate-media {
+  overflow: hidden;
+  border: 1px solid rgba(15,24,38,0.28);
+  border-radius: 12px;
+  background: #34724f;
+}
+
+.blog-inline-estimate-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.quiz-sticky {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 950;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  width: min(438px, calc(100% - 32px));
+  min-height: 148px;
+  overflow: hidden;
+  border: 1px solid rgba(11,17,32,0.1);
+  border-radius: 4px;
+  background: #ffffff;
+  color: #161b26;
+  box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 14px);
+  visibility: hidden;
+  transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s;
+}
+
+.quiz-sticky-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.quiz-sticky-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.quiz-sticky-content {
+  position: relative;
+  padding: 18px 42px 18px 20px;
+}
+
+.quiz-sticky-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #c5c8d0;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.quiz-sticky-close:hover {
+  color: #161b26;
+}
+
+.quiz-sticky h3 {
+  margin: 0 0 10px;
+  color: #161b26;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.quiz-sticky p {
+  margin: 0 0 20px;
+  color: #343a46;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.quiz-sticky-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #161b26;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.quiz-sticky-link:hover {
+  color: #3d9e5f;
+}
+
+.quiz-sticky-link:hover .quiz-sticky-label {
+  text-decoration: underline;
+}
+
+.quiz-sticky-arrow {
+  font-size: 24px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .blog-inline-estimate {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-inline-estimate-copy h2 {
+    max-width: 15ch;
+  }
+
+  .blog-inline-estimate-media {
+    max-width: 320px;
+  }
+
+  .quiz-sticky {
+    bottom: 14px;
+    grid-template-columns: 94px 1fr;
+    min-height: 142px;
+  }
+
+  .quiz-sticky-content {
+    padding: 16px 36px 16px 18px;
+  }
+
+  .quiz-sticky h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .quiz-sticky p {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-inline-estimate {
+    padding: 24px;
+  }
+
+  .blog-inline-estimate-copy h2 {
+    font-size: 1.7rem;
+  }
+
+  .quiz-sticky {
+    grid-template-columns: 82px 1fr;
+    min-height: 108px;
+  }
+
+  .quiz-sticky-content {
+    padding: 14px 34px 14px 16px;
+  }
+
+  .quiz-sticky h3 {
+    font-size: 15px;
+  }
+
+  .quiz-sticky p {
+    display: none;
+  }
+
+  .quiz-sticky-link {
+    font-size: 14px;
+  }
+}
+
 /* ────────────────────────────────────────────────────────────
    Hero: spherical video mosaic
    Ported from the BIF Hero animation handoff bundle. Tiles sit on

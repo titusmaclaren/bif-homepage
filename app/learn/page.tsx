@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { BlogCard } from "../components/BlogCard";
 import { Footer } from "../components/Footer";
-import { GoogleReviewsBadge } from "../components/GoogleReviewsBadge";
 import { Nav } from "../components/Nav";
+import { StickyQuizCTA } from "../components/StickyQuizCTA";
 import { getAllPosts } from "../lib/blog";
 
 export const metadata: Metadata = {
@@ -82,7 +82,7 @@ export default function LearnPage() {
           </div>
         </section>
       </main>
-      <GoogleReviewsBadge />
+      <StickyQuizCTA />
       <Footer />
     </>
   );
