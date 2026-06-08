@@ -10,9 +10,29 @@ import {
 import { VideoTrigger } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
-const topPortfolioItems = PORTFOLIO_ITEMS.slice(0, 12);
-const middlePortfolioItems = PORTFOLIO_ITEMS.slice(12, 25);
-const bottomPortfolioItems = PORTFOLIO_ITEMS.slice(25);
+const middleRowPriorityIds = new Set(["1143349142", "700347030"]);
+const topPortfolioItems = PORTFOLIO_ITEMS.filter(
+  (item) => !middleRowPriorityIds.has(item.vimeoId),
+).slice(0, 12);
+const topPortfolioIds = new Set(topPortfolioItems.map((item) => item.vimeoId));
+const middlePortfolioItems = [
+  ...PORTFOLIO_ITEMS.filter((item) =>
+    middleRowPriorityIds.has(item.vimeoId),
+  ),
+  ...PORTFOLIO_ITEMS.filter(
+    (item) =>
+      !middleRowPriorityIds.has(item.vimeoId) &&
+      !topPortfolioIds.has(item.vimeoId),
+  ).slice(0, 11),
+];
+const middlePortfolioIds = new Set(
+  middlePortfolioItems.map((item) => item.vimeoId),
+);
+const bottomPortfolioItems = PORTFOLIO_ITEMS.filter(
+  (item) =>
+    !topPortfolioIds.has(item.vimeoId) &&
+    !middlePortfolioIds.has(item.vimeoId),
+);
 
 export function PortfolioIntro() {
   return (
