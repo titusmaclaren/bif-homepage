@@ -109,7 +109,10 @@ export function Nav({ showEstimateBar = false }: NavProps) {
       {showEstimateBar && (
         <div className="fixed top-0 left-0 right-0 z-50 h-9 bg-[#0f1826] border-b border-white/10 text-white">
           <div className="max-w-[1260px] mx-auto h-full px-6 flex items-center justify-between gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.02em]">
-            <span className="min-w-0 truncate text-left">
+            <span className="min-w-0 truncate text-left sm:hidden">
+              ⚡ Get your 1-min video pricing estimate
+            </span>
+            <span className="hidden min-w-0 truncate text-left sm:inline">
               ⚡️ Get your video pricing estimate, tailored to your goals, in 1 minute
             </span>
             <a

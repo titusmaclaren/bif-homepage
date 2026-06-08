@@ -156,7 +156,7 @@ export function Hero() {
         const face = document.createElement("div");
         face.className = "bif-hero-face";
         face.innerHTML =
-          '<img alt="" loading="lazy" decoding="async" draggable="false" />' +
+          '<img alt="" loading="eager" decoding="async" draggable="false" />' +
           '<div class="bif-hero-play" aria-hidden="true"></div>' +
           '<div class="bif-hero-ttl"></div>';
         tile.appendChild(face);
@@ -224,29 +224,33 @@ export function Hero() {
     fillTiles(INITIAL_VIDEOS);
 
     // Live Vimeo feed (no-auth public JSONP). Replaces placeholders when it lands.
+    // On mobile, keep the curated first set so we avoid a second wave of thumbnail loads.
     let cancelled = false;
-    (async () => {
-      const out: Video[] = [];
-      for (let page = 1; page <= 3; page++) {
-        try {
-          const data = (await jsonp(
-            `https://vimeo.com/api/v2/user${VIMEO_USER}/videos.json?page=${page}`,
-          )) as Array<{ id: number | string; title: string; thumbnail_large?: string; thumbnail_medium?: string }>;
-          if (cancelled) return;
-          if (!Array.isArray(data) || !data.length) break;
-          for (const item of data) {
-            const thumb = biggerThumb(item.thumbnail_large || item.thumbnail_medium);
-            if (item.id && thumb) {
-              out.push({ id: String(item.id), title: item.title || "", thumb });
+    const useLiveVimeoFeed = !window.matchMedia("(max-width: 767px)").matches;
+    if (useLiveVimeoFeed) {
+      (async () => {
+        const out: Video[] = [];
+        for (let page = 1; page <= 3; page++) {
+          try {
+            const data = (await jsonp(
+              `https://vimeo.com/api/v2/user${VIMEO_USER}/videos.json?page=${page}`,
+            )) as Array<{ id: number | string; title: string; thumbnail_large?: string; thumbnail_medium?: string }>;
+            if (cancelled) return;
+            if (!Array.isArray(data) || !data.length) break;
+            for (const item of data) {
+              const thumb = biggerThumb(item.thumbnail_large || item.thumbnail_medium);
+              if (item.id && thumb) {
+                out.push({ id: String(item.id), title: item.title || "", thumb });
+              }
             }
+            if (data.length < 20) break;
+          } catch {
+            break;
           }
-          if (data.length < 20) break;
-        } catch {
-          break;
         }
-      }
-      if (!cancelled && out.length) fillTiles(out);
-    })();
+        if (!cancelled && out.length) fillTiles(out);
+      })();
+    }
 
     // Animation loop: spin each band, cull back-hemisphere tiles, fade near the edge.
     let rafId = 0;
