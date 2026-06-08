@@ -64,27 +64,11 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
           </header>
 
           <div className="bg-white px-6 py-14 md:py-16 lg:px-10">
-            <div className="mx-auto grid max-w-[1040px] gap-9 lg:grid-cols-[minmax(0,1fr)_220px]">
+            <div className="mx-auto max-w-[820px]">
               <div
                 className="blog-article text-[16px] leading-[1.78] text-navy md:text-[17px]"
                 dangerouslySetInnerHTML={{ __html: post.contentHtml }}
               />
-
-              <aside className="h-max rounded-lg border border-fog/70 bg-off-white p-5 lg:sticky lg:top-32">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-mint">
-                  Written by
-                </p>
-                <p className="mt-2 text-sm font-bold text-navy">{post.author}</p>
-                <p className="mt-4 text-sm leading-relaxed text-slate">
-                  Need a video that gives people a reason to care?
-                </p>
-                <a
-                  href="/contact"
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-sm bg-bif-green px-5 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-bif-green-hover"
-                >
-                  Get in touch
-                </a>
-              </aside>
             </div>
           </div>
         </article>
