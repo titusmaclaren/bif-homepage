@@ -1,27 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const googleProfileUrl =
   "https://www.google.com/maps/search/?api=1&query=Black%20Iris%20Films%20Sydney%20Australia";
 
-const reviews = [
-  {
-    quote:
-      "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative.",
-    name: "Catherine Allison",
-  },
-  {
-    quote:
-      "Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer.",
-    name: "Jess Smith",
-  },
-  {
-    quote:
-      "He captured exciting footage and engaging interviews through warm interactions with the guests.",
-    name: "Scott Newton",
-  },
-];
+type Review = {
+  id: string;
+  author: string;
+  rating: number;
+  text: string;
+  date?: string;
+};
+
+type ReviewsResponse = {
+  configured?: boolean;
+  averageRating?: number;
+  totalReviewCount?: number;
+  reviews?: Review[];
+  message?: string;
+};
 
 function GoogleMark() {
   return (
@@ -46,16 +44,87 @@ function GoogleMark() {
   );
 }
 
-function Star() {
+function Star({ filled = true }: { filled?: boolean }) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-gold">
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={`h-3.5 w-3.5 ${filled ? "fill-gold text-gold" : "fill-fog text-fog"}`}
+    >
       <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
     </svg>
   );
 }
 
+function Stars({ rating = 5 }: { rating?: number }) {
+  const rounded = Math.max(0, Math.min(5, Math.round(rating)));
+
+  return (
+    <div className="flex items-center gap-0.5" aria-label={`${rounded} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star key={index} filled={index < rounded} />
+      ))}
+    </div>
+  );
+}
+
+function formatReviewDate(date?: string) {
+  if (!date) return null;
+
+  try {
+    return new Intl.DateTimeFormat("en-AU", {
+      month: "short",
+      year: "numeric",
+    }).format(new Date(date));
+  } catch {
+    return null;
+  }
+}
+
 export function GoogleReviewsBadge() {
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "loaded" | "error">(
+    "idle",
+  );
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [message, setMessage] = useState<string | null>(null);
+  const [averageRating, setAverageRating] = useState(5);
+  const [totalReviewCount, setTotalReviewCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!isOpen || status !== "idle") return;
+
+    let cancelled = false;
+
+    async function loadReviews() {
+      setStatus("loading");
+
+      try {
+        const response = await fetch("/api/google-reviews", {
+          headers: { Accept: "application/json" },
+        });
+        const data = (await response.json()) as ReviewsResponse;
+
+        if (cancelled) return;
+
+        setReviews(data.reviews || []);
+        setMessage(data.message || null);
+        setAverageRating(data.averageRating || 5);
+        setTotalReviewCount(data.totalReviewCount ?? null);
+        setStatus(response.ok ? "loaded" : "error");
+      } catch {
+        if (cancelled) return;
+        setMessage("Unable to load Google reviews right now.");
+        setStatus("error");
+      }
+    }
+
+    loadReviews();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen, status]);
 
   return (
     <aside
@@ -70,14 +139,15 @@ export function GoogleReviewsBadge() {
                 <GoogleMark />
               </span>
               <div>
-                <div className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} />
-                  ))}
-                </div>
+                <Stars rating={averageRating} />
                 <h2 className="mt-1 text-[13px] font-bold leading-tight text-navy">
                   Black Iris Films reviews
                 </h2>
+                {totalReviewCount ? (
+                  <p className="mt-0.5 text-[11px] font-medium leading-tight text-slate">
+                    {totalReviewCount} Google reviews
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -103,21 +173,46 @@ export function GoogleReviewsBadge() {
           </div>
 
           <div className="max-h-[336px] space-y-3 overflow-y-auto px-4 py-4">
-            {reviews.map((review) => (
-              <figure key={review.name} className="rounded-md bg-off-white px-3 py-3">
-                <div className="mb-2 flex gap-0.5" aria-label="5 out of 5 stars">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} />
-                  ))}
-                </div>
-                <blockquote className="text-[12.5px] leading-relaxed text-navy">
-                  &ldquo;{review.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-2 text-[11px] font-bold text-slate">
-                  {review.name}
-                </figcaption>
-              </figure>
-            ))}
+            {status === "loading" ? (
+              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
+                Loading Google reviews...
+              </div>
+            ) : null}
+
+            {status !== "loading" && message && !reviews.length ? (
+              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
+                {message}
+              </div>
+            ) : null}
+
+            {status !== "loading" && !message && !reviews.length ? (
+              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
+                No Google reviews were returned.
+              </div>
+            ) : null}
+
+            {reviews.map((review) => {
+              const date = formatReviewDate(review.date);
+
+              return (
+                <figure key={review.id} className="rounded-md bg-off-white px-3 py-3">
+                  <div className="mb-2">
+                    <Stars rating={review.rating || 5} />
+                  </div>
+                  <blockquote className="text-[12.5px] leading-relaxed text-navy">
+                    &ldquo;{review.text || `Rated ${review.rating || 5} stars on Google.`}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-2 text-[11px] font-bold text-slate">
+                    {review.author}
+                    {date ? (
+                      <span className="ml-1 font-medium text-slate/75">
+                        {date}
+                      </span>
+                    ) : null}
+                  </figcaption>
+                </figure>
+              );
+            })}
           </div>
 
           <div className="border-t border-fog/70 px-4 py-3">
@@ -146,7 +241,7 @@ export function GoogleReviewsBadge() {
         <span className="min-w-0">
           <span className="flex items-center gap-0.5" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, index) => (
-              <Star key={index} />
+              <Star key={index} filled={index < Math.round(averageRating)} />
             ))}
           </span>
           <span className="mt-1 block text-[12px] font-bold leading-none">
