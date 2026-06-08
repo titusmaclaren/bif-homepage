@@ -91,14 +91,38 @@ function BifLogoSvg() {
   );
 }
 
-export function Nav() {
+type NavProps = {
+  showEstimateBar?: boolean;
+};
+
+export function Nav({ showEstimateBar = false }: NavProps) {
   const [open, setOpen] = useState(false);
 
   const closeMenu = () => setOpen(false);
+  const headerTopClass = showEstimateBar ? "top-9" : "top-0";
+  const mobileTopClass = showEstimateBar
+    ? "top-[108px] max-h-[calc(100vh-108px)]"
+    : "top-[72px] max-h-[calc(100vh-72px)]";
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black h-[72px]">
+      {showEstimateBar && (
+        <div className="fixed top-0 left-0 right-0 z-50 h-9 bg-[#0f1826] border-b border-white/10 text-white">
+          <div className="max-w-[1260px] mx-auto h-full px-4 sm:px-6 flex items-center justify-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.02em]">
+            <span className="truncate">
+              ⚡️ Get your video pricing estimate, tailored to your goals, in 1 minute
+            </span>
+            <a
+              href="https://quiz.blackirisfilms.com"
+              className="shrink-0 text-mint hover:text-mint-bright transition-colors"
+            >
+              start quiz
+            </a>
+          </div>
+        </div>
+      )}
+
+      <header className={`fixed ${headerTopClass} left-0 right-0 z-50 bg-black h-[72px]`}>
         <div className="max-w-[1260px] mx-auto px-6 h-full flex items-center justify-between">
           <a
             href="/"
@@ -153,7 +177,7 @@ export function Nav() {
       </header>
 
       {open && (
-        <nav className="fixed top-[72px] left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 max-h-[calc(100vh-72px)] overflow-y-auto">
+        <nav className={`fixed ${mobileTopClass} left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 overflow-y-auto`}>
           <a href="/#blog" className="mobile-link" onClick={closeMenu}>LEARN</a>
           <a href="/#faq" className="mobile-link" onClick={closeMenu}>FAQ</a>
           <details>

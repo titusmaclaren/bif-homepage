@@ -17,7 +17,7 @@ import { GoogleReviewsBadge } from "./components/GoogleReviewsBadge";
 export default function HomePage() {
   return (
     <>
-      <Nav />
+      <Nav showEstimateBar />
       <main className="flex-1">
         <Hero />
         <ClientsStrip />
