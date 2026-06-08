@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "../components/ContactForm";
 import { Footer } from "../components/Footer";
+import { InTheirWords } from "../components/InTheirWords";
 import { Nav } from "../components/Nav";
 
 export const metadata: Metadata = {
@@ -162,6 +163,8 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        <InTheirWords />
       </main>
       <Footer />
     </>
