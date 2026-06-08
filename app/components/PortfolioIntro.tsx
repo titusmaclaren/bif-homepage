@@ -27,12 +27,13 @@ export function PortfolioIntro() {
               Portfolio
             </p>
             <h2 className="max-w-3xl text-3xl font-bold leading-[1.06] text-white md:text-4xl">
-              Selected work, in motion.
+              One shoot. A whole library of useful content.
             </h2>
           </div>
           <p className="max-w-xl text-sm font-light leading-relaxed text-white/68 md:text-right">
-            Brand films, commercials, explainers, event videos and social content.
-            Click any thumbnail to watch the project.
+            We create the hero video you came for, then plan the production so your team
+            can get more from the same shoot: social edits, website loops, stills,
+            thumbnails and sales-ready assets.
           </p>
         </div>
       </div>
@@ -257,7 +258,7 @@ function PortfolioThumbCard({
       className={[
         "group block shrink-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-mint",
         isLarge
-          ? "w-[78vw] sm:w-[540px] lg:w-[660px]"
+          ? "w-[92vw] sm:w-[1080px] lg:w-[1320px]"
           : "w-[260px] sm:w-[320px] lg:w-[360px]",
       ].join(" ")}
       aria-label={`Play ${item.category}: ${item.title}`}

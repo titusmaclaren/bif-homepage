@@ -52,18 +52,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
-    vimeoId: "1143355482",
-    category: "Product Video",
-    title: "Dell Pro Plus Earbuds Unboxing",
-    description:
-      "Clean product-led unboxing content designed for fast, practical product communication.",
-    client: "Dell",
-    industry: "Technology",
-    thumb: V(
-      "https://i.vimeocdn.com/video/2091517271-ef7c434e6078591b5d58ac1f890ee891188a48571c876e3af8e3902e40092e0b-d_640?region=us",
-    ),
-  },
-  {
     vimeoId: "1143349142",
     category: "Product Video",
     title: "Dell Pro Essential Unboxing | Ingram Micro",
@@ -385,10 +373,10 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
   {
     vimeoId: "1001827462",
-    category: "Animated Explainer",
+    category: "Educational Video",
     title: "The Hidden Costs of Work Stress | Lyfy",
     description:
-      "Animated explainer connecting workplace stress to business risk and practical change.",
+      "Educational video connecting workplace stress to business risk and practical change.",
     client: "Lyfy",
     industry: "Health technology",
     thumb: V(
