@@ -79,21 +79,27 @@ export function PortfolioIntro() {
 
 function SteppedPortfolioRow({ items }: { items: PortfolioItem[] }) {
   const loopedItems = useMemo(() => [...items, ...items], [items]);
+  const rowRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
+  const [centerOffset, setCenterOffset] = useState(0);
   const [index, setIndex] = useState(0);
   const [isInstant, setIsInstant] = useState(false);
 
   useEffect(() => {
     const measure = () => {
+      const row = rowRef.current;
       const track = trackRef.current;
       const firstCard = firstCardRef.current;
-      if (!track || !firstCard) return;
+      if (!row || !track || !firstCard) return;
 
       const styles = window.getComputedStyle(track);
       const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
-      setStep(firstCard.getBoundingClientRect().width + gap);
+      const paddingLeft = Number.parseFloat(styles.paddingLeft || "0") || 0;
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      setStep(cardWidth + gap);
+      setCenterOffset((row.clientWidth - cardWidth) / 2 - paddingLeft);
     };
 
     measure();
@@ -128,13 +134,13 @@ function SteppedPortfolioRow({ items }: { items: PortfolioItem[] }) {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div ref={rowRef} className="overflow-hidden">
       <div
         ref={trackRef}
         className="flex w-max gap-4 px-6 md:gap-5 lg:px-10"
         onTransitionEnd={handleTransitionEnd}
         style={{
-          transform: `translate3d(-${index * step}px, 0, 0)`,
+          transform: `translate3d(${centerOffset - index * step}px, 0, 0)`,
           transition: isInstant
             ? "none"
             : "transform 740ms cubic-bezier(0.2, 0.7, 0.2, 1)",
@@ -258,7 +264,7 @@ function PortfolioThumbCard({
       className={[
         "group block shrink-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-mint",
         isLarge
-          ? "w-[92vw] sm:w-[1080px] lg:w-[1320px]"
+          ? "w-[78vw] sm:w-[918px] lg:w-[1122px]"
           : "w-[260px] sm:w-[320px] lg:w-[360px]",
       ].join(" ")}
       aria-label={`Play ${item.category}: ${item.title}`}
