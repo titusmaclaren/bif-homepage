@@ -136,7 +136,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
           </a>
 
           <nav className="hidden lg:flex items-center gap-7" aria-label="Site">
-            <a href="/#blog" className="nav-link">LEARN</a>
+            <a href="/learn" className="nav-link">LEARN</a>
             <a href="/#faq" className="nav-link">FAQ</a>
 
             <div className="group relative flex items-center">
@@ -181,7 +181,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
 
       {open && (
         <nav className={`fixed ${mobileTopClass} left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 overflow-y-auto`}>
-          <a href="/#blog" className="mobile-link" onClick={closeMenu}>LEARN</a>
+          <a href="/learn" className="mobile-link" onClick={closeMenu}>LEARN</a>
           <a href="/#faq" className="mobile-link" onClick={closeMenu}>FAQ</a>
           <details>
             <summary className="mobile-link list-none cursor-pointer">SERVICES</summary>

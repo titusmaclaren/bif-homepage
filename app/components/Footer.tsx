@@ -3,7 +3,7 @@ const footerNav = [
   { href: "/#portfolio", label: "Portfolio" },
   { href: "/#testimonials", label: "Testimonials" },
   { href: "https://stories.blackirisfilms.com/case-studies/", label: "Case Studies" },
-  { href: "/#blog", label: "Blog" },
+  { href: "/learn", label: "Blog" },
 ];
 
 const socials = [
