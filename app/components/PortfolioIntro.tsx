@@ -54,7 +54,7 @@ export function PortfolioIntro() {
       <div className="mx-auto mt-8 flex max-w-[1440px] justify-center px-6 lg:px-10">
         <a
           href="https://quiz.blackirisfilms.com/"
-          className="inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-navy transition-colors hover:bg-mint-bright"
+          className="inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
         >
           Get an estimate in 1-min
           <svg
