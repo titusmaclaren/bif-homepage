@@ -26,8 +26,8 @@ const TILE_W = 520;
 const PERSP = 900;
 const DEG = Math.PI / 180;
 const WORLD_PITCH = 11;
-const BAND_SPEEDS = [0.060, -0.082, 0.052, -0.074, 0.064, -0.090, 0.056];
-const BAND_LATS = [-30, -18, -6, 6, 18, 30, 42];
+const BAND_SPEEDS = [0.060, -0.082, 0.052, -0.074, 0.064, -0.090];
+const BAND_LATS = [-30, -18, -6, 6, 18, 30];
 
 type Video = { id: string; title: string; thumb: string };
 
