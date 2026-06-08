@@ -26,7 +26,19 @@ const posts = [
 ];
 
 export function BlogTeasers() {
-  const [hoveredVideoId, setHoveredVideoId] = useState<string | null>(null);
+  const [activeVideoIds, setActiveVideoIds] = useState<Set<string>>(
+    () => new Set(),
+  );
+
+  const activatePreview = (youtubeId?: string) => {
+    if (!youtubeId) return;
+    setActiveVideoIds((current) => {
+      if (current.has(youtubeId)) return current;
+      const next = new Set(current);
+      next.add(youtubeId);
+      return next;
+    });
+  };
 
   return (
     <section id="blog" className="border-y border-fog/60 bg-white py-9 md:py-10">
@@ -68,10 +80,8 @@ export function BlogTeasers() {
               key={post.title}
               href={post.href}
               className="group flex min-h-[104px] gap-3 rounded-lg border border-fog/70 bg-off-white/65 p-2.5 transition-colors hover:border-mint/45 hover:bg-white"
-              onMouseEnter={() => setHoveredVideoId(post.youtubeId ?? null)}
-              onMouseLeave={() => setHoveredVideoId(null)}
-              onFocus={() => setHoveredVideoId(post.youtubeId ?? null)}
-              onBlur={() => setHoveredVideoId(null)}
+              onMouseEnter={() => activatePreview(post.youtubeId)}
+              onFocus={() => activatePreview(post.youtubeId)}
             >
               <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-md bg-fog/50 md:h-24 md:w-28">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -81,11 +91,11 @@ export function BlogTeasers() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-                {post.youtubeId && hoveredVideoId === post.youtubeId && (
+                {post.youtubeId && activeVideoIds.has(post.youtubeId) && (
                   <iframe
-                    src={`https://www.youtube.com/embed/${post.youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${post.youtubeId}&playsinline=1&rel=0&modestbranding=1`}
+                    src={`https://www.youtube-nocookie.com/embed/${post.youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=${post.youtubeId}&playsinline=1&rel=0&modestbranding=1`}
                     title={`${post.title} preview`}
-                    className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35]"
+                    className="pointer-events-none absolute inset-0 h-full w-full scale-[1.55]"
                     allow="autoplay; encrypted-media; picture-in-picture"
                     referrerPolicy="strict-origin-when-cross-origin"
                   />
