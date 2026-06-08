@@ -235,8 +235,13 @@ main h2,
   .bif-hero-support { font-size: clamp(15px, 4.2vw, 22px); max-width: 26ch; }
   .bif-hero-copy { padding: 0 28px; }
   .bif-hero-scrim {
-    background: radial-gradient(78% 56% at 50% 50%,
-      rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.82) 38%, rgba(0,0,0,0.4) 66%, rgba(0,0,0,0) 86%);
+    background: radial-gradient(58% 38% at 50% 50%,
+      rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.52) 36%, rgba(0,0,0,0.18) 66%, rgba(0,0,0,0) 88%);
+  }
+  .bif-hero-vignette {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.66) 0%, transparent 14%, transparent 84%, rgba(0,0,0,0.72) 100%),
+      radial-gradient(130% 100% at 50% 48%, transparent 58%, rgba(0,0,0,0.42) 86%, #000 100%);
   }
 }
 
