@@ -108,15 +108,15 @@ export function Nav({ showEstimateBar = false }: NavProps) {
     <>
       {showEstimateBar && (
         <div className="fixed top-0 left-0 right-0 z-50 h-9 bg-[#0f1826] border-b border-white/10 text-white">
-          <div className="max-w-[1260px] mx-auto h-full px-4 sm:px-6 flex items-center justify-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.02em]">
-            <span className="truncate">
+          <div className="max-w-[1260px] mx-auto h-full px-4 sm:px-6 grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[1fr_minmax(0,auto)_1fr] items-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.02em]">
+            <span className="truncate md:col-start-2 md:text-center">
               ⚡️ Get your video pricing estimate, tailored to your goals, in 1 minute
             </span>
             <a
               href="https://quiz.blackirisfilms.com"
-              className="shrink-0 text-mint hover:text-mint-bright transition-colors"
+              className="shrink-0 md:col-start-3 justify-self-end text-mint hover:text-mint-bright transition-colors"
             >
-              start quiz
+              Start quiz →
             </a>
           </div>
         </div>
