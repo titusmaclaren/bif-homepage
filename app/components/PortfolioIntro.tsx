@@ -10,7 +10,7 @@ import {
 import { VideoTrigger } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
-const middleRowPriorityIds = new Set(["1143349142", "700347030"]);
+const middleRowPriorityIds = new Set(["1143349142", "700347030", "256497496"]);
 const topPortfolioItems = PORTFOLIO_ITEMS.filter(
   (item) => !middleRowPriorityIds.has(item.vimeoId),
 ).slice(0, 12);

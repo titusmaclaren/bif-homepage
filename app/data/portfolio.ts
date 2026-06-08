@@ -83,7 +83,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Commercial spot for AIE, built around expert-led creative education and career ambition.",
     client: "Academy of Interactive Entertainment",
     industry: "Higher education",
-    thumb: W("a2a11d_859e588ef5974cdb86fc050b7e04b838~mv2.png"),
+    thumb: VF("256497496"),
   },
   {
     vimeoId: "842154532",
