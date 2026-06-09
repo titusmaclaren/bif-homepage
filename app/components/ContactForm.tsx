@@ -14,36 +14,73 @@ const referralOptions = [
   "Other",
 ];
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type SubmitStatus = "idle" | "sending" | "sent" | "error";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+type ContactFormProps = {
+  source?: string;
+  successMessage?: string;
+};
+
+export function ContactForm({
+  source = "Contact page",
+  successMessage = "Thanks. Your enquiry has been sent.",
+}: ContactFormProps) {
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const name = String(form.get("name") || "").trim();
     const phone = String(form.get("phone") || "").trim();
     const email = String(form.get("email") || "").trim();
     const foundUs = String(form.get("foundUs") || "").trim();
     const message = String(form.get("message") || "").trim();
     const subscribed = form.get("subscribe") === "on";
+    const website = String(form.get("website") || "").trim();
 
-    const subject = `Quote enquiry from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Contact number: ${phone}`,
-      `Work email: ${email}`,
-      `How did you find us?: ${foundUs}`,
-      `Subscribe for insights: ${subscribed ? "Yes" : "No"}`,
-      "",
-      "Project notes:",
-      message || "Not provided",
-    ].join("\n");
+    setStatus("sending");
+    setFeedback("");
 
-    setSubmitted(true);
-    window.location.href = `mailto:info@blackirisfilms.com?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          foundUs,
+          message,
+          subscribed,
+          source,
+          website,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as {
+          message?: string;
+        } | null;
+
+        throw new Error(data?.message || "Unable to send your enquiry.");
+      }
+
+      formElement.reset();
+      setStatus("sent");
+      setFeedback(successMessage);
+    } catch (error) {
+      setStatus("error");
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your enquiry right now.",
+      );
+    }
   }
 
   const inputClass =
@@ -54,6 +91,15 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       className="rounded-lg border border-fog/80 bg-white p-5 shadow-[0_18px_50px_rgba(15,24,38,0.08)] sm:p-7"
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="text-[12px] font-bold text-navy">
           Name *
@@ -130,15 +176,22 @@ export function ContactForm() {
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
-          className="inline-flex min-h-12 items-center justify-center rounded-sm bg-mint px-7 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
+          disabled={status === "sending"}
+          className="inline-flex min-h-12 items-center justify-center rounded-sm bg-mint px-7 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright disabled:cursor-wait disabled:opacity-70"
         >
-          Submit
+          {status === "sending" ? "Sending..." : "Submit"}
         </button>
-        {submitted && (
-          <p className="text-[12px] font-medium text-slate" role="status">
-            Your quote request is ready to send.
+        {feedback ? (
+          <p
+            className={`text-[12px] font-medium ${
+              status === "error" ? "text-[#c0392b]" : "text-slate"
+            }`}
+            role="status"
+            aria-live="polite"
+          >
+            {feedback}
           </p>
-        )}
+        ) : null}
       </div>
     </form>
   );
