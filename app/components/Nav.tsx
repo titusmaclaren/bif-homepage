@@ -158,7 +158,6 @@ export function Nav({ showEstimateBar = false }: NavProps) {
 
             <a href="/#portfolio" className="nav-link">WORK</a>
             <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
-            <a href="/contact" className="nav-link">CONTACT</a>
           </nav>
 
           <a
@@ -200,7 +199,6 @@ export function Nav({ showEstimateBar = false }: NavProps) {
           </details>
           <a href="/#portfolio" className="mobile-link" onClick={closeMenu}>WORK</a>
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
-          <a href="/contact" className="mobile-link" onClick={closeMenu}>CONTACT</a>
           <a
             href="/contact"
             className="inline-block text-center bg-bif-green hover:bg-bif-green-hover text-white text-[13px] font-bold uppercase tracking-wider px-5 py-3 rounded-sm transition-colors mt-2"
