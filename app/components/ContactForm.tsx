@@ -2,14 +2,16 @@
 
 import { type FormEvent, useState } from "react";
 
-const projectTypes = [
-  "Brand film",
-  "Corporate video",
-  "Explainer or animation",
-  "Social content",
-  "Photography",
-  "AI-powered content",
-  "Something else",
+const referralOptions = [
+  "Google / search",
+  "Referral / word of mouth",
+  "LinkedIn",
+  "Instagram",
+  "Facebook",
+  "YouTube or Vimeo",
+  "Event or conference",
+  "Returning client",
+  "Other",
 ];
 
 export function ContactForm() {
@@ -20,24 +22,22 @@ export function ContactForm() {
 
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") || "").trim();
-    const company = String(form.get("company") || "").trim();
-    const email = String(form.get("email") || "").trim();
     const phone = String(form.get("phone") || "").trim();
-    const projectType = String(form.get("projectType") || "").trim();
-    const timeline = String(form.get("timeline") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const foundUs = String(form.get("foundUs") || "").trim();
     const message = String(form.get("message") || "").trim();
+    const subscribed = form.get("subscribe") === "on";
 
-    const subject = `Website enquiry from ${name}${company ? ` at ${company}` : ""}`;
+    const subject = `Quote enquiry from ${name}`;
     const body = [
       `Name: ${name}`,
-      `Company: ${company || "Not provided"}`,
-      `Email: ${email}`,
-      `Phone: ${phone || "Not provided"}`,
-      `Project type: ${projectType || "Not selected"}`,
-      `Timeline: ${timeline || "Not provided"}`,
+      `Contact number: ${phone}`,
+      `Work email: ${email}`,
+      `How did you find us?: ${foundUs}`,
+      `Subscribe for insights: ${subscribed ? "Yes" : "No"}`,
       "",
-      "Project details:",
-      message,
+      "Project notes:",
+      message || "Not provided",
     ].join("\n");
 
     setSubmitted(true);
@@ -56,79 +56,75 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="text-[12px] font-bold text-navy">
-          Name
+          Name *
           <input
             className={inputClass}
             type="text"
             name="name"
             autoComplete="name"
+            maxLength={100}
             required
           />
         </label>
 
         <label className="text-[12px] font-bold text-navy">
-          Company
-          <input
-            className={inputClass}
-            type="text"
-            name="company"
-            autoComplete="organization"
-          />
-        </label>
-
-        <label className="text-[12px] font-bold text-navy">
-          Work email
-          <input
-            className={inputClass}
-            type="email"
-            name="email"
-            autoComplete="email"
-            required
-          />
-        </label>
-
-        <label className="text-[12px] font-bold text-navy">
-          Phone
+          Contact Number *
           <input
             className={inputClass}
             type="tel"
             name="phone"
             autoComplete="tel"
+            maxLength={50}
+            required
           />
         </label>
 
         <label className="text-[12px] font-bold text-navy">
-          Project type
-          <select className={inputClass} name="projectType" defaultValue="">
+          Work Email *
+          <input
+            className={inputClass}
+            type="email"
+            name="email"
+            autoComplete="email"
+            maxLength={250}
+            required
+          />
+        </label>
+
+        <label className="text-[12px] font-bold text-navy">
+          How did you find us? *
+          <select className={inputClass} name="foundUs" defaultValue="" required>
             <option value="" disabled>
-              Select a service
+              How did you find us? *
             </option>
-            {projectTypes.map((type) => (
-              <option key={type} value={type}>
-                {type}
+            {referralOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
               </option>
             ))}
           </select>
         </label>
-
-        <label className="text-[12px] font-bold text-navy">
-          Ideal timeline
-          <input
-            className={inputClass}
-            type="text"
-            name="timeline"
-            placeholder="e.g. September launch"
-          />
-        </label>
       </div>
 
       <label className="mt-5 block text-[12px] font-bold text-navy">
-        Tell us about the project
+        Tell us a little about the project
         <textarea
           className={`${inputClass} min-h-36 resize-y`}
           name="message"
-          required
+          placeholder="Tell us a little about the project..."
         />
+      </label>
+
+      <label className="mt-5 flex gap-3 rounded-sm border border-fog/70 bg-off-white/55 p-4 text-[12px] font-semibold leading-relaxed text-navy">
+        <input
+          type="checkbox"
+          name="subscribe"
+          defaultChecked
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-fog accent-mint"
+        />
+        <span>
+          Subscribe for exclusive insights in marketing and creative content
+        </span>
       </label>
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -136,11 +132,11 @@ export function ContactForm() {
           type="submit"
           className="inline-flex min-h-12 items-center justify-center rounded-sm bg-mint px-7 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
         >
-          Send enquiry
+          Submit
         </button>
         {submitted && (
           <p className="text-[12px] font-medium text-slate" role="status">
-            Your enquiry is ready to send.
+            Your quote request is ready to send.
           </p>
         )}
       </div>
