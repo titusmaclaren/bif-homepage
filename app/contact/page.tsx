@@ -37,12 +37,11 @@ export default function ContactPage() {
                 Contact Black Iris Films
               </p>
               <h1 className="max-w-2xl text-4xl font-bold leading-[1.05] md:text-5xl">
-                Tell us what you need people to care about.
+                How can we help?
               </h1>
               <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-white/72">
-                Share the goal, audience and rough timing. We&apos;ll come back with a
-                clear recommendation for the right video, photography, animation or
-                content approach.
+                Start your journey to impactful video content today. Our team
+                is ready to bring your vision to life!
               </p>
 
               <div className="mt-9 space-y-5 border-t border-white/12 pt-7">
