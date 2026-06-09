@@ -11,9 +11,19 @@ import { VideoTrigger } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
 const middleRowPriorityIds = new Set(["1143349142", "700347030", "256497496"]);
-const topPortfolioItems = PORTFOLIO_ITEMS.filter(
+const topRowPriorityIds = ["894854950", "321724289", "1111183751"];
+const topRowPriorityIdSet = new Set(topRowPriorityIds);
+const topPortfolioBaseItems = PORTFOLIO_ITEMS.filter(
   (item) => !middleRowPriorityIds.has(item.vimeoId),
-).slice(0, 12);
+);
+const topPortfolioItems = [
+  ...topRowPriorityIds
+    .map((id) => topPortfolioBaseItems.find((item) => item.vimeoId === id))
+    .filter((item): item is PortfolioItem => Boolean(item)),
+  ...topPortfolioBaseItems.filter(
+    (item) => !topRowPriorityIdSet.has(item.vimeoId),
+  ),
+].slice(0, 12);
 const topPortfolioIds = new Set(topPortfolioItems.map((item) => item.vimeoId));
 const middlePortfolioItems = [
   ...PORTFOLIO_ITEMS.filter((item) =>
