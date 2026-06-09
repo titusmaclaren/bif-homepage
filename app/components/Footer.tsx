@@ -70,7 +70,7 @@ export function Footer() {
             <p className="text-white/45 text-[13px]">Video Production Agency</p>
             <p className="text-white/45 text-[13px]">ABN: 13774120626</p>
             <a
-              href="https://www.blackirisfilms.com/privacy-policy"
+              href="/privacy-policy"
               className="text-white/50 hover:text-white text-[13px] inline-block mt-1"
             >
               Privacy Policy
@@ -116,7 +116,7 @@ export function Footer() {
             <p>
               Interested in becoming a partner?{" "}
               <a
-                href="https://www.blackirisfilms.com/partner-with-us"
+                href="/partner-with-us"
                 className="text-bif-green font-semibold hover:underline"
               >
                 CLICK HERE
