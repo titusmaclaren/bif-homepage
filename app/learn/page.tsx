@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { BlogCard } from "../components/BlogCard";
 import { Footer } from "../components/Footer";
+import { LearnVideoSeries } from "../components/LearnVideoSeries";
 import { Nav } from "../components/Nav";
 import { StickyQuizCTA } from "../components/StickyQuizCTA";
 import { getAllPosts } from "../lib/blog";
+import { learnSeriesVideos } from "../lib/learn-video-series";
 
 export const metadata: Metadata = {
   title: "Learn",
@@ -53,6 +55,8 @@ export default function LearnPage() {
             </div>
           </div>
         </section>
+
+        <LearnVideoSeries videos={learnSeriesVideos} />
 
         <section className="bg-off-white px-6 py-12 md:py-16 lg:px-10">
           <div className="mx-auto max-w-[1260px]">

@@ -204,6 +204,13 @@ function markdownToHtml(markdown: string) {
       continue;
     }
 
+    const youtubeId = getYouTubeIdFromLine(line.trim());
+    if (youtubeId) {
+      html.push(getYouTubeEmbed(youtubeId));
+      index += 1;
+      continue;
+    }
+
     const image = line.match(/^!\[([^\]]*)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)$/);
     if (image) {
       html.push(
@@ -306,6 +313,57 @@ function getInlineEstimateCta() {
     <img src="/blog/estimate-lightbulb.jpg" alt="" loading="lazy" />
   </div>
 </aside>`;
+}
+
+function getYouTubeIdFromLine(line: string) {
+  const markdownLink = line.match(/^\[(https?:\/\/[^\]]+)\]\((https?:\/\/[^)]+)\)$/);
+  const value = markdownLink ? markdownLink[2] : line;
+
+  if (!/^https?:\/\//.test(value)) {
+    return null;
+  }
+
+  try {
+    const url = new URL(value);
+    const host = url.hostname.replace(/^www\./, "");
+
+    if (host === "youtu.be") {
+      return cleanYouTubeId(url.pathname.slice(1));
+    }
+
+    if (host === "youtube.com" || host === "youtube-nocookie.com") {
+      if (url.pathname === "/watch") {
+        return cleanYouTubeId(url.searchParams.get("v"));
+      }
+
+      const embedMatch = url.pathname.match(/^\/embed\/([^/?]+)/);
+      if (embedMatch) {
+        return cleanYouTubeId(embedMatch[1]);
+      }
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function cleanYouTubeId(value: string | null) {
+  if (!value) return null;
+  const match = value.match(/^[A-Za-z0-9_-]{11}$/);
+  return match ? value : null;
+}
+
+function getYouTubeEmbed(videoId: string) {
+  return `<figure class="blog-video-embed">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/${escapeHtml(videoId)}?rel=0&modestbranding=1"
+    title="YouTube video"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</figure>`;
 }
 
 function getWordCount(content: string) {
