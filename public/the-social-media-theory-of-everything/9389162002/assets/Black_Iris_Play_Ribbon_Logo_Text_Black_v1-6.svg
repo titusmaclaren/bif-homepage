@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Play_x5F_Ribbon_x5F_Mockup_x5F_v1-1_xA0_Image" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 5001.3 673">
+  
+  <defs>
+    
+    <linearGradient id="linear-gradient" x1="137" y1="473.8" x2="137" y2="215.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#131316"></stop>
+      <stop offset=".5" stop-color="#2c2d2f"></stop>
+      <stop offset="1" stop-color="#131316"></stop>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="227.8" y1="645" x2="813.4" y2="71.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#303c59"></stop>
+      <stop offset=".1" stop-color="#4b5d8b"></stop>
+      <stop offset=".3" stop-color="#485a86"></stop>
+      <stop offset=".4" stop-color="#415179"></stop>
+      <stop offset=".6" stop-color="#364364"></stop>
+      <stop offset=".8" stop-color="#262f46"></stop>
+      <stop offset=".9" stop-color="#151a26"></stop>
+    </linearGradient>
+    <linearGradient id="linear-gradient2" x1="862.4" y1="246" x2="30.3" y2="227.6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3d3159"></stop>
+      <stop offset="0" stop-color="#443663"></stop>
+      <stop offset="0" stop-color="#534179"></stop>
+      <stop offset=".2" stop-color="#5b4886"></stop>
+      <stop offset=".2" stop-color="#5f4b8b"></stop>
+      <stop offset=".4" stop-color="#5b4785"></stop>
+      <stop offset=".5" stop-color="#4f3c75"></stop>
+      <stop offset=".8" stop-color="#3d2b5a"></stop>
+      <stop offset="1" stop-color="#231235"></stop>
+      <stop offset="1" stop-color="#213"></stop>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect class="st5" x="125.4" y="195.1" width="440" height="244.4"></rect>
+    <path class="st8" d="M244.9,241.3c-145.5-39-142.6-26.3-187-12.2-11.7,3.7-30.1,26-30.1,26l5.6,176s18.5,30.5,61.7,40c47.1,10.3,32.5-9.5,151.1-45"></path>
+    <path class="st1" d="M559.9,336.6l285.4,95.9c3.4.9,4.8,1.6,6.4,3.1v2.2c-1,2.3-7.5,6.2-10.3,7.2,0,0-563,195.6-576.4,199.7s-21.6,1.9-32.1-.2-22.1-14.9-24.4-17.4L33.4,431.1s9.2,25,62,25"></path>
+    <path class="st0" d="M257.5,32.8c-21.8,1.7-41.4,5.8-57,24.5L27.8,255.1s15.6-25.5,67.6-27c68-2,678.6,184.1,743.1,203.5,15.7,4.7,2.4,13.6,2.4,13.6,1.2-.9,13.3-1.9,13.8-18.2l5.8-178.5c0-12.8-2.9-15.3-15-19.2"></path>
+  </g>
+  <circle class="st4" cx="312.7" cy="335.9" r="23.2"></circle>
+  <text class="st3" transform="translate(1122.9 451.6)"><tspan class="st2" x="0" y="0">BLACK </tspan><tspan class="st6" x="1624.1" y="0">IRIS </tspan><tspan class="st7" x="2623.3" y="0">FILMS</tspan></text>
+</svg>

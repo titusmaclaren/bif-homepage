@@ -46,7 +46,7 @@ export function ResearchSection() {
 
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a
-                href="https://stories.blackirisfilms.com/theory-of-everything/"
+                href="/the-social-media-theory-of-everything"
                 className="inline-flex items-center gap-2.5 rounded-sm bg-gold hover:bg-[#FFD700] px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-navy-midnight transition-colors"
               >
                 Read the study

@@ -3,15 +3,15 @@
 import { useState } from "react";
 
 const services = [
-  { href: "https://services.blackirisfilms.com/corporate-video-production-sydney", label: "Corporate Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/financial-video-production-sydney", label: "Finance Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/higher-education-video-production-sydney", label: "Higher Education Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/explainer-video-production-sydney", label: "Explainer Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/tech-video-production-sydney", label: "Tech & SaaS Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/animated-video-production-sydney", label: "Animated Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/brand-film-production-sydney", label: "Brand Film Production Sydney" },
-  { href: "https://services.blackirisfilms.com/startup-video-production-sydney", label: "Startup & Scaleup Video Production Sydney" },
-  { href: "https://services.blackirisfilms.com/linkedin-video-production-sydney", label: "LinkedIn & B2B Social Video Production Sydney" },
+  { href: "/corporate-video-production-sydney", label: "Corporate Video Production Sydney" },
+  { href: "/financial-video-production-sydney", label: "Finance Video Production Sydney" },
+  { href: "/higher-education-video-production-sydney", label: "Higher Education Video Production Sydney" },
+  { href: "/explainer-video-production-sydney", label: "Explainer Video Production Sydney" },
+  { href: "/tech-video-production-sydney", label: "Tech & SaaS Video Production Sydney" },
+  { href: "/animated-video-production-sydney", label: "Animated Video Production Sydney" },
+  { href: "/brand-film-production-sydney", label: "Brand Film Production Sydney" },
+  { href: "/startup-video-production-sydney", label: "Startup & Scaleup Video Production Sydney" },
+  { href: "/linkedin-video-production-sydney", label: "LinkedIn & B2B Social Video Production Sydney" },
 ];
 
 function BifLogoSvg() {
@@ -116,7 +116,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               ⚡️ Get your video pricing estimate, tailored to your goals, in 1 minute
             </span>
             <a
-              href="https://quiz.blackirisfilms.com"
+              href="/estimate"
               className="shrink-0 text-mint hover:text-mint-bright transition-colors"
             >
               Start quiz ⟶

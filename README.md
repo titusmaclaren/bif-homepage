@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Black Iris Films website
 
-## Getting Started
+This is the canonical repository for the Black Iris Films website. It combines the former homepage, services, stories, photography, and estimator repositories into one Next.js application and one Vercel deployment.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` when testing integrations. The site and estimator fallback can build without secrets, but email, reviews, AI estimates, lead capture, and report delivery require their corresponding environment variables.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Main route groups
 
-## Learn More
+- `/` and standard pages: native Next.js App Router pages
+- `/estimate`: video quote estimator and its API routes
+- Service slugs such as `/corporate-video-production-sydney`: imported static service pages
+- `/stories`, `/case-studies`, `/the-last-10`, and `/the-social-media-theory-of-everything`: imported story microsites
+- `/photography`: imported photography gallery
 
-To learn more about Next.js, take a look at the following resources:
+Static microsite files live under `public/`; URL-preserving rewrites and shared security headers live in `next.config.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Verification
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The production Vercel project should point at this repository root with the Next.js framework preset.

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Iris Films Pricing Callout Snippet</title>
+  <style>
+    /*
+      Black Iris Films service page pricing callout.
+
+      To reuse:
+      1. Copy the .pricing-callout-section, .pricing-callout, and .btn-green CSS.
+      2. Copy the <section class="pricing-callout-section"> block above the footer.
+      3. Keep the footer immediately after this section for the white-to-black overlap.
+
+      The service pages also use .fade-in animation classes. Add "fade-in" to the
+      section when the page already has that animation script; otherwise remove it.
+    */
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .pricing-callout-section {
+      background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+      padding: 0 0 8px;
+    }
+
+    .pricing-callout {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 30px 34px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .pricing-callout h2 {
+      color: #000000;
+      font-size: 24px;
+      line-height: 1.2;
+      margin: 0 0 6px;
+      font-weight: 800;
+    }
+
+    .pricing-callout p {
+      color: #666666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .btn-green {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-height: 52px;
+      padding: 14px 30px;
+      background: #3d9e5f;
+      color: #ffffff;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-green:hover {
+      background: #348a52;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-callout { margin: 0 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .pricing-callout {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px 24px;
+      }
+
+      .pricing-callout h2 { font-size: 22px; }
+      .btn-green { width: 100%; }
+    }
+
+    /* Preview-only styles. Do not copy these into service pages. */
+    .preview-before {
+      min-height: 240px;
+      display: grid;
+      place-items: center;
+      color: #777777;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .preview-footer {
+      min-height: 320px;
+      background: #000000;
+      color: rgba(255,255,255,0.55);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 48px 24px;
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-before">
+    <p>Place the pricing callout directly above the footer.</p>
+  </main>
+
+  <!-- ===== PRICING CALLOUT CTA ===== -->
+  <section class="pricing-callout-section fade-in">
+    <div class="pricing-callout">
+      <div>
+        <h2>Get clarity on your video pricing</h2>
+        <p>Answer a 1-minute quiz and see a tailored pricing range for your project.</p>
+      </div>
+      <a href="/estimate/" class="btn-green">Start quiz</a>
+    </div>
+  </section>
+
+  <footer class="preview-footer">
+    <p>Footer starts immediately after the callout section.</p>
+  </footer>
+</body>
+</html>

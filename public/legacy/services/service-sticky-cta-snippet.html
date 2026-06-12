@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Iris Films Sticky CTA Snippet</title>
+  <style>
+    /*
+      Black Iris Films service page sticky quiz CTA.
+
+      To reuse:
+      1. Copy the CSS below into the page <style>.
+      2. Copy the <aside class="quiz-sticky"> block before </body>.
+      3. Copy the script block before </body>, after the CTA HTML.
+      4. Make sure /assets/sticky-estimate-portrait.png exists, or replace the image src.
+
+      Behaviour:
+      - Hidden by default.
+      - First appears when the visitor reaches halfway through the scrollable page.
+      - Hides near .pricing-callout-section so it does not clash with the footer CTA.
+      - Stays dismissed after the close button is clicked.
+    */
+
+    .quiz-sticky {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translate(-50%, 14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 950;
+      width: min(438px, calc(100% - 32px));
+      min-height: 148px;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      background: #ffffff;
+      color: #161b26;
+      border: 1px solid rgba(11,17,32,0.10);
+      border-radius: 4px;
+      box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+      overflow: hidden;
+      transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s;
+    }
+
+    body.show-quiz-sticky .quiz-sticky {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition-delay: 0s;
+    }
+
+    .quiz-sticky-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 46% 42%;
+    }
+
+    .quiz-sticky-content {
+      position: relative;
+      padding: 18px 42px 18px 20px;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+
+    .quiz-sticky-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: none;
+      color: #c5c8d0;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .quiz-sticky-close:hover { color: #161b26; }
+
+    .quiz-sticky h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 10px;
+      color: #161b26;
+    }
+
+    .quiz-sticky p {
+      font-size: 14px;
+      color: #343a46;
+      line-height: 1.35;
+      margin: 0 0 20px;
+    }
+
+    .quiz-sticky-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: #161b26;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .quiz-sticky-link:hover {
+      color: #3d9e5f;
+      text-decoration: none;
+    }
+
+    .quiz-sticky-link:hover .quiz-sticky-label { text-decoration: underline; }
+
+    .quiz-sticky-link .quiz-sticky-arrow {
+      font-size: 24px;
+      line-height: 1;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-sticky {
+        grid-template-columns: 94px 1fr;
+        min-height: 142px;
+        bottom: 14px;
+      }
+
+      .quiz-sticky-content { padding: 16px 36px 16px 18px; }
+      .quiz-sticky h3 { font-size: 16px; margin-bottom: 8px; }
+      .quiz-sticky p { font-size: 13px; margin-bottom: 14px; }
+    }
+
+    @media (max-width: 600px) {
+      .quiz-sticky {
+        grid-template-columns: 82px 1fr;
+        min-height: 108px;
+      }
+
+      .quiz-sticky-content { padding: 14px 34px 14px 16px; }
+      .quiz-sticky h3 { font-size: 15px; }
+      .quiz-sticky p { display: none; }
+      .quiz-sticky-link { font-size: 14px; }
+    }
+
+    /* Preview-only styles. Do not copy these into service pages. */
+    body {
+      min-height: 180vh;
+      margin: 0;
+      background: linear-gradient(#f7f7f7 0 50%, #111 50% 100%);
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+    .snippet-note {
+      max-width: 720px;
+      margin: 64px auto;
+      padding: 0 24px;
+      color: #111;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main class="snippet-note">
+    <h1>Sticky CTA Card Snippet</h1>
+    <p>This file contains the reusable Black Iris Films service page sticky quiz CTA. Scroll halfway down this preview page to trigger it.</p>
+  </main>
+
+  <!-- ===== STICKY QUIZ CTA ===== -->
+  <aside class="quiz-sticky" aria-label="Pricing quiz" id="quizSticky">
+    <img class="quiz-sticky-media" src="/assets/sticky-estimate-portrait.png" alt="">
+    <div class="quiz-sticky-content">
+      <button type="button" class="quiz-sticky-close" aria-label="Hide pricing quiz" onclick="dismissQuizSticky()">&times;</button>
+      <h3>1-minute video estimate</h3>
+      <p>Answer a few quick questions and get a tailored estimate for your video.</p>
+      <a href="/estimate/" class="quiz-sticky-link"><span class="quiz-sticky-label">Start quiz</span> <span class="quiz-sticky-arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </aside>
+
+  <script>
+    // Sticky quiz CTA
+    (function() {
+      var stickyDismissed = false;
+      var stickyTriggered = false;
+      var pricingCallout = document.querySelector('.pricing-callout-section');
+
+      window.dismissQuizSticky = function() {
+        stickyDismissed = true;
+        document.body.classList.remove('show-quiz-sticky');
+      };
+
+      function getHalfwayScrollPoint() {
+        var scrollableHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+        return scrollableHeight * 0.5;
+      }
+
+      function updateQuizSticky() {
+        if (!stickyTriggered && window.scrollY >= getHalfwayScrollPoint()) {
+          stickyTriggered = true;
+        }
+
+        var pricingVisible = pricingCallout ? pricingCallout.getBoundingClientRect().top < window.innerHeight - 80 : false;
+        document.body.classList.toggle('show-quiz-sticky', stickyTriggered && !pricingVisible && !stickyDismissed);
+      }
+
+      window.addEventListener('scroll', updateQuizSticky, { passive: true });
+      window.addEventListener('resize', updateQuizSticky);
+      updateQuizSticky();
+    })();
+  </script>
+</body>
+</html>

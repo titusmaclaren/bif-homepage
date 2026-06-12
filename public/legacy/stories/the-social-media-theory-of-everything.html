@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The (Social Media) Theory of Everything | Black Iris Films</title>
+  <meta name="description" content="742 videos. 5 sectors. One pattern that never changes. Original research by Black Iris Films into what actually drives short-form video engagement.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+
+  <!-- Schema markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "name": "The (Social Media) Theory of Everything",
+    "description": "Original research analysing 742 short-form videos across 5 sectors to determine what drives social media engagement. By Black Iris Films.",
+    "author": {
+      "@type": "Organization",
+      "name": "Black Iris Films",
+      "url": ""
+    },
+    "datePublished": "2026",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Black Iris Films"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #0b1120; color: #fff; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #000000; height: 72px; }
+    .header-inner { max-width: 1260px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .header-logo { display: flex; align-items: center; align-self: center; gap: 10px; text-decoration: none; flex-shrink: 0; line-height: 0; }
+    .nav-logo-svg { display: inline-flex; align-items: center; line-height: 0; }
+    .nav-logo-svg svg { height: 52px; width: auto; display: block; flex-shrink: 0; transform: translateY(4px); }
+    .site-nav { display: flex; align-items: center; gap: 28px; }
+    .site-nav a,
+    .nav-dropdown-toggle { color: #ffffff; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; transition: opacity 0.2s; }
+    .site-nav a:hover,
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle:focus { opacity: 0.7; }
+    .nav-dropdown { position: relative; display: flex; align-items: center; }
+    .nav-dropdown-toggle { background: none; border: 0; padding: 0; cursor: default; }
+    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; width: 360px; padding: 10px; background: #050505; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; box-shadow: 0 24px 70px rgba(0,0,0,0.42); transform: translate(-50%, 8px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease; }
+    .nav-dropdown-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -22px; height: 22px; }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
+    .nav-dropdown-menu a { display: block; padding: 12px 14px; border-radius: 6px; color: #ffffff; font-size: 12px; line-height: 1.25; letter-spacing: 0.02em; text-transform: none; font-weight: 600; }
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus { opacity: 1; background: #111; color: #ffffff; outline: none; }
+    .btn-get-started { background: #3d9e5f; color: #ffffff !important; padding: 10px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 3px; text-decoration: none !important; font-family: 'Montserrat', sans-serif; transition: background 0.2s; flex-shrink: 0; }
+    .btn-get-started:hover { background: #348a52; }
+    .mobile-menu-btn { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: #000; padding: 20px 24px 28px; flex-direction: column; gap: 16px; z-index: 999; }
+    .mobile-nav a { color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; }
+    .mobile-nav .btn-get-started { display: inline-block; text-align: center; margin-top: 8px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-services summary { list-style: none; color: #ffffff; font-size: 15px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+    .mobile-services summary::-webkit-details-marker { display: none; }
+    .mobile-service-links { display: grid; gap: 10px; margin-top: 14px; padding: 14px 0 2px 14px; border-left: 1px solid rgba(255,255,255,0.16); }
+    .mobile-service-links a { font-size: 13px; line-height: 1.35; letter-spacing: 0.02em; text-transform: none; color: #cbd5e1; }
+
+    /* ===== HERO ===== */
+    .hero { padding: 140px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(232,184,47,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e8b82f; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .hero h1 .accent { color: #e8b82f; }
+    .hero-sub { font-size: 18px; font-weight: 400; color: #8899b2; line-height: 1.6; max-width: 560px; margin: 0 auto 40px; }
+
+    /* ===== FORM CARD ===== */
+    .form-card { background: #141d2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 40px 36px; max-width: 440px; margin: 0 auto; text-align: left; }
+    .form-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .form-card .form-sub { font-size: 13px; color: #6b7a94; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: #8899b2; margin-bottom: 6px; }
+    .form-group input[type="text"],
+    .form-group input[type="email"] { width: 100%; padding: 12px 14px; background: #0b1120; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 14px; transition: border-color 0.2s; outline: none; }
+    .form-group input:focus { border-color: #e8b82f; }
+    .form-group input::placeholder { color: #4a5568; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0 24px; cursor: pointer; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #e8b82f; flex-shrink: 0; cursor: pointer; }
+    .checkbox-group span { font-size: 13px; color: #8899b2; line-height: 1.5; }
+    .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .btn-download { display: block; width: 100%; padding: 14px 24px; background: #e8b82f; color: #0b1120; border: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+    .btn-download:hover { background: #d4a520; }
+    .btn-download:active { transform: scale(0.99); }
+    .form-note { font-size: 11px; color: #4a5568; text-align: center; margin-top: 12px; }
+
+    /* ===== STATS STRIP ===== */
+    .stats-strip { padding: 60px 24px; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .stat-item .stat-num { font-size: 40px; font-weight: 800; color: #e8b82f; line-height: 1.1; }
+    .stat-item .stat-label { font-size: 13px; color: #6b7a94; margin-top: 8px; line-height: 1.4; }
+
+    /* ===== REPORT CONTENTS ===== */
+    .report-includes { padding: 78px 24px 74px; background: #0b1120; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .report-includes-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+    .report-includes h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.08; margin-bottom: 54px; }
+    .includes-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px 26px; }
+    .include-item { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .include-icon { width: 70px; height: 70px; border-radius: 18px; display: grid; place-items: center; background: #141d2e; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 14px 34px rgba(0,0,0,0.22); color: #e8b82f; }
+    .include-icon svg { width: 34px; height: 34px; stroke: currentColor; stroke-width: 2.1; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .include-item p { font-size: 15px; font-weight: 800; line-height: 1.32; max-width: 190px; color: #f5f7fb; }
+
+    /* ===== EMOTION HIERARCHY ===== */
+    .emotion-section { padding: 86px 24px; max-width: 1120px; margin: 0 auto; }
+    .emotion-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr); gap: 52px; align-items: start; }
+    .emotion-copy .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e8b82f; margin-bottom: 16px; }
+    .emotion-copy h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.08; margin-bottom: 28px; max-width: 560px; }
+    .emotion-copy p { font-size: 15px; color: #8899b2; line-height: 1.75; margin-bottom: 18px; }
+    .emotion-copy strong { color: #ffffff; font-weight: 800; }
+    .cmo-takeaway { margin-top: 34px; background: #141d2e; border: 1px solid rgba(232,184,47,0.24); border-left: 4px solid #e8b82f; border-radius: 10px; padding: 24px; }
+    .cmo-takeaway .label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #e8b82f; margin-bottom: 10px; }
+    .cmo-takeaway p { margin: 0; color: #d7deeb; }
+    .emotion-chart-card { background: #141d2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 30px; box-shadow: 0 18px 60px rgba(0,0,0,0.18); }
+    .emotion-chart-title { font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #8899b2; margin-bottom: 22px; }
+    .emotion-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) 48px; gap: 14px; align-items: center; padding: 12px 0; }
+    .emotion-rank { font-size: 12px; font-weight: 800; color: #4f5d75; }
+    .emotion-name { display: block; font-size: 14px; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+    .emotion-bar { display: block; height: 9px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.08); }
+    .emotion-fill { display: block; height: 100%; border-radius: inherit; background: #e8b82f; }
+    .emotion-row.losing .emotion-name { color: #aeb8ca; }
+    .emotion-row.losing .emotion-fill { background: #6b7a94; }
+    .emotion-pct { font-size: 16px; font-weight: 800; color: #e8b82f; text-align: right; }
+    .emotion-row.losing .emotion-pct { color: #8899b2; }
+    .emotion-divider { margin: 10px 0; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); color: #6b7a94; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-align: center; text-transform: uppercase; }
+    .emotion-note { font-size: 11px; font-style: italic; color: #6b7a94; margin-top: 10px; }
+    .family-summary { margin-top: 20px; display: grid; gap: 10px; background: #0b1120; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; font-size: 13px; color: #aeb8ca; line-height: 1.5; }
+    .family-summary strong { color: #ffffff; }
+    .family-summary .odds { color: #e8b82f; font-weight: 800; }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta { padding: 80px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .bottom-cta h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .bottom-cta p { font-size: 15px; color: #6b7a94; margin-bottom: 28px; }
+    .btn-cta-bottom { display: inline-block; padding: 16px 36px; background: #e8b82f; color: #0b1120; border-radius: 6px; font-size: 15px; font-weight: 700; letter-spacing: 0.03em; transition: background 0.2s; }
+    .btn-cta-bottom:hover { background: #d4a520; }
+
+    /* ===== QUIZ CTA ===== */
+    .quiz-cta-section { padding: 0 24px; background: transparent; position: relative; z-index: 2; margin-bottom: -122px; }
+    .quiz-cta-card { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; background: #ffffff; color: #161b26; border-radius: 12px; padding: 46px 64px; display: flex; align-items: center; justify-content: space-between; gap: 28px; box-shadow: 0 24px 70px rgba(0,0,0,0.24); }
+    .quiz-cta-card h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .quiz-cta-card p { font-size: 18px; color: #737985; line-height: 1.5; }
+    .btn-quiz { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; padding: 14px 22px; background: #e8b82f; color: #0b1120; border-radius: 6px; font-size: 15px; font-weight: 800; transition: background 0.2s, transform 0.1s; flex-shrink: 0; }
+    .btn-quiz:hover { background: #d4a520; }
+    .btn-quiz:active { transform: scale(0.98); }
+    .quiz-sticky { position: fixed; left: 50%; bottom: 18px; transform: translate(-50%, 14px); opacity: 0; visibility: hidden; pointer-events: none; z-index: 950; width: min(438px, calc(100% - 32px)); min-height: 148px; display: grid; grid-template-columns: 112px 1fr; background: #ffffff; color: #161b26; border: 1px solid rgba(11,17,32,0.10); border-radius: 4px; box-shadow: 0 18px 54px rgba(0,0,0,0.28); overflow: hidden; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; }
+    body.show-quiz-sticky .quiz-sticky { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; }
+    .quiz-sticky-media { width: 100%; height: 100%; object-fit: cover; object-position: 48% 38%; }
+    .quiz-sticky-content { position: relative; padding: 18px 42px 18px 20px; }
+    .quiz-sticky-close { position: absolute; top: 10px; right: 12px; width: 24px; height: 24px; display: grid; place-items: center; background: transparent; border: none; color: #c5c8d0; font-size: 22px; line-height: 1; cursor: pointer; }
+    .quiz-sticky-close:hover { color: #161b26; }
+    .quiz-sticky h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+    .quiz-sticky p { font-size: 14px; color: #343a46; line-height: 1.35; margin-bottom: 20px; }
+    .quiz-sticky-link { display: inline-flex; align-items: center; gap: 14px; color: #161b26; font-size: 15px; font-weight: 500; }
+    .quiz-sticky-link span { font-size: 24px; line-height: 1; transform: translateY(-1px); }
+
+    /* ===== FOOTER ===== */
+    .site-footer { background: #000000; border-top: 1px solid #222; padding: 178px 0 40px; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
+    .footer-left { flex: 1 1 300px; }
+    .footer-nav { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+    .footer-nav a { color: #fff; font-size: 15px; text-decoration: underline; transition: opacity 0.2s; }
+    .footer-nav a:hover { opacity: 0.7; }
+    .footer-legal { line-height: 1.7; }
+    .footer-legal p { margin-bottom: 0; color: rgba(255,255,255,0.55); font-size: 14px; }
+    .footer-legal a { color: rgba(255,255,255,0.55); font-size: 14px; text-decoration: underline; }
+    .footer-legal a:hover { color: #fff; }
+    .footer-right { flex: 0 0 auto; text-align: right; }
+    .footer-contact { margin-bottom: 24px; }
+    .footer-contact p { margin-bottom: 4px; font-size: 15px; }
+    .footer-contact a { color: #fff; text-decoration: underline; }
+    .footer-contact a:hover { opacity: 0.7; }
+    .footer-social-label { font-size: 15px; color: #fff; margin-bottom: 12px; }
+    .footer-social { display: flex; gap: 16px; justify-content: flex-end; margin-bottom: 24px; }
+    .footer-social a { color: #fff; transition: opacity 0.2s; }
+    .footer-social a:hover { opacity: 0.7; }
+    .footer-social svg { width: 28px; height: 28px; fill: #fff; }
+    .footer-partner { font-size: 14px; color: rgba(255,255,255,0.55); }
+    .footer-partner a { color: #3d9e5f; font-weight: 600; text-decoration: underline; }
+    .footer-partner a:hover { opacity: 0.8; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .includes-grid { grid-template-columns: 1fr 1fr; gap: 38px 22px; }
+      .include-item p { font-size: 16px; }
+      .emotion-layout { grid-template-columns: 1fr; gap: 34px; }
+      .emotion-chart-card { padding: 24px; }
+      .quiz-cta-section { margin-bottom: -168px; }
+      .quiz-cta-card { padding: 36px 28px; flex-direction: column; align-items: flex-start; }
+      .quiz-sticky { grid-template-columns: 94px 1fr; min-height: 142px; bottom: 14px; }
+      .quiz-sticky-content { padding: 16px 36px 16px 18px; }
+      .quiz-sticky h3 { font-size: 16px; margin-bottom: 8px; }
+      .quiz-sticky p { font-size: 13px; margin-bottom: 14px; }
+      .site-footer { padding-top: 224px; }
+      .form-card { padding: 32px 24px; }
+      .hero { padding: 120px 20px 60px; }
+      .site-nav { display: none; }
+      .btn-get-started.desktop-only { display: none; }
+      .mobile-menu-btn { display: block; }
+      .footer-inner { flex-direction: column; gap: 32px; }
+      .footer-right { text-align: left; }
+      .footer-social { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .stat-item .stat-num { font-size: 32px; }
+      .report-includes { padding: 60px 20px; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .emotion-section { padding: 64px 20px; }
+      .emotion-row { grid-template-columns: 28px minmax(0, 1fr) 40px; gap: 10px; }
+      .emotion-name { font-size: 13px; }
+      .emotion-pct { font-size: 14px; }
+      .quiz-cta-section { padding: 0 20px; }
+      .quiz-sticky { grid-template-columns: 82px 1fr; min-height: 132px; }
+      .quiz-sticky h3 { font-size: 15px; }
+      .quiz-sticky p { font-size: 12px; }
+      .quiz-sticky-link { font-size: 14px; }
+    }
+  </style>
+<link rel="stylesheet" href="/assets/bif-shell.css">
+</head>
+<body data-bif-sticky="off" data-bif-callout="off" data-bif-footer-overlap>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <p class="hero-eyebrow">Original Research / 2026</p>
+  <h1>The (Social Media) <span class="accent">Theory of Everything</span></h1>
+  <p class="hero-sub">A Black Iris Films analysis of 742 Instagram Reels and TikTok videos found emotion-led posts were 2.1x more likely to break into the top quartile of engagement.</p>
+
+  <a href="#find-out-more" class="btn-cta-bottom" onclick="document.getElementById('find-out-more').scrollIntoView({behavior:'smooth'});return false;">Download Free Report</a>
+</section>
+
+<!-- ===== STATS STRIP ===== -->
+<section class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">742</div>
+      <div class="stat-label">Videos analysed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48</div>
+      <div class="stat-label">Brands across 5 sectors</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2.1x</div>
+      <div class="stat-label">Breakout odds for emotional content</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Top 10 videos that are informational</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT'S INCLUDED ===== -->
+<section class="report-includes">
+  <div class="report-includes-inner">
+    <h2>What's included in the report:</h2>
+    <div class="includes-grid">
+      <div class="include-item">
+        <span class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M7 38h34"/><path d="M10 34l8-10 8 5 12-18"/><path d="M35 11h3v3"/></svg>
+        </span>
+        <p>Where does performance actually come from?</p>
+      </div>
+      <div class="include-item">
+        <span class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 6v36"/><path d="M32 14c-2-3-6-5-10-4-4 1-7 4-7 8 0 5 5 7 10 8 5 1 9 3 9 8 0 4-3 7-8 8-5 1-10-1-12-5"/></svg>
+        </span>
+        <p>Why is finance the top industry for emotion?</p>
+      </div>
+      <div class="include-item">
+        <span class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="8" y="10" width="13" height="13" rx="2"/><rect x="27" y="10" width="13" height="13" rx="2"/><rect x="8" y="29" width="13" height="9" rx="2"/><rect x="27" y="29" width="13" height="9" rx="2"/></svg>
+        </span>
+        <p>What do top-performing posts look like?</p>
+      </div>
+      <div class="include-item">
+        <span class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M10 16h21"/><path d="M25 10l6 6-6 6"/><path d="M38 32H17"/><path d="M23 26l-6 6 6 6"/></svg>
+        </span>
+        <p>How do you turn views into meaningful engagement?</p>
+      </div>
+      <div class="include-item">
+        <span class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M18 12h22"/><path d="M18 24h22"/><path d="M18 36h22"/><path d="M8 12l3 3 5-6"/><path d="M8 24l3 3 5-6"/><path d="M8 36l3 3 5-6"/></svg>
+        </span>
+        <p>What should a CMO actually do differently?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EMOTION HIERARCHY ===== -->
+<section class="emotion-section">
+  <div class="emotion-layout">
+    <div class="emotion-copy">
+      <p class="eyebrow">The Emotion Hierarchy</p>
+      <h2>Which emotions should actually be in your brief?</h2>
+      <p>If you asked most marketing teams what kind of emotional content performs best, they'd probably say humour, or something that grabs attention. The data disagrees. There are seven emotion types in this study, and the gap between the ones that work and the ones that don't is bigger than you'd expect.</p>
+      <p>The winning family, empathy, pride, belonging, aspiration, and trust, hits the top quartile <strong>39% of the time.</strong> The losing family, humour, fear, and curiosity, hits it <strong>16.7% of the time.</strong> After accounting for brand differences, the winning group is <strong>3.3x more likely to break out</strong> (p&lt;0.001).</p>
+      <p>These emotions work because they mirror what someone feels during a big financial or career decision: recognition, a sense of identity, confidence about the future. They go somewhere real. The losing emotions, however attention-grabbing, tend to stay on the surface.</p>
+
+      <div class="cmo-takeaway">
+        <span class="label">CMO Takeaway</span>
+        <p>The emotion should be named in the brief before a single frame is storyboarded. Not "emotional content" - which emotion, specifically. Empathy, belonging, aspiration, or trust. That decision belongs upstream, not in the edit.</p>
+      </div>
+    </div>
+
+    <div class="emotion-chart-card">
+      <div class="emotion-chart-title">Top-quartile hit rate by emotion</div>
+      <div class="emotion-row">
+        <span class="emotion-rank">01</span>
+        <div>
+          <span class="emotion-name">Empathy / Connection</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:100%"></span></span>
+        </div>
+        <span class="emotion-pct">45%</span>
+      </div>
+      <div class="emotion-row">
+        <span class="emotion-rank">02</span>
+        <div>
+          <span class="emotion-name">Pride / Belonging</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:93%"></span></span>
+        </div>
+        <span class="emotion-pct">42%</span>
+      </div>
+      <div class="emotion-row">
+        <span class="emotion-rank">03</span>
+        <div>
+          <span class="emotion-name">Aspiration / Awe</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:69%"></span></span>
+        </div>
+        <span class="emotion-pct">31%</span>
+      </div>
+      <div class="emotion-row">
+        <span class="emotion-rank">04</span>
+        <div>
+          <span class="emotion-name">Authority / Trust<sup>*</sup></span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:67%"></span></span>
+        </div>
+        <span class="emotion-pct">30%</span>
+      </div>
+
+      <div class="emotion-divider">Dividing line: winning vs. losing family</div>
+
+      <div class="emotion-row losing">
+        <span class="emotion-rank">05</span>
+        <div>
+          <span class="emotion-name">Humour / Joy</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:47%"></span></span>
+        </div>
+        <span class="emotion-pct">21%</span>
+      </div>
+      <div class="emotion-row losing">
+        <span class="emotion-rank">06</span>
+        <div>
+          <span class="emotion-name">Fear / Urgency</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:20%"></span></span>
+        </div>
+        <span class="emotion-pct">9%</span>
+      </div>
+      <div class="emotion-row losing">
+        <span class="emotion-rank">07</span>
+        <div>
+          <span class="emotion-name">Curiosity / Surprise</span>
+          <span class="emotion-bar"><span class="emotion-fill" style="width:18%"></span></span>
+        </div>
+        <span class="emotion-pct">8%</span>
+      </div>
+      <p class="emotion-note">* Directional only - based on n=20</p>
+
+      <div class="family-summary">
+        <div><strong>Winning family</strong> (EMP + PRI + ASP + AUT): <strong>39%</strong> top-quartile hit rate</div>
+        <div><strong>Losing family</strong> (HUM + FER + CUR): <strong>16.7%</strong> top-quartile hit rate</div>
+        <div class="odds">Odds ratio: 3.3x (p&lt;0.001)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="bottom-cta" id="find-out-more">
+  <h2>Find out more</h2>
+  <p>Data, sector breakdowns, characteristics of top performing posts, and a framework you can use on Monday morning.</p>
+  <div class="form-card" id="lead-form">
+    <h3>Download the free report</h3>
+    <p class="form-sub">Get the full 30-page study with data, frameworks, and sector breakdowns.</p>
+    <form action="/api/report-download" method="POST">
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@company.com">
+      </div>
+      <label class="checkbox-group">
+        <input type="checkbox" name="subscribe" value="yes">
+        <span>Subscribe for exclusive insights on marketing and creative content</span>
+      </label>
+      <button type="submit" class="btn-download">Download Free Report</button>
+      <p class="form-note">No spam. Unsubscribe anytime. Your data stays with us.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== QUIZ CTA ===== -->
+<section class="quiz-cta-section">
+  <div class="quiz-cta-card">
+    <div>
+      <h2>See what your video price might be</h2>
+      <p>Answer a 1-minute quiz and get an instant, tailored estimate.</p>
+    </div>
+    <a href="/estimate" class="btn-quiz">Start quiz</a>
+  </div>
+</section>
+
+
+<aside class="quiz-sticky" aria-label="Pricing quiz" id="quizSticky">
+  <img class="quiz-sticky-media" src="the-social-media-theory-of-everything/9389162002/assets/cta-portrait.png" data-production-src="/the-social-media-theory-of-everything/9389162002/assets/cta-portrait.png" alt="">
+  <div class="quiz-sticky-content">
+    <button type="button" class="quiz-sticky-close" aria-label="Hide pricing quiz" onclick="dismissQuizSticky()">&times;</button>
+    <h3>1-minute video estimate</h3>
+    <p>See what price a project like yours might be, tailored to your brief.</p>
+    <a href="/estimate" class="quiz-sticky-link">Start quiz <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</aside>
+
+<script>
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  var quizStickyDismissed = false;
+  document.querySelectorAll('[data-production-src]').forEach(function(img) {
+    if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+      img.src = img.getAttribute('data-production-src');
+    }
+  });
+
+  function dismissQuizSticky() {
+    quizStickyDismissed = true;
+    document.body.classList.remove('show-quiz-sticky');
+  }
+
+  function updateQuizSticky() {
+    var hero = document.querySelector('.hero');
+    var bottomQuiz = document.querySelector('.quiz-cta-section');
+    var afterHero = hero ? hero.getBoundingClientRect().bottom < window.innerHeight - 120 : window.scrollY > 600;
+    var bottomQuizVisible = bottomQuiz ? bottomQuiz.getBoundingClientRect().top < window.innerHeight - 80 : false;
+    var shouldShow = afterHero && !bottomQuizVisible;
+    document.body.classList.toggle('show-quiz-sticky', shouldShow && !quizStickyDismissed);
+  }
+  window.addEventListener('scroll', updateQuizSticky, { passive: true });
+  window.addEventListener('resize', updateQuizSticky);
+  updateQuizSticky();
+</script>
+
+<script src="/assets/bif-shell.js" defer></script>
+
+</body>
+</html>

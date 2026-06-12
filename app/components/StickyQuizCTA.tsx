@@ -64,7 +64,7 @@ export function StickyQuizCTA() {
           Answer a few quick questions and get a tailored estimate for your
           video.
         </p>
-        <a href="https://quiz.blackirisfilms.com/" className="quiz-sticky-link">
+        <a href="/estimate/" className="quiz-sticky-link">
           <span className="quiz-sticky-label">Start quiz</span>
           <span className="quiz-sticky-arrow" aria-hidden="true">
             &rarr;

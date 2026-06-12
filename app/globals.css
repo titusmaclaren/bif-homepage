@@ -11,6 +11,11 @@
   --color-bif-green: #3d9e5f;
   --color-bif-green-hover: #348a52;
   --color-sky-pale: #B7C8D8;
+  --color-blue-slate: #4B6B8B;
+  --color-mint-soft: #8FC9A8;
+  --color-text-primary: #1A1F2E;
+  --color-text-secondary: #5A6478;
+  --color-border-light: #E8E8E5;
   --color-fog: #D5D8DE;
   --color-mist: #8993A5;
   --color-off-white: #FAFAF8;
@@ -40,6 +45,108 @@ body {
 }
 
 main { padding-top: 72px; }
+
+/* Quote estimator, migrated from the standalone bif-estimator app. */
+.estimator-shell {
+  background: #FAFAF8;
+  color: #1A1F2E;
+  font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
+}
+
+.estimator-shell .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  height: 72px;
+  background: #000000;
+}
+
+.estimator-shell .header-inner {
+  width: min(100% - 48px, 1260px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.estimator-shell .header-logo,
+.estimator-shell .nav-logo-svg {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.estimator-shell .nav-logo-svg svg {
+  display: block;
+  width: auto;
+  height: 52px;
+  transform: translateY(4px);
+}
+
+.estimator-shell .header-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 20px;
+}
+
+.estimator-shell .header-contact {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.estimator-shell .header-contact-phone {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.estimator-shell .btn-book-intro {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.estimator-shell .btn-book-intro:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.estimator-shell .below-header { padding-top: 72px; }
+.estimator-shell main.estimator-main { padding-top: 2.5rem; }
+
+.estimator-shell details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.estimator-shell details > summary::-webkit-details-marker { display: none; }
+
+.estimator-shell :focus-visible {
+  outline: 2px solid #29334D;
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .estimator-shell main.estimator-main { padding-top: 4rem; }
+}
+
+@media (max-width: 720px) {
+  .estimator-shell .header-contact { display: none; }
+}
 
 main h1:not(.bif-hero-h1),
 main h2,

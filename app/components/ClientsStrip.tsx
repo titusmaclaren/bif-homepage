@@ -223,7 +223,7 @@ export function ClientsStrip() {
 
       <div className="text-center mt-6">
         <a
-          href="https://www.blackirisfilms.com/get-a-quote#testimonials"
+          href="/contact#testimonials"
           className="text-[12px] uppercase tracking-[0.18em] text-mint hover:text-mint-bright font-medium"
         >
           What else our clients say

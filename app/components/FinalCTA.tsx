@@ -17,7 +17,7 @@ export function FinalCTA() {
           </p>
         </div>
         <a
-          href="https://quiz.blackirisfilms.com/"
+          href="/estimate/"
           className="inline-flex min-h-[52px] shrink-0 items-center justify-center rounded-[3px] bg-[#3d9e5f] px-8 py-3.5 text-sm font-bold uppercase tracking-[0.04em] text-white transition-colors hover:bg-[#348a52]"
         >
           Start quiz

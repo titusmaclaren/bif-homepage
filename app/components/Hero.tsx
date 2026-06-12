@@ -384,7 +384,7 @@ export function Hero() {
           </p>
           <a
             className="bif-hero-cta"
-            href="https://quiz.blackirisfilms.com"
+            href="/estimate"
             target="_blank"
             rel="noopener noreferrer"
           >

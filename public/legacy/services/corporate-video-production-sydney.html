@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Video Production Sydney | Black Iris Films</title>
+  <meta name="description" content="Black Iris Films produces high-impact corporate videos for Sydney businesses. Brand films, explainers, testimonials, internal comms. Fixed price, 10-day turnaround.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: #3d9e5f; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #000000;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: #000000;
+      height: 72px;
+    }
+    .header-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      align-self: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .header-logo img { width: 40px; height: 40px; }
+    .header-logo { display: flex; align-items: center; text-decoration: none; line-height: 0; }
+    .nav-logo-svg { display: inline-flex; align-items: center; line-height: 0; }
+    .nav-logo-svg svg { height: 48px; width: auto; display: block; flex-shrink: 0; transform: translateY(7px); }
+    .logo-text {
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .logo-iris { font-weight: 400; }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .site-nav a,
+    .nav-dropdown-toggle {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: opacity 0.2s;
+    }
+    .site-nav a:hover,
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle:focus {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-dropdown-toggle {
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: default;
+    }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      width: 360px;
+      padding: 10px;
+      background: #050505;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.42);
+      transform: translate(-50%, 8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    }
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -22px;
+      height: 22px;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 600;
+    }
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus {
+      opacity: 1;
+      background: #111;
+      color: #ffffff;
+      outline: none;
+    }
+    .btn-get-started {
+      background: #3d9e5f;
+      color: #ffffff !important;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 3px;
+      text-decoration: none !important;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-get-started:hover { background: #348a52; }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #000;
+      padding: 20px 24px 28px;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+    .mobile-nav a {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .mobile-nav .btn-get-started {
+      display: inline-block;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-services summary {
+      list-style: none;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .mobile-services summary::-webkit-details-marker { display: none; }
+    .mobile-service-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 14px 0 2px 14px;
+      border-left: 1px solid rgba(255,255,255,0.16);
+    }
+    .mobile-service-links a {
+      font-size: 13px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: #cbd5e1;
+    }
+
+    /* ── SECTION UTILITY ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 80px 0; }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3d9e5f;
+      margin-bottom: 14px;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .btn-green {
+      display: inline-block;
+      background: #3d9e5f;
+      color: #ffffff !important;
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 3px;
+      text-decoration: none !important;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-green:hover { background: #348a52; text-decoration: none !important; }
+    .btn-dark {
+      display: inline-block;
+      background: #080808;
+      color: #ffffff !important;
+      padding: 15px 34px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: #222; text-decoration: none !important; }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ── GOOGLE REVIEWS WIDGET ── */
+    .google-reviews-widget {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px 24px 16px;
+      max-width: 520px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .gr-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .gr-header-left { display: flex; align-items: center; gap: 12px; }
+    .gr-icon { flex-shrink: 0; }
+    .gr-score { font-size: 22px; font-weight: 800; color: #1a1a1a; line-height: 1; }
+    .gr-stars { color: #fbbc04; font-size: 18px; }
+    .gr-count { font-size: 11px; font-weight: 700; color: #666; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+    .gr-view-all { font-size: 12px; color: #3d9e5f; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .gr-view-all:hover { text-decoration: underline; }
+    .gr-review { border-top: 1px solid #f0f0f0; padding: 14px 0; }
+    .gr-review:last-child { padding-bottom: 4px; }
+    .gr-review-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .gr-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .gr-reviewer-name { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+    .gr-review-meta { font-size: 12px; color: #888; margin-top: 1px; }
+    .gr-review-meta { color: #fbbc04; }
+    .gr-logo { margin-left: auto; flex-shrink: 0; }
+    .gr-text { font-size: 13px; color: #555; line-height: 1.6; }
+    /* ── SECTION 1: HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #000;
+      padding-top: 72px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/assets/hero-corporate-generated.png') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      width: 100%;
+    }
+    .hero-left { flex: 1 1 58%; }
+    .hero-left .eyebrow { color: #3d9e5f; margin-bottom: 18px; font-size: 13px; }
+    .hero-left h1 {
+      font-size: 50px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.08;
+      font-weight: 700;
+    }
+    .hero-left p {
+      color: rgba(255,255,255,0.85);
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+    .hero-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 8px 16px;
+    }
+    .hero-google-badge .g-icon { width: 20px; height: 20px; flex-shrink: 0; }
+    .hero-google-badge .star-rating { color: #fbbf24; font-weight: 700; font-size: 15px; }
+    .hero-google-badge .stars { color: #fbbf24; font-size: 14px; letter-spacing: 1px; }
+    .hero-google-badge .review-count {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+    .hero-actions .btn-green {
+      padding: 14px 30px;
+      min-width: 190px;
+      text-align: center;
+    }
+    .hero-how-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+    .hero-how-button:hover { color: #3d9e5f; }
+    .hero-how-button .play-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-how-button .play-icon::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #000;
+      margin-left: 2px;
+    }
+
+    /* ── HERO FORM ── */
+    /* ── SECTION 2: SOCIAL PROOF STRIP ── */
+    .social-proof {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 40px 0;
+    }
+    .social-proof-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .google-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .google-badge .g-icon { flex-shrink: 0; }
+    .google-badge .star-rating { font-weight: 700; font-size: 16px; color: #1a1a1a; }
+    .google-badge .stars { color: #fbbf24; font-size: 16px; letter-spacing: 1px; }
+    .google-badge .review-count { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.04em; }
+    .trust-text { font-size: 15px; color: #555; }
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .logo-strip img {
+      height: 32px;
+      width: auto;
+      opacity: 0.55;
+      filter: grayscale(100%);
+      transition: opacity 0.3s, filter 0.3s;
+    }
+    .logo-strip img:hover { opacity: 1; filter: grayscale(0%); }
+
+    /* ── SECTION 3: FEATURED WORK + TESTIMONIAL ── */
+    .featured-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+    .featured-grid {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    .featured-video {
+      flex: 1 1 55%;
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .featured-video img { width: 100%; height: 100%; object-fit: cover; }
+    .featured-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .play-btn-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.25);
+      transition: background 0.3s;
+    }
+    .play-btn-overlay:hover { background: rgba(0,0,0,0.1); }
+    .play-btn-circle {
+      width: 68px;
+      height: 68px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .play-btn-overlay:hover .play-btn-circle { transform: scale(1.08); }
+    .play-btn-circle svg { margin-left: 3px; }
+    .featured-testimonial { flex: 1 1 40%; }
+    .featured-testimonial .client-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3d9e5f;
+      margin-bottom: 14px;
+    }
+    .featured-testimonial blockquote {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
+      font-style: italic;
+      margin-bottom: 20px;
+      border-left: 3px solid #3d9e5f;
+      padding-left: 20px;
+    }
+    .featured-testimonial .attribution {
+      font-size: 14px;
+      color: #555;
+      font-weight: 600;
+    }
+    .featured-testimonial .attribution span { font-weight: 400; color: #888; }
+    .featured-testimonial .stars-small { color: #fbbf24; font-size: 15px; margin-top: 8px; }
+
+    /* ── SECTION 4: DARK STATEMENT ── */
+    .dark-statement {
+      background: #000000;
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark-statement::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(61,158,95,0.06) 0%, transparent 70%);
+    }
+    .dark-statement h2 {
+      font-size: 46px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .dark-statement p {
+      color: rgba(255,255,255,0.65);
+      font-size: 17px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+      position: relative;
+    }
+
+    /* ── SECTION 5: PORTFOLIO GRID ── */
+    .portfolio-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+    .portfolio-section h2 {
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .portfolio-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .portfolio-card:hover img { transform: scale(1.04); }
+    .portfolio-card .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      transition: background 0.3s;
+    }
+    .portfolio-card:hover .card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 50%);
+    }
+    .portfolio-card .card-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .portfolio-card:hover .card-play { transform: translate(-50%, -50%) scale(1.08); }
+    .portfolio-card .card-play svg { margin-left: 2px; }
+    .portfolio-card .card-title {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .portfolio-card .card-label {
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    /* placeholder style */
+    .portfolio-card.placeholder-card {
+      background: #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .placeholder-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      inset: 0;
+      padding: 20px;
+    }
+    .placeholder-inner .card-play {
+      position: static;
+      transform: none;
+      margin-bottom: 14px;
+      opacity: 0.5;
+    }
+    .placeholder-inner .card-title {
+      color: rgba(255,255,255,0.7);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .placeholder-inner .card-label {
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .portfolio-note {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-panel {
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .lightbox-panel.video-only {
+      max-width: 1080px;
+      overflow-y: visible;
+    }
+    .lightbox-panel.video-only .lightbox-info {
+      display: none;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-video { width: 100%; }
+    .video-embed-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-embed-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .lightbox-info { padding: 24px 28px 28px; }
+    .lightbox-info h3 { color: #fff; font-size: 22px; margin-bottom: 12px; }
+    .lightbox-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .lightbox-meta p { font-size: 13px; color: rgba(255,255,255,0.7); }
+    .lightbox-meta strong { color: rgba(255,255,255,0.9); }
+    .lightbox-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 20px; }
+    .lightbox-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+
+    /* ── SECTION 6: PROBLEMS ── */
+    .problems-section {
+      background: #eef3f5;
+      padding: 80px 0;
+    }
+    .problems-section .eyebrow { text-align: center; }
+    .problems-section h2 {
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .problems-section > .container > p {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 44px;
+      color: #555;
+      font-size: 16px;
+    }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .problem-card {
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      font-size: 15px;
+      line-height: 1.55;
+      color: #333;
+      font-style: italic;
+      border-left: 3px solid #d1d5db;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .problem-card:hover {
+      border-left-color: #3d9e5f;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .problems-cta { text-align: center; }
+
+    /* ── SECTION 7: WHY BIF ── */
+    .why-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+    .why-section h2 { font-size: 38px; margin-bottom: 12px; }
+    .why-section .why-sub {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .why-section .why-body {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+    .why-card {
+      background: #f7f9fa;
+      border-radius: 6px;
+      padding: 28px 24px;
+    }
+    .why-card .why-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #3d9e5f;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .why-card h4 { font-size: 17px; margin-bottom: 6px; }
+    .why-card p { font-size: 14px; color: #555; line-height: 1.55; }
+    .why-plug {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.65;
+      max-width: 700px;
+    }
+
+    /* ── SECTION 8: TESTIMONIALS ── */
+    .testimonials-section {
+      background: #f2f5f7;
+      padding: 80px 0;
+    }
+    .testimonials-section .eyebrow { text-align: center; }
+    .testimonials-section h2 { font-size: 38px; text-align: center; margin-bottom: 44px; }
+    .testimonial-cards {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 32px 28px;
+      max-width: 500px;
+      flex: 1 1 420px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .testimonial-card .stars-small { color: #fbbf24; font-size: 16px; margin-bottom: 14px; }
+    .testimonial-card blockquote {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .testimonial-card .attribution { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+    .testimonial-card .attribution span { font-weight: 400; color: #888; }
+
+    /* ── SECTION 9: FAQ ── */
+    .faq-section {
+      background: #ffffff;
+      padding: 80px 0;
+    }
+    .faq-section h2 { font-size: 38px; text-align: center; margin-bottom: 44px; }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 0;
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+    .faq-question:hover { color: #3d9e5f; }
+    .faq-icon {
+      font-size: 22px;
+      font-weight: 300;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+      color: #999;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+    .faq-answer-inner {
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── SECTION 10: FINAL CTA ── */
+    .contact-team-section {
+      background: #ffffff;
+      padding: 96px 0 72px;
+    }
+    .contact-team-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 72px;
+      align-items: center;
+    }
+    .contact-team-copy h2 {
+      color: #000;
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 360px;
+    }
+    .contact-team-copy p {
+      color: #111;
+      font-size: 17px;
+      line-height: 1.55;
+      margin-bottom: 28px;
+      max-width: 430px;
+    }
+    .contact-team-copy .contact-phone {
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .contact-team-copy .contact-phone a {
+      color: #000;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .contact-team-image {
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #111;
+    }
+    .contact-team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pricing-callout-section {
+      background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+      padding: 0 0 8px;
+    }
+    .pricing-callout {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 30px 34px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .pricing-callout h2 {
+      color: #000;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .pricing-callout p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #000000;
+      padding: 56px 0 40px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .footer-left { flex: 1 1 300px; }
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .footer-nav a {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: #ffffff; }
+    .footer-legal p { margin-bottom: 2px; color: rgba(255,255,255,0.45); font-size: 13px; }
+    .footer-legal a { color: rgba(255,255,255,0.5); font-size: 13px; }
+    .footer-legal a:hover { color: #fff; }
+    .footer-right { flex: 0 0 auto; text-align: right; }
+    .footer-contact { margin-bottom: 20px; }
+    .footer-contact p { margin-bottom: 4px; }
+    .footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .footer-contact a:hover { color: #fff; }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .footer-social a img {
+      width: 34px;
+      height: 34px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .footer-social a:hover img { opacity: 1; }
+    .footer-partner { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-partner a {
+      color: #3d9e5f;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-partner a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .site-nav { display: none; }
+      .btn-get-started.desktop-only { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-inner { flex-direction: column; gap: 36px; }
+      .hero-left h1 { font-size: 36px; }
+      .featured-grid { flex-direction: column; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .problems-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-right { text-align: left; }
+      .footer-social { justify-content: flex-start; }
+      .dark-statement h2 { font-size: 34px; }
+      .contact-team-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-team-copy h2 { font-size: 34px; }
+      .pricing-callout { margin: 0 24px; }
+      .lightbox-panel { max-width: 96vw; }
+      .lightbox-meta { flex-direction: column; gap: 6px; }
+    }
+    @media (max-width: 600px) {
+      .hero-left h1 { font-size: 30px; }
+      .hero-left p { font-size: 16px; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .social-proof-inner { flex-direction: column; text-align: center; }
+      .logo-strip { justify-content: center; }
+      .testimonial-cards { flex-direction: column; }
+      .contact-team-section { padding: 68px 0 48px; }
+      .pricing-callout {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px 24px;
+      }
+    }
+
+    /* ===== STICKY QUIZ CTA ===== */
+    .quiz-sticky {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translate(-50%, 14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 950;
+      width: min(438px, calc(100% - 32px));
+      min-height: 148px;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      background: #ffffff;
+      color: #161b26;
+      border: 1px solid rgba(11,17,32,0.10);
+      border-radius: 4px;
+      box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+      overflow: hidden;
+      transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s;
+    }
+    body.show-quiz-sticky .quiz-sticky {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+       transition-delay: 0s;
+      transition-delay: 0s;
+    }
+    .quiz-sticky-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 46% 42%;
+    }
+    .quiz-sticky-content {
+      position: relative;
+      padding: 18px 42px 18px 20px;
+    }
+    .quiz-sticky-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: none;
+      color: #c5c8d0;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .quiz-sticky-close:hover { color: #161b26; }
+    .quiz-sticky h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #161b26;
+    }
+    .quiz-sticky p {
+      font-size: 14px;
+      color: #343a46;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+    .quiz-sticky-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: #161b26;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .quiz-sticky-link:hover {
+      color: #3d9e5f;
+      text-decoration: none;
+    }
+    .quiz-sticky-link:hover .quiz-sticky-label { text-decoration: underline; }
+    .quiz-sticky-link .quiz-sticky-arrow {
+      font-size: 24px;
+      line-height: 1;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+      .quiz-sticky {
+        grid-template-columns: 94px 1fr;
+        min-height: 142px;
+        bottom: 14px;
+      }
+      .quiz-sticky-content { padding: 16px 36px 16px 18px; }
+      .quiz-sticky h3 { font-size: 16px; margin-bottom: 8px; }
+      .quiz-sticky p { font-size: 13px; margin-bottom: 14px; }
+    }
+    @media (max-width: 600px) {
+      .quiz-sticky {
+        grid-template-columns: 82px 1fr;
+        min-height: 108px;
+      }
+      .quiz-sticky-content { padding: 14px 34px 14px 16px; }
+      .quiz-sticky h3 { font-size: 15px; }
+      .quiz-sticky p { display: none; }
+      .quiz-sticky-link { font-size: 14px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Black Iris Films",
+    "description": "Sydney-based video production agency specialising in corporate, education, and brand content.",
+    "url": "",
+    "telephone": "+61282013504",
+    "email": "info@blackirisfilms.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Sydney"
+    },
+    "priceRange": "$$",
+    "image": "https://bif-services.vercel.app/favicon.png",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "7",
+      "bestRating": "5"
+    },
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Corporate Video Production",
+        "description": "Professional corporate video production in Sydney. Brand films, testimonial videos, event coverage, training content, and social media assets. Fixed price, 10-day turnaround.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Black Iris Films"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Sydney"
+        }
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <span class="nav-logo-svg" aria-label="Black Iris Films"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 698.93 170.24" height="52"><defs><style>.cls-1{fill:none;}.cls-2{font-size:42px;fill:#f5f6f8;font-family:'Montserrat',Arial,sans-serif;font-weight:800;letter-spacing:0.22em;}.cls-3{font-family:'Montserrat',Arial,sans-serif;font-weight:300;}.cls-3,.cls-5{letter-spacing:0.22em;}.cls-4{letter-spacing:0.22em;}.cls-5{font-family:'Montserrat',Arial,sans-serif;font-weight:500;}.cls-6{clip-path:url(#clip-path);}.cls-7{clip-path:url(#clip-path-2);}.cls-8{fill:url(#linear-gradient);}.cls-9{clip-path:url(#clip-path-3);}.cls-10{fill:url(#linear-gradient-2);}.cls-11{clip-path:url(#clip-path-4);}.cls-12{fill:url(#linear-gradient-3);}</style><clipPath id="clip-path" transform="translate(5.74 -17.57)"><rect class="cls-1" width="159.33" height="159.48"/></clipPath><clipPath id="clip-path-2" transform="translate(5.74 -17.57)"><path class="cls-1" d="M21.35,63.07c-1.77.56-4.54,3.92-4.54,3.92l.84,26.56a15,15,0,0,0,9.31,6c7.11,1.56,4.9-1.43,22.8-6.78l-.2-27.88C38.63,62,33.25,61,29.78,61s-5.07,1-8.43,2.09"/></clipPath><linearGradient id="linear-gradient" x1="-33.17" y1="-139.91" x2="-33.02" y2="-139.91" gradientTransform="matrix(0, -258.5, -258.5, 0, -36127.06, -8491.93)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#131316"/><stop offset="0.5" stop-color="#2c2d2f"/><stop offset="1" stop-color="#131316"/></linearGradient><clipPath id="clip-path-3" transform="translate(5.74 -17.57)"><path class="cls-1" d="M19.33,95.43l-1.68-1.88a4.68,4.68,0,0,0,1.68,1.88M27,97.32c-4,0-6.34-.95-7.68-1.89l24.74,27.71c.35.37,2.06,2.3,3.68,2.62a12.67,12.67,0,0,0,4.84,0c2-.62,87-30.13,87-30.13a3.68,3.68,0,0,0,1.53-1.08l0-.34a1.87,1.87,0,0,0-1-.48L97.09,79.29Z"/></clipPath><linearGradient id="linear-gradient-2" x1="-31.34" y1="-140.75" x2="-31.18" y2="-140.75" gradientTransform="matrix(819.76, 0, 0, -819.76, 25727.96, -115279.36)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#303c59"/><stop offset="0.03" stop-color="#303c59"/><stop offset="0.13" stop-color="#4b5d8b"/><stop offset="0.28" stop-color="#495a87"/><stop offset="0.44" stop-color="#42527a"/><stop offset="0.61" stop-color="#364364"/><stop offset="0.77" stop-color="#273047"/><stop offset="0.92" stop-color="#151a26"/><stop offset="1" stop-color="#151a26"/></linearGradient><clipPath id="clip-path-4" transform="translate(5.74 -17.57)"><path class="cls-1" d="M139.49,95.69h0M16.81,67l.79-.9a5.18,5.18,0,0,0-.79.9M42.87,37.16,17.6,66.09c1.22-1.15,4-3,9.41-3.17,10.25-.3,102.39,27.78,112.12,30.71,2.28.69.49,2,.37,2.05a2.61,2.61,0,0,0,2.07-2.74L142.45,66c0-1.92-.43-2.3-2.27-2.89L51.46,33.46c-3.29.26-6.24.88-8.59,3.7"/></clipPath><linearGradient id="linear-gradient-3" x1="-29.81" y1="-139.5" x2="-29.66" y2="-139.5" gradientTransform="matrix(0, -832.34, -832.34, 0, -116032.28, -24683.14)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3d3159"/><stop offset="0.03" stop-color="#443764"/><stop offset="0.09" stop-color="#53427a"/><stop offset="0.16" stop-color="#5c4987"/><stop offset="0.22" stop-color="#5f4b8b"/><stop offset="0.36" stop-color="#5b4785"/><stop offset="0.55" stop-color="#503d75"/><stop offset="0.76" stop-color="#3d2b5b"/><stop offset="0.99" stop-color="#241336"/><stop offset="1" stop-color="#213"/></linearGradient></defs><title>Black Iris Films Text Logo</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><text class="cls-2" transform="translate(196.41 78.44)">BLACK <tspan class="cls-3" x="207.86" y="0">IRIS</tspan><tspan class="cls-4" x="314.91" y="0"> </tspan><tspan class="cls-5" x="336.58" y="0">FILM</tspan><tspan class="cls-5" x="469.18" y="0">S</tspan></text><g class="cls-6"><g class="cls-7"><rect class="cls-8" x="22.55" y="43.41" width="32.95" height="40.15"/></g><g class="cls-9"><rect class="cls-10" x="18.91" y="42.77" width="120.94" height="119.83" transform="translate(-43.44 67.32) rotate(-44.41)"/></g><g class="cls-11"><rect class="cls-12" x="47.13" y="1.08" width="65" height="126.99" transform="translate(19.05 125.18) rotate(-88.73)"/></g></g></g></g></svg></span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/learn">LEARN</a>
+      <a href="/#faq">FAQ</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true">SERVICES</button>
+        <div class="nav-dropdown-menu">
+          <a href="/corporate-video-production-sydney">Corporate Video Production Sydney</a>
+          <a href="/financial-video-production-sydney">Finance Video Production Sydney</a>
+          <a href="/higher-education-video-production-sydney">Higher Education Video Production Sydney</a>
+          <a href="/explainer-video-production-sydney">Explainer Video Production Sydney</a>
+          <a href="/tech-video-production-sydney">Tech &amp; SaaS Video Production Sydney</a>
+          <a href="/animated-video-production-sydney">Animated Video Production Sydney</a>
+          <a href="/brand-film-production-sydney">Brand Film Production Sydney</a>
+          <a href="/startup-video-production-sydney">Startup &amp; Scaleup Video Production Sydney</a>
+          <a href="/linkedin-video-production-sydney">LinkedIn &amp; B2B Social Video Production Sydney</a>
+        </div>
+      </div>
+      <a href="/#work">WORK</a>
+      <a href="/#about">ABOUT</a>
+    </nav>
+    <a href="/estimate/" class="btn-get-started desktop-only">GET AN ESTIMATE</a>
+    <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/learn">LEARN</a>
+  <a href="/#faq">FAQ</a>
+  <details class="mobile-services">
+    <summary>SERVICES</summary>
+    <div class="mobile-service-links">
+      <a href="/corporate-video-production-sydney">Corporate Video Production Sydney</a>
+      <a href="/financial-video-production-sydney">Finance Video Production Sydney</a>
+      <a href="/higher-education-video-production-sydney">Higher Education Video Production Sydney</a>
+      <a href="/explainer-video-production-sydney">Explainer Video Production Sydney</a>
+      <a href="/tech-video-production-sydney">Tech &amp; SaaS Video Production Sydney</a>
+      <a href="/animated-video-production-sydney">Animated Video Production Sydney</a>
+      <a href="/brand-film-production-sydney">Brand Film Production Sydney</a>
+      <a href="/startup-video-production-sydney">Startup &amp; Scaleup Video Production Sydney</a>
+      <a href="/linkedin-video-production-sydney">LinkedIn &amp; B2B Social Video Production Sydney</a>
+    </div>
+  </details>
+  <a href="/#work">WORK</a>
+  <a href="/#about">ABOUT</a>
+  <a href="/estimate/" class="btn-get-started">GET AN ESTIMATE</a>
+</nav>
+
+<!-- ════════ SECTION 1: HERO ════════ -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Corporate video production interview setup in Sydney"></div>
+  <div class="hero-inner">
+    <div class="hero-left fade-in">
+      <div class="eyebrow">CORPORATE VIDEO PRODUCTION AGENCY, SYDNEY</div>
+      <h1>Corporate Video That Gets Watched, Remembered, and Acted On</h1>
+      <p>High-impact corporate video production for Sydney businesses. Whether you need a brand film, an explainer, internal communications, or a testimonial series, we make it look premium and deliver it on time.</p>
+      <div class="hero-actions">
+        <a href="/estimate/" class="btn-green">Get an estimate</a>
+        <button type="button" class="hero-how-button" id="heroHowItWorks" onclick="openVideoOnlyLightbox('https://player.vimeo.com/video/280487304?h=fecbc652be&autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479')"><span class="play-icon" aria-hidden="true"></span>How it works</button>
+      </div>
+      <div class="hero-google-badge">
+        <svg class="g-icon" viewBox="0 0 24 24" width="20" height="20"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span class="star-rating">5.0</span>
+        <span class="stars">★★★★★</span>
+        <span class="review-count">7 REVIEWS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SECTION 2: SOCIAL PROOF STRIP ════════ -->
+<section class="social-proof fade-in">
+  <div class="container">
+    <div class="social-proof-inner">
+      <!-- ════════ GOOGLE REVIEWS WIDGET (static, replace with TrustIndex embed for live reviews) ════════ -->
+<div class="google-reviews-widget">
+  <div class="gr-header">
+    <div class="gr-header-left">
+      <svg class="gr-icon" viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <div>
+        <div class="gr-score">5.0 <span class="gr-stars">★★★★★</span></div>
+        <div class="gr-count">7 REVIEWS</div>
+      </div>
+    </div>
+    <a class="gr-view-all" href="https://www.google.com/maps/search/?api=1&query=Black+Iris+Films+Sydney" target="_blank" rel="noopener noreferrer">View all reviews</a>
+  </div>
+  <div class="gr-reviews">
+    <div class="gr-review">
+      <div class="gr-review-header">
+        <div class="gr-avatar" style="background:#0097a7">JS</div>
+        <div>
+          <div class="gr-reviewer-name">Jess Smith</div>
+          <div class="gr-review-meta">★★★★★ &nbsp;·&nbsp; Feb 2024</div>
+        </div>
+        <svg class="gr-logo" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="gr-text">"Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer. They expertly brought our vision to life, building and lighting a set inside a studio, which resulted in a visually stunning video and photo portfolio. With just a four-person crew, they combined live action, projection, and graphics to perfectly capture our product's essence. Highly recommend for their unmatched creativity and professionalism."</p>
+    </div>
+    <div class="gr-review">
+      <div class="gr-review-header">
+        <div class="gr-avatar" style="background:#e91e8c">LRH</div>
+        <div>
+          <div class="gr-reviewer-name">Little Red Hood</div>
+          <div class="gr-review-meta">★★★★★ &nbsp;·&nbsp; Jan 2024</div>
+        </div>
+        <svg class="gr-logo" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="gr-text">"Black Iris Films is nothing short of exceptional. You not only understand our business concept and values but also tailor your services to our needs. The team is creative, professional, and always goes above and beyond."</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ════════ SECTION 3: FEATURED WORK + TESTIMONIAL ════════ -->
+<section class="featured-section">
+  <div class="container">
+    <div class="featured-grid fade-in">
+      <div class="featured-video">
+        <iframe src="https://player.vimeo.com/video/943964025?badge=0&autopause=0&player_id=0&app_id=58479" title="Working with Black Iris Films" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="featured-testimonial">
+        <div class="client-label">CLIENT TESTIMONIAL</div>
+        <blockquote>"I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level and what we've been able to achieve with that result has been just fantastic."</blockquote>
+        <div class="attribution">Ian Lowe <span>- CEO, Dacxi Global</span></div>
+        <div class="stars-small">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SECTION 4: DARK STATEMENT ════════ -->
+<section class="dark-statement fade-in">
+  <div class="container">
+    <h2>No more videos that look like everyone else's.</h2>
+    <p>Brand films, explainer videos, testimonial videos, internal communications, product launch videos, case study videos, social media content &amp; more.</p>
+  </div>
+</section>
+
+<!-- ════════ SECTION 5: PORTFOLIO GRID ════════ -->
+<section class="portfolio-section">
+  <div class="container">
+    <h2 class="fade-in">Our Corporate Video Work</h2>
+    <div class="portfolio-grid">
+
+      <!-- Card 1: Amplitel Customer Portal -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1060728418?autoplay=1','Amplitel, Customer Portal Explainer','Amplitel','Explain the new customer portal experience','Explainer Video','A cinematic explainer produced for Amplitel to walk customers through the new digital portal, blending product demonstration with brand storytelling.')">
+        <img src="https://i.vimeocdn.com/video/1990519941-714cc02560dca03123e774a1ffdf1e76daa2f6ddbda1dd258aea2fd5ed72c221-d_640" alt="Amplitel Customer Portal">
+        <div class="card-overlay">
+          <div class="card-play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <div class="card-title">Amplitel</div>
+          <div class="card-label">Customer Portal Explainer</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Amplitel Ayrshire 5G -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1031776414?h=2706261230&autoplay=1','Amplitel, Ayrshire 5G Product Ad','Amplitel','Drive awareness for 5G infrastructure','Product Ad','A high-energy product ad showcasing Amplitel\'s 5G rollout at Ayrshire, capturing the scale of modern connectivity infrastructure.')">
+        <img src="https://i.vimeocdn.com/video/1952579026-6685b71a085bd7c1e56658d055f57e4458754bcf56dae87a1041f80396fdd518-d_640" alt="Amplitel Ayrshire 5G">
+        <div class="card-overlay">
+          <div class="card-play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <div class="card-title">Amplitel</div>
+          <div class="card-label">Product Ad</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Dacxi Chain Hero -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/742487127?autoplay=1','Dacxi Chain, Brand Hero Film','Dacxi Chain','Establish brand presence and credibility','Brand Film','A cinematic brand hero film for Dacxi Chain, communicating the vision and scale of a global blockchain platform through powerful visuals and narrative.')">
+        <img src="https://i.vimeocdn.com/video/2123011417-b6cf3188070de14c1df1e52d81d292a6833ac93962415f17fd1b1c409b5155e0-d_640" alt="Dacxi Chain Brand Hero Film">
+        <div class="card-overlay">
+          <div class="card-play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <div class="card-title">Dacxi Chain</div>
+          <div class="card-label">Brand Hero Film</div>
+        </div>
+      </div>
+
+      <!-- Card 4: MaryCon Event -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1111183751?h=18e38a03dc&autoplay=1','MaryCon, Event Highlights','Mary Technology','Capture the energy and key moments of MaryCon','Event Highlights','Event highlight reel for MaryCon, the flagship conference by Mary Technology, showcasing speakers, networking, and the innovation community in action.')">
+        <img src="https://i.vimeocdn.com/video/2049109787-1c30b5cb912bb36d3d94f57111c4fa9fa4b1a278513979d94c1073fdfb45a0d7-d_640" alt="MaryCon Event Highlights">
+        <div class="card-overlay">
+          <div class="card-play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <div class="card-title">Mary Technology</div>
+          <div class="card-label">Event Highlights</div>
+        </div>
+      </div>
+
+      <!-- Card 5: Doltone House, Corporate Events -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1065385276?autoplay=1','Doltone House, Corporate Events','Doltone House','Showcase world-class event facilities and atmosphere','Brand Video','A premium brand video for Doltone House, capturing the atmosphere, elegance, and scale of their Sydney corporate event venues.')">
+        <img src="/assets/thumb-doltone.jpg" alt="Doltone House Corporate Events">
+        <div class="card-overlay">
+          <div class="card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div>
+          <div class="card-title">Doltone House</div>
+          <div class="card-label">Corporate Events Brand Video</div>
+        </div>
+      </div>
+
+      <!-- Card 6: Game Plus, Explainer Video -->
+      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/381263461?autoplay=1','Game Plus, Explainer Video','Game Plus','Explain a complex product to a new audience','Explainer Video','A fun, engaging explainer video for Game Plus, communicating the concept and value of their gaming subscription service in a format designed for broad awareness.')">
+        <img src="/assets/thumb-gameplus.jpg" alt="Game Plus Explainer Video">
+        <div class="card-overlay">
+          <div class="card-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div>
+          <div class="card-title">Game Plus</div>
+          <div class="card-label">Explainer Video</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="portfolio-note">More available upon request.</p>
+  </div>
+</section>
+
+<!-- ════════ LIGHTBOX ════════ -->
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-panel">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-video">
+      <div class="video-embed-wrapper">
+        <iframe id="lightboxIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle"></h3>
+      <div class="lightbox-meta">
+        <p><strong>Client:</strong> <span id="lightboxClient"></span></p>
+        <p><strong>Goal:</strong> <span id="lightboxGoal"></span></p>
+        <p><strong>Format:</strong> <span id="lightboxFormat"></span></p>
+      </div>
+      <p id="lightboxDesc" class="lightbox-desc"></p>
+      <div class="lightbox-cta">
+        <p>Get an estimate for a video like this:</p>
+        <a href="/estimate/" class="btn-green">Get an estimate</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SECTION 6: PROBLEMS ════════ -->
+<section class="problems-section">
+  <div class="container">
+    <div class="eyebrow fade-in">COMMON CORPORATE VIDEO CHALLENGES</div>
+    <h2 class="fade-in">Hard problems we're solving with video</h2>
+    <p class="fade-in">If any of these sound familiar, you're not alone. These are the exact challenges our corporate clients bring to us.</p>
+    <div class="problems-grid">
+      <div class="problem-card fade-in">"Our current video doesn't reflect how good we actually are."</div>
+      <div class="problem-card fade-in">"We need video for a product launch but don't know where to start."</div>
+      <div class="problem-card fade-in">"We've briefed other agencies and the result always looks generic."</div>
+      <div class="problem-card fade-in">"Our internal communications videos have zero engagement."</div>
+      <div class="problem-card fade-in">"We're spending too much on video and not seeing the return."</div>
+      <div class="problem-card fade-in">"Our competitor just launched a really impressive brand film."</div>
+      <div class="problem-card fade-in">"We need multiple videos but don't have an in-house production team."</div>
+      <div class="problem-card fade-in">"We've been told the budget is tight but we still need premium results."</div>
+      <div class="problem-card fade-in">"Our brand story is genuinely compelling, we just can't seem to capture it on camera."</div>
+    </div>
+    <div class="problems-cta fade-in">
+      <a href="/estimate/" class="btn-green">Get an estimate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SECTION 7: WHY BLACK IRIS FILMS ════════ -->
+<section class="why-section">
+  <div class="container">
+    <h2 class="fade-in">Why Black Iris Films?</h2>
+    <p class="why-sub fade-in">Corporate video that looks and feels like the calibre company you actually are.</p>
+    <p class="why-body fade-in">Most corporate video feels like corporate video, formulaic, forgettable, safe. We bring cinematic craft and emotional intelligence to B2B, so your brand doesn't just inform, it resonates. We're a small, senior crew that works directly with you. No account managers, no hand-offs, no contractor lottery.</p>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-number">01</div>
+        <h4>Fixed Price, No Surprises</h4>
+        <p>We scope it, sign it, and that's what you pay. No hidden costs, no budget blowouts.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">02</div>
+        <h4>Same Tight Crew Every Project</h4>
+        <p>Consistent quality, every time. The people you meet are the people who make your video.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">03</div>
+        <h4>Delivered in 10 Business Days</h4>
+        <p>Most projects turn around inside two weeks from kick-off. We respect your timeline.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-number">04</div>
+        <h4>Emotion-Led Storytelling</h4>
+        <p>We move the audience first, the brief second. That's how you get videos people actually watch.</p>
+      </div>
+    </div>
+    <p class="why-plug fade-in">We plug straight into your team, no learning curve, no agency overhead. Think of us as your in-house production department, without the headcount.</p>
+  </div>
+</section>
+
+<!-- ════════ SECTION 8: TESTIMONIALS ════════ -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="eyebrow fade-in">WHAT PEOPLE SAY</div>
+    <h2 class="fade-in">Corporate brands that trusted us</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card fade-in">
+        <div class="stars-small">★★★★★</div>
+        <blockquote>"I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level and what we've been able to achieve with that result has been just fantastic."</blockquote>
+        <div class="attribution">Ian Lowe <span>- CEO, Dacxi Global</span></div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars-small">★★★★★</div>
+        <blockquote>"Black Iris Films have a well-honed professionalism in storytelling through film and video. They have a firm grip on the visual narrative and excel at their ability to tailor content to a target audience. The collective at Black Iris Films are enthusiastic, positive and hard-working."</blockquote>
+        <div class="attribution">Will Aslett <span>- Development Executive, Freelance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SECTION 9: FAQ ════════ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="fade-in">Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What types of corporate video do you produce?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We produce brand films, explainer videos, testimonial videos, internal communications, product launch videos, case study videos, event highlights, social media content, and recruitment videos. If it's video for business, we've done it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does a corporate video take to produce?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most projects are delivered within 10 business days from kick-off. That includes pre-production planning, the shoot day, and post-production editing. Larger multi-video projects may take a bit longer, but we'll give you a clear timeline before we start.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does a corporate video cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Every project is different, but we provide a fixed-price quote upfront based on your brief. No hidden fees, no surprise invoices. Tell us what you need and we'll give you an honest price within 24 hours.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you handle scriptwriting?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. We can work from your existing script, collaborate with your team to develop one, or handle the entire scriptwriting process for you. We'll make sure the messaging is clear, compelling, and on-brand.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          We need filming at our office, is location work included?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely. Most of our corporate work is filmed on location, at your office, warehouse, site, or wherever makes sense for the story. We bring all the gear and crew. Location shoots within Greater Sydney are included in the quote.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can you manage multiple videos in the same production day?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, and it's often the most cost-effective approach. We regularly plan shoot days that capture content for multiple deliverables, a brand film, a couple of testimonials, and some social cuts, all from the same production day.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do we ensure the video reflects our brand correctly?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We start every project with a discovery conversation to understand your brand, your audience, and the outcome you're after. We'll share a treatment document before we shoot, and you'll see an edit before anything is finalised. You're involved at every decision point.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What's the revision process?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We include two rounds of revisions in every project. You'll see a rough cut first, give us feedback, and we'll refine. Then a fine cut for final tweaks. Most clients are happy after the first round, we listen closely and get it right.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do we measure the success of a corporate video?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">That depends on your goal. For brand awareness, it's views and engagement. For sales enablement, it's conversion rates and pipeline influence. For internal comms, it's completion rates and feedback. We'll help you define success metrics before we start, so you know exactly what to measure.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Why choose Black Iris Films over other Sydney production companies?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We're a small, senior team, not a factory. You work directly with the people making your video. We offer fixed pricing, fast turnarounds, and a cinematic quality that most corporate video houses don't deliver. We're not the cheapest, but we're the best value for businesses that care about how their brand looks on screen.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">What does a video typically cost?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner"><p>Our clients usually invest at one of three levels:</p>
+          <ul style="margin: 10px 0 0 18px; line-height: 1.9;">
+            <li><strong>Content Sprint</strong> - agile half-day or full-day shoot plus editing, batching up to 10 social assets. From A$7-15k.</li>
+            <li><strong>Brand Hero Film</strong> - a 1-4 minute hero piece or animated explainer. A$10-30k.</li>
+            <li><strong>Campaign Partnership</strong> - an always-on video engine. A$12-25k per month on 6 or 12-month terms.</li>
+          </ul>
+          <p style="margin-top: 10px;">Every engagement is scoped upfront and fixed-price, so the figure you sign is the figure you pay. No surprises.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: CONTACT + ESTIMATE CTA -->
+<section class="contact-team-section fade-in">
+  <div class="container">
+    <div class="contact-team-grid">
+      <div class="contact-team-copy">
+        <h2>Contact our video team</h2>
+        <p>Got more questions about our live-action or animated video production process? Our team is here to help with insights on process, planning and your next project.</p>
+        <a href="/contact" class="btn-dark">Contact our team</a>
+        <p class="contact-phone">or call us on <a href="tel:+610282013504">(02) 8201 3504</a>.</p>
+      </div>
+      <div class="contact-team-image">
+        <img src="/assets/team-selfie.png" alt="Black Iris Films team on set">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-callout-section fade-in">
+  <div class="pricing-callout">
+    <div>
+      <h2>Get clarity on your video pricing</h2>
+      <p>Answer a 1-minute quiz and see a tailored pricing range for your project.</p>
+    </div>
+    <a href="/estimate/" class="btn-green">Start quiz</a>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <a href="/contact">Contact us</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/contact#testimonials">Testimonials</a>
+        <a href="/case-studies/">Case Studies</a>
+        <a href="/learn">Blog</a>
+      </nav>
+      <div class="footer-legal">
+        <p>&copy; 2018 - 2026 Black Iris Films.</p>
+        <p>Sydney, Australia</p>
+        <p>Video Production Agency</p>
+        <p>ABN: 13774120626</p>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-contact">
+        <p><a href="tel:+610282013504">Contact: (02) 8201 3504</a></p>
+        <p><a href="mailto:info@blackirisfilms.com?subject=Video%20Enquiry">Email: info@blackirisfilms.com</a></p>
+      </div>
+      <div class="footer-social">
+        <a href="https://vimeo.com/blackirisfilms" target="_blank" aria-label="Vimeo">
+          <img src="https://static.wixstatic.com/media/11062b_a191ed325b6e488b9ddc1a218cd38ebc~mv2.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_a191ed325b6e488b9ddc1a218cd38ebc~mv2.png" alt="Vimeo" width="34" height="34">
+        </a>
+        <a href="http://www.facebook.com/blackirisfilms" target="_blank" aria-label="Facebook">
+          <img src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" width="34" height="34">
+        </a>
+        <a href="https://instagram.com/titusmac" target="_blank" aria-label="Instagram">
+          <img src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/81af6121f84c41a5b4391d7d37fce12a.png" alt="Instagram" width="34" height="34">
+        </a>
+        <a href="https://www.youtube.com/channel/UCHmhhExvQyjn5lnbt4m3Wrw" target="_blank" aria-label="YouTube">
+          <img src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/203dcdc2ac8b48de89313f90d2a4cda1.png" alt="YouTube" width="34" height="34">
+        </a>
+        <a href="https://www.linkedin.com/company/black-iris-films/" target="_blank" aria-label="LinkedIn">
+          <img src="https://static.wixstatic.com/media/7528824071724d12a3e6c31eee0b40d4.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7528824071724d12a3e6c31eee0b40d4.png" alt="LinkedIn" width="34" height="34">
+        </a>
+      </div>
+      <div class="footer-partner">
+        <p>Interested in becoming a partner? <a href="/partner-with-us">CLICK HERE</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════ JAVASCRIPT ════════ -->
+<script>
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // Lightbox
+  function openLightbox(vimeoUrl, title, client, goal, format, desc) {
+    document.querySelector('#lightbox .lightbox-panel').classList.remove('video-only');
+    document.getElementById('lightboxIframe').src = vimeoUrl;
+    document.getElementById('lightboxTitle').textContent = title;
+    document.getElementById('lightboxClient').textContent = client;
+    document.getElementById('lightboxGoal').textContent = goal;
+    document.getElementById('lightboxFormat').textContent = format;
+    document.getElementById('lightboxDesc').textContent = desc;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openVideoOnlyLightbox(vimeoUrl) {
+    document.querySelector('#lightbox .lightbox-panel').classList.add('video-only');
+    document.getElementById('lightboxIframe').src = vimeoUrl;
+    document.getElementById('lightboxTitle').textContent = '';
+    document.getElementById('lightboxClient').textContent = '';
+    document.getElementById('lightboxGoal').textContent = '';
+    document.getElementById('lightboxFormat').textContent = '';
+    document.getElementById('lightboxDesc').textContent = '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.querySelector('#lightbox .lightbox-panel').classList.remove('video-only');
+    document.getElementById('lightboxIframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    // Open clicked (if it wasn't already open)
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Fade-in on scroll
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Sticky quiz CTA
+  (function() {
+    var stickyDismissed = false;
+    var stickyTriggered = false;
+    var pricingCallout = document.querySelector('.pricing-callout-section');
+
+    window.dismissQuizSticky = function() {
+      stickyDismissed = true;
+      document.body.classList.remove('show-quiz-sticky');
+    };
+
+    function getHalfwayScrollPoint() {
+      var scrollableHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+      return scrollableHeight * 0.5;
+    }
+
+    function updateQuizSticky() {
+      if (!stickyTriggered && window.scrollY >= getHalfwayScrollPoint()) {
+        stickyTriggered = true;
+      }
+
+      var pricingVisible = pricingCallout ? pricingCallout.getBoundingClientRect().top < window.innerHeight - 80 : false;
+      document.body.classList.toggle('show-quiz-sticky', stickyTriggered && !pricingVisible && !stickyDismissed);
+    }
+
+    window.addEventListener('scroll', updateQuizSticky, { passive: true });
+    window.addEventListener('resize', updateQuizSticky);
+    updateQuizSticky();
+  })();
+</script>
+
+
+<!-- ===== STICKY QUIZ CTA ===== -->
+<aside class="quiz-sticky" aria-label="Pricing quiz" id="quizSticky">
+  <img class="quiz-sticky-media" src="/assets/sticky-estimate-portrait.png" alt="">
+  <div class="quiz-sticky-content">
+    <button type="button" class="quiz-sticky-close" aria-label="Hide pricing quiz" onclick="dismissQuizSticky()">&times;</button>
+    <h3>1-minute video estimate</h3>
+    <p>Answer a few quick questions and get a tailored estimate for your video.</p>
+    <a href="/estimate/" class="quiz-sticky-link"><span class="quiz-sticky-label">Start quiz</span> <span class="quiz-sticky-arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+</aside>
+</body>
+</html>

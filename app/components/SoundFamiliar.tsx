@@ -45,7 +45,7 @@ export function SoundFamiliar() {
 
         <div className="mt-9 text-center">
           <a
-            href="https://quiz.blackirisfilms.com/"
+            href="/estimate/"
             className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-semibold uppercase tracking-wider text-white transition-colors"
           >
             Let&apos;s solve your marketing problems

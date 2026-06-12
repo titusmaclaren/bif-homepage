@@ -6,7 +6,7 @@ const cases = [
       "+ 2% engagement rate on paid boost (above B2B benchmark)",
       "+ High comment activity and reshares from partners and attendees",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/mary-technology/",
+    href: "/case-studies/mary-technology/",
     image:
       "https://i.vimeocdn.com/video/2049109787-1c30b5cb912bb36d3d94f57111c4fa9fa4b1a278513979d94c1073fdfb45a0d7-d_1280x720?region=us",
   },
@@ -17,7 +17,7 @@ const cases = [
       "+ Up to ~15% internal engagement on top-performing posts",
       "+ Content reshared by CEO and senior leadership",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/amplitel/",
+    href: "/case-studies/amplitel/",
     image:
       "https://i.vimeocdn.com/video/1990519941-714cc02560dca03123e774a1ffdf1e76daa2f6ddbda1dd258aea2fd5ed72c221-d_1280x720?region=us",
   },
@@ -28,7 +28,7 @@ const cases = [
       "+ Improved brand credibility across investor and founder communities",
       "+ Supported successful funding continuation and global platform launch",
     ],
-    href: "https://stories.blackirisfilms.com/case-studies/dacxi-chain/",
+    href: "/case-studies/dacxi-chain/",
     image:
       "https://i.vimeocdn.com/video/2123011417-b6cf3188070de14c1df1e52d81d292a6833ac93962415f17fd1b1c409b5155e0-d_1280x720?region=us",
   },

@@ -307,7 +307,7 @@ function getInlineEstimateCta() {
   <div class="blog-inline-estimate-copy">
     <h2>Get an estimate for your video project in 1 minute</h2>
     <p>Answer a few quick questions and see a tailored pricing range for your project.</p>
-    <a class="blog-inline-estimate-button" href="https://quiz.blackirisfilms.com/">Start quiz <span aria-hidden="true">&rarr;</span></a>
+    <a class="blog-inline-estimate-button" href="/estimate/">Start quiz <span aria-hidden="true">&rarr;</span></a>
   </div>
   <div class="blog-inline-estimate-media">
     <img src="/blog/estimate-lightbulb.jpg" alt="" loading="lazy" />

@@ -2,7 +2,7 @@ const footerNav = [
   { href: "/contact", label: "Contact us" },
   { href: "/#portfolio", label: "Portfolio" },
   { href: "/#testimonials", label: "Testimonials" },
-  { href: "https://stories.blackirisfilms.com/case-studies/", label: "Case Studies" },
+  { href: "/case-studies/", label: "Case Studies" },
   { href: "/learn", label: "Blog" },
 ];
 

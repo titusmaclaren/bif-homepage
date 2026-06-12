@@ -14,52 +14,52 @@ type Tile = {
 const tiles: Tile[] = [
   {
     label: "Financial Services",
-    href: "https://services.blackirisfilms.com/financial-video-production-sydney",
+    href: "/financial-video-production-sydney",
     image: W("a2a11d_70dc6df59e59410ea533f798ee4dc342~mv2.jpg"),
   },
   {
     label: "Higher Education",
-    href: "https://services.blackirisfilms.com/higher-education-video-production-sydney",
+    href: "/higher-education-video-production-sydney",
     image: W("a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg"),
   },
   {
     label: "Tech & SaaS",
-    href: "https://services.blackirisfilms.com/tech-video-production-sydney",
+    href: "/tech-video-production-sydney",
     image: W("a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png"),
   },
   {
     label: "Corporate",
-    href: "https://services.blackirisfilms.com/corporate-video-production-sydney",
+    href: "/corporate-video-production-sydney",
     image: W("a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg"),
   },
   {
     label: "Explainer",
-    href: "https://services.blackirisfilms.com/explainer-video-production-sydney",
+    href: "/explainer-video-production-sydney",
     image: W("a2a11d_5bf50a7c15f64e3b989846e5b591a9d3~mv2.jpg"),
   },
   {
     label: "Animated",
-    href: "https://services.blackirisfilms.com/animated-video-production-sydney",
+    href: "/animated-video-production-sydney",
     image: W("a2a11d_1711d8d900c341e09e80ee76d8da4062~mv2.jpg"),
   },
   {
     label: "Brand Films",
-    href: "https://services.blackirisfilms.com/brand-film-production-sydney",
+    href: "/brand-film-production-sydney",
     image: W("a2a11d_5d24f983e0e14d4495ec45478724d2eb~mv2.jpg"),
   },
   {
     label: "Startup & Scaleup",
-    href: "https://services.blackirisfilms.com/startup-video-production-sydney",
+    href: "/startup-video-production-sydney",
     image: W("a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg"),
   },
   {
     label: "LinkedIn & B2B Social",
-    href: "https://services.blackirisfilms.com/linkedin-video-production-sydney",
+    href: "/linkedin-video-production-sydney",
     image: W("a2a11d_9bbe0636b2f84cab82f668122e3b26d7~mv2.jpg"),
   },
   {
     label: "AI Powered Content Studio",
-    href: "https://services.blackirisfilms.com/ai-powered-content-studio-v2",
+    href: "/#content-system",
     image: "/services/ai-powered-content-studio-character-sheet.png",
     objectPosition: "50% 34%",
   },
@@ -109,7 +109,7 @@ export function ServicesGrid() {
 
         <div className="mt-9 text-center">
           <a
-            href="https://quiz.blackirisfilms.com/"
+            href="/estimate/"
             className="inline-flex items-center gap-2.5 rounded-sm bg-mint hover:bg-mint-bright px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors"
           >
             Get an estimate in 1-min

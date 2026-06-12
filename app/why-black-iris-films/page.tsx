@@ -210,7 +210,7 @@ function WhyHero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="https://quiz.blackirisfilms.com/"
+              href="/estimate/"
               className="inline-flex items-center rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
             >
               Get an estimate
@@ -596,7 +596,7 @@ function PricingCallout() {
           </p>
         </div>
         <a
-          href="https://quiz.blackirisfilms.com/"
+          href="/estimate/"
           className="inline-flex min-h-[52px] shrink-0 items-center justify-center rounded-sm bg-bif-green px-8 py-3.5 text-[13px] font-extrabold uppercase tracking-wider text-white transition-colors hover:bg-bif-green-hover"
         >
           Start quiz

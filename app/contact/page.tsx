@@ -108,7 +108,7 @@ export default function ContactPage() {
                   Need a useful price range before a conversation?
                 </p>
                 <a
-                  href="https://quiz.blackirisfilms.com/"
+                  href="/estimate/"
                   className="mt-4 inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
                 >
                   Get a 1-minute estimate
