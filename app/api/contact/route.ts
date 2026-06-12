@@ -10,6 +10,8 @@ type ContactPayload = {
   name?: unknown;
   phone?: unknown;
   email?: unknown;
+  company?: unknown;
+  pack?: unknown;
   foundUs?: unknown;
   message?: unknown;
   subscribed?: unknown;
@@ -53,12 +55,16 @@ export async function POST(request: Request) {
   const name = getString(payload.name);
   const phone = getString(payload.phone);
   const email = getString(payload.email);
+  const company = getString(payload.company);
+  const pack = getString(payload.pack);
   const foundUs = getString(payload.foundUs);
   const message = getString(payload.message);
   const source = getString(payload.source) || "Website contact form";
   const subscribed = payload.subscribed === true;
 
-  if (!name || !phone || !email || !foundUs) {
+  const isAiImagery = source.toLowerCase().includes("ai imagery");
+
+  if (!name || !phone || !email || !foundUs || (isAiImagery && !pack)) {
     return NextResponse.json(
       { message: "Please complete all required fields." },
       { status: 400 },
@@ -85,13 +91,17 @@ export async function POST(request: Request) {
   const from = process.env.CONTACT_FORM_FROM || DEFAULT_FROM_EMAIL;
   const subject = source.toLowerCase().includes("partner")
     ? `Partner enquiry from ${name}`
-    : `Quote enquiry from ${name}`;
+    : isAiImagery
+      ? `AI imagery enquiry from ${name}`
+      : `Quote enquiry from ${name}`;
 
   const rows = [
     ["Source", source],
     ["Name", name],
     ["Contact number", phone],
     ["Work email", email],
+    ...(company ? [["Company", company]] : []),
+    ...(pack ? [["Credit pack", pack]] : []),
     ["How did you find us?", foundUs],
     ["Subscribe for insights", subscribed ? "Yes" : "No"],
     ["Project notes", message || "Not provided"],

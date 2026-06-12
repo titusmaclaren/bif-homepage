@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const services = [
@@ -132,7 +133,14 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             className="flex items-center shrink-0 leading-none"
             aria-label="Black Iris Films"
           >
-            <BifLogoSvg />
+            <Image
+              src="/logos/bif-text-white.png"
+              alt="Black Iris Films"
+              width={398}
+              height={95}
+              priority
+              className="h-auto w-[214px]"
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-7" aria-label="Site">
@@ -156,7 +164,15 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               </div>
             </div>
 
-            <a href="/#portfolio" className="nav-link">WORK</a>
+            <div className="group relative flex items-center">
+              <button type="button" className="nav-link cursor-default" aria-haspopup="true">
+                WORK
+              </button>
+              <div className="absolute top-[calc(100%+20px)] left-1/2 w-[210px] -translate-x-1/2 rounded-lg border border-white/10 bg-[#050505] p-2.5 opacity-0 invisible shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-[1001] before:absolute before:-top-[22px] before:left-0 before:right-0 before:h-[22px] before:content-['']">
+                <a href="/#portfolio" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">VIDEO</a>
+                <a href="/ai-imagery" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
+              </div>
+            </div>
             <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
           </nav>
 
@@ -197,7 +213,13 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               ))}
             </div>
           </details>
-          <a href="/#portfolio" className="mobile-link" onClick={closeMenu}>WORK</a>
+          <details>
+            <summary className="mobile-link list-none cursor-pointer">WORK</summary>
+            <div className="grid gap-2.5 mt-3.5 pt-3.5 pb-0.5 pl-3.5 border-l border-white/15">
+              <a href="/#portfolio" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>VIDEO</a>
+              <a href="/ai-imagery" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>AI IMAGERY</a>
+            </div>
+          </details>
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
           <a
             href="/contact"
