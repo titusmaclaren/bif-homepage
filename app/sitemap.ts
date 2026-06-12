@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/learn",
     "/contact",
+    "/ai-imagery",
     "/why-black-iris-films",
     "/privacy-policy",
     "/partner-with-us",
