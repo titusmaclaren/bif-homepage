@@ -10,7 +10,7 @@ tags:
   - "Video Production"
 metaTitle: "10 Ways You Can Benefit from Philanthropy in Business"
 metaDescription: "Philanthropy in business has become a trend that is sweeping the globe. It's not just big, it's huge. Large businesses are more likely to capitalize on this."
-canonicalUrl: "https://blackirisfilms.com/post/10-benefits-of-philanthropy-videos-to-business"
+canonicalUrl: "https://www.blackirisfilms.com/post/10-benefits-of-philanthropy-videos-to-business"
 published: true
 ---
 Philanthropy in business has become a trend that is sweeping the globe. It's not just big, it's huge. Large businesses are more likely to capitalize on this trend, however smaller businesses are realizing its advantages as well. Video is the [#1](/learn) form of communication, in fact according to a Forrester Research study: one minute of video is worth 1.8 million words.

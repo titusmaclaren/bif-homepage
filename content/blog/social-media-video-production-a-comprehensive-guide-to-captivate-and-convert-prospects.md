@@ -13,7 +13,7 @@ tags:
   - "content calendar"
 metaTitle: "Social Media Video Production: A Comprehensive Guide to Captivate and Convert Prospects"
 metaDescription: "Master the art of social media video production with our FREE comprehensive guide. Learn how to captivate and convert prospects effectively."
-canonicalUrl: "https://blackirisfilms.com/post/social-media-video-production-a-comprehensive-guide-to-captivate-and-convert-prospects"
+canonicalUrl: "https://www.blackirisfilms.com/post/social-media-video-production-a-comprehensive-guide-to-captivate-and-convert-prospects"
 published: true
 ---
 [https://www.youtube.com/watch?v=2AjJhIFTj8E](https://www.youtube.com/watch?v=2AjJhIFTj8E)

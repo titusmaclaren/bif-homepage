@@ -19,6 +19,32 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "video.wixstatic.com" },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/copy-of-home-2", destination: "/", permanent: true },
+      { source: "/faq", destination: "/#faq", permanent: true },
+      {
+        source: "/bondi-to-coogee-walk-in-one-minute",
+        destination: "/stories",
+        permanent: true,
+      },
+      {
+        source: "/how-aie-succeeded-through-covid-19",
+        destination: "/stories",
+        permanent: true,
+      },
+      {
+        source: "/service-page/meeting-creative-brainstorm",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/service-page/phone-call-creative-brainstorm",
+        destination: "/contact",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       ...serviceSlugs.map((slug) => ({

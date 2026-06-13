@@ -13,7 +13,7 @@ tags:
   - "B2B"
 metaTitle: "How to Make Your Video Headline and Thumbnail Work Together in B2B Marketing"
 metaDescription: "Improve your video marketing engagement with a better headline, post copy & video thumbnail."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-make-your-video-headline-and-thumbnail-work-together-in-b2b-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-make-your-video-headline-and-thumbnail-work-together-in-b2b-marketing"
 published: true
 ---
 In B2B marketing, the headline and thumbnail image of your video can often determine its success. Likes and comments are secondary; what really gets engagement are the headline and the summary of the content, supported by a compelling visual.

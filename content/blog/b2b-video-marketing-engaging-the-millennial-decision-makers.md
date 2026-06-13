@@ -13,7 +13,7 @@ tags:
   - "targeting"
 metaTitle: "B2B Video Marketing: Engaging the Millennial Decision-Makers"
 metaDescription: "Learn how to engage Millennial B2B decision-makers with video marketing. Strategies for the generation reshaping business buying."
-canonicalUrl: "https://blackirisfilms.com/post/b2b-video-marketing-engaging-the-millennial-decision-makers"
+canonicalUrl: "https://www.blackirisfilms.com/post/b2b-video-marketing-engaging-the-millennial-decision-makers"
 published: true
 ---
 [https://www.youtube.com/watch?v=PtKBwTh1YME](https://www.youtube.com/watch?v=PtKBwTh1YME)

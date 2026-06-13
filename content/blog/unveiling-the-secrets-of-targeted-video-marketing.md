@@ -12,7 +12,7 @@ tags:
   - "Humour"
 metaTitle: "Unveiling the Secrets of Targeted Video Marketing"
 metaDescription: "Unveiling the Secrets of Targeted Video Marketing: Captivate global audiences by understanding regional and industry-specific preferences."
-canonicalUrl: "https://blackirisfilms.com/post/unveiling-the-secrets-of-targeted-video-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/unveiling-the-secrets-of-targeted-video-marketing"
 published: true
 ---
 [https://www.youtube.com/watch?v=xUdxp5W4b2s](https://www.youtube.com/watch?v=xUdxp5W4b2s)

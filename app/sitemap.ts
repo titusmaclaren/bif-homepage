@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "./lib/blog";
 
-const SITE_URL = "https://blackirisfilms.com";
+const SITE_URL = "https://www.blackirisfilms.com";
 
 const consolidatedRoutes = [
   "/estimate",

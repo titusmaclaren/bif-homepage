@@ -12,7 +12,7 @@ tags:
   - "authenticity"
 metaTitle: "How NOT to Look Like an A**hole in Your Marketing Videos"
 metaDescription: "Avoid common mistakes that make marketing videos feel inauthentic. Tips for building genuine emotional connections on camera."
-canonicalUrl: "https://blackirisfilms.com/post/how-not-to-look-like-an-a-hole-in-your-marketing-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-not-to-look-like-an-a-hole-in-your-marketing-videos"
 published: true
 ---
 We've all seen it. Someone pops up on your social media feed that just makes you cringe. If you want people to form an emotional connection with your brand, then there's a few basic rules you can follow to avoid the dreaded 'a**hole' look.

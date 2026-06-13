@@ -12,7 +12,7 @@ tags:
   - "interview questions"
 metaTitle: "Adding Authenticity to Your Video Marketing"
 metaDescription: "We all know authenticity works but how do you work that into a business video? Here"
-canonicalUrl: "https://blackirisfilms.com/post/adding-authenticity-to-your-video-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/adding-authenticity-to-your-video-marketing"
 published: true
 ---
 Authenticity resonates. Whether you're crafting a brand story video or a live-action explainer video, being genuine can set you apart in your video marketing. During interviews or narratives, ask questions like 'Why do you love what you do?' or 'What excites you about your job?' to evoke authentic emotional responses.

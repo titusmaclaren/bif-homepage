@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "5 Different Types of Explainer Videos"
 metaDescription: "Explore 5 types of explainer videos for your business. From animation to live-action, find the right style to pitch your brand."
-canonicalUrl: "https://blackirisfilms.com/post/5-different-types-of-explainer-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/5-different-types-of-explainer-videos"
 published: true
 ---
 Explainer videos are crucial to marketing your business. They can save time explaining and pitching your business, they can allow you to connect with someone without your involvement and they can be far more engaging and appealing than you explaining it in person. Explainer videos can double for a landing page video.

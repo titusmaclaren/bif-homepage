@@ -12,7 +12,7 @@ tags:
   - "Social Media"
 metaTitle: "Choosing the Right Aspect Ratio for Social Media Videos"
 metaDescription: "Learn how to choose the perfect aspect ratio for social media videos with our comprehensive guide. Don"
-canonicalUrl: "https://blackirisfilms.com/post/choosing-the-right-aspect-ratio-for-social-media-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/choosing-the-right-aspect-ratio-for-social-media-videos"
 published: true
 ---
 [https://www.youtube.com/watch?v=NNenaSQgKwQ](https://www.youtube.com/watch?v=NNenaSQgKwQ)

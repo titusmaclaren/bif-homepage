@@ -16,7 +16,7 @@ const montserrat = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://blackirisfilms.com"),
+  metadataBase: new URL("https://www.blackirisfilms.com"),
   title: {
     default: "Black Iris Films. Emotion-led video production in Sydney.",
     template: "%s · Black Iris Films",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Black Iris Films. Emotion-led video production in Sydney.",
     description:
       "Fixed-price emotion-led video production for Australian SMEs in finance, tech and higher education.",
-    url: "https://blackirisfilms.com",
+    url: "https://www.blackirisfilms.com",
     siteName: "Black Iris Films",
     locale: "en_AU",
     type: "website",

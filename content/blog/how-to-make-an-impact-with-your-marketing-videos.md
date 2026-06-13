@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "How to Make an IMPACT With Your Marketing Videos"
 metaDescription: "Make your marketing videos matter. Learn how to create purposeful, impactful video content that resonates with your audience."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-make-an-impact-with-your-marketing-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-make-an-impact-with-your-marketing-videos"
 published: true
 ---
 Okay, just a heads up - we're going to suggest doing something to solve meaningful problems again. But hear us out!

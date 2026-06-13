@@ -1,6 +1,6 @@
 import { getAllPosts } from "../lib/blog";
 
-const SITE_URL = "https://blackirisfilms.com";
+const SITE_URL = "https://www.blackirisfilms.com";
 
 export const dynamic = "force-static";
 

@@ -11,7 +11,7 @@ tags:
   - "ROI"
 metaTitle: "How $8k in Video Marketing Can Earn a Brand $34m ROI"
 metaDescription: "Discover how an $8k investment in video marketing earned a brand up to $34m ROI. Learn how a video on a landing page can increase conversions by up to 80%."
-canonicalUrl: "https://blackirisfilms.com/post/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi"
 published: true
 ---
 How much of a risk is video marketing? Does it earn a good return on investment (ROI)? We reviewed a sample animated explainer video to find out.

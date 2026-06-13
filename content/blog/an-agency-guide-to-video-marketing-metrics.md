@@ -13,7 +13,7 @@ tags:
   - "analytics"
 metaTitle: "Video Marketing Metrics: An Agency Guide"
 metaDescription: "Discover how to decode video marketing metrics with our in-depth guide. Learn key terms and strategies from a leading Sydney video marketing agency."
-canonicalUrl: "https://blackirisfilms.com/post/an-agency-guide-to-video-marketing-metrics"
+canonicalUrl: "https://www.blackirisfilms.com/post/an-agency-guide-to-video-marketing-metrics"
 published: true
 ---
 As any agency knows, metrics are the heartbeat of any marketing campaign, video included. Yet, the terms can sometimes seem like a foreign language. Here are some key terms to understand:

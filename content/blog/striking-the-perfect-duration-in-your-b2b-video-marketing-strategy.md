@@ -12,7 +12,7 @@ tags:
   - "B2B"
 metaTitle: "Striking the Perfect Duration in your B2B Video Marketing Strategy"
 metaDescription: "Video duration can be a double-edged sword. Too long, and you risk losing viewer interest. Too short, and you might not convey your message effectively. •."
-canonicalUrl: "https://blackirisfilms.com/post/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
+canonicalUrl: "https://www.blackirisfilms.com/post/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
 published: true
 ---
 Video duration can be a double-edged sword. Too long, and you risk losing viewer interest. Too short, and you might not convey your message effectively.

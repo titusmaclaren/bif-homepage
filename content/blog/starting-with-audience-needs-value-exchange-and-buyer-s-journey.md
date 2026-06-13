@@ -14,7 +14,7 @@ tags:
   - "buyer's journey"
 metaTitle: "Starting with Audience Needs: Value Exchange and Buyer's Journey"
 metaDescription: "Create impactful videos that cater to your audience"
-canonicalUrl: "https://blackirisfilms.com/post/starting-with-audience-needs-value-exchange-and-buyer-s-journey"
+canonicalUrl: "https://www.blackirisfilms.com/post/starting-with-audience-needs-value-exchange-and-buyer-s-journey"
 published: true
 ---
 To create impactful videos, you have to start where it matters the most: your audience's needs. Value exchange is all about providing tips that make your audience's life easier. Tailoring your content to where your prospects are in the decision-making process can also make your video more relevant.

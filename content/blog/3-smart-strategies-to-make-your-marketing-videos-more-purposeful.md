@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "3 Smart Strategies to Make Your Marketing Videos More Purposeful"
 metaDescription: "Stop making aimless marketing videos. Here are 3 smart strategies to make your video content more purposeful and results-driven."
-canonicalUrl: "https://blackirisfilms.com/post/3-smart-strategies-to-make-your-marketing-videos-more-purposeful"
+canonicalUrl: "https://www.blackirisfilms.com/post/3-smart-strategies-to-make-your-marketing-videos-more-purposeful"
 published: true
 ---
 People quite often create marketing videos with an 'if you build it they will come' attitude but this, sadly, isn't always the case. Marketing videos in today's digital landscape should be purposeful.

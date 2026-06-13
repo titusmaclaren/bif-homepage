@@ -12,7 +12,7 @@ tags:
   - "storytelling"
 metaTitle: "The Art of Visual Storytelling"
 metaDescription: "Uncover the secrets of captivating silent videos in our guide to the art of visual storytelling. Elevate your video production in Sydney, NSW."
-canonicalUrl: "https://blackirisfilms.com/post/the-art-of-visual-storytelling"
+canonicalUrl: "https://www.blackirisfilms.com/post/the-art-of-visual-storytelling"
 published: true
 ---
 In today's fast-paced world, 80% of videos are watched with the sound off. This places a greater emphasis on the art of visual storytelling. Subtitles are a must, but also think creatively about how to get your message across without sound.

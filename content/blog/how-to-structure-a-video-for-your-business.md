@@ -13,7 +13,7 @@ tags:
   - "structure"
 metaTitle: "How to Structure a Video for Your Business"
 metaDescription: "Plan your business videos for maximum impact. Learn how to structure the beginning, middle, and end of effective marketing videos."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-structure-a-video-for-your-business"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-structure-a-video-for-your-business"
 published: true
 ---
 When creating a video, it's important to plan for the beginning, middle and end. Planning ahead will take your videos to the next level and it's highly advised.

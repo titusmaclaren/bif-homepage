@@ -12,7 +12,7 @@ tags:
   - "Social Media"
 metaTitle: "Why You Should Embrace Vertical Aspect Ratios for Videos"
 metaDescription: "Vertical video is no longer optional. Learn why embracing portrait aspect ratios boosts engagement on social media platforms."
-canonicalUrl: "https://blackirisfilms.com/post/why-you-should-embrace-vertical-aspect-ratios-for-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-you-should-embrace-vertical-aspect-ratios-for-videos"
 published: true
 ---
 Just a quick one today - but important nonetheless.

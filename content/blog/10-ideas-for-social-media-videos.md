@@ -13,7 +13,7 @@ tags:
   - "Social Media"
 metaTitle: "10 Ideas for Social Media Videos"
 metaDescription: "Stuck for social media video ideas? Here are 10 creative concepts to boost engagement and showcase your brand"
-canonicalUrl: "https://blackirisfilms.com/post/10-ideas-for-social-media-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/10-ideas-for-social-media-videos"
 published: true
 ---
 Running short of inspiration for social media videos for your business? Well hopefully this list will help generate some creative solutions.

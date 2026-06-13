@@ -14,7 +14,7 @@ tags:
   - "Hook"
 metaTitle: "Capture, Engage, Convert: A Video Marketing Agency’s Blueprint for B2B Success"
 metaDescription: "Unlock B2B success with a video marketing agency"
-canonicalUrl: "https://blackirisfilms.com/post/capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success"
+canonicalUrl: "https://www.blackirisfilms.com/post/capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success"
 published: true
 ---
 ### First Impressions Count in Video Marketing

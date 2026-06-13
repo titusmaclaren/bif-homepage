@@ -13,7 +13,7 @@ tags:
   - "emotional marketing"
 metaTitle: "Sell the Lifestyle not the Product"
 metaDescription: "Selling the lifestyle, not the product, builds emotional connections that drive loyalty. Learn how to shift your video marketing approach."
-canonicalUrl: "https://blackirisfilms.com/post/sell-the-lifestyle-not-the-product"
+canonicalUrl: "https://www.blackirisfilms.com/post/sell-the-lifestyle-not-the-product"
 published: true
 ---
 It's nothing new, in fact it's a tale as old as time, but nonetheless it can help to go back to basics every now and then. Selling your product (or service) based on the lifestyle benefits you offer will ultimately result in more sales, here's why...

@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "Employee Turnover Ruining Videos? Here's 1 Smart Way to Fix It"
 metaDescription: "Employee turnover ruining your marketing videos? Here"
-canonicalUrl: "https://blackirisfilms.com/post/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
+canonicalUrl: "https://www.blackirisfilms.com/post/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
 published: true
 ---
 So you make a video featuring your fantastic employees because you know that people want to do business with people and you want to be relatable. You might also know that your business is successful because the people who deliver your products or services are experts. You shoot the video, edit it, go through a couple of rounds of feedback and eventually go live with it, only to have 1 of your employees announce they're leaving a week later. This is a problem a lot of businesses face but they quite often don't see it coming.

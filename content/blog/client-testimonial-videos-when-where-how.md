@@ -13,7 +13,7 @@ tags:
   - "authenticity"
 metaTitle: "Client Testimonial Videos - When, Where & How"
 metaDescription: "Client testimonial videos build trust and drive conversions. Learn when, where, and how to produce them for maximum impact."
-canonicalUrl: "https://blackirisfilms.com/post/client-testimonial-videos-when-where-how"
+canonicalUrl: "https://www.blackirisfilms.com/post/client-testimonial-videos-when-where-how"
 published: true
 ---
 Having a video of your clients recommending your products or services can be a hugely powerful tool, but there are several important factors to consider when creating them.

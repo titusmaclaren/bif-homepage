@@ -13,7 +13,7 @@ tags:
   - "storytelling"
 metaTitle: "How to Get the 'Feels' Into Your Videos"
 metaDescription: "Emotional connection drives marketing results. Learn practical techniques to inject genuine feeling into your business videos."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-get-the-feels-into-your-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-get-the-feels-into-your-videos"
 published: true
 ---
 In a world of massively overwhelming, omnipresent marketing, the number 1 thing that people now respond to is emotional effect. We’re so adept at technology that we navigate the internet based on feel. If a brand feels good to us, we're more likely to buy from them.

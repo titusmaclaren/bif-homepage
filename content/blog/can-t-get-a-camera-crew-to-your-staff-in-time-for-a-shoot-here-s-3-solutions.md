@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "Can't get a camera crew to your staff in time for a shoot? Here's 3 solutions"
 metaDescription: "Need a video fast but can"
-canonicalUrl: "https://blackirisfilms.com/post/can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions"
+canonicalUrl: "https://www.blackirisfilms.com/post/can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions"
 published: true
 ---
 Occasionally in business, we all run in to the same problem: you've got a video that needs to be shot and released urgently but there's a roadblock - you can't get the video shot in time. Maybe your staff is all over the country, maybe your staff simply doesn't have the time, maybe your in-house video content producers are busy with another project. It's a real problem that does present quite often, but there are answers.

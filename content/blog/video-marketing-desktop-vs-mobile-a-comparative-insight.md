@@ -12,7 +12,7 @@ tags:
   - "desktop"
 metaTitle: "Video Marketing: Mobile vs Desktop - A Comparative Insight"
 metaDescription: "Discover the untapped potential of video marketing on mobile vs desktop. Uncover insights and statistics to tailor your strategy for maximum impact."
-canonicalUrl: "https://blackirisfilms.com/post/video-marketing-desktop-vs-mobile-a-comparative-insight"
+canonicalUrl: "https://www.blackirisfilms.com/post/video-marketing-desktop-vs-mobile-a-comparative-insight"
 published: true
 ---
 ![mobile vs desktop](/blog/video-marketing-desktop-vs-mobile-a-comparative-insight-hero.jpg)

@@ -12,7 +12,7 @@ tags:
   - Brand Storytelling
 metaTitle: "Why Emotionally Connected Customers Spend 2x More"
 metaDescription: "Learn why emotionally connected customers are more valuable, and how brands can use the FEEL, SHOW, DELIVER framework to create video content that moves people."
-canonicalUrl: "https://blackirisfilms.com/post/why-emotionally-connected-customers-spend-2-more"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-emotionally-connected-customers-spend-2-more"
 published: true
 ---
 

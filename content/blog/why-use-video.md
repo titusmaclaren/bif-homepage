@@ -12,7 +12,7 @@ tags:
   - "strategy"
 metaTitle: "Why Use Video?"
 metaDescription: "Why should your business use video marketing? Key stats and strategies for using video to drive leads through your marketing funnel."
-canonicalUrl: "https://blackirisfilms.com/post/why-use-video"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-use-video"
 published: true
 ---
 A marketing funnel is currently the best method for marketing your business, as it creates paths for your prospects to follow that lead directly to your sale. Video is often seen as an afterthought when it comes to online marketing but, in fact, it should really be the MVP on your team. If you use video correctly, it should function as the oil in your sales machine, rewarding customers for taking the previous step and encouraging them to take the next step.

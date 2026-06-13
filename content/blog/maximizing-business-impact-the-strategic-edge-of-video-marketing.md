@@ -13,7 +13,7 @@ tags:
   - "growth"
 metaTitle: "Maximizing Business Impact: The Strategic Edge of Video Marketing"
 metaDescription: "Uncover the strategic edge of video marketing for your business. Enhance engagement, boost conversion rates, and build emotional connections."
-canonicalUrl: "https://blackirisfilms.com/post/maximizing-business-impact-the-strategic-edge-of-video-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/maximizing-business-impact-the-strategic-edge-of-video-marketing"
 published: true
 ---
 ![video marketing banner](/blog/maximizing-business-impact-the-strategic-edge-of-video-marketing-hero.jpg)
