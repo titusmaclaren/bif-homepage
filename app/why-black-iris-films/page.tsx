@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Why Black Iris Films?",
   description:
     "See how Black Iris Films helps brands turn strong stories into useful video, photography and social content libraries.",
+  alternates: { canonical: "/why-black-iris-films" },
 };
 
 const proofPoints = [

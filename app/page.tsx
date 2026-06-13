@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { ClientsStrip } from "./components/ClientsStrip";
@@ -13,6 +14,10 @@ import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
 import { GoogleReviewsBadge } from "./components/GoogleReviewsBadge";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (

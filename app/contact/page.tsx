@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact Black Iris Films",
   description:
     "Contact Black Iris Films about video production, photography, animation and content projects in Sydney and across Australia.",
+  alternates: { canonical: "/contact" },
 };
 
 const testimonialVideos = [

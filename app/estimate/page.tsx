@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Video Quote Estimator",
   description:
     "Get an indicative video production estimate in under a minute.",
+  alternates: { canonical: "/estimate" },
 };
 
 export default function EstimatePage() {
