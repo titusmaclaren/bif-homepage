@@ -121,7 +121,7 @@ export async function GET() {
       {
         configured: false,
         reviews: [],
-        message: `Google Business Profile reviews are not configured. Missing: ${missing.join(", ")}`,
+        message: "Visit our Google profile to read the latest client reviews.",
       },
       { status: 200 },
     );
