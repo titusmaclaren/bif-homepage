@@ -92,9 +92,9 @@ export function GoogleReviewsBadge() {
   const [totalReviewCount, setTotalReviewCount] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!isOpen || status !== "idle") return;
+    if (!isOpen) return;
 
-    let cancelled = false;
+    const controller = new AbortController();
 
     async function loadReviews() {
       setStatus("loading");
@@ -102,18 +102,17 @@ export function GoogleReviewsBadge() {
       try {
         const response = await fetch("/api/google-reviews", {
           headers: { Accept: "application/json" },
+          signal: controller.signal,
         });
         const data = (await response.json()) as ReviewsResponse;
-
-        if (cancelled) return;
 
         setReviews(data.reviews || []);
         setMessage(data.message || null);
         setAverageRating(data.averageRating || 5);
         setTotalReviewCount(data.totalReviewCount ?? null);
         setStatus(response.ok ? "loaded" : "error");
-      } catch {
-        if (cancelled) return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
         setMessage("Unable to load Google reviews right now.");
         setStatus("error");
       }
@@ -122,9 +121,9 @@ export function GoogleReviewsBadge() {
     loadReviews();
 
     return () => {
-      cancelled = true;
+      controller.abort();
     };
-  }, [isOpen, status]);
+  }, [isOpen]);
 
   return (
     <aside
