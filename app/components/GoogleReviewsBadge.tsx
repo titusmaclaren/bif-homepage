@@ -13,6 +13,69 @@ type Review = {
   date?: string;
 };
 
+const fallbackReviews: Review[] = [
+  {
+    id: "vicky-barker",
+    author: "Vicky Barker",
+    rating: 5,
+    text: "For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with.",
+  },
+  {
+    id: "catherine-allison",
+    author: "Catherine Allison",
+    rating: 5,
+    text: "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative. Highly recommended and would definitely use them again.",
+  },
+  {
+    id: "ian-lowe",
+    author: "Ian Lowe",
+    rating: 5,
+    text: "I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level.",
+  },
+  {
+    id: "scott-newton",
+    author: "Scott Newton",
+    rating: 5,
+    text: "I worked with Titus on a shoot for a big launch event. He managed the process with professional ease and captured exciting footage and engaging interviews through warm interactions with the guests.",
+  },
+  {
+    id: "marlon-marescia",
+    author: "Marlon Marescia",
+    rating: 5,
+    text: "Black Iris Films are very energetic and bring an excitement to the projects we work on. They always have new ideas and are always thinking of new ways of achieving goals.",
+  },
+  {
+    id: "jess-smith",
+    author: "Jess Smith",
+    rating: 5,
+    text: "Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer. They expertly brought our vision to life, building and lighting a set inside a studio.",
+  },
+  {
+    id: "leon-matti",
+    author: "Leon Matti",
+    rating: 5,
+    text: "Discovered Black Iris Films online and downloaded their insightful report, which led us to choose them as our principal video supplier. Their team brilliantly crafted a series of videos and social media ads for us.",
+  },
+  {
+    id: "will-aslett",
+    author: "Will Aslett",
+    rating: 5,
+    text: "Black Iris Films have a well-honed professionalism in storytelling through film and video. They have a firm grip on the visual narrative and excel at tailoring content to a target audience.",
+  },
+  {
+    id: "sarah-taylor",
+    author: "Sarah Taylor",
+    rating: 5,
+    text: "Black Iris Films are professional, friendly and thorough. Titus delivered exceptional content on time and within budget.",
+  },
+  {
+    id: "eva-williams",
+    author: "Eva Williams",
+    rating: 5,
+    text: "Black Iris Films consists of experienced filmmakers who use ahead-of-curve marketing strategies and original production to deliver the message of your brand and attract new customers.",
+  },
+];
+
 type ReviewsResponse = {
   configured?: boolean;
   averageRating?: number;
@@ -83,11 +146,7 @@ function formatReviewDate(date?: string) {
 
 export function GoogleReviewsBadge() {
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState<"idle" | "loading" | "loaded" | "error">(
-    "idle",
-  );
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [message, setMessage] = useState<string | null>(null);
+  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
   const [averageRating, setAverageRating] = useState(5);
   const [totalReviewCount, setTotalReviewCount] = useState<number | null>(null);
 
@@ -95,10 +154,9 @@ export function GoogleReviewsBadge() {
     if (!isOpen) return;
 
     const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 5000);
 
     async function loadReviews() {
-      setStatus("loading");
-
       try {
         const response = await fetch("/api/google-reviews", {
           headers: { Accept: "application/json" },
@@ -106,21 +164,22 @@ export function GoogleReviewsBadge() {
         });
         const data = (await response.json()) as ReviewsResponse;
 
-        setReviews(data.reviews || []);
-        setMessage(data.message || null);
-        setAverageRating(data.averageRating || 5);
-        setTotalReviewCount(data.totalReviewCount ?? null);
-        setStatus(response.ok ? "loaded" : "error");
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-        setMessage("Unable to load Google reviews right now.");
-        setStatus("error");
+        if (response.ok && data.configured && data.reviews?.length) {
+          setReviews(data.reviews);
+          setAverageRating(data.averageRating || 5);
+          setTotalReviewCount(data.totalReviewCount ?? null);
+        }
+      } catch {
+        // Keep the curated reviews visible when live Google data is unavailable.
+      } finally {
+        window.clearTimeout(timer);
       }
     }
 
     loadReviews();
 
     return () => {
+      window.clearTimeout(timer);
       controller.abort();
     };
   }, [isOpen]);
@@ -172,24 +231,6 @@ export function GoogleReviewsBadge() {
           </div>
 
           <div className="max-h-[336px] space-y-3 overflow-y-auto px-4 py-4">
-            {status === "loading" ? (
-              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
-                Loading Google reviews...
-              </div>
-            ) : null}
-
-            {status !== "loading" && message && !reviews.length ? (
-              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
-                {message}
-              </div>
-            ) : null}
-
-            {status !== "loading" && !message && !reviews.length ? (
-              <div className="rounded-md bg-off-white px-3 py-3 text-[12.5px] leading-relaxed text-slate">
-                No Google reviews were returned.
-              </div>
-            ) : null}
-
             {reviews.map((review) => {
               const date = formatReviewDate(review.date);
 

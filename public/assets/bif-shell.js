@@ -118,9 +118,16 @@
           '<button class="bif-google-close" type="button" aria-label="Close Google reviews" data-bif-google-close>&times;</button>' +
         '</div>' +
         '<div class="bif-google-reviews">' +
-          review("Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative.", "Catherine Allison") +
-          review("Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer.", "Jess Smith") +
-          review("He captured exciting footage and engaging interviews through warm interactions with the guests.", "Scott Newton") +
+          review("For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with.", "Vicky Barker") +
+          review("Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative. Highly recommended and would definitely use them again.", "Catherine Allison") +
+          review("I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level.", "Ian Lowe") +
+          review("I worked with Titus on a shoot for a big launch event. He managed the process with professional ease and captured exciting footage and engaging interviews through warm interactions with the guests.", "Scott Newton") +
+          review("Black Iris Films are very energetic and bring an excitement to the projects we work on. They always have new ideas and are always thinking of new ways of achieving goals.", "Marlon Marescia") +
+          review("Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer. They expertly brought our vision to life, building and lighting a set inside a studio.", "Jess Smith") +
+          review("Discovered Black Iris Films online and downloaded their insightful report, which led us to choose them as our principal video supplier. Their team brilliantly crafted a series of videos and social media ads for us.", "Leon Matti") +
+          review("Black Iris Films have a well-honed professionalism in storytelling through film and video. They have a firm grip on the visual narrative and excel at tailoring content to a target audience.", "Will Aslett") +
+          review("Black Iris Films are professional, friendly and thorough. Titus delivered exceptional content on time and within budget.", "Sarah Taylor") +
+          review("Black Iris Films consists of experienced filmmakers who use ahead-of-curve marketing strategies and original production to deliver the message of your brand and attract new customers.", "Eva Williams") +
         '</div>' +
         '<div class="bif-google-panel-foot">' +
           '<a class="bif-google-profile" href="https://www.google.com/maps/search/?api=1&amp;query=Black%20Iris%20Films%20Sydney%20Australia" target="_blank" rel="noopener noreferrer">View Google profile</a>' +

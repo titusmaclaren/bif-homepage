@@ -650,7 +650,16 @@
       </div>
 
       <div class="bif-google-reviews" data-bif-google-reviews>
-        <div class="bif-review">Loading Google reviews...</div>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;For our corporate videos, Titus is unparalleled in his filmmaking prowess. His meticulous attention to detail, innate storytelling aptitude, and technical brilliance make him a delight to collaborate with.&rdquo;</blockquote><figcaption>Vicky Barker</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative. Highly recommended and would definitely use them again.&rdquo;</blockquote><figcaption>Catherine Allison</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level.&rdquo;</blockquote><figcaption>Ian Lowe</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;I worked with Titus on a shoot for a big launch event. He managed the process with professional ease and captured exciting footage and engaging interviews through warm interactions with the guests.&rdquo;</blockquote><figcaption>Scott Newton</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Black Iris Films are very energetic and bring an excitement to the projects we work on. They always have new ideas and are always thinking of new ways of achieving goals.&rdquo;</blockquote><figcaption>Marlon Marescia</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer. They expertly brought our vision to life, building and lighting a set inside a studio.&rdquo;</blockquote><figcaption>Jess Smith</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Discovered Black Iris Films online and downloaded their insightful report, which led us to choose them as our principal video supplier. Their team brilliantly crafted a series of videos and social media ads for us.&rdquo;</blockquote><figcaption>Leon Matti</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Black Iris Films have a well-honed professionalism in storytelling through film and video. They have a firm grip on the visual narrative and excel at tailoring content to a target audience.&rdquo;</blockquote><figcaption>Will Aslett</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Black Iris Films are professional, friendly and thorough. Titus delivered exceptional content on time and within budget.&rdquo;</blockquote><figcaption>Sarah Taylor</figcaption></figure>
+        <figure class="bif-review"><div class="bif-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>&ldquo;Black Iris Films consists of experienced filmmakers who use ahead-of-curve marketing strategies and original production to deliver the message of your brand and attract new customers.&rdquo;</blockquote><figcaption>Eva Williams</figcaption></figure>
       </div>
       <div class="bif-google-panel-foot">
         <a class="bif-google-profile" href="https://www.google.com/maps/search/?api=1&amp;query=Black%20Iris%20Films%20Sydney%20Australia" target="_blank" rel="noopener noreferrer">View Google profile</a>
@@ -736,7 +745,7 @@
       var reviewsContainer = document.querySelector("[data-bif-google-reviews]");
       var reviewCount = document.querySelector("[data-bif-google-count]");
       var reviewsLoaded = false;
-      var reviewsApiUrl = window.BIF_GOOGLE_REVIEWS_API_URL || "https://bif-homepage.vercel.app/api/google-reviews";
+      var reviewsApiUrl = window.BIF_GOOGLE_REVIEWS_API_URL || "/api/google-reviews";
 
       function escapeHtml(value) {
         return String(value || "")
@@ -795,13 +804,15 @@
       function loadReviews() {
         if (reviewsLoaded || !reviewsContainer) return;
         reviewsLoaded = true;
-        reviewsContainer.innerHTML = '<div class="bif-review">Loading Google reviews...</div>';
-        fetch(reviewsApiUrl, { headers: { Accept: "application/json" } })
+        var controller = new AbortController();
+        var timer = window.setTimeout(function () { controller.abort(); }, 5000);
+        fetch(reviewsApiUrl, { headers: { Accept: "application/json" }, signal: controller.signal })
           .then(function (response) { return response.json(); })
-          .then(renderReviews)
-          .catch(function () {
-            reviewsContainer.innerHTML = '<div class="bif-review">Unable to load Google reviews right now.</div>';
-          });
+          .then(function (data) {
+            if (data.configured && Array.isArray(data.reviews) && data.reviews.length) renderReviews(data);
+          })
+          .catch(function () {})
+          .finally(function () { window.clearTimeout(timer); });
       }
 
       function setReviewsOpen(isOpen) {
