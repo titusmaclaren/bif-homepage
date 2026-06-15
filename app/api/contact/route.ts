@@ -187,6 +187,9 @@ export async function POST(request: Request) {
   if (!response.ok) {
     const errorText = await response.text();
     console.error("Resend contact form error:", errorText);
+    if (response.status === 403 && errorText.includes("not verified")) {
+      await logResendDomainStatus(apiKey);
+    }
 
     return NextResponse.json(
       { message: "Unable to send your enquiry right now." },
@@ -195,4 +198,38 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ ok: true });
+}
+
+async function logResendDomainStatus(apiKey: string) {
+  try {
+    const listResponse = await fetch("https://api.resend.com/domains", {
+      headers: { Authorization: `Bearer ${apiKey}` },
+    });
+    const listBody = (await listResponse.json().catch(() => null)) as {
+      data?: Array<{ id?: string; name?: string; status?: string }>;
+    } | null;
+    const domain = listBody?.data?.find(
+      (item) => item.name === "blackirisfilms.com",
+    );
+
+    if (!listResponse.ok || !domain?.id) {
+      console.error("Resend domain diagnostic failed", {
+        status: listResponse.status,
+        domain: domain || null,
+      });
+      return;
+    }
+
+    const domainResponse = await fetch(
+      `https://api.resend.com/domains/${encodeURIComponent(domain.id)}`,
+      { headers: { Authorization: `Bearer ${apiKey}` } },
+    );
+    const domainBody = await domainResponse.json().catch(() => null);
+    console.error("Resend domain diagnostic", {
+      status: domainResponse.status,
+      domain: domainBody,
+    });
+  } catch (error) {
+    console.error("Resend domain diagnostic request failed", error);
+  }
 }
