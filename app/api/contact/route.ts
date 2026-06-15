@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const RESEND_EMAILS_ENDPOINT = "https://api.resend.com/emails";
+const RESEND_BATCH_ENDPOINT = "https://api.resend.com/emails/batch";
 const DEFAULT_TO_EMAIL = "info@blackirisfilms.com";
 const DEFAULT_FROM_EMAIL = "Black Iris Films <onboarding@resend.dev>";
 
@@ -130,20 +130,58 @@ export async function POST(request: Request) {
     </div>
   `;
 
-  const response = await fetch(RESEND_EMAILS_ENDPOINT, {
+  const firstName = name.split(/\s+/)[0] || name;
+  const acknowledgementSubject = isAiImagery
+    ? "Thanks for your AI imagery enquiry"
+    : "Thanks for getting in touch with Black Iris Films";
+  const acknowledgementText = [
+    `Hi ${firstName},`,
+    "",
+    "Thanks for getting in touch with Black Iris Films. We've received your enquiry and will be in touch soon.",
+    "",
+    "If there is anything time-sensitive you would like to add, reply to this email or call us on (02) 8201 3504.",
+    "",
+    "Black Iris Films",
+    "Sydney, Australia",
+  ].join("\n");
+  const acknowledgementHtml = `
+    <div style="background:#f5f6f8;padding:32px 16px;font-family:Arial,sans-serif;color:#0f1826;line-height:1.6;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e2e6ec;padding:32px;">
+        <p style="margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#55ad78;">Black Iris Films</p>
+        <h1 style="margin:0 0 18px;font-size:26px;line-height:1.25;">Thanks for getting in touch.</h1>
+        <p style="margin:0 0 16px;">Hi ${escapeHtml(firstName)},</p>
+        <p style="margin:0 0 16px;">We've received your enquiry and will be in touch soon.</p>
+        <p style="margin:0 0 24px;">If there is anything time-sensitive you would like to add, reply to this email or call us on <a href="tel:+61282013504" style="color:#287448;">(02) 8201 3504</a>.</p>
+        <p style="margin:0;font-weight:700;">Black Iris Films</p>
+        <p style="margin:2px 0 0;color:#667085;font-size:13px;">Sydney, Australia</p>
+      </div>
+    </div>
+  `;
+
+  const response = await fetch(RESEND_BATCH_ENDPOINT, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      from,
-      to,
-      reply_to: email,
-      subject,
-      text,
-      html,
-    }),
+    body: JSON.stringify([
+      {
+        from,
+        to,
+        reply_to: email,
+        subject,
+        text,
+        html,
+      },
+      {
+        from,
+        to: [email],
+        reply_to: DEFAULT_TO_EMAIL,
+        subject: acknowledgementSubject,
+        text: acknowledgementText,
+        html: acknowledgementHtml,
+      },
+    ]),
   });
 
   if (!response.ok) {
