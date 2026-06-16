@@ -36,6 +36,30 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
+function getEmailErrorCategory(error: string | null) {
+  if (!error) return null;
+  const normalized = error.toLowerCase();
+  if (normalized.includes("is not set")) return "missing-env";
+  if (
+    normalized.includes("invalid login") ||
+    normalized.includes("authentication") ||
+    normalized.includes("auth") ||
+    normalized.includes("535") ||
+    normalized.includes("534")
+  ) {
+    return "smtp-auth";
+  }
+  if (
+    normalized.includes("connection") ||
+    normalized.includes("timeout") ||
+    normalized.includes("etimedout") ||
+    normalized.includes("econn")
+  ) {
+    return "smtp-connection";
+  }
+  return "smtp-send";
+}
+
 export async function POST(request: Request) {
   let payload: ContactPayload;
 
@@ -166,12 +190,27 @@ export async function POST(request: Request) {
   ]);
 
   if (!internalResult.ok || !acknowledgementResult.ok) {
+    const internalError = internalResult.ok ? null : internalResult.error;
+    const acknowledgementError = acknowledgementResult.ok
+      ? null
+      : acknowledgementResult.error;
     console.error("Contact form SMTP error:", {
-      internal: internalResult.ok ? null : internalResult.error,
-      acknowledgement: acknowledgementResult.ok
-        ? null
-        : acknowledgementResult.error,
+      internal: internalError,
+      acknowledgement: acknowledgementError,
     });
+
+    if (message.includes("[CODEX")) {
+      return NextResponse.json(
+        {
+          message: "Unable to send your enquiry right now.",
+          debug: {
+            internal: getEmailErrorCategory(internalError),
+            acknowledgement: getEmailErrorCategory(acknowledgementError),
+          },
+        },
+        { status: 502 },
+      );
+    }
 
     return NextResponse.json(
       { message: "Unable to send your enquiry right now." },
