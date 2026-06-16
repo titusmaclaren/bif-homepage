@@ -16,13 +16,11 @@ type PortfolioExplorerProps = {
   items: PortfolioItem[];
 };
 
-const INITIAL_PROJECT_COUNT = 21;
 const featuredIds = new Set(["742487127", "776884299", "1109359009"]);
 
 export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
   const [typeFilter, setTypeFilter] = useState<FilterValue>("All");
   const [industryFilter, setIndustryFilter] = useState<FilterValue>("All");
-  const [showAll, setShowAll] = useState(false);
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
@@ -36,12 +34,6 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
   }, [industryFilter, items, typeFilter]);
 
   const hasActiveFilter = typeFilter !== "All" || industryFilter !== "All";
-  const visibleItems =
-    showAll || hasActiveFilter
-      ? filteredItems
-      : filteredItems.slice(0, INITIAL_PROJECT_COUNT);
-  const isShowingInitialSet =
-    !showAll && !hasActiveFilter && filteredItems.length > INITIAL_PROJECT_COUNT;
 
   return (
     <section className="bg-off-white py-10 md:py-12">
@@ -77,9 +69,9 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
           )}
         </div>
 
-        {visibleItems.length > 0 ? (
+        {filteredItems.length > 0 ? (
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleItems.map((item) => (
+            {filteredItems.map((item) => (
               <PortfolioCard key={item.vimeoId} item={item} />
             ))}
           </div>
@@ -90,18 +82,6 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
               Try clearing a filter or choosing a different sector or video
               format.
             </p>
-          </div>
-        )}
-
-        {isShowingInitialSet && (
-          <div className="mt-8 text-center">
-            <button
-              type="button"
-              onClick={() => setShowAll(true)}
-              className="inline-flex min-h-12 items-center justify-center rounded-sm border border-navy bg-white px-7 text-[12px] font-bold uppercase tracking-[0.12em] text-navy transition-colors hover:border-mint hover:text-mint"
-            >
-              Show all projects
-            </button>
           </div>
         )}
       </div>
