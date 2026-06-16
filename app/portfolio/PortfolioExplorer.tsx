@@ -47,7 +47,7 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
     <section className="bg-off-white py-10 md:py-12">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
         <div className="rounded-md border border-fog bg-white p-5 shadow-[0_10px_30px_rgba(15,24,38,0.08)] md:p-6">
-          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-end">
             <FilterSelect
               label="Choose an industry"
               value={industryFilter}
@@ -60,24 +60,21 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
               onChange={setTypeFilter}
               options={VIDEO_TYPE_FILTERS.map((filter) => filter.label)}
             />
-            <div className="flex min-h-11 items-center justify-between gap-4 md:min-w-[210px] md:justify-end">
-              <span className="text-xs font-medium text-slate">
-                {visibleItems.length} of {items.length} projects
-              </span>
-              {hasActiveFilter && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setTypeFilter("All");
-                    setIndustryFilter("All");
-                  }}
-                  className="min-h-11 rounded-sm bg-bif-green px-5 text-[12px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-bif-green-hover"
-                >
-                  Clear filters
-                </button>
-              )}
-            </div>
           </div>
+          {hasActiveFilter && (
+            <div className="mt-4 flex justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  setTypeFilter("All");
+                  setIndustryFilter("All");
+                }}
+                className="min-h-11 rounded-sm bg-bif-green px-5 text-[12px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-bif-green-hover"
+              >
+                Clear filters
+              </button>
+            </div>
+          )}
         </div>
 
         {visibleItems.length > 0 ? (
@@ -90,7 +87,7 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
           <div className="mt-8 border border-fog bg-white px-6 py-12 text-center">
             <h2 className="text-2xl font-bold text-navy">No matching projects</h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate">
-              Try clearing a filter or searching for a client, sector, or video
+              Try clearing a filter or choosing a different sector or video
               format.
             </p>
           </div>

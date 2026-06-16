@@ -106,16 +106,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     thumb: W("a2a11d_135680b1145a4b178e98c233cc2acc8e~mv2.png"),
   },
   {
-    vimeoId: "333251831",
-    category: "Viral Video",
-    title: "Sydney Harbour in Flow Motion",
-    description:
-      "A flow-motion city film turning Sydney Harbour into a fast-moving visual story.",
-    client: "Black Iris Films",
-    industry: "Tourism",
-    thumb: W("a2a11d_131fff6a406146f2bcf37b58020fa1d7~mv2.jpg"),
-  },
-  {
     vimeoId: "1060728418",
     category: "Animated Explainer",
     title: "New Updates to the Customer Portal | Amplitel",
@@ -378,18 +368,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     thumb: W("a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg"),
   },
   {
-    vimeoId: "1076268262",
-    category: "Behind the Scenes Video",
-    title: "Mimi Elashiry Photoshoot BTS",
-    description:
-      "Behind-the-scenes fashion and photography content shaped for social audiences.",
-    client: "Black Iris Films",
-    industry: "Fashion",
-    thumb: V(
-      "https://i.vimeocdn.com/video/2006026273-fe8da2d0262caa955e44541f0f37c0cf74717efa89eb42f74b930a60a810e686-d_640?region=us",
-    ),
-  },
-  {
     vimeoId: "1062734110",
     category: "Social Media Commercial",
     title: "Weddings Ad - Intimate | Doltone House",
@@ -438,30 +416,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
-    vimeoId: "981278175",
-    category: "Brand Film",
-    title: "Emotional Marketing | Black Iris Films",
-    description:
-      "Black Iris Films brand content exploring emotional marketing and why it works.",
-    client: "Black Iris Films",
-    industry: "Creative services",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1898423672-b6600d32e2b7d338537c26cee608f4973410f714b197382956db22453400e584-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "980518651",
-    category: "Social Media Video",
-    title: "Humanity First, Facts Second | Black Iris Films",
-    description:
-      "Short brand-thinking video about leading with humanity before facts.",
-    client: "Black Iris Films",
-    industry: "Creative services",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1895607467-1e4af3dcf2a2101d361dad7233da1c79fc4be2833e609f1066e2c6383c7dfa72-d_640?region=us",
-    ),
-  },
-  {
     vimeoId: "977299657",
     category: "Educational Video",
     title: "What Is Asset Tokenisation | Dacxi",
@@ -474,18 +428,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
-    vimeoId: "943964025",
-    category: "Client Testimonial Video",
-    title: "Working with Black Iris Films | What our Clients had to Say",
-    description:
-      "Client testimonial reel built around the experience of working with Black Iris Films.",
-    client: "Black Iris Films",
-    industry: "Creative services",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1848605450-154b78b56511fd4a0c139cf6ce86da333ca77d217c1773c6e5c54f5278382fe8-d_640?region=us",
-    ),
-  },
-  {
     vimeoId: "938937003",
     category: "Event Promo",
     title: "Sakura Moonlight Gala Promo | Little Red Hood",
@@ -495,18 +437,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     industry: "Events",
     thumb: V(
       "https://i.vimeocdn.com/video/1840556930-e5c23c19f9f2c0c4e336de6f0dc1c00f6edc46843cc2f2671cdaf92a8a09e273-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "930195266",
-    category: "Client Testimonial Video",
-    title: "Working with Black Iris Films | Little Red Hood",
-    description:
-      "Client testimonial video about the creative partnership with Little Red Hood.",
-    client: "Little Red Hood",
-    industry: "Events",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1826804022-18ead0734817a040a3dba53472107a1fde9104f22bfd195847a212d226c7165c-d_640?region=us",
     ),
   },
   {
@@ -559,7 +489,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
   {
     vimeoId: "842487831",
-    category: "Product Video",
+    category: "Brand Film",
     title: "XOBROWS By Leila",
     description:
       "Beauty brand video for XOBROWS by Leila, focused on service and visual polish.",
@@ -591,18 +521,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     industry: "Fashion",
     thumb: V(
       "https://i.vimeocdn.com/video/1584132480-7768202f794ae342a439d338f015d2e25bc2b65bcae9265f228563c20732e06e-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "754222312",
-    category: "Client Testimonial Video",
-    title: "Working with Black Iris Films | Dacxi",
-    description:
-      "Client testimonial video about Black Iris Films' work with Dacxi.",
-    client: "Dacxi",
-    industry: "Finance",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1522204912-1d7eb1ab38ea240b67d0f9bea529a64a80ee3c9808b8e4c50dba52f96001f75f-d_640?region=us",
     ),
   },
   {
@@ -651,66 +569,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     industry: "Health and fitness",
     thumb: V(
       "https://i.vimeocdn.com/video/1351958420-dc1bb5f28d887da9f8d3da5cb9fed3ad2df4b9c56e65b90d68995ee8839dc619-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "516023386",
-    category: "Client Testimonial Video",
-    title: "Working with Black Iris Films | AIE",
-    description:
-      "Client testimonial video about Black Iris Films' education-sector work with AIE.",
-    client: "Academy of Interactive Entertainment",
-    industry: "Higher education",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1072918817-d11f597979a82ee5b1eed909507c933b7073b6e282b761814455c33603f8d219-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "421006652",
-    category: "Social Media Video",
-    title: "Taking More of Your Business Online? | Black Iris Films",
-    description:
-      "Black Iris Films social video about adapting business content for online audiences.",
-    client: "Black Iris Films",
-    industry: "Creative services",
-    thumb: V(
-      "https://i.vimeocdn.com/video/937973720-9fe23621effbaac6e7555c94cf9d83b546db766092cf38d6def3da1e7cdd205f-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "346047743",
-    category: "Brand Hero Video",
-    title: "Tech Life Sydney in Flow Motion",
-    description:
-      "Flow-motion brand hero film celebrating Sydney's technology community.",
-    client: "Black Iris Films",
-    industry: "Technology",
-    thumb: V(
-      "https://i.vimeocdn.com/video/796006759-b5428bd88696430976ced39d4dfce7b1bf89cb546ce14a9ea0a23ff29b9a80f9-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "318108717",
-    category: "Explainer Video",
-    title: "Our Animated Explainer Video Package - Black Iris Films",
-    description:
-      "Service explainer outlining the Black Iris Films animated explainer package.",
-    client: "Black Iris Films",
-    industry: "Creative services",
-    thumb: V(
-      "https://i.vimeocdn.com/video/760441032-4ffecbfe1dbc35e5011c9e8c03bd25c4ad66d6af92ae953073f1552910aecdb8-d_640?region=us",
-    ),
-  },
-  {
-    vimeoId: "310000988",
-    category: "Passion Project",
-    title: "A Night Out in Sydney",
-    description:
-      "Black Iris Films passion project capturing the pace and atmosphere of Sydney at night.",
-    client: "Black Iris Films",
-    industry: "Tourism",
-    thumb: V(
-      "https://i.vimeocdn.com/video/750504941-e6ad618f3fd76b598ff41c8cb6029a192a61b80ee5f57974df90d3908d518404-d_640?region=us",
     ),
   },
   {

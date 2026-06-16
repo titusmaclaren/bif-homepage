@@ -27,14 +27,14 @@ export default function PortfolioPage() {
       <Nav showEstimateBar />
       <main className="flex-1 bg-off-white pt-[108px]">
         <section className="border-b border-fog/70 bg-white">
-          <div className="mx-auto max-w-[980px] px-6 py-14 text-center md:py-16 lg:px-10">
-            <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-mint">
+          <div className="mx-auto max-w-[980px] px-6 py-16 text-center md:py-24 lg:px-10">
+            <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.24em] text-mint">
               Portfolio
             </p>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-[1.03] text-navy md:text-6xl">
               Video work for brands that need the idea to land.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-base font-light leading-relaxed text-slate md:text-lg">
+            <p className="mx-auto mt-8 max-w-3xl text-base font-light leading-relaxed text-slate md:text-lg">
               Browse through our catalogue of live action & animated marketing
               videos, social media videos, passion projects, corporate videos &
               TV Commercials.

@@ -61,7 +61,7 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
 
   return (
     <section className="bg-white py-14 md:py-16">
-      <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
+      <div className="px-6 lg:px-10">
         <div className="mx-auto mb-8 max-w-3xl text-center">
           <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-mint">
             Service pages
@@ -94,7 +94,7 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
                   key={item.href}
                   ref={index === 0 ? firstCardRef : undefined}
                   href={item.href}
-                  className="group block min-w-0 shrink-0 basis-[82%] overflow-hidden rounded-md border border-fog bg-off-white text-left shadow-[0_12px_30px_rgba(15,24,38,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,24,38,0.13)] focus:outline-none focus-visible:ring-2 focus-visible:ring-mint sm:basis-[48%] lg:basis-[31%] xl:basis-[24%]"
+                  className="group block min-w-0 shrink-0 basis-[82%] overflow-hidden rounded-md border border-fog bg-off-white text-left shadow-[0_12px_30px_rgba(15,24,38,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,24,38,0.13)] focus:outline-none focus-visible:ring-2 focus-visible:ring-mint sm:basis-[48%] lg:basis-[31%] xl:basis-[23%] 2xl:basis-[19%]"
                 >
                   <span className="relative block aspect-[16/9] overflow-hidden bg-navy-midnight">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
