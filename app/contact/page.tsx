@@ -133,7 +133,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="bg-white py-16 md:py-20">
+        <section id="testimonials" className="scroll-mt-28 bg-white py-16 md:py-20">
           <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
             <div className="mb-8 max-w-3xl">
               <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-mint">
