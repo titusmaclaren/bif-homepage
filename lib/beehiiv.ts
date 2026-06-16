@@ -18,8 +18,11 @@ function optionalBoolean(value: string | undefined, fallback: boolean) {
 export async function subscribeToNewsletter(
   input: SubscribeInput,
 ): Promise<SubscribeResult> {
-  const apiKey = process.env.BEEHIIV_API_KEY?.trim();
-  const publicationId = process.env.BEEHIIV_PUBLICATION_ID?.trim();
+  const apiKey = (process.env.BEEHIIV_API_KEY || "").replace(/\s+/g, "");
+  const publicationId = (process.env.BEEHIIV_PUBLICATION_ID || "").replace(
+    /\s+/g,
+    "",
+  );
 
   if (!apiKey || !publicationId) {
     console.warn(

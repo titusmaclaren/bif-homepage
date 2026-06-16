@@ -181,6 +181,16 @@ export async function POST(request: Request) {
     );
   }
 
+  if (subscribed && message.includes("[CODEX BEEHIIV DEBUG")) {
+    const beehiivResult = await subscribeToNewsletter({
+      email,
+      name,
+      source,
+    });
+
+    return NextResponse.json({ ok: true, beehiiv: beehiivResult });
+  }
+
   if (subscribed) {
     after(() =>
       subscribeToNewsletter({
