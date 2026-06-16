@@ -19,10 +19,14 @@ export async function subscribeToNewsletter(
   input: SubscribeInput,
 ): Promise<SubscribeResult> {
   const apiKey = (process.env.BEEHIIV_API_KEY || "").replace(/\s+/g, "");
-  const publicationId = (process.env.BEEHIIV_PUBLICATION_ID || "").replace(
+  const rawPublicationId = (process.env.BEEHIIV_PUBLICATION_ID || "").replace(
     /\s+/g,
     "",
   );
+  const publicationId =
+    rawPublicationId && !rawPublicationId.startsWith("pub_")
+      ? `pub_${rawPublicationId}`
+      : rawPublicationId;
 
   if (!apiKey || !publicationId) {
     console.warn(
