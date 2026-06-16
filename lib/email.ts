@@ -34,7 +34,7 @@ function getTransporter() {
     secure,
     auth: {
       user: getRequiredEnv("SMTP_USER"),
-      pass: getRequiredEnv("SMTP_PASS"),
+      pass: getRequiredEnv("SMTP_PASS").replace(/\s+/g, ""),
     },
   });
 }
