@@ -52,6 +52,16 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
+    vimeoId: "1143355482",
+    category: "Product Video",
+    title: "Dell Pro Plus Earbuds Unboxing | Ingram Micro",
+    description:
+      "Product unboxing content for Dell partner marketing, built for clear, useful product communication.",
+    client: "Dell / Ingram Micro",
+    industry: "Technology",
+    thumb: VF("1143355482"),
+  },
+  {
     vimeoId: "1143349142",
     category: "Product Video",
     title: "Dell Pro Essential Unboxing | Ingram Micro",
@@ -248,6 +258,16 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
+    vimeoId: "137334907",
+    category: "Animated Explainer",
+    title: "Manad Plus",
+    description:
+      "Animated explainer for aged-care software, translating a complex operational product into a clear story.",
+    client: "Manad Plus",
+    industry: "Health technology",
+    thumb: "/assets/thumb-137334907.jpg",
+  },
+  {
     vimeoId: "657351049",
     category: "Highlights Video",
     title: "Highlights from 2021 | Dacxi Australia",
@@ -258,6 +278,16 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     thumb: V(
       "https://i.vimeocdn.com/video/1327082007-498ad9105691df9d42a2a457fbbd992a07adfe7f8c63b02db1ac4de6183f35d4-d_640?region=us",
     ),
+  },
+  {
+    vimeoId: "137334669",
+    category: "Promotional Film",
+    title: "Software Developer Training Gone Wrong | SSW FireBootCamp",
+    description:
+      "Creative promotional short for SSW's developer training programme, built around a memorable comic premise.",
+    client: "SSW",
+    industry: "Technology",
+    thumb: "/assets/thumb-137334669.jpg",
   },
   {
     vimeoId: "846528202",
@@ -406,6 +436,17 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     thumb: V(
       "https://i.vimeocdn.com/video/1454957417-87ae1bac1d5b5c1a7522f9982ef5d14ed70dfe523b0dcfec5e72488f81f49b6e-d_640?region=us",
     ),
+  },
+  {
+    vimeoId: "680771973",
+    vimeoHash: "ec04fc3514",
+    category: "Social Media Video",
+    title: "Avalanche joins the Dacxi Platform",
+    description:
+      "Platform update video turning a crypto listing into clear social content for investors.",
+    client: "Dacxi",
+    industry: "Finance",
+    thumb: VF("680771973"),
   },
 ];
 

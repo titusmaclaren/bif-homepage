@@ -82,7 +82,26 @@ export function PortfolioIntro() {
         />
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-[1440px] justify-center px-6 lg:px-10">
+      <div className="mx-auto mt-8 flex max-w-[1440px] flex-col items-center justify-center gap-3 px-6 sm:flex-row lg:px-10">
+        <a
+          href="/portfolio"
+          className="inline-flex items-center gap-2.5 rounded-sm border border-white/24 px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:border-mint hover:text-mint"
+        >
+          View full portfolio
+          <svg
+            aria-hidden="true"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.4"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
         <a
           href="/estimate/"
           className="inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"

@@ -5,6 +5,7 @@ const SITE_URL = "https://www.blackirisfilms.com";
 
 const consolidatedRoutes = [
   "/estimate",
+  "/portfolio",
   "/photography",
   "/services",
   "/stories",
