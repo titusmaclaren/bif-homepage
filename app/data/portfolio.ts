@@ -378,6 +378,54 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     thumb: W("a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg"),
   },
   {
+    vimeoId: "1076268262",
+    category: "Behind the Scenes Video",
+    title: "Mimi Elashiry Photoshoot BTS",
+    description:
+      "Behind-the-scenes fashion and photography content shaped for social audiences.",
+    client: "Black Iris Films",
+    industry: "Fashion",
+    thumb: V(
+      "https://i.vimeocdn.com/video/2006026273-fe8da2d0262caa955e44541f0f37c0cf74717efa89eb42f74b930a60a810e686-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "1062734110",
+    category: "Social Media Commercial",
+    title: "Weddings Ad - Intimate | Doltone House",
+    description:
+      "Short-form wedding venue commercial for a premium hospitality audience.",
+    client: "Doltone House",
+    industry: "Hospitality",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1994577916-259b59cd8c67052c05c34e1d24d9e45389fbff8a774de4ed1b9e66446a7e539c-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "1054733425",
+    category: "Brand Film",
+    title: "Brand Video | Little Red Hood Moment Designers",
+    description:
+      "Brand video positioning Little Red Hood's immersive event and moment-design work.",
+    client: "Little Red Hood",
+    industry: "Events",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1980162948-d902b08519f459e21a03040d79489431c4c128462620b46f45a321d87d833298-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "1048438074",
+    category: "Real Estate Video",
+    title: "Real Estate Video Tour | Ray White Inner West",
+    description:
+      "Property video tour created for real estate marketing and buyer inspection.",
+    client: "Ray White Inner West",
+    industry: "Real estate",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1972584940-2af872ef9072ebf83bcbbe17c830ecc870504097962f072b2b4e9b4d54440a06-d_640?region=us",
+    ),
+  },
+  {
     vimeoId: "941172837",
     category: "Event Video",
     title: "Gatsby: A Roaring Soiree",
@@ -390,6 +438,78 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ),
   },
   {
+    vimeoId: "981278175",
+    category: "Brand Film",
+    title: "Emotional Marketing | Black Iris Films",
+    description:
+      "Black Iris Films brand content exploring emotional marketing and why it works.",
+    client: "Black Iris Films",
+    industry: "Creative services",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1898423672-b6600d32e2b7d338537c26cee608f4973410f714b197382956db22453400e584-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "980518651",
+    category: "Social Media Video",
+    title: "Humanity First, Facts Second | Black Iris Films",
+    description:
+      "Short brand-thinking video about leading with humanity before facts.",
+    client: "Black Iris Films",
+    industry: "Creative services",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1895607467-1e4af3dcf2a2101d361dad7233da1c79fc4be2833e609f1066e2c6383c7dfa72-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "977299657",
+    category: "Educational Video",
+    title: "What Is Asset Tokenisation | Dacxi",
+    description:
+      "Educational finance video explaining asset tokenisation for a broader investor audience.",
+    client: "Dacxi",
+    industry: "Finance",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1891993225-9710431ff86116f11f99081fce894b9eb876fe8acf271439baea75b4a7122c26-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "943964025",
+    category: "Client Testimonial Video",
+    title: "Working with Black Iris Films | What our Clients had to Say",
+    description:
+      "Client testimonial reel built around the experience of working with Black Iris Films.",
+    client: "Black Iris Films",
+    industry: "Creative services",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1848605450-154b78b56511fd4a0c139cf6ce86da333ca77d217c1773c6e5c54f5278382fe8-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "938937003",
+    category: "Event Promo",
+    title: "Sakura Moonlight Gala Promo | Little Red Hood",
+    description:
+      "Short promotional event film for a stylised Little Red Hood experience.",
+    client: "Little Red Hood",
+    industry: "Events",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1840556930-e5c23c19f9f2c0c4e336de6f0dc1c00f6edc46843cc2f2671cdaf92a8a09e273-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "930195266",
+    category: "Client Testimonial Video",
+    title: "Working with Black Iris Films | Little Red Hood",
+    description:
+      "Client testimonial video about the creative partnership with Little Red Hood.",
+    client: "Little Red Hood",
+    industry: "Events",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1826804022-18ead0734817a040a3dba53472107a1fde9104f22bfd195847a212d226c7165c-d_640?region=us",
+    ),
+  },
+  {
     vimeoId: "915048133",
     category: "Event Video",
     title: "Once Upon a Night",
@@ -399,6 +519,198 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     industry: "Events",
     thumb: V(
       "https://i.vimeocdn.com/video/1801927893-9142b38b4bf93db06c529ebb45272bafa476e9a38221547619b9e214398c9602-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "911075713",
+    category: "Corporate Video",
+    title: "Microsoft Dynamics CRM at SSW - Take it to the Next Level!",
+    description:
+      "Corporate technology video for SSW's Microsoft Dynamics CRM capability.",
+    client: "SSW",
+    industry: "Technology",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1795386634-17a47cd317abd949c98caec92d74d61fa57093cdc7785cfbc0892321d33dacbb-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "898505109",
+    category: "TV Commercial",
+    title: "Kitchen Makeover Commercial | Smart Makeover",
+    description:
+      "Home renovation commercial for Smart Makeover's kitchen offering.",
+    client: "Smart Makeover",
+    industry: "Home improvement",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1775298306-8be6090d241fa167cf8bf06e42859c9a64a8c425640ed8b64543581aade43fa2-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "864678319",
+    category: "TV Commercial",
+    title: "Bathroom Renovations Commercial | Smart Makeover",
+    description:
+      "Home renovation commercial for Smart Makeover's bathroom offering.",
+    client: "Smart Makeover",
+    industry: "Home improvement",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1724254132-eb2f60531d3ca9532c0f31c0ef072e912cfc13b518696d057345aedbceb9c1da-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "842487831",
+    category: "Product Video",
+    title: "XOBROWS By Leila",
+    description:
+      "Beauty brand video for XOBROWS by Leila, focused on service and visual polish.",
+    client: "XOBROWS By Leila",
+    industry: "Beauty",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1693632274-08e0c8c36f7485faaf2a72532c6b4cc5b2c65bcf769686608b850abc271a5239-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "808252988",
+    category: "Social Media Commercial",
+    title: "Hero Video | Smart Makeover - Social Media Version",
+    description:
+      "Social media version of Smart Makeover's renovation hero campaign.",
+    client: "Smart Makeover",
+    industry: "Home improvement",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1973431468-6768375970761ce168247a4902945b57ca77398a73682a376e5dc5cf201b91d1-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "786808117",
+    category: "Behind the Scenes Video",
+    title: "Teagan Croft BTS | InStyle Magazine",
+    description:
+      "Behind-the-scenes fashion editorial content for InStyle Magazine.",
+    client: "InStyle Magazine",
+    industry: "Fashion",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1584132480-7768202f794ae342a439d338f015d2e25bc2b65bcae9265f228563c20732e06e-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "754222312",
+    category: "Client Testimonial Video",
+    title: "Working with Black Iris Films | Dacxi",
+    description:
+      "Client testimonial video about Black Iris Films' work with Dacxi.",
+    client: "Dacxi",
+    industry: "Finance",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1522204912-1d7eb1ab38ea240b67d0f9bea529a64a80ee3c9808b8e4c50dba52f96001f75f-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "714348702",
+    category: "Product Video",
+    title: "IllumiaSkin 7+1 Colour LED Face Mask",
+    description:
+      "Beauty product video combining live action, set lighting and product detail.",
+    client: "IllumiaSkin",
+    industry: "Beauty",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1458552436-144fb65b1e9cae6c153dad3fa243393170146990069e2cb6fbe682b0ac8ab8eb-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "705222324",
+    category: "Behind the Scenes Video",
+    title: "Alycia Debnam-Carey Cartier BTS | Cartier",
+    description:
+      "Behind-the-scenes fashion and luxury content for a Cartier editorial shoot.",
+    client: "Cartier",
+    industry: "Fashion",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1423946772-3023b585bab38f87841259e45cd280c53fae07c1b9a567ce8b5d95d4e2d6f9d6-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "679925784",
+    category: "Brand Film",
+    title: "The Dacxi Advantage",
+    description:
+      "Brand and platform video explaining Dacxi's core investor proposition.",
+    client: "Dacxi",
+    industry: "Finance",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1386572165-7f7a2c25fb61a9462a0f4be3c826633da1268a9c07a184a59716cfb0b6df0d2b-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "667721068",
+    category: "Brand Film",
+    title: "Daniel Desiderio | Personal Trainer",
+    description:
+      "Personal brand film for a fitness professional and training business.",
+    client: "Daniel Desiderio",
+    industry: "Health and fitness",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1351958420-dc1bb5f28d887da9f8d3da5cb9fed3ad2df4b9c56e65b90d68995ee8839dc619-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "516023386",
+    category: "Client Testimonial Video",
+    title: "Working with Black Iris Films | AIE",
+    description:
+      "Client testimonial video about Black Iris Films' education-sector work with AIE.",
+    client: "Academy of Interactive Entertainment",
+    industry: "Higher education",
+    thumb: V(
+      "https://i.vimeocdn.com/video/1072918817-d11f597979a82ee5b1eed909507c933b7073b6e282b761814455c33603f8d219-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "421006652",
+    category: "Social Media Video",
+    title: "Taking More of Your Business Online? | Black Iris Films",
+    description:
+      "Black Iris Films social video about adapting business content for online audiences.",
+    client: "Black Iris Films",
+    industry: "Creative services",
+    thumb: V(
+      "https://i.vimeocdn.com/video/937973720-9fe23621effbaac6e7555c94cf9d83b546db766092cf38d6def3da1e7cdd205f-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "346047743",
+    category: "Brand Hero Video",
+    title: "Tech Life Sydney in Flow Motion",
+    description:
+      "Flow-motion brand hero film celebrating Sydney's technology community.",
+    client: "Black Iris Films",
+    industry: "Technology",
+    thumb: V(
+      "https://i.vimeocdn.com/video/796006759-b5428bd88696430976ced39d4dfce7b1bf89cb546ce14a9ea0a23ff29b9a80f9-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "318108717",
+    category: "Explainer Video",
+    title: "Our Animated Explainer Video Package - Black Iris Films",
+    description:
+      "Service explainer outlining the Black Iris Films animated explainer package.",
+    client: "Black Iris Films",
+    industry: "Creative services",
+    thumb: V(
+      "https://i.vimeocdn.com/video/760441032-4ffecbfe1dbc35e5011c9e8c03bd25c4ad66d6af92ae953073f1552910aecdb8-d_640?region=us",
+    ),
+  },
+  {
+    vimeoId: "310000988",
+    category: "Passion Project",
+    title: "A Night Out in Sydney",
+    description:
+      "Black Iris Films passion project capturing the pace and atmosphere of Sydney at night.",
+    client: "Black Iris Films",
+    industry: "Tourism",
+    thumb: V(
+      "https://i.vimeocdn.com/video/750504941-e6ad618f3fd76b598ff41c8cb6029a192a61b80ee5f57974df90d3908d518404-d_640?region=us",
     ),
   },
   {

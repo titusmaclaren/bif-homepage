@@ -4,64 +4,75 @@
 const W = (id: string, w = 800, h = 600) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
 
-type Tile = {
+export type ServiceTile = {
   label: string;
   href: string;
   image: string;
   objectPosition?: string;
+  description: string;
 };
 
-const tiles: Tile[] = [
+export const SERVICE_TILES: ServiceTile[] = [
   {
     label: "Financial Services",
     href: "/financial-video-production-sydney",
     image: W("a2a11d_70dc6df59e59410ea533f798ee4dc342~mv2.jpg"),
+    description: "Video for finance, fintech and investment brands.",
   },
   {
     label: "Higher Education",
     href: "/higher-education-video-production-sydney",
     image: W("a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg"),
+    description: "Recruitment, graduate stories and course content.",
   },
   {
     label: "Tech & SaaS",
     href: "/tech-video-production-sydney",
     image: W("a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png"),
+    description: "Product stories, platform explainers and sales content.",
   },
   {
     label: "Corporate",
     href: "/corporate-video-production-sydney",
     image: W("a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg"),
+    description: "Useful content for internal and external audiences.",
   },
   {
     label: "Explainer",
     href: "/explainer-video-production-sydney",
     image: W("a2a11d_5bf50a7c15f64e3b989846e5b591a9d3~mv2.jpg"),
+    description: "Make complex ideas clear without flattening them.",
   },
   {
     label: "Animated",
     href: "/animated-video-production-sydney",
     image: W("a2a11d_1711d8d900c341e09e80ee76d8da4062~mv2.jpg"),
+    description: "Motion-led content for abstract or hard-to-film ideas.",
   },
   {
     label: "Brand Films",
     href: "/brand-film-production-sydney",
     image: W("a2a11d_5d24f983e0e14d4495ec45478724d2eb~mv2.jpg"),
+    description: "Campaign films built around emotion and proof.",
   },
   {
     label: "Startup & Scaleup",
     href: "/startup-video-production-sydney",
     image: W("a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg"),
+    description: "Launch, raise and growth-stage video.",
   },
   {
     label: "LinkedIn & B2B Social",
     href: "/linkedin-video-production-sydney",
     image: W("a2a11d_9bbe0636b2f84cab82f668122e3b26d7~mv2.jpg"),
+    description: "Short-form content for considered buyers.",
   },
   {
     label: "AI Powered Content Studio",
     href: "/ai-powered-content-studio-v2",
     image: "/services/ai-powered-content-studio-character-sheet.png",
     objectPosition: "50% 34%",
+    description: "AI-assisted imagery systems and campaign assets.",
   },
 ];
 
@@ -83,7 +94,7 @@ export function ServicesGrid() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-          {tiles.map((t) => (
+          {SERVICE_TILES.map((t) => (
             <a
               key={t.label}
               href={t.href}

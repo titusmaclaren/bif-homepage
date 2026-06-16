@@ -2,6 +2,12 @@
 
 import { useMemo, useState } from "react";
 import { VideoTrigger } from "../components/VideoLightbox";
+import {
+  getIndustryGroups,
+  getVideoTypeGroups,
+  INDUSTRY_FILTERS,
+  VIDEO_TYPE_FILTERS,
+} from "../data/portfolio-filters";
 import type { PortfolioItem } from "../data/portfolio";
 
 type FilterValue = "All" | string;
@@ -10,87 +16,53 @@ type PortfolioExplorerProps = {
   items: PortfolioItem[];
 };
 
+const INITIAL_PROJECT_COUNT = 21;
 const featuredIds = new Set(["742487127", "776884299", "1109359009"]);
-
-function uniqueSorted(values: string[]) {
-  return Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
-}
 
 export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
   const [typeFilter, setTypeFilter] = useState<FilterValue>("All");
   const [industryFilter, setIndustryFilter] = useState<FilterValue>("All");
-  const [query, setQuery] = useState("");
-
-  const videoTypes = useMemo(
-    () => uniqueSorted(items.map((item) => item.category)),
-    [items],
-  );
-  const industries = useMemo(
-    () => uniqueSorted(items.map((item) => item.industry)),
-    [items],
-  );
+  const [showAll, setShowAll] = useState(false);
 
   const filteredItems = useMemo(() => {
-    const normalisedQuery = query.trim().toLowerCase();
-
     return items.filter((item) => {
-      const matchesType = typeFilter === "All" || item.category === typeFilter;
+      const matchesType =
+        typeFilter === "All" || getVideoTypeGroups(item).includes(typeFilter);
       const matchesIndustry =
-        industryFilter === "All" || item.industry === industryFilter;
-      const searchable = [
-        item.title,
-        item.client,
-        item.category,
-        item.industry,
-        item.description,
-      ]
-        .join(" ")
-        .toLowerCase();
+        industryFilter === "All" || getIndustryGroups(item).includes(industryFilter);
 
-      return (
-        matchesType &&
-        matchesIndustry &&
-        (!normalisedQuery || searchable.includes(normalisedQuery))
-      );
+      return matchesType && matchesIndustry;
     });
-  }, [industryFilter, items, query, typeFilter]);
+  }, [industryFilter, items, typeFilter]);
 
-  const hasActiveFilter =
-    typeFilter !== "All" || industryFilter !== "All" || query.trim() !== "";
+  const hasActiveFilter = typeFilter !== "All" || industryFilter !== "All";
+  const visibleItems =
+    showAll || hasActiveFilter
+      ? filteredItems
+      : filteredItems.slice(0, INITIAL_PROJECT_COUNT);
+  const isShowingInitialSet =
+    !showAll && !hasActiveFilter && filteredItems.length > INITIAL_PROJECT_COUNT;
 
   return (
     <section className="bg-off-white py-10 md:py-12">
       <div className="mx-auto max-w-[1260px] px-6 lg:px-10">
-        <div className="grid gap-4 border-y border-fog/70 py-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
-          <div className="space-y-5">
-            <FilterGroup
-              label="Video type"
-              values={videoTypes}
-              selected={typeFilter}
-              onSelect={setTypeFilter}
+        <div className="rounded-md border border-fog bg-white p-5 shadow-[0_10px_30px_rgba(15,24,38,0.08)] md:p-6">
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
+            <FilterSelect
+              label="Choose an industry"
+              value={industryFilter}
+              onChange={setIndustryFilter}
+              options={INDUSTRY_FILTERS.map((filter) => filter.label)}
             />
-            <FilterGroup
-              label="Industry"
-              values={industries}
-              selected={industryFilter}
-              onSelect={setIndustryFilter}
+            <FilterSelect
+              label="Choose a type of video"
+              value={typeFilter}
+              onChange={setTypeFilter}
+              options={VIDEO_TYPE_FILTERS.map((filter) => filter.label)}
             />
-          </div>
-
-          <div className="grid gap-3">
-            <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate">
-              Search
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Client, title, format..."
-                className="mt-2 h-11 w-full rounded-sm border border-fog bg-white px-3 text-sm font-medium normal-case tracking-normal text-navy outline-none transition-colors placeholder:text-slate/60 focus:border-mint"
-              />
-            </label>
-            <div className="flex items-center justify-between gap-3 text-xs text-slate">
-              <span>
-                {filteredItems.length} of {items.length} projects
+            <div className="flex min-h-11 items-center justify-between gap-4 md:min-w-[210px] md:justify-end">
+              <span className="text-xs font-medium text-slate">
+                {visibleItems.length} of {items.length} projects
               </span>
               {hasActiveFilter && (
                 <button
@@ -98,9 +70,8 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
                   onClick={() => {
                     setTypeFilter("All");
                     setIndustryFilter("All");
-                    setQuery("");
                   }}
-                  className="font-bold text-mint transition-colors hover:text-bif-green"
+                  className="min-h-11 rounded-sm bg-bif-green px-5 text-[12px] font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-bif-green-hover"
                 >
                   Clear filters
                 </button>
@@ -109,9 +80,9 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
           </div>
         </div>
 
-        {filteredItems.length > 0 ? (
+        {visibleItems.length > 0 ? (
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredItems.map((item) => (
+            {visibleItems.map((item) => (
               <PortfolioCard key={item.vimeoId} item={item} />
             ))}
           </div>
@@ -124,53 +95,59 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
             </p>
           </div>
         )}
+
+        {isShowingInitialSet && (
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="inline-flex min-h-12 items-center justify-center rounded-sm border border-navy bg-white px-7 text-[12px] font-bold uppercase tracking-[0.12em] text-navy transition-colors hover:border-mint hover:text-mint"
+            >
+              Show all projects
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-function FilterGroup({
+function FilterSelect({
   label,
-  values,
-  selected,
-  onSelect,
+  value,
+  options,
+  onChange,
 }: {
   label: string;
-  values: string[];
-  selected: FilterValue;
-  onSelect: (value: FilterValue) => void;
+  value: FilterValue;
+  options: string[];
+  onChange: (value: FilterValue) => void;
 }) {
   return (
-    <div>
-      <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate">
+    <label className="block text-sm font-bold text-navy">
+      <span className="block">
         {label}
-      </div>
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        {["All", ...values].map((value) => {
-          const isSelected = selected === value;
-          return (
-            <button
-              key={value}
-              type="button"
-              onClick={() => onSelect(value)}
-              className={[
-                "min-h-9 shrink-0 rounded-sm border px-3 text-[12px] font-bold transition-colors",
-                isSelected
-                  ? "border-navy bg-navy text-white"
-                  : "border-fog bg-white text-slate hover:border-mint hover:text-navy",
-              ].join(" ")}
-            >
-              {value}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="mt-2 h-11 w-full rounded-sm border border-fog bg-white px-3 text-sm font-bold text-navy outline-none transition-colors focus:border-mint"
+      >
+        <option value="All">All</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 
 function PortfolioCard({ item }: { item: PortfolioItem }) {
   const isFeatured = featuredIds.has(item.vimeoId);
+  const videoTypeLabel = getVideoTypeGroups(item)[0];
+  const industryLabel = getIndustryGroups(item)[0];
 
   return (
     <VideoTrigger
@@ -188,7 +165,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/12 to-transparent" />
         <span className="absolute left-3 top-3 rounded-sm bg-white/92 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-navy">
-          {item.category}
+          {videoTypeLabel}
         </span>
         {isFeatured && (
           <span className="absolute right-3 top-3 rounded-sm bg-mint px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
@@ -211,7 +188,7 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
       </span>
       <span className="block p-4">
         <span className="block text-[11px] font-bold uppercase tracking-[0.16em] text-mint">
-          {item.industry}
+          {industryLabel}
         </span>
         <span className="mt-2 block text-lg font-bold leading-tight text-navy">
           {item.title}
