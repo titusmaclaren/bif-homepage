@@ -1891,8 +1891,10 @@
           <div class="lightbox-glance-label">At a glance</div>
           <dl class="lightbox-meta">
             <div class="lightbox-meta-row" id="lightboxClientRow"><dt>Client:</dt><dd id="lightboxClient"></dd></div>
+            <div class="lightbox-meta-row" id="lightboxIndustryRow"><dt>Industry:</dt><dd id="lightboxIndustry"></dd></div>
             <div class="lightbox-meta-row" id="lightboxFormatRow"><dt>Video format:</dt><dd id="lightboxFormat"></dd></div>
             <div class="lightbox-meta-row" id="lightboxGoalRow"><dt>Goal:</dt><dd id="lightboxGoal"></dd></div>
+            <div class="lightbox-meta-row" id="lightboxPlatformsRow"><dt>Platforms:</dt><dd id="lightboxPlatforms"></dd></div>
           </dl>
         </div>
         <div class="lightbox-cta">
@@ -1905,6 +1907,7 @@
         <div class="video-embed-wrapper">
           <iframe id="lightboxIframe" src="" title="Video" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
+        <div class="lightbox-related" id="lightboxRelated"></div>
       </div>
     </div>
   </div>
@@ -2008,62 +2011,7 @@
   }
 
   // Lightbox
-  function openLightbox(vimeoUrl, title, client, goal, format, desc) {
-    var panel = document.querySelector('#lightbox .lightbox-panel');
-    panel.classList.remove('video-only');
-    setLightboxEmbed(vimeoUrl);
-    document.getElementById('lightboxTitle').textContent = title || '';
-    document.getElementById('lightboxCategory').textContent = format || '';
-    var descEl = document.getElementById('lightboxDesc');
-    var summaryLabel = document.getElementById('lightboxSummaryLabel');
-    descEl.textContent = desc || '';
-    descEl.style.display = desc ? '' : 'none';
-    if (summaryLabel) summaryLabel.style.display = desc ? '' : 'none';
-    setLightboxMetaRow('lightboxClientRow', 'lightboxClient', client);
-    setLightboxMetaRow('lightboxFormatRow', 'lightboxFormat', format);
-    setLightboxMetaRow('lightboxGoalRow', 'lightboxGoal', goal);
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function setLightboxMetaRow(rowId, valueId, value) {
-    var row = document.getElementById(rowId);
-    var val = document.getElementById(valueId);
-    if (val) val.textContent = value || '';
-    if (row) row.style.display = value ? 'flex' : 'none';
-  }
-
-  function setLightboxEmbed(vimeoUrl) {
-    var iframe = document.getElementById('lightboxIframe');
-    if (!vimeoUrl) { iframe.src = ''; return; }
-    iframe.src = vimeoUrl + (vimeoUrl.indexOf('?') === -1 ? '?autoplay=1&title=0&byline=0&portrait=0' : '');
-  }
-
-  function openVideoOnlyLightbox(vimeoUrl) {
-    document.querySelector('#lightbox .lightbox-panel').classList.add('video-only');
-    setLightboxEmbed(vimeoUrl);
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.querySelector('#lightbox .lightbox-panel').classList.remove('video-only');
-    document.getElementById('lightboxIframe').src = '';
-    document.body.style.overflow = '';
-  }
-
-  
-
-  // Close on overlay click
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
+  // Lightbox + related videos: /legacy/services/lightbox-portfolio.js
 
   // FAQ accordion
   function toggleFaq(btn) {
@@ -2285,6 +2233,7 @@
       if (close) close.addEventListener("click", function () { setReviewsOpen(false); });
     })();
   </script>
+<script src="/legacy/services/lightbox-portfolio.js" defer></script>
 </body>
 </html>
 
