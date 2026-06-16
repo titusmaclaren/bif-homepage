@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
       { source: "/copy-of-home-2", destination: "/", permanent: true },
       { source: "/faq", destination: "/#faq", permanent: true },
       {
+        source: "/ai-imagery",
+        destination: "/ai-powered-content-studio-v2",
+        permanent: true,
+      },
+      {
         source: "/bondi-to-coogee-walk-in-one-minute",
         destination: "/stories",
         permanent: true,
@@ -61,6 +66,10 @@ const nextConfig: NextConfig = {
       { source: "/report-thank-you", destination: "/legacy/stories/report-thank-you.html" },
       { source: "/case-studies", destination: "/case-studies/index.html" },
       { source: "/case-studies/:slug", destination: "/case-studies/:slug.html" },
+      {
+        source: "/ai-powered-content-studio-v2",
+        destination: "/ai-powered-content-studio-v2/index.html",
+      },
       { source: "/the-last-10", destination: "/the-last-10/index.html" },
       { source: "/the-last-10/contact", destination: "/the-last-10/contact.html" },
       {
@@ -82,6 +91,10 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/the-last-10/assets/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        source: "/ai-powered-content-studio-v2/assets/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
       {

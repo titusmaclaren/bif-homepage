@@ -170,7 +170,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               </button>
               <div className="absolute top-[calc(100%+20px)] left-1/2 w-[210px] -translate-x-1/2 rounded-lg border border-white/10 bg-[#050505] p-2.5 opacity-0 invisible shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-[1001] before:absolute before:-top-[22px] before:left-0 before:right-0 before:h-[22px] before:content-['']">
                 <a href="/#portfolio" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">VIDEO</a>
-                <a href="/ai-imagery" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
+                <a href="/ai-powered-content-studio-v2" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
               </div>
             </div>
             <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
@@ -217,7 +217,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             <summary className="mobile-link list-none cursor-pointer">WORK</summary>
             <div className="grid gap-2.5 mt-3.5 pt-3.5 pb-0.5 pl-3.5 border-l border-white/15">
               <a href="/#portfolio" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>VIDEO</a>
-              <a href="/ai-imagery" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>AI IMAGERY</a>
+              <a href="/ai-powered-content-studio-v2" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>AI IMAGERY</a>
             </div>
           </details>
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>

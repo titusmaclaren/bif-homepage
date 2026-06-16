@@ -59,7 +59,7 @@ const tiles: Tile[] = [
   },
   {
     label: "AI Powered Content Studio",
-    href: "/#content-system",
+    href: "/ai-powered-content-studio-v2",
     image: "/services/ai-powered-content-studio-character-sheet.png",
     objectPosition: "50% 34%",
   },

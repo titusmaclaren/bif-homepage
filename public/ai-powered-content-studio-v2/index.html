@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Content Studio V2 | Black Iris Films</title>
+  <meta name="description" content="A custom AI content system for boutique makers, artists, market stallholders, cafes and small product brands. Built by Black Iris Films in Sydney.">
+  <link rel="canonical" href="https://www.blackirisfilms.com/ai-powered-content-studio-v2">
+  <meta property="og:title" content="Turn product photos into a whole campaign world.">
+  <meta property="og:description" content="AI product photography, AI campaign imagery and repeatable boutique brand content systems directed by Black Iris Films.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.blackirisfilms.com/ai-powered-content-studio-v2">
+  <meta property="og:image" content="https://www.blackirisfilms.com/ai-powered-content-studio-v2/assets/ai-content-v2-value-mosaic.jpg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --charcoal: #080808;
+      --coal: #101010;
+      --ink: #141414;
+      --white: #ffffff;
+      --paper: #f4f1ec;
+      --stone: #ded6ca;
+      --mist: #ebe8e3;
+      --muted: #6f6a63;
+      --mint: #65b98f;
+      --mint-dark: #3d9e5f;
+      --iris: #6b4fa3;
+      --mauve: #cda2ad;
+      --gold: #d8ae58;
+      --line-dark: rgba(255, 255, 255, 0.14);
+      --line-light: rgba(0, 0, 0, 0.12);
+      --shadow: 0 34px 90px rgba(0, 0, 0, 0.32);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 72px;
+      background: #000000;
+    }
+    .header-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      align-self: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+      line-height: 0;
+    }
+    .header-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      transform: translateY(4px);
+    }
+    .nav-logo-svg {
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+    .nav-logo-svg svg {
+      height: 48px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      transform: translateY(7px);
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .site-nav a,
+    .nav-dropdown-toggle {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: opacity 0.2s;
+    }
+    .site-nav a:hover,
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle:focus {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-dropdown-toggle {
+      appearance: none;
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: default;
+    }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      width: 360px;
+      padding: 10px;
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      transform: translate(-50%, 8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      z-index: 1001;
+    }
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -22px;
+      height: 22px;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 600;
+    }
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus {
+      opacity: 1;
+      background: #111;
+      color: #ffffff;
+      outline: none;
+    }
+    .btn-nav,
+    .btn-get-started,
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 24px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-nav,
+    .btn-get-started,
+    .btn-primary {
+      min-height: 0;
+      padding: 10px 20px;
+      color: #ffffff !important;
+      background: #3d9e5f;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      transition: background 0.2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .btn-nav:hover,
+    .btn-get-started:hover,
+    .btn-primary:hover {
+      background: #348a52;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-secondary:hover {
+      border-color: var(--mint);
+      color: var(--mint);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #000;
+      padding: 20px 24px 28px;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .mobile-nav .btn-get-started {
+      display: inline-block;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .mobile-services summary {
+      list-style: none;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .mobile-services summary::-webkit-details-marker { display: none; }
+    .mobile-service-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 14px 0 2px 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .mobile-service-links a {
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 500;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--mint);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.75;
+    }
+    .section {
+      padding: 92px 0;
+      position: relative;
+    }
+    .section-dark {
+      background: var(--black);
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .section-paper {
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .section-mist {
+      background: var(--mist);
+      color: var(--ink);
+    }
+    .section-heading {
+      max-width: 760px;
+    }
+    .section-heading.center {
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+    .section-heading.center .eyebrow { justify-content: center; }
+    .section-heading h2 {
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .section-dark .section-heading h2 { color: var(--white); }
+    .section-heading p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .section-dark .section-heading p { color: rgba(255, 255, 255, 0.68); }
+
+    .hero {
+      min-height: 760px;
+      padding-top: 72px;
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 72px;
+      right: 0;
+      bottom: 0;
+      left: 42%;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.72) 24%, rgba(0, 0, 0, 0.36) 100%),
+        url('assets/hero-ai-content-studio-generated.png') center / cover no-repeat;
+      opacity: 0.32;
+      filter: saturate(0.9) contrast(1.08);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .hero-inner {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      min-height: calc(760px - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.04fr);
+      gap: 54px;
+      align-items: center;
+      padding: 74px 0 52px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-copy { max-width: 540px; }
+    .hero-kicker {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      max-width: 560px;
+      color: var(--white);
+      font-size: clamp(42px, 4.6vw, 66px);
+      line-height: 1.03;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .hero h1 strong {
+      display: inline;
+      font-weight: 900;
+    }
+    .hero-sub {
+      margin-top: 24px;
+      max-width: 520px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      align-items: center;
+    }
+    .hero-note {
+      margin-top: 26px;
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero-visual {
+      align-self: stretch;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+    }
+    .compare-card {
+      width: 100%;
+      background: rgba(244, 241, 236, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+    .comparison {
+      position: relative;
+      --split: 50%;
+    }
+    .compare-media {
+      position: relative;
+      min-height: 526px;
+      overflow: hidden;
+      background: var(--black);
+      cursor: ew-resize;
+      touch-action: none;
+      user-select: none;
+    }
+    .compare-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .compare-after {
+      clip-path: polygon(var(--split) 0, 100% 0, 100% 100%, var(--split) 100%);
+    }
+    .compare-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split);
+      width: 2px;
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      left: var(--split);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      color: var(--black);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .compare-labels {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .compare-labels span {
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    }
+    .compare-range {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+    }
+    .compare-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 20px;
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(0, 0, 0, 0.86);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .trust-strip {
+      background: var(--coal);
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+      color: rgba(255, 255, 255, 0.62);
+    }
+    .trust-inner {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      min-height: 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .trust-title {
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .trust-names {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      align-items: center;
+    }
+    .trust-names span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .process-section { padding-top: 66px; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 58px 1fr 58px 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 46px;
+    }
+    .process-card {
+      padding: 24px 26px 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+      min-height: 310px;
+    }
+    .process-card:first-child { border-left: 0; }
+    .process-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .process-number {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.64);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .process-icon {
+      width: 34px;
+      height: 34px;
+      color: var(--mauve);
+    }
+    .process-card h3 {
+      color: var(--white);
+      font-size: 22px;
+      line-height: 1.16;
+      font-weight: 800;
+    }
+    .process-card p {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.67);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .process-list {
+      margin-top: 18px;
+      display: grid;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+    }
+    .process-list li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--mint);
+      transform: translateY(-2px);
+    }
+    .process-arrow {
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 38px;
+      font-weight: 300;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+      gap: 58px;
+      align-items: center;
+    }
+    .value-copy h2 {
+      margin-top: 16px;
+      max-width: 520px;
+      font-size: clamp(34px, 3.4vw, 50px);
+      line-height: 1.12;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .value-copy h2 strong {
+      display: inline;
+      font-weight: 800;
+    }
+    .value-copy p {
+      margin-top: 22px;
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .value-copy .bold-line {
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .value-copy .btn-secondary {
+      margin-top: 28px;
+      color: var(--ink);
+      border-color: rgba(0, 0, 0, 0.22);
+    }
+    .value-copy .btn-secondary:hover {
+      color: var(--mint-dark);
+      border-color: var(--mint-dark);
+    }
+    .value-image {
+      background: var(--black);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.18);
+    }
+    .value-image img {
+      width: 100%;
+      aspect-ratio: 16 / 8.2;
+      object-fit: cover;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 46px;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .why-card {
+      padding: 36px 36px 38px;
+      border-left: 1px solid var(--line-dark);
+    }
+    .why-card:first-child { border-left: 0; }
+    .why-icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 26px;
+      color: var(--mint);
+    }
+    .why-card h3 {
+      color: var(--white);
+      font-size: clamp(24px, 2.3vw, 34px);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .why-card h3 strong { font-weight: 900; }
+    .why-card p {
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 14px;
+    }
+
+    .recent-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .recent-head h2 {
+      margin-top: 10px;
+      color: var(--white);
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.08;
+    }
+    .recent-link {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .recent-link:hover { color: var(--mint); text-decoration: none; }
+    .recent-strip {
+      overflow: hidden;
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+      background: #030303;
+    }
+    .recent-strip img {
+      width: 100%;
+      aspect-ratio: 16 / 4.35;
+      object-fit: cover;
+    }
+
+    .example-library {
+      padding-top: 64px;
+    }
+    .library-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.58fr) 1fr;
+      gap: 44px;
+      align-items: start;
+      margin-top: 34px;
+    }
+    .library-intro {
+      position: sticky;
+      top: 104px;
+    }
+    .library-intro p {
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 15px;
+    }
+    .library-list {
+      display: grid;
+      gap: 16px;
+    }
+    .brand-library {
+      border: 1px solid var(--line-dark);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 24px;
+    }
+    .brand-library-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .brand-library h3 {
+      color: var(--white);
+      font-size: 22px;
+      line-height: 1.16;
+      font-weight: 900;
+    }
+    .brand-library-count {
+      color: var(--mint);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-library p {
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 14px;
+    }
+    .library-rail {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .library-rail span {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.24);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      line-height: 1.25;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .director-section {
+      padding: 72px 0;
+      background:
+        linear-gradient(120deg, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.94)),
+        var(--black);
+    }
+    .director-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.48fr) 1fr;
+      gap: 58px;
+      align-items: center;
+    }
+    .director-portrait {
+      background: var(--coal);
+      overflow: hidden;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+    }
+    .director-portrait img {
+      width: 100%;
+      aspect-ratio: 1.18 / 1;
+      object-fit: cover;
+      object-position: left center;
+    }
+    .director-copy h2 {
+      margin-top: 14px;
+      max-width: 760px;
+      color: var(--white);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.04;
+      font-weight: 400;
+    }
+    .director-copy h2 strong {
+      display: block;
+      font-weight: 900;
+    }
+    .director-copy p {
+      margin-top: 20px;
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+    }
+    .signature {
+      margin-top: 24px;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    .signature span {
+      display: block;
+      color: rgba(255, 255, 255, 0.58);
+      font-weight: 500;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+    .price-card {
+      background: rgba(255, 255, 255, 0.54);
+      border: 1px solid var(--line-light);
+      padding: 34px;
+    }
+    .price-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line-light);
+    }
+    .price-card h3 {
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .price {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .best-for {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .price-list {
+      margin-top: 22px;
+      display: grid;
+      gap: 9px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .price-list li::before {
+      content: '+';
+      margin-right: 9px;
+      color: var(--mint-dark);
+      font-weight: 900;
+    }
+    .pricing-footnotes {
+      margin-top: 16px;
+      display: grid;
+      gap: 5px;
+      color: rgba(21, 21, 21, 0.52);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .pricing-footnotes p { margin: 0; }
+    .price-tag {
+      margin-top: 28px;
+      padding: 13px 16px;
+      color: var(--white);
+      background: var(--black);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .add-ons {
+      margin-top: 22px;
+      padding: 28px 34px;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--line-light);
+    }
+    .add-ons h3 {
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .add-ons .price-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px 22px;
+    }
+
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: 0.9fr repeat(3, 1fr);
+      gap: 0;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--line-light);
+    }
+    .ethics-intro,
+    .ethics-item {
+      padding: 30px 34px;
+      border-left: 1px solid var(--line-light);
+    }
+    .ethics-intro { border-left: 0; }
+    .ethics-intro h2 {
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ethics-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .ethics-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ethics-disclosure {
+      grid-column: 1 / -1;
+      padding: 24px 34px;
+      border-top: 1px solid var(--line-light);
+      border-left: 3px solid var(--gold);
+      background: var(--coal);
+    }
+    .ethics-disclosure p {
+      max-width: 920px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 14px;
+      line-height: 1.75;
+      text-align: left;
+    }
+    .ethics-disclosure strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .final-cta {
+      position: relative;
+      padding: 94px 0;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.96)),
+        url('assets/ai-content-v2-campaign-mug.jpg') center 58% / cover no-repeat;
+    }
+    .final-cta h2 {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--white);
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.02;
+      font-weight: 400;
+    }
+    .final-cta h2 strong {
+      display: block;
+      font-weight: 900;
+    }
+    .final-cta p {
+      max-width: 620px;
+      margin: 22px auto 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+    }
+    .final-cta .hero-actions { justify-content: center; }
+
+    .site-footer {
+      background: var(--black);
+      padding: 56px 0 40px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .footer-left { flex: 1 1 300px; }
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .footer-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: #ffffff; }
+    .footer-legal p { margin: 0 0 2px; color: rgba(255, 255, 255, 0.45); font-size: 13px; }
+    .footer-legal a { color: rgba(255, 255, 255, 0.5); font-size: 13px; }
+    .footer-legal a:hover { color: #fff; }
+    .footer-right { flex: 0 0 auto; text-align: right; }
+    .footer-contact { margin-bottom: 20px; }
+    .footer-contact p { margin: 0 0 4px; }
+    .footer-contact a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+    .footer-contact a:hover { color: #fff; }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .footer-social a img {
+      width: 34px;
+      height: 34px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .footer-social a:hover img { opacity: 1; }
+    .footer-partner { font-size: 13px; color: rgba(255, 255, 255, 0.45); }
+    .footer-partner a {
+      color: var(--mint);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-partner a:hover { text-decoration: underline; }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-inner,
+      .value-grid,
+      .director-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy { max-width: 760px; }
+      .hero h1 { font-size: clamp(38px, 6vw, 56px); }
+      .hero-visual { min-height: 0; }
+      .compare-media { min-height: 470px; }
+      .value-image img { aspect-ratio: 16 / 9; }
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .process-card {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        min-height: 0;
+        padding: 30px 0;
+      }
+      .process-card:first-child { border-top: 0; }
+      .process-arrow {
+        display: none;
+      }
+      .why-grid,
+      .library-layout,
+      .pricing-grid,
+      .ethics-grid {
+        grid-template-columns: 1fr;
+      }
+      .library-intro { position: static; }
+      .library-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .why-card,
+      .ethics-item {
+        border-left: 0;
+        border-top: 1px solid var(--line-dark);
+      }
+      .ethics-item { border-top-color: var(--line-light); }
+      .ethics-intro { border-bottom: 1px solid var(--line-light); }
+      .add-ons .price-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 900px) {
+      .site-nav,
+      .btn-nav.desktop-only,
+      .btn-get-started.desktop-only { display: none; }
+      .mobile-menu-btn { display: block; }
+      .trust-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px 0;
+      }
+      .trust-names { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-names span { text-align: left; }
+      .footer-contact { text-align: left; }
+      .footer-social { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .container,
+      .hero-inner,
+      .trust-inner { width: min(100% - 32px, 1180px); }
+      .section { padding: 70px 0; }
+      .hero {
+        min-height: auto;
+      }
+      .hero::before {
+        left: 0;
+        opacity: 0.16;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.9)),
+          url('assets/hero-ai-content-studio-generated.png') 66% center / cover no-repeat;
+      }
+      .hero-inner {
+        min-height: auto;
+        padding: 56px 0 46px;
+        gap: 34px;
+      }
+      .hero h1 {
+        font-size: 40px;
+        line-height: 1.06;
+      }
+      .hero-sub { font-size: 16px; }
+      .hero-actions { display: grid; }
+      .btn-primary,
+      .btn-secondary { width: 100%; }
+      .compare-media { min-height: 380px; }
+      .compare-caption {
+        display: grid;
+        gap: 6px;
+      }
+      .trust-names { grid-template-columns: 1fr; }
+      .section-heading h2,
+      .value-copy h2,
+      .director-copy h2,
+      .final-cta h2 { font-size: 38px; }
+      .value-grid { gap: 34px; }
+      .value-image img,
+      .recent-strip img {
+        aspect-ratio: 4 / 5;
+      }
+      .recent-head {
+        display: grid;
+        align-items: start;
+      }
+      .price-head {
+        display: grid;
+        gap: 8px;
+      }
+      .add-ons .price-list { grid-template-columns: 1fr; }
+      .price-card,
+      .add-ons,
+      .ethics-intro,
+      .ethics-item,
+      .ethics-disclosure { padding: 26px; }
+      .library-rail { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://www.blackirisfilms.com/" class="header-logo">
+        <span class="nav-logo-svg" aria-label="Black Iris Films"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 698.93 170.24" height="52"><defs><style>.cls-1{fill:none;}.cls-2{font-size:42px;fill:#f5f6f8;font-family:'Montserrat',Arial,sans-serif;font-weight:800;letter-spacing:0.22em;}.cls-3{font-family:'Montserrat',Arial,sans-serif;font-weight:300;}.cls-3,.cls-5{letter-spacing:0.22em;}.cls-4{letter-spacing:0.22em;}.cls-5{font-family:'Montserrat',Arial,sans-serif;font-weight:500;}.cls-6{clip-path:url(#clip-path);}.cls-7{clip-path:url(#clip-path-2);}.cls-8{fill:url(#linear-gradient);}.cls-9{clip-path:url(#clip-path-3);}.cls-10{fill:url(#linear-gradient-2);}.cls-11{clip-path:url(#clip-path-4);}.cls-12{fill:url(#linear-gradient-3);}</style><clipPath id="clip-path" transform="translate(5.74 -17.57)"><rect class="cls-1" width="159.33" height="159.48"/></clipPath><clipPath id="clip-path-2" transform="translate(5.74 -17.57)"><path class="cls-1" d="M21.35,63.07c-1.77.56-4.54,3.92-4.54,3.92l.84,26.56a15,15,0,0,0,9.31,6c7.11,1.56,4.9-1.43,22.8-6.78l-.2-27.88C38.63,62,33.25,61,29.78,61s-5.07,1-8.43,2.09"/></clipPath><linearGradient id="linear-gradient" x1="-33.17" y1="-139.91" x2="-33.02" y2="-139.91" gradientTransform="matrix(0, -258.5, -258.5, 0, -36127.06, -8491.93)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#131316"/><stop offset="0.5" stop-color="#2c2d2f"/><stop offset="1" stop-color="#131316"/></linearGradient><clipPath id="clip-path-3" transform="translate(5.74 -17.57)"><path class="cls-1" d="M19.33,95.43l-1.68-1.88a4.68,4.68,0,0,0,1.68,1.88M27,97.32c-4,0-6.34-.95-7.68-1.89l24.74,27.71c.35.37,2.06,2.3,3.68,2.62a12.67,12.67,0,0,0,4.84,0c2-.62,87-30.13,87-30.13a3.68,3.68,0,0,0,1.53-1.08l0-.34a1.87,1.87,0,0,0-1-.48L97.09,79.29Z"/></clipPath><linearGradient id="linear-gradient-2" x1="-31.34" y1="-140.75" x2="-31.18" y2="-140.75" gradientTransform="matrix(819.76, 0, 0, -819.76, 25727.96, -115279.36)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#303c59"/><stop offset="0.03" stop-color="#303c59"/><stop offset="0.13" stop-color="#4b5d8b"/><stop offset="0.28" stop-color="#495a87"/><stop offset="0.44" stop-color="#42527a"/><stop offset="0.61" stop-color="#364364"/><stop offset="0.77" stop-color="#273047"/><stop offset="0.92" stop-color="#151a26"/><stop offset="1" stop-color="#151a26"/></linearGradient><clipPath id="clip-path-4" transform="translate(5.74 -17.57)"><path class="cls-1" d="M139.49,95.69h0M16.81,67l.79-.9a5.18,5.18,0,0,0-.79.9M42.87,37.16,17.6,66.09c1.22-1.15,4-3,9.41-3.17,10.25-.3,102.39,27.78,112.12,30.71,2.28.69.49,2,.37,2.05a2.61,2.61,0,0,0,2.07-2.74L142.45,66c0-1.92-.43-2.3-2.27-2.89L51.46,33.46c-3.29.26-6.24.88-8.59,3.7"/></clipPath><linearGradient id="linear-gradient-3" x1="-29.81" y1="-139.5" x2="-29.66" y2="-139.5" gradientTransform="matrix(0, -832.34, -832.34, 0, -116032.28, -24683.14)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3d3159"/><stop offset="0.03" stop-color="#443764"/><stop offset="0.09" stop-color="#53427a"/><stop offset="0.16" stop-color="#5c4987"/><stop offset="0.22" stop-color="#5f4b8b"/><stop offset="0.36" stop-color="#5b4785"/><stop offset="0.55" stop-color="#503d75"/><stop offset="0.76" stop-color="#3d2b5b"/><stop offset="0.99" stop-color="#241336"/><stop offset="1" stop-color="#213"/></linearGradient></defs><title>Black Iris Films Text Logo</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><text class="cls-2" transform="translate(196.41 78.44)">BLACK <tspan class="cls-3" x="207.86" y="0">IRIS</tspan><tspan class="cls-4" x="314.91" y="0"> </tspan><tspan class="cls-5" x="336.58" y="0">FILM</tspan><tspan class="cls-5" x="469.18" y="0">S</tspan></text><g class="cls-6"><g class="cls-7"><rect class="cls-8" x="22.55" y="43.41" width="32.95" height="40.15"/></g><g class="cls-9"><rect class="cls-10" x="18.91" y="42.77" width="120.94" height="119.83" transform="translate(-43.44 67.32) rotate(-44.41)"/></g><g class="cls-11"><rect class="cls-12" x="47.13" y="1.08" width="65" height="126.99" transform="translate(19.05 125.18) rotate(-88.73)"/></g></g></g></g></svg></span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="https://www.blackirisfilms.com/learn">LEARN</a>
+        <a href="https://www.blackirisfilms.com/#faq">FAQ</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true">SERVICES</button>
+          <div class="nav-dropdown-menu">
+            <a href="/corporate-video-production-sydney">Corporate Video Production Sydney</a>
+            <a href="/financial-video-production-sydney">Finance Video Production Sydney</a>
+            <a href="/higher-education-video-production-sydney">Higher Education Video Production Sydney</a>
+            <a href="/explainer-video-production-sydney">Explainer Video Production Sydney</a>
+            <a href="/tech-video-production-sydney">Tech &amp; SaaS Video Production Sydney</a>
+            <a href="/animated-video-production-sydney">Animated Video Production Sydney</a>
+            <a href="/brand-film-production-sydney">Brand Film Production Sydney</a>
+            <a href="/startup-video-production-sydney">Startup &amp; Scaleup Video Production Sydney</a>
+            <a href="/linkedin-video-production-sydney">LinkedIn &amp; B2B Social Video Production Sydney</a>
+          </div>
+        </div>
+        <a href="https://www.blackirisfilms.com/#portfolio">WORK</a>
+        <a href="https://www.blackirisfilms.com/#about">ABOUT</a>
+      </nav>
+      <a class="btn-get-started desktop-only" href="https://quiz.blackirisfilms.com/">GET AN ESTIMATE</a>
+      <button class="mobile-menu-btn" type="button" aria-label="Menu" onclick="toggleMobileMenu()">&#9776;</button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="https://www.blackirisfilms.com/learn">LEARN</a>
+    <a href="https://www.blackirisfilms.com/#faq">FAQ</a>
+    <details class="mobile-services">
+      <summary>SERVICES</summary>
+      <div class="mobile-service-links">
+        <a href="/corporate-video-production-sydney">Corporate Video Production Sydney</a>
+        <a href="/financial-video-production-sydney">Finance Video Production Sydney</a>
+        <a href="/higher-education-video-production-sydney">Higher Education Video Production Sydney</a>
+        <a href="/explainer-video-production-sydney">Explainer Video Production Sydney</a>
+        <a href="/tech-video-production-sydney">Tech &amp; SaaS Video Production Sydney</a>
+        <a href="/animated-video-production-sydney">Animated Video Production Sydney</a>
+        <a href="/brand-film-production-sydney">Brand Film Production Sydney</a>
+        <a href="/startup-video-production-sydney">Startup &amp; Scaleup Video Production Sydney</a>
+        <a href="/linkedin-video-production-sydney">LinkedIn &amp; B2B Social Video Production Sydney</a>
+      </div>
+    </details>
+    <a href="https://www.blackirisfilms.com/#portfolio">WORK</a>
+    <a href="https://www.blackirisfilms.com/#about">ABOUT</a>
+    <a class="btn-get-started" href="https://quiz.blackirisfilms.com/">GET AN ESTIMATE</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy fade-in">
+          <span class="hero-kicker">AI + creative direction</span>
+          <h1>Turn product photos into a <strong>whole campaign world.</strong></h1>
+          <p class="hero-sub">A collaborative AI content system built around your brand, directed by 15+ years of commercial creative experience. Upload simple product photos and keep creating polished campaign imagery, product shots, menus, lookbooks, social crops and AI ecommerce imagery.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://calendar.app.google/NKGPghV6uZNgvLxi6" target="_blank" rel="noopener">Book a Consultation</a>
+            <a class="btn-secondary" href="#recent-work">View Work</a>
+          </div>
+          <p class="hero-note">AI product photography for makers, artists, cafes, fashion labels, market stalls and boutique product brands.</p>
+        </div>
+
+        <div class="hero-visual fade-in">
+          <div class="compare-card">
+            <div class="comparison" style="--split: 52%;">
+              <div class="compare-media">
+                <img class="compare-before" src="assets/ai-content-v2-raw-mug.jpg" alt="Crummy iPhone reference photo of a handmade ceramic mug on a cluttered home table">
+                <img class="compare-after" src="assets/ai-content-v2-campaign-mug.jpg" alt="Polished AI campaign image of the same handmade ceramic mug">
+                <div class="compare-labels">
+                  <span>Before</span>
+                  <span>After</span>
+                </div>
+                <div class="compare-line" aria-hidden="true"></div>
+                <div class="compare-handle" aria-hidden="true">&#8596;</div>
+                <input class="compare-range" type="range" min="0" max="100" value="52" aria-label="Compare product reference photo and finished campaign image">
+              </div>
+              <div class="compare-caption">
+                <span>Upload product photos</span>
+                <span>Generate polished brand imagery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Boutique brand examples">
+      <div class="trust-inner">
+        <p class="trust-title">Built for boutique brands and creative founders</p>
+        <div class="trust-names">
+          <span>Kate Shea Ceramics</span>
+          <span>Baby Dragon Bar</span>
+          <span>Zeitgeist Guru</span>
+          <span>Small Batch Makers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark process-section" id="process">
+      <div class="container">
+        <div class="section-heading center fade-in">
+          <span class="eyebrow">How it works</span>
+          <h2>A simple, collaborative process.</h2>
+          <p>We build the visual system with you, then hand over a repeatable workflow you can keep using whenever new product content is needed.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card fade-in">
+            <div class="process-top">
+              <span class="process-number">1</span>
+              <svg class="process-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M14 7l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Creative Exploration</h3>
+            <p>Together, we refine the visual world so the system feels unmistakably like your brand.</p>
+            <ul class="process-list">
+              <li>Campaign aesthetic and emotional tone</li>
+              <li>Photo types, styling and product framing</li>
+              <li>Models, props, lighting and reference images</li>
+            </ul>
+          </article>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <article class="process-card fade-in">
+            <div class="process-top">
+              <span class="process-number">2</span>
+              <svg class="process-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3 4.5 7.2 12 11.4l7.5-4.2L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M4.5 7.2v8.4L12 20l7.5-4.4V7.2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 11.4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Build The System</h3>
+            <p>We turn the approved creative direction into a repeatable AI content system.</p>
+            <ul class="process-list">
+              <li>Product accuracy and style consistency</li>
+              <li>Prompt and workflow refinement</li>
+              <li>Social, web, menu and campaign formats</li>
+            </ul>
+          </article>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <article class="process-card fade-in">
+            <div class="process-top">
+              <span class="process-number">3</span>
+              <svg class="process-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 9 12 5l8 4-8 4-8-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M7 11v4.2c0 1.3 2.2 2.8 5 2.8s5-1.5 5-2.8V11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M20 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Handover &amp; Training</h3>
+            <p>You receive training, workflow access and enough guidance to keep getting strong results.</p>
+            <ul class="process-list">
+              <li>Walkthrough and documentation</li>
+              <li>Workflow access and training</li>
+              <li>Support options for future launches</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="examples">
+      <div class="container value-grid">
+        <div class="value-copy fade-in">
+          <span class="eyebrow">Perception is everything</span>
+          <h2>Your products already have value. <strong>The question is whether your branding communicates it.</strong></h2>
+          <p>Luxury is not just about the product. It is how it is presented, lit, framed and repeated across every point where a customer meets you.</p>
+          <p>The right imagery shapes how people feel about your brand before they read a single word.</p>
+          <p class="bold-line">Better presentation. Higher perceived value. Stronger brand. Better results.</p>
+          <a class="btn-secondary" href="#recent-work">See Examples</a>
+        </div>
+        <div class="value-image fade-in">
+          <img src="assets/ai-content-v2-value-mosaic.jpg" alt="Campaign image mosaic for handmade ceramics, packaging, model imagery and product details">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow">Why brands choose this system</span>
+          <h2>More polished content, with less production friction.</h2>
+          <p>This is an AI content system for small business product content, not a SaaS app and not random prompts. It gives creative entrepreneurs a repeatable production base they can actually use.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card fade-in">
+            <svg class="why-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m8.8 12.3-2.2 7.2 5.4-3 5.4 3-2.2-7.2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <h3><strong>1.</strong> Better content than traditional shoots at this budget.</h3>
+            <p>Get campaign-level imagery that would normally require photographers, models, studios, styling and production teams.</p>
+          </article>
+          <article class="why-card fade-in">
+            <svg class="why-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19 8a7 7 0 1 0 1.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M19 4v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3><strong>2.</strong> Keep creating without ongoing production costs.</h3>
+            <p>Once your system is built, you can keep generating on-brand content simply by uploading new products.</p>
+          </article>
+          <article class="why-card fade-in">
+            <svg class="why-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 17 10 11l4 4 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 7h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3><strong>3.</strong> Stronger branding creates stronger perceived value.</h3>
+            <p>Consistent, premium imagery helps your products feel more desirable, justify higher prices and build long-term brand equity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark example-library" id="recent-work">
+      <div class="container">
+        <div class="recent-head fade-in">
+          <div>
+            <span class="eyebrow">Example libraries</span>
+            <h2>Real products. Real brand worlds.</h2>
+          </div>
+          <a class="recent-link" href="#packages">View packages &#8594;</a>
+        </div>
+      </div>
+      <div class="recent-strip fade-in">
+        <img src="assets/ai-content-v2-recent-strip.jpg" alt="Generated campaign imagery examples for skincare, ceramics, cafe menu photography and jewellery">
+      </div>
+      <div class="container library-layout">
+        <div class="library-intro fade-in">
+          <span class="eyebrow">Built to scale</span>
+          <p>The finished page should not rely on one hero mockup per brand. Each brand world needs enough examples to prove the system: references, campaign images, product details, social crops, web banners, seasonal refreshes and practical sales assets.</p>
+          <p>This section is structured for 10+ examples per brand, with room to expand into a deeper gallery once the final image sets are ready.</p>
+        </div>
+        <div class="library-list">
+          <article class="brand-library fade-in">
+            <div class="brand-library-head">
+              <h3>Kate Shea Ceramics</h3>
+              <span class="brand-library-count">10+ outputs</span>
+            </div>
+            <p>Handmade ceramics shown across raw references, campaign images, detail shots, packaging, web banners and social formats.</p>
+            <div class="library-rail" aria-label="Kate Shea Ceramics example output types">
+              <span>Reference photo</span>
+              <span>Campaign hero</span>
+              <span>Product detail</span>
+              <span>Packaging</span>
+              <span>Social crop</span>
+              <span>Website banner</span>
+              <span>Marketplace</span>
+              <span>Seasonal set</span>
+              <span>Collection launch</span>
+              <span>Print asset</span>
+            </div>
+          </article>
+          <article class="brand-library fade-in">
+            <div class="brand-library-head">
+              <h3>Baby Dragon Bar</h3>
+              <span class="brand-library-count">10+ outputs</span>
+            </div>
+            <p>Hospitality imagery for menus, cocktails, venue mood, posters, social stories and campaign refreshes.</p>
+            <div class="library-rail" aria-label="Baby Dragon Bar example output types">
+              <span>Menu hero</span>
+              <span>Cocktail detail</span>
+              <span>Food image</span>
+              <span>Venue mood</span>
+              <span>Poster crop</span>
+              <span>Social story</span>
+              <span>Specials board</span>
+              <span>Seasonal menu</span>
+              <span>Website banner</span>
+              <span>Promo asset</span>
+            </div>
+          </article>
+          <article class="brand-library fade-in">
+            <div class="brand-library-head">
+              <h3>Zeitgeist Guru</h3>
+              <span class="brand-library-count">10+ outputs</span>
+            </div>
+            <p>Editorial brand imagery across model-led campaign shots, product moments, lookbook assets and launch creative.</p>
+            <div class="library-rail" aria-label="Zeitgeist Guru example output types">
+              <span>Model shot</span>
+              <span>Product moment</span>
+              <span>Editorial crop</span>
+              <span>Lookbook page</span>
+              <span>Social post</span>
+              <span>Website hero</span>
+              <span>Campaign banner</span>
+              <span>Launch poster</span>
+              <span>Detail shot</span>
+              <span>Refresh set</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="director-section">
+      <div class="container director-grid">
+        <div class="director-portrait fade-in">
+          <img src="assets/ai-content-v2-director-portrait.jpg" alt="Commercial creative director portrait">
+        </div>
+        <div class="director-copy fade-in">
+          <span class="eyebrow">Creative direction that makes the difference</span>
+          <h2>Directed by 15+ years of <strong>commercial creative experience.</strong></h2>
+          <p>Black Iris Films brings the craft of filmmaking, photography, emotional marketing, campaign art direction and visual storytelling to AI product imagery.</p>
+          <p>AI is the tool. Creative direction is what makes the work feel premium, coherent and useful for a real brand. The goal is not to make content that looks artificial. The goal is to make product imagery that feels intentional and helps people understand the value of what you make.</p>
+          <div class="signature">
+            Black Iris Films
+            <span>Sydney creative director and commercial production team</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="packages">
+      <div class="container">
+        <div class="section-heading center fade-in">
+          <span class="eyebrow">Packages</span>
+          <h2>Two ways to build your visual world.</h2>
+          <p>Flexible systems for different stages of boutique brand growth.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card fade-in">
+            <div class="price-head">
+              <h3>Full Visual System</h3>
+              <p class="price">$3,000 AUD+</p>
+            </div>
+            <p class="best-for">A complete visual content system built around a single product category or campaign style. Best for brands building or evolving their visual identity.</p>
+            <ul class="price-list">
+              <li>Creative direction and visual strategy</li>
+              <li>Models, styling, props and shot planning</li>
+              <li>Visual system design</li>
+              <li>Custom workflow build</li>
+              <li>Testing, refinement and launch assets</li>
+              <li>Handover and training</li>
+            </ul>
+            <div class="price-tag">Perfect for new campaigns</div>
+          </article>
+          <article class="price-card fade-in">
+            <div class="price-head">
+              <h3>Style Replication System</h3>
+              <p class="price">$1,500 AUD+</p>
+            </div>
+            <p class="best-for">Replicate your existing aesthetic and turn it into a scalable visual content system for a single product category or campaign style.</p>
+            <ul class="price-list">
+              <li>Analysis of existing imagery</li>
+              <li>Workflow setup</li>
+              <li>Style replication testing</li>
+              <li>Consistency refinement</li>
+              <li>Initial AI product imagery assets</li>
+              <li>Handover and training</li>
+            </ul>
+            <div class="price-tag">Perfect for established brands</div>
+          </article>
+        </div>
+        <div class="pricing-footnotes fade-in">
+          <p>*Pricing shown is for a single visual system. Additional product categories or campaign styles quoted separately.</p>
+          <p>*Includes limited rounds of changes appropriate to the project. Additional refinement rounds available as add-ons.</p>
+        </div>
+        <div class="add-ons fade-in">
+          <h3>Add-ons</h3>
+          <ul class="price-list">
+            <li>Seasonal campaign refreshes</li>
+            <li>Print-ready and upscaling workflows</li>
+            <li>Additional product categories</li>
+            <li>Additional campaign styles</li>
+            <li>AI fashion photography systems</li>
+            <li>AI menu photography systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-mist">
+      <div class="container">
+        <div class="ethics-grid fade-in">
+          <div class="ethics-intro">
+            <h2>Built on ethics. Focused on quality. Here for the long term.</h2>
+          </div>
+          <div class="ethics-item">
+            <p><strong>Honest production</strong>We encourage transparent use of AI-assisted imagery where appropriate.</p>
+          </div>
+          <div class="ethics-item">
+            <p><strong>No cheap tricks</strong>Just considered, intentional content that improves how your brand is perceived.</p>
+          </div>
+          <div class="ethics-item">
+            <p><strong>Your assets stay yours</strong>Your brand, your products, your workflow and your generated image system.</p>
+          </div>
+          <div class="ethics-disclosure">
+            <p><strong>Suggested client disclosure:</strong> "Images are created using photography, digital art direction and AI-assisted tools. Product size, materials, craftsmanship and overall quality are represented as accurately as possible."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+      <div class="container fade-in">
+        <h2>Ready to build a campaign world <strong>your brand deserves?</strong></h2>
+        <p>Let's create an AI content system tailored to your products, audience and aesthetic.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://calendar.app.google/NKGPghV6uZNgvLxi6" target="_blank" rel="noopener">Book a Consultation</a>
+          <a class="btn-secondary" href="#recent-work">View Work</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <nav class="footer-nav">
+          <a href="https://www.blackirisfilms.com/contact">Contact us</a>
+          <a href="https://www.blackirisfilms.com/#portfolio">Portfolio</a>
+          <a href="https://www.blackirisfilms.com/contact#testimonials">Testimonials</a>
+          <a href="https://www.blackirisfilms.com/case-studies/">Case Studies</a>
+          <a href="https://www.blackirisfilms.com/learn">Blog</a>
+        </nav>
+        <div class="footer-legal">
+          <p>&copy; 2018 - 2026 Black Iris Films.</p>
+          <p>Sydney, Australia</p>
+          <p>Video Production Agency</p>
+          <p>ABN: 13774120626</p>
+          <a href="https://www.blackirisfilms.com/privacy-policy">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact">
+          <p><a href="tel:+610282013504">Contact: (02) 8201 3504</a></p>
+          <p><a href="mailto:info@blackirisfilms.com?subject=Video%20Enquiry">Email: info@blackirisfilms.com</a></p>
+        </div>
+        <div class="footer-social">
+          <a href="https://vimeo.com/blackirisfilms" target="_blank" aria-label="Vimeo">
+            <img src="https://static.wixstatic.com/media/11062b_a191ed325b6e488b9ddc1a218cd38ebc~mv2.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_a191ed325b6e488b9ddc1a218cd38ebc~mv2.png" alt="Vimeo" width="34" height="34">
+          </a>
+          <a href="http://www.facebook.com/blackirisfilms" target="_blank" aria-label="Facebook">
+            <img src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" width="34" height="34">
+          </a>
+          <a href="https://instagram.com/titusmac" target="_blank" aria-label="Instagram">
+            <img src="https://static.wixstatic.com/media/81af6121f84c41a5b4391d7d37fce12a.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/81af6121f84c41a5b4391d7d37fce12a.png" alt="Instagram" width="34" height="34">
+          </a>
+          <a href="https://www.youtube.com/channel/UCHmhhExvQyjn5lnbt4m3Wrw" target="_blank" aria-label="YouTube">
+            <img src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/203dcdc2ac8b48de89313f90d2a4cda1.png" alt="YouTube" width="34" height="34">
+          </a>
+          <a href="https://www.linkedin.com/company/black-iris-films/" target="_blank" aria-label="LinkedIn">
+            <img src="https://static.wixstatic.com/media/7528824071724d12a3e6c31eee0b40d4.png/v1/fill/w_34,h_34,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7528824071724d12a3e6c31eee0b40d4.png" alt="LinkedIn" width="34" height="34">
+          </a>
+        </div>
+        <div class="footer-partner">
+          <p>Interested in becoming a partner? <a href="https://www.blackirisfilms.com/partner-with-us">CLICK HERE</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    document.querySelectorAll('.compare-range').forEach(function(range) {
+      var comparison = range.closest('.comparison');
+      var media = range.closest('.compare-media');
+
+      function update() {
+        comparison.style.setProperty('--split', range.value + '%');
+      }
+
+      function setFromPointer(event) {
+        var rect = media.getBoundingClientRect();
+        var value = ((event.clientX - rect.left) / rect.width) * 100;
+        value = Math.max(0, Math.min(100, value));
+        range.value = Math.round(value);
+        update();
+      }
+
+      range.addEventListener('input', update);
+
+      media.addEventListener('pointerdown', function(event) {
+        setFromPointer(event);
+        media.setPointerCapture(event.pointerId);
+      });
+
+      media.addEventListener('pointermove', function(event) {
+        if (event.buttons) {
+          setFromPointer(event);
+        }
+      });
+
+      update();
+    });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      observer.observe(el);
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+        observer.unobserve(el);
+      }
+    });
+  </script>
+</body>
+</html>
