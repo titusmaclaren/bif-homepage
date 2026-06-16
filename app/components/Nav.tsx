@@ -15,83 +15,6 @@ const services = [
   { href: "/linkedin-video-production-sydney", label: "LinkedIn & B2B Social Video Production Sydney" },
 ];
 
-function BifLogoSvg() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 698.93 170.24"
-      height="52"
-      style={{ height: 48, width: "auto", display: "block", transform: "translateY(7px)" }}
-      aria-label="Black Iris Films"
-    >
-      <defs>
-        <clipPath id="bif-cp-1"><rect width="159.33" height="159.48" /></clipPath>
-        <clipPath id="bif-cp-2">
-          <path d="M27.09,45.50C25.32,46.06,22.55,49.42,22.55,49.42L23.39,75.98A15,15,0,0,0,32.70,81.98C39.81,83.54,37.60,80.55,55.50,75.20L55.30,47.32C44.37,44.43,38.99,43.43,35.52,43.43S30.45,44.41,27.09,45.50Z" />
-        </clipPath>
-        <linearGradient id="bif-grad-1" x1="-33.17" y1="-139.91" x2="-33.02" y2="-139.91" gradientTransform="matrix(0, -258.5, -258.5, 0, -36127.06, -8491.93)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#131316" />
-          <stop offset="0.5" stopColor="#2c2d2f" />
-          <stop offset="1" stopColor="#131316" />
-        </linearGradient>
-        <clipPath id="bif-cp-3">
-          <path d="M25.07,77.86L23.39,75.98A4.68,4.68,0,0,0,25.07,77.86M32.74,79.75C28.74,79.75,26.39,78.80,25.05,77.86L49.79,105.57C50.14,105.94,51.85,107.87,53.47,108.19A12.67,12.67,0,0,0,58.31,108.19C60.31,107.57,145.31,78.06,145.31,78.06A3.68,3.68,0,0,0,146.84,76.98L146.81,76.64A1.87,1.87,0,0,0,145.81,76.16L102.83,61.72Z" />
-        </clipPath>
-        <linearGradient id="bif-grad-2" x1="-31.34" y1="-140.75" x2="-31.18" y2="-140.75" gradientTransform="matrix(819.76, 0, 0, -819.76, 25727.96, -115279.36)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#303c59" />
-          <stop offset="0.03" stopColor="#303c59" />
-          <stop offset="0.13" stopColor="#4b5d8b" />
-          <stop offset="0.28" stopColor="#495a87" />
-          <stop offset="0.44" stopColor="#42527a" />
-          <stop offset="0.61" stopColor="#364364" />
-          <stop offset="0.77" stopColor="#273047" />
-          <stop offset="0.92" stopColor="#151a26" />
-          <stop offset="1" stopColor="#151a26" />
-        </linearGradient>
-        <clipPath id="bif-cp-4">
-          <path d="M145.23,78.12H145.23M22.55,49.42L23.34,48.52A5.18,5.18,0,0,0,22.55,49.42M48.61,19.59L23.34,48.52C24.56,47.37,27.32,45.52,32.75,45.35C43,45.05,135.13,73.13,144.86,76.06C147.14,76.75,145.35,78.05,145.23,78.12A2.61,2.61,0,0,0,147.30,75.38L148.19,48.43C148.19,46.51,147.76,46.13,145.92,45.54L57.20,15.89C53.91,16.15,50.96,16.77,48.61,19.59Z" />
-        </clipPath>
-        <linearGradient id="bif-grad-3" x1="-29.81" y1="-139.5" x2="-29.66" y2="-139.5" gradientTransform="matrix(0, -832.34, -832.34, 0, -116032.28, -24683.14)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#3d3159" />
-          <stop offset="0.03" stopColor="#443764" />
-          <stop offset="0.09" stopColor="#53427a" />
-          <stop offset="0.16" stopColor="#5c4987" />
-          <stop offset="0.22" stopColor="#5f4b8b" />
-          <stop offset="0.36" stopColor="#5b4785" />
-          <stop offset="0.55" stopColor="#503d75" />
-          <stop offset="0.76" stopColor="#3d2b5b" />
-          <stop offset="0.99" stopColor="#241336" />
-          <stop offset="1" stopColor="#213" />
-        </linearGradient>
-      </defs>
-      <g>
-        <g>
-          <text
-            style={{
-              fontSize: 42,
-              fill: "#f5f6f8",
-              fontFamily: "var(--font-montserrat), Arial, sans-serif",
-              fontWeight: 800,
-              letterSpacing: "0.22em",
-            }}
-            transform="translate(196.41 78.44)"
-          >
-            <tspan>BLACK </tspan>
-            <tspan style={{ fontWeight: 300 }} x="207.86" y="0">IRIS</tspan>
-            <tspan x="314.91" y="0"> </tspan>
-            <tspan style={{ fontWeight: 500 }} x="336.58" y="0">FILMS</tspan>
-          </text>
-          <g clipPath="url(#bif-cp-1)">
-            <g clipPath="url(#bif-cp-2)"><rect fill="url(#bif-grad-1)" x="22.55" y="43.41" width="32.95" height="40.15" /></g>
-            <g clipPath="url(#bif-cp-3)"><rect fill="url(#bif-grad-2)" x="18.91" y="42.77" width="120.94" height="119.83" transform="translate(-43.44 67.32) rotate(-44.41)" /></g>
-            <g clipPath="url(#bif-cp-4)"><rect fill="url(#bif-grad-3)" x="47.13" y="1.08" width="65" height="126.99" transform="translate(19.05 125.18) rotate(-88.73)" /></g>
-          </g>
-        </g>
-      </g>
-    </svg>
-  );
-}
-
 type NavProps = {
   showEstimateBar?: boolean;
 };
@@ -134,10 +57,10 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             aria-label="Black Iris Films"
           >
             <Image
-              src="/logos/bif-text-white.png"
+              src="/assets/logo-bif-nav.svg"
               alt="Black Iris Films"
-              width={398}
-              height={95}
+              width={699}
+              height={170}
               priority
               className="h-auto w-[214px]"
             />
