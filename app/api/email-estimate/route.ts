@@ -2,10 +2,10 @@
  * POST /api/email-estimate
  *
  * Takes the estimate the user just saw, renders it as a self-contained
- * HTML email, and sends it via Resend. We used to route this through
+ * HTML email, and sends it via SMTP. We used to route this through
  * MailerLite but hit field-length caps and HTML escaping in their merge
- * tags, so transactional mail now lives on Resend and MailerLite is kept
- * for the newsletter (deferred).
+ * tags, so transactional mail lives on the site mailer. Beehiiv handles
+ * newsletter opt-ins separately.
  *
  * Body: { email: string, name?: string, company?: string, estimate: EstimateResponse }
  *
@@ -14,7 +14,7 @@
  * the flag.
  */
 import { NextResponse } from "next/server";
-import { sendEmail } from "@/lib/resend";
+import { sendEmail } from "@/lib/email";
 import { renderEstimateHtml } from "@/lib/renderEstimateHtml";
 import type { EstimateResponse } from "@/lib/pricing";
 
@@ -72,11 +72,12 @@ export async function POST(req: Request) {
     to: email,
     subject,
     html,
+    text: "Thanks for using the Black Iris Films estimator. Your estimate is included in the HTML version of this email.",
     replyTo: "titus@blackirisfilms.com",
   });
 
   if (!result.ok) {
-    console.error("[email-estimate] Resend error:", result.error);
+    console.error("[email-estimate] SMTP error:", result.error);
     return NextResponse.json(
       {
         ok: false,

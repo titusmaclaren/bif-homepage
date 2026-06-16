@@ -8,7 +8,7 @@ import {
   type EstimateResponse,
 } from "@/lib/pricing";
 import { captureLead } from "@/lib/leadCapture";
-import { subscribeToNewsletter } from "@/lib/wixContacts";
+import { subscribeToNewsletter } from "@/lib/beehiiv";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -54,7 +54,7 @@ function shouldEscalateFromBrief(brief: string | undefined): string | null {
 /**
  * All post-response side effects in one place: lead capture (Google
  * Apps Script -> Sheet + email) and, when the user ticked the
- * newsletter box, a Wix Contacts v4 add. Both run in parallel and
+ * newsletter box, a Beehiiv subscription. Both run in parallel and
  * errors are swallowed independently — neither one should block or
  * fail the other.
  */
@@ -68,6 +68,7 @@ async function runPostSubmit(
       subscribeToNewsletter({
         email: answers.details.email,
         name: answers.details.name,
+        source: "Estimator",
       }),
     );
   }

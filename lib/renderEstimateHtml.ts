@@ -1,7 +1,5 @@
 /**
- * Renders an EstimateResponse as a self-contained HTML fragment suitable for
- * dropping into a MailerLite "Custom HTML" block via the {$estimate_html}
- * merge tag.
+ * Renders an EstimateResponse as a self-contained HTML email fragment.
  *
  * All styles are inline because email clients (Outlook in particular) ignore
  * <style> blocks. Width caps at 600px, which is the de facto standard.

@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
+import { sendEmail } from "@/lib/email";
+import { subscribeToNewsletter } from "@/lib/beehiiv";
 
 export const runtime = "nodejs";
 
-const RESEND_BATCH_ENDPOINT = "https://api.resend.com/emails/batch";
 const DEFAULT_TO_EMAIL = "info@blackirisfilms.com";
-const DEFAULT_FROM_EMAIL = "Black Iris Films <onboarding@resend.dev>";
 
 type ContactPayload = {
   name?: unknown;
@@ -78,17 +78,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-
-  if (!apiKey) {
-    return NextResponse.json(
-      { message: "Email sending is not configured yet." },
-      { status: 503 },
-    );
-  }
-
-  const to = [DEFAULT_TO_EMAIL];
-  const from = process.env.CONTACT_FORM_FROM || DEFAULT_FROM_EMAIL;
+  const to = process.env.CONTACT_FORM_TO || DEFAULT_TO_EMAIL;
   const subject = source.toLowerCase().includes("partner")
     ? `Partner enquiry from ${name}`
     : isAiImagery
@@ -158,38 +148,30 @@ export async function POST(request: Request) {
     </div>
   `;
 
-  const response = await fetch(RESEND_BATCH_ENDPOINT, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify([
-      {
-        from,
-        to,
-        reply_to: email,
-        subject,
-        text,
-        html,
-      },
-      {
-        from,
-        to: [email],
-        reply_to: DEFAULT_TO_EMAIL,
-        subject: acknowledgementSubject,
-        text: acknowledgementText,
-        html: acknowledgementHtml,
-      },
-    ]),
-  });
+  const [internalResult, acknowledgementResult] = await Promise.all([
+    sendEmail({
+      to,
+      replyTo: email,
+      subject,
+      text,
+      html,
+    }),
+    sendEmail({
+      to: email,
+      replyTo: to,
+      subject: acknowledgementSubject,
+      text: acknowledgementText,
+      html: acknowledgementHtml,
+    }),
+  ]);
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("Resend contact form error:", errorText);
-    if (response.status === 403 && errorText.includes("not verified")) {
-      await logResendDomainStatus(apiKey);
-    }
+  if (!internalResult.ok || !acknowledgementResult.ok) {
+    console.error("Contact form SMTP error:", {
+      internal: internalResult.ok ? null : internalResult.error,
+      acknowledgement: acknowledgementResult.ok
+        ? null
+        : acknowledgementResult.error,
+    });
 
     return NextResponse.json(
       { message: "Unable to send your enquiry right now." },
@@ -197,39 +179,15 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
-}
-
-async function logResendDomainStatus(apiKey: string) {
-  try {
-    const listResponse = await fetch("https://api.resend.com/domains", {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    });
-    const listBody = (await listResponse.json().catch(() => null)) as {
-      data?: Array<{ id?: string; name?: string; status?: string }>;
-    } | null;
-    const domain = listBody?.data?.find(
-      (item) => item.name === "blackirisfilms.com",
+  if (subscribed) {
+    after(() =>
+      subscribeToNewsletter({
+        email,
+        name,
+        source,
+      }),
     );
-
-    if (!listResponse.ok || !domain?.id) {
-      console.error("Resend domain diagnostic failed", {
-        status: listResponse.status,
-        domain: domain || null,
-      });
-      return;
-    }
-
-    const domainResponse = await fetch(
-      `https://api.resend.com/domains/${encodeURIComponent(domain.id)}`,
-      { headers: { Authorization: `Bearer ${apiKey}` } },
-    );
-    const domainBody = await domainResponse.json().catch(() => null);
-    console.error("Resend domain diagnostic", {
-      status: domainResponse.status,
-      domain: domainBody,
-    });
-  } catch (error) {
-    console.error("Resend domain diagnostic request failed", error);
   }
+
+  return NextResponse.json({ ok: true });
 }
