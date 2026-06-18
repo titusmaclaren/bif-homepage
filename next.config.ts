@@ -13,7 +13,7 @@ const serviceSlugs = [
 ];
 
 const alternateDomains = [
-  "www.blackirisfilms.com",
+  "blackirisfilms.com",
   "blackirisfilms.com.au",
   "www.blackirisfilms.com.au",
   "titusmaclaren.com",
@@ -122,7 +122,7 @@ const nextConfig: NextConfig = {
       ...alternateDomains.map((domain) => ({
         source: "/:path*",
         has: [{ type: "host" as const, value: domain }],
-        destination: "https://blackirisfilms.com/:path*",
+        destination: "https://www.blackirisfilms.com/:path*",
         permanent: true,
       })),
       { source: "/copy-of-home-2", destination: "/", permanent: true },
