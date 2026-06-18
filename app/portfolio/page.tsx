@@ -4,22 +4,17 @@ import { GoogleReviewsBadge } from "../components/GoogleReviewsBadge";
 import { Nav } from "../components/Nav";
 import { SERVICE_TILES } from "../components/ServicesGrid";
 import { PORTFOLIO_ITEMS } from "../data/portfolio";
+import { createPageMetadata } from "../lib/seo";
 import { PortfolioExplorer } from "./PortfolioExplorer";
 import { ServiceCarousel } from "./ServiceCarousel";
 
-export const metadata: Metadata = {
-  title: "Video portfolio",
+export const metadata: Metadata = createPageMetadata({
+  title: "Video Portfolio",
   description:
     "Explore the Black Iris Films video portfolio by video type and industry, including brand films, explainers, product videos, event films and social content.",
-  alternates: { canonical: "/portfolio" },
-  openGraph: {
-    title: "Black Iris Films video portfolio",
-    description:
-      "Filter Black Iris Films work by video type and industry, then watch each project in a lightbox.",
-    url: "/portfolio",
-    type: "website",
-  },
-};
+  path: "/portfolio",
+  image: "/assets/hero-brand-generated.png",
+});
 
 export default function PortfolioPage() {
   return (

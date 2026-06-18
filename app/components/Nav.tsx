@@ -21,8 +21,12 @@ type NavProps = {
 
 export function Nav({ showEstimateBar = false }: NavProps) {
   const [open, setOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<"services" | "work" | null>(
+    null,
+  );
 
   const closeMenu = () => setOpen(false);
+  const closeDesktopMenu = () => setDesktopMenu(null);
   const headerTopClass = showEstimateBar ? "top-9" : "top-0";
   const mobileTopClass = showEstimateBar
     ? "top-[108px] max-h-[calc(100vh-108px)]"
@@ -70,11 +74,32 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             <a href="/learn" className="nav-link">LEARN</a>
             <a href="/#faq" className="nav-link">FAQ</a>
 
-            <div className="group relative flex items-center">
-              <button type="button" className="nav-link cursor-default" aria-haspopup="true">
+            <div
+              className="relative flex items-center"
+              onMouseEnter={() => setDesktopMenu("services")}
+              onMouseLeave={closeDesktopMenu}
+              onFocus={() => setDesktopMenu("services")}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  closeDesktopMenu();
+                }
+              }}
+            >
+              <button
+                type="button"
+                className="nav-link cursor-default"
+                aria-haspopup="true"
+                aria-expanded={desktopMenu === "services"}
+                aria-controls="desktop-services-menu"
+              >
                 SERVICES
               </button>
-              <div className="absolute top-[calc(100%+20px)] left-1/2 -translate-x-1/2 w-[360px] p-2.5 bg-[#050505] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-[1001] before:content-[''] before:absolute before:left-0 before:right-0 before:-top-[22px] before:h-[22px]">
+              <div
+                id="desktop-services-menu"
+                className={`absolute top-[calc(100%+20px)] left-1/2 -translate-x-1/2 w-[360px] p-2.5 bg-[#050505] border border-white/10 rounded-lg shadow-2xl transition-all duration-200 z-[1001] before:content-[''] before:absolute before:left-0 before:right-0 before:-top-[22px] before:h-[22px] ${
+                  desktopMenu === "services" ? "visible opacity-100" : "invisible opacity-0"
+                }`}
+              >
                 {services.map((s) => (
                   <a
                     key={s.href}
@@ -87,11 +112,32 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               </div>
             </div>
 
-            <div className="group relative flex items-center">
-              <button type="button" className="nav-link cursor-default" aria-haspopup="true">
+            <div
+              className="relative flex items-center"
+              onMouseEnter={() => setDesktopMenu("work")}
+              onMouseLeave={closeDesktopMenu}
+              onFocus={() => setDesktopMenu("work")}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  closeDesktopMenu();
+                }
+              }}
+            >
+              <button
+                type="button"
+                className="nav-link cursor-default"
+                aria-haspopup="true"
+                aria-expanded={desktopMenu === "work"}
+                aria-controls="desktop-work-menu"
+              >
                 WORK
               </button>
-              <div className="absolute top-[calc(100%+20px)] left-1/2 w-[210px] -translate-x-1/2 rounded-lg border border-white/10 bg-[#050505] p-2.5 opacity-0 invisible shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-[1001] before:absolute before:-top-[22px] before:left-0 before:right-0 before:h-[22px] before:content-['']">
+              <div
+                id="desktop-work-menu"
+                className={`absolute top-[calc(100%+20px)] left-1/2 w-[210px] -translate-x-1/2 rounded-lg border border-white/10 bg-[#050505] p-2.5 shadow-2xl transition-all duration-200 z-[1001] before:absolute before:-top-[22px] before:left-0 before:right-0 before:h-[22px] before:content-[''] ${
+                  desktopMenu === "work" ? "visible opacity-100" : "invisible opacity-0"
+                }`}
+              >
                 <a href="/portfolio" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">VIDEO PORTFOLIO</a>
                 <a href="/photography" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">PHOTOGRAPHY</a>
                 <a href="/ai-powered-content-studio-v2" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
@@ -109,8 +155,9 @@ export function Nav({ showEstimateBar = false }: NavProps) {
 
           <button
             className="lg:hidden text-white text-[26px] p-1"
-            aria-label="Menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? "✕" : "☰"}
@@ -119,7 +166,11 @@ export function Nav({ showEstimateBar = false }: NavProps) {
       </header>
 
       {open && (
-        <nav className={`fixed ${mobileTopClass} left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 overflow-y-auto`}>
+        <nav
+          id="mobile-navigation"
+          className={`fixed ${mobileTopClass} left-0 right-0 bg-black px-6 py-5 pb-7 flex flex-col gap-4 z-[999] lg:hidden border-b border-white/10 overflow-y-auto`}
+          aria-label="Mobile navigation"
+        >
           <a href="/learn" className="mobile-link" onClick={closeMenu}>LEARN</a>
           <a href="/#faq" className="mobile-link" onClick={closeMenu}>FAQ</a>
           <details>

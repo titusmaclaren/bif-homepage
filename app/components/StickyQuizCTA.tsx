@@ -44,12 +44,18 @@ export function StickyQuizCTA() {
       className={`quiz-sticky ${visible ? "quiz-sticky-visible" : ""}`}
       aria-label="Pricing quiz"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        className="quiz-sticky-media"
-        src="/blog/estimate-lightbulb.jpg"
-        alt=""
-      />
+      {visible && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          className="quiz-sticky-media"
+          src="/blog/estimate-lightbulb.jpg"
+          alt=""
+          width="112"
+          height="148"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
       <div className="quiz-sticky-content">
         <button
           type="button"

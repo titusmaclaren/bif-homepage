@@ -401,34 +401,29 @@ a { color: inherit; }
   <h1 class="page-heading">Discuss how this could work for your brand</h1>
   <p class="page-description">If you're exploring whether this campaign is the right fit for your brand, we'd welcome the conversation. Tell us a bit about what you're working on and we'll be in touch.</p>
 
-  <form action="https://formsubmit.co/titus@blackirisfilms.com" method="POST" id="contactForm">
-    <!-- FormSubmit config -->
-    <input type="hidden" name="_subject" value="The Last $10 — New enquiry">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="">
+  <form action="/api/contact" method="POST" id="contactForm">
     <!-- Honeypot -->
     <input type="text" name="_honey" style="display:none">
 
     <div class="form-row">
       <div class="form-group">
         <label class="form-label" for="name">Name</label>
-        <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+        <input class="form-input" type="text" id="name" name="name" maxlength="100" placeholder="Your name" required>
       </div>
       <div class="form-group">
         <label class="form-label" for="email">Email</label>
-        <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required>
+        <input class="form-input" type="email" id="email" name="email" maxlength="254" placeholder="you@company.com" required>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <label class="form-label" for="company">Company / Brand</label>
-        <input class="form-input" type="text" id="company" name="company" placeholder="Your company or brand">
+        <input class="form-input" type="text" id="company" name="company" maxlength="120" placeholder="Your company or brand">
       </div>
       <div class="form-group">
         <label class="form-label" for="role">Role</label>
-        <input class="form-input" type="text" id="role" name="role" placeholder="e.g. Head of Marketing">
+        <input class="form-input" type="text" id="role" name="role" maxlength="100" placeholder="e.g. Head of Marketing">
       </div>
     </div>
 
@@ -445,7 +440,7 @@ a { color: inherit; }
 
     <div class="form-group">
       <label class="form-label" for="message">Anything else you'd like us to know?</label>
-      <textarea class="form-textarea" id="message" name="message" placeholder="Budget range, timeline, campaign context — whatever is useful."></textarea>
+      <textarea class="form-textarea" id="message" name="message" maxlength="1200" placeholder="Budget range, timeline, campaign context — whatever is useful."></textarea>
     </div>
 
     <button type="submit" class="btn-submit">Send enquiry</button>
@@ -474,9 +469,6 @@ a { color: inherit; }
 
 
 <script>
-// Set _next to current page URL for redirect after submission
-document.querySelector('input[name="_next"]').value = window.location.href;
-
 // Handle form submission
 const form = document.getElementById('contactForm');
 form.addEventListener('submit', async (e) => {
@@ -484,24 +476,44 @@ form.addEventListener('submit', async (e) => {
   const btn = form.querySelector('.btn-submit');
   btn.textContent = 'Sending...';
   btn.disabled = true;
+  const formData = new FormData(form);
+  const role = String(formData.get('role') || '').trim();
+  const interest = String(formData.get('interest') || '').trim();
+  const message = String(formData.get('message') || '').trim();
+  const notes = [
+    role ? `Role: ${role}` : '',
+    interest ? `Interest: ${interest}` : '',
+    message ? `Message: ${message}` : ''
+  ].filter(Boolean).join('\n\n');
 
   try {
     const res = await fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: String(formData.get('name') || '').trim(),
+        email: String(formData.get('email') || '').trim(),
+        phone: 'Not provided',
+        company: String(formData.get('company') || '').trim(),
+        foundUs: 'The Last $10 contact page',
+        message: notes,
+        subscribed: false,
+        source: 'The Last $10 contact page',
+        website: String(formData.get('_honey') || '').trim()
+      }),
     });
-    if (res.ok || res.redirected) {
+    if (res.ok) {
       document.getElementById('formContainer').style.display = 'none';
       document.getElementById('successMessage').classList.add('visible');
     } else {
+      const data = await res.json().catch(() => null);
       btn.textContent = 'Something went wrong — try again';
+      btn.textContent = data && data.message ? data.message : 'Something went wrong - try again';
       btn.disabled = false;
     }
-  } catch {
-    // FormSubmit often redirects, which fetch can't follow cross-origin
-    // Show success anyway since the submission went through
-    document.getElementById('formContainer').style.display = 'none';
-    document.getElementById('successMessage').classList.add('visible');
+  } catch (error) {
+    btn.textContent = 'Something went wrong - try again';
+    btn.disabled = false;
   }
 });
 </script>

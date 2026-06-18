@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { VideoTrigger } from "../components/VideoLightbox";
 import {
@@ -133,11 +134,12 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
       className="group block h-full overflow-hidden rounded-md border border-fog/80 bg-white text-left shadow-[0_18px_45px_rgba(15,24,38,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,24,38,0.13)] focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
     >
       <span className="relative block aspect-[16/9] overflow-hidden bg-navy-midnight">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={item.thumb}
           alt={item.title}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.045]"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           loading="lazy"
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/12 to-transparent" />

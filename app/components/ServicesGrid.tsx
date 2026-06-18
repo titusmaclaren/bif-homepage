@@ -1,6 +1,8 @@
 // Industry-and-format service grid. Image fills each tile, label sits in the
 // centre, and the image gently zooms on hover.
 
+import Image from "next/image";
+
 const W = (id: string, w = 800, h = 600) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
 
@@ -100,12 +102,13 @@ export function ServicesGrid() {
               href={t.href}
               className="group relative block h-[72px] md:h-20 rounded-lg overflow-hidden bg-fog/40 border border-fog/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={t.image}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
                 style={t.objectPosition ? { objectPosition: t.objectPosition } : undefined}
+                fill
+                sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-navy/60 group-hover:bg-navy/45 transition-colors" />

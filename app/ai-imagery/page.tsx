@@ -4,20 +4,15 @@ import { AiImageryContactForm } from "../components/AiImageryContactForm";
 import { Footer } from "../components/Footer";
 import { GoogleReviewsBadge } from "../components/GoogleReviewsBadge";
 import { Nav } from "../components/Nav";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AI Imagery for Business",
   description:
     "Custom AI imagery for campaigns, websites, reports, presentations and social content, created by Black Iris Films in Sydney.",
-  alternates: { canonical: "/ai-imagery" },
-  openGraph: {
-    title: "AI Imagery for Business | Black Iris Films",
-    description:
-      "Custom AI imagery for campaigns, websites, reports, presentations and social content.",
-    url: "/ai-imagery",
-    images: ["/ai-imagery/hero-collage.jpg"],
-  },
-};
+  path: "/ai-imagery",
+  image: "/ai-imagery/hero-collage.jpg",
+});
 
 const challenges = [
   "Updating the website regularly is expensive and hard to keep fresh.",

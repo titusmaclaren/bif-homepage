@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type ContentCard = {
   title: string;
   body: string;
@@ -214,11 +216,12 @@ function CardVisual({ type }: { type: ContentCard["visual"] }) {
 
 function ImageTile({ src, alt, className }: { src: string; alt: string; className: string }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={src}
       alt={alt}
       className={`block h-full w-full object-cover ${className} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
+      fill
+      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
       loading="lazy"
     />
   );

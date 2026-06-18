@@ -8,6 +8,7 @@ export type DetailsValue = {
   email: string;
   company: string;
   newsletter: boolean;
+  website?: string;
 };
 
 type Props = {
@@ -66,6 +67,17 @@ export function DetailsStep({
         </PrimaryButton>
       }
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={value.website || ""}
+        onChange={(e) => onChange({ ...value, website: e.target.value })}
+        className="hidden"
+        aria-hidden="true"
+      />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="flex flex-col gap-1.5">
           <span className="text-[12px] tracking-[0.12em] uppercase font-medium text-text-secondary">
@@ -78,6 +90,8 @@ export function DetailsStep({
             onChange={(e) => onChange({ ...value, name: e.target.value })}
             className={field}
             placeholder="Your name"
+            required
+            aria-required="true"
           />
         </label>
 
@@ -92,6 +106,9 @@ export function DetailsStep({
             onChange={(e) => onChange({ ...value, email: e.target.value })}
             className={field}
             placeholder="you@company.com"
+            required
+            aria-required="true"
+            aria-invalid={value.email.length > 0 && !isValidEmail(value.email)}
           />
         </label>
 

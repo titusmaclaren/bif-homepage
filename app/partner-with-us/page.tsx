@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import { ContactForm } from "../components/ContactForm";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Partner With Us",
   description:
-    "Whitelabel agreements, joint ventures and strategic partnerships with Black Iris Films.",
-  alternates: {
-    canonical: "/partner-with-us",
-  },
-};
+    "Whitelabel agreements, joint ventures and strategic partnerships with Black Iris Films for agencies, production partners and aligned businesses.",
+  path: "/partner-with-us",
+});
 
 const partnerCopy = [
   "If you're reading this, you're probably running some sort of marketing agency - be it web design, PR, digital media, advertising etc.",

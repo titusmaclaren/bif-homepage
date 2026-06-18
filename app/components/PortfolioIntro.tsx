@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   useEffect,
   useMemo,
@@ -324,11 +325,16 @@ function PortfolioThumbCard({
           isLarge ? "md:rounded-2xl" : "",
         ].join(" ")}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={item.thumb}
           alt={item.title}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+          fill
+          sizes={
+            isLarge
+              ? "(min-width: 1024px) 1122px, (min-width: 640px) 918px, 78vw"
+              : "(min-width: 1024px) 360px, (min-width: 640px) 320px, 260px"
+          }
           loading="lazy"
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-black/0" />

@@ -1,7 +1,16 @@
 "use client";
 
-import { useEffect, useState, useCallback, createContext, useContext } from "react";
+import Image from "next/image";
+import {
+  useEffect,
+  useState,
+  useCallback,
+  createContext,
+  useContext,
+  useRef,
+} from "react";
 import { PORTFOLIO_ITEMS, getRelated, type PortfolioItem } from "../data/portfolio";
+import { trackEvent } from "../lib/analytics";
 
 export type VideoSource = {
   vimeoId?: string;
@@ -47,12 +56,27 @@ export function useVideoLightbox() {
 
 export function VideoLightboxProvider({ children }: { children: React.ReactNode }) {
   const [video, setVideo] = useState<VideoSource | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  const open = useCallback((v: VideoSource) => setVideo(v), []);
+  const open = useCallback((v: VideoSource) => {
+    previousFocusRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    trackEvent("video_lightbox_open", {
+      video_title: v.title,
+      video_client: v.client,
+      video_category: v.category,
+      video_industry: v.industry,
+      vimeo_id: v.vimeoId,
+      youtube_id: v.youtubeId,
+    });
+    setVideo(v);
+  }, []);
   const close = useCallback(() => setVideo(null), []);
 
   useEffect(() => {
     if (!video) return;
+    window.setTimeout(() => closeButtonRef.current?.focus(), 0);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
@@ -62,6 +86,8 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
+      previousFocusRef.current?.focus();
+      previousFocusRef.current = null;
     };
   }, [video, close]);
 
@@ -108,13 +134,15 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
           onClick={close}
           role="dialog"
           aria-modal="true"
-          aria-label={video.title || "Video player"}
+          aria-labelledby="video-lightbox-title"
+          aria-describedby={video.description ? "video-lightbox-description" : undefined}
         >
           <div
             className="relative w-full max-w-[1100px] max-h-[min(640px,88vh)] bg-black rounded-2xl shadow-2xl border border-white/10 flex flex-col text-white"
             onClick={(e) => e.stopPropagation()}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={close}
               aria-label="Close video"
@@ -129,11 +157,16 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
               {/* Left column: project info */}
               <div className="flex flex-col min-h-0">
                 <div className="flex-1 min-h-0 overflow-y-auto pr-1">
-                  {video.title && (
-                    <h3 className="text-white text-2xl md:text-[28px] lg:text-[32px] font-bold leading-[1.1] tracking-tight">
-                      {video.title}
-                    </h3>
-                  )}
+                  <h3
+                    id="video-lightbox-title"
+                    className={
+                      video.title
+                        ? "text-white text-2xl md:text-[28px] lg:text-[32px] font-bold leading-[1.1] tracking-tight"
+                        : "sr-only"
+                    }
+                  >
+                    {video.title || "Video player"}
+                  </h3>
                   {video.category && (
                     <div className="mt-2 text-white/75 text-[17px] md:text-[18px] font-medium leading-tight">
                       {video.category}
@@ -147,7 +180,10 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
                       <div className="text-white text-[13px] font-bold mb-1.5">
                         Project Summary
                       </div>
-                      <p className="text-white/70 text-[13.5px] leading-relaxed mb-5">
+                      <p
+                        id="video-lightbox-description"
+                        className="text-white/70 text-[13.5px] leading-relaxed mb-5"
+                      >
                         {video.description}
                       </p>
                     </>
@@ -226,11 +262,12 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
                         className="group block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-mint rounded-md"
                       >
                         <div className="relative aspect-[16/9] rounded-md overflow-hidden bg-white/5 border border-white/10">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                          <Image
                             src={r.thumb}
                             alt={r.title}
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                            fill
+                            sizes="(min-width: 1024px) 220px, 30vw"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">

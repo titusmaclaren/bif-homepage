@@ -8,6 +8,7 @@ import type { EstimateResponse } from "@/lib/pricing";
 
 type Props = {
   estimate: EstimateResponse;
+  errorMessage?: string;
   onStartOver: () => void;
 };
 
@@ -29,7 +30,7 @@ function formatRange(low: number, high: number): string {
  * Promotions. See /api/email-estimate and lib/renderEstimateHtml for the
  * bits that stay in place meanwhile.
  */
-export function ResultStep({ estimate, onStartOver }: Props) {
+export function ResultStep({ estimate, errorMessage, onStartOver }: Props) {
   if (estimate.escalate) {
     return (
       <StepShell
@@ -72,6 +73,12 @@ export function ResultStep({ estimate, onStartOver }: Props) {
           : "Based on what you've told us, typical projects like this sit in this range."
       }
     >
+      {errorMessage ? (
+        <p className="mb-4 rounded-lg border border-[#f0d6a8] bg-[#fff8eb] px-4 py-3 text-[13px] leading-[1.55] text-[#7a4b00]">
+          {errorMessage}
+        </p>
+      ) : null}
+
       <div className="rounded-xl bg-navy text-white p-8 sm:p-10 mb-6">
         <div className="text-[11px] tracking-[0.2em] uppercase font-medium text-sky-pale mb-4">
           Total indicative range

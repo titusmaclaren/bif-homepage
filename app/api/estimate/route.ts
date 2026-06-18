@@ -9,6 +9,12 @@ import {
 } from "@/lib/pricing";
 import { captureLead } from "@/lib/leadCapture";
 import { subscribeToNewsletter } from "@/lib/beehiiv";
+import {
+  checkRateLimit,
+  cleanText,
+  isTooLong,
+  isValidEmail,
+} from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -25,7 +31,16 @@ type Answers = {
     email?: string;
     company?: string;
     newsletter?: boolean;
+    website?: string;
   };
+};
+
+const FIELD_LIMITS = {
+  choice: 120,
+  brief: 2000,
+  name: 100,
+  email: 254,
+  company: 120,
 };
 
 // Claude handles escalation decisions based on the reference library and
@@ -96,6 +111,89 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json(
       { error: "Could not read request body.", fallback: true, ...FALLBACK_ESTIMATE },
+      { status: 400 },
+    );
+  }
+
+  if (cleanText(answers.details?.website)) {
+    return NextResponse.json({
+      ...FALLBACK_ESTIMATE,
+      pricing_version: PRICING_VERSION,
+    });
+  }
+
+  const rateLimit = checkRateLimit(req, {
+    bucket: "estimate",
+    limit: 8,
+    windowMs: 15 * 60 * 1000,
+  });
+  if (!rateLimit.ok) {
+    return NextResponse.json(
+      {
+        error:
+          "Too many estimate requests in a short time. Please wait a few minutes and try again.",
+        fallback: true,
+        ...FALLBACK_ESTIMATE,
+        pricing_version: PRICING_VERSION,
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfter) },
+      },
+    );
+  }
+
+  answers = {
+    goal: cleanText(answers.goal),
+    videoType: cleanText(answers.videoType),
+    length: cleanText(answers.length),
+    vibe: cleanText(answers.vibe),
+    scope: cleanText(answers.scope),
+    brief: cleanText(answers.brief),
+    details: {
+      name: cleanText(answers.details?.name),
+      email: cleanText(answers.details?.email).toLowerCase(),
+      company: cleanText(answers.details?.company),
+      newsletter: answers.details?.newsletter === true,
+    },
+  };
+
+  const fieldsTooLong =
+    isTooLong(answers.goal || "", FIELD_LIMITS.choice) ||
+    isTooLong(answers.videoType || "", FIELD_LIMITS.choice) ||
+    isTooLong(answers.length || "", FIELD_LIMITS.choice) ||
+    isTooLong(answers.vibe || "", FIELD_LIMITS.choice) ||
+    isTooLong(answers.scope || "", FIELD_LIMITS.choice) ||
+    isTooLong(answers.brief || "", FIELD_LIMITS.brief) ||
+    isTooLong(answers.details?.name || "", FIELD_LIMITS.name) ||
+    isTooLong(answers.details?.email || "", FIELD_LIMITS.email) ||
+    isTooLong(answers.details?.company || "", FIELD_LIMITS.company);
+
+  if (fieldsTooLong) {
+    return NextResponse.json(
+      {
+        error:
+          "One of the fields is too long. Please shorten your brief and try again.",
+        fallback: true,
+        ...FALLBACK_ESTIMATE,
+        pricing_version: PRICING_VERSION,
+      },
+      { status: 400 },
+    );
+  }
+
+  if (
+    !answers.details?.name ||
+    !answers.details?.email ||
+    !isValidEmail(answers.details.email)
+  ) {
+    return NextResponse.json(
+      {
+        error: "Please enter your name and a valid email address.",
+        fallback: true,
+        ...FALLBACK_ESTIMATE,
+        pricing_version: PRICING_VERSION,
+      },
       { status: 400 },
     );
   }

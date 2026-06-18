@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { BlogPost } from "../lib/blog";
 import { formatPostDate } from "../lib/blog";
 
@@ -23,11 +24,12 @@ export function BlogCard({ post, compact = false }: BlogCardProps) {
             : "relative min-h-[230px] overflow-hidden bg-navy-midnight"
         }
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={post.thumbnail}
           alt=""
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          fill
+          sizes={compact ? "112px" : "(min-width: 768px) 40vw, 100vw"}
           loading="lazy"
         />
       </div>

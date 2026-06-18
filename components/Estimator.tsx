@@ -51,6 +51,7 @@ export function Estimator() {
   const [fading, setFading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [estimate, setEstimate] = useState<EstimateResponse | null>(null);
+  const [submitError, setSubmitError] = useState("");
 
   const questionById = useMemo(() => {
     const map: Record<string, (typeof QUESTIONS)[number]> = {};
@@ -77,6 +78,7 @@ export function Estimator() {
     // The ResultStep only renders once `estimate` is populated.
     setSubmitting(true);
     setEstimate(null);
+    setSubmitError("");
     advance();
     try {
       const res = await fetch("/api/estimate", {
@@ -86,11 +88,18 @@ export function Estimator() {
       });
       const data = (await res.json()) as EstimateResponse & { error?: string };
       if (!res.ok || data.error) {
+        setSubmitError(
+          data.error ||
+            "Something went wrong while creating your estimate. Showing a fallback range for now.",
+        );
         setEstimate({ ...FALLBACK_ESTIMATE });
       } else {
         setEstimate(data);
       }
     } catch {
+      setSubmitError(
+        "Something went wrong while creating your estimate. Showing a fallback range for now.",
+      );
       setEstimate({ ...FALLBACK_ESTIMATE });
     } finally {
       setSubmitting(false);
@@ -100,6 +109,7 @@ export function Estimator() {
   const startOver = () => {
     setAnswers(INITIAL_ANSWERS);
     setEstimate(null);
+    setSubmitError("");
     go(0);
   };
 
@@ -233,7 +243,11 @@ export function Estimator() {
           return <LoadingStep />;
         }
         return (
-          <ResultStep estimate={estimate} onStartOver={startOver} />
+          <ResultStep
+            estimate={estimate}
+            errorMessage={submitError}
+            onStartOver={startOver}
+          />
         );
       }
       default:

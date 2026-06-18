@@ -3,13 +3,14 @@ import { ContactForm } from "../components/ContactForm";
 import { Footer } from "../components/Footer";
 import { InTheirWords } from "../components/InTheirWords";
 import { Nav } from "../components/Nav";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Contact Black Iris Films",
   description:
     "Contact Black Iris Films about video production, photography, animation and content projects in Sydney and across Australia.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const testimonialVideos = [
   {

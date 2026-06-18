@@ -12,16 +12,125 @@ const serviceSlugs = [
   "tech-video-production-sydney",
 ];
 
+const alternateDomains = [
+  "www.blackirisfilms.com",
+  "blackirisfilms.com.au",
+  "www.blackirisfilms.com.au",
+  "titusmaclaren.com",
+  "www.titusmaclaren.com",
+];
+
+const isPreviewDeployment =
+  Boolean(process.env.VERCEL_ENV) && process.env.VERCEL_ENV !== "production";
+
+const isProductionBuild = process.env.NODE_ENV === "production";
+const hasGoogleAnalytics = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
+const hasGoogleTagManager = Boolean(process.env.NEXT_PUBLIC_GTM_ID);
+const usesGoogleAnalyticsStack = hasGoogleAnalytics || hasGoogleTagManager;
+
+// Plain-English header notes:
+// - X-Content-Type-Options stops browsers from guessing file types.
+// - Referrer-Policy limits how much URL information is sent to other sites.
+// - Permissions-Policy turns off browser features this marketing site does not use.
+// - Content-Security-Policy limits where scripts, frames, fonts, images and forms can load from.
+// - Strict-Transport-Security asks browsers to keep using HTTPS after the first secure visit.
+//
+// This CSP is intentionally practical rather than strict. The imported static
+// pages still use inline scripts/styles and the homepage hero loads Vimeo JSONP,
+// so removing 'unsafe-inline' or vimeo.com from script-src would break real pages.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  [
+    "script-src",
+    "'self'",
+    "'unsafe-inline'",
+    ...(isProductionBuild ? [] : ["'unsafe-eval'"]),
+    "https://vimeo.com",
+    ...(usesGoogleAnalyticsStack ? ["https://www.googletagmanager.com"] : []),
+  ].join(" "),
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  [
+    "img-src",
+    "'self'",
+    "data:",
+    "blob:",
+    "https://static.wixstatic.com",
+    "https://video.wixstatic.com",
+    "https://i.vimeocdn.com",
+    "https://i.ytimg.com",
+    "https://img.youtube.com",
+    "https://lh3.googleusercontent.com",
+    "https://*.googleusercontent.com",
+    ...(usesGoogleAnalyticsStack
+      ? ["https://www.googletagmanager.com", "https://www.google-analytics.com"]
+      : []),
+  ].join(" "),
+  "media-src 'self' blob:",
+  [
+    "connect-src",
+    "'self'",
+    ...(usesGoogleAnalyticsStack
+      ? [
+          "https://www.google-analytics.com",
+          "https://analytics.google.com",
+          "https://region1.google-analytics.com",
+        ]
+      : []),
+  ].join(" "),
+  [
+    "frame-src",
+    "'self'",
+    "https://player.vimeo.com",
+    "https://www.youtube.com",
+    "https://www.youtube-nocookie.com",
+    ...(hasGoogleTagManager ? ["https://www.googletagmanager.com"] : []),
+  ].join(" "),
+  "worker-src 'self' blob:",
+  "form-action 'self'",
+  "base-uri 'self'",
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+].join("; ");
+
+const securityHeaders = [
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value:
+      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=(), browsing-topics=()",
+  },
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "Strict-Transport-Security", value: "max-age=31536000" },
+  ...(isPreviewDeployment
+    ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]
+    : []),
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "static.wixstatic.com" },
       { protocol: "https", hostname: "video.wixstatic.com" },
+      { protocol: "https", hostname: "i.vimeocdn.com" },
     ],
   },
   async redirects() {
     return [
+      ...alternateDomains.map((domain) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: domain }],
+        destination: "https://blackirisfilms.com/:path*",
+        permanent: true,
+      })),
       { source: "/copy-of-home-2", destination: "/", permanent: true },
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/about", destination: "/why-black-iris-films", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/contact-us-1", destination: "/contact", permanent: true },
+      { source: "/blog", destination: "/learn", permanent: true },
       { source: "/faq", destination: "/#faq", permanent: true },
       {
         source: "/ai-imagery",
@@ -46,6 +155,21 @@ const nextConfig: NextConfig = {
       {
         source: "/service-page/phone-call-creative-brainstorm",
         destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/service-page/:path*",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/post/:slug",
+        permanent: true,
+      },
+      {
+        source: "/single-post/:slug",
+        destination: "/post/:slug",
         permanent: true,
       },
     ];
@@ -99,10 +223,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/:path*",
-        headers: [
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "X-Content-Type-Options", value: "nosniff" },
-        ],
+        headers: securityHeaders,
       },
     ];
   },

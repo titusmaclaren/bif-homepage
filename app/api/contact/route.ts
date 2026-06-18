@@ -1,10 +1,26 @@
 import { NextResponse, after } from "next/server";
 import { sendEmail } from "@/lib/email";
 import { subscribeToNewsletter } from "@/lib/beehiiv";
+import {
+  checkRateLimit,
+  cleanText,
+  isTooLong,
+  isValidEmail,
+} from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 
 const DEFAULT_TO_EMAIL = "info@blackirisfilms.com";
+const FIELD_LIMITS = {
+  name: 100,
+  phone: 50,
+  email: 254,
+  company: 120,
+  pack: 80,
+  foundUs: 80,
+  message: 1200,
+  source: 100,
+};
 
 type ContactPayload = {
   name?: unknown;
@@ -18,14 +34,6 @@ type ContactPayload = {
   source?: unknown;
   website?: unknown;
 };
-
-function getString(value: unknown) {
-  return typeof value === "string" ? value.trim() : "";
-}
-
-function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
 
 function escapeHtml(value: string) {
   return value
@@ -48,18 +56,36 @@ export async function POST(request: Request) {
     );
   }
 
-  if (getString(payload.website)) {
+  if (cleanText(payload.website)) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = getString(payload.name);
-  const phone = getString(payload.phone);
-  const email = getString(payload.email);
-  const company = getString(payload.company);
-  const pack = getString(payload.pack);
-  const foundUs = getString(payload.foundUs);
-  const message = getString(payload.message);
-  const source = getString(payload.source) || "Website contact form";
+  const rateLimit = checkRateLimit(request, {
+    bucket: "contact",
+    limit: 5,
+    windowMs: 10 * 60 * 1000,
+  });
+  if (!rateLimit.ok) {
+    return NextResponse.json(
+      {
+        message:
+          "Too many submissions in a short time. Please wait a few minutes and try again.",
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfter) },
+      },
+    );
+  }
+
+  const name = cleanText(payload.name);
+  const phone = cleanText(payload.phone);
+  const email = cleanText(payload.email).toLowerCase();
+  const company = cleanText(payload.company);
+  const pack = cleanText(payload.pack);
+  const foundUs = cleanText(payload.foundUs);
+  const message = cleanText(payload.message);
+  const source = cleanText(payload.source) || "Website contact form";
   const subscribed = payload.subscribed === true;
 
   const isAiImagery = source.toLowerCase().includes("ai imagery");
@@ -67,6 +93,26 @@ export async function POST(request: Request) {
   if (!name || !phone || !email || !foundUs || (isAiImagery && !pack)) {
     return NextResponse.json(
       { message: "Please complete all required fields." },
+      { status: 400 },
+    );
+  }
+
+  const tooLong =
+    isTooLong(name, FIELD_LIMITS.name) ||
+    isTooLong(phone, FIELD_LIMITS.phone) ||
+    isTooLong(email, FIELD_LIMITS.email) ||
+    isTooLong(company, FIELD_LIMITS.company) ||
+    isTooLong(pack, FIELD_LIMITS.pack) ||
+    isTooLong(foundUs, FIELD_LIMITS.foundUs) ||
+    isTooLong(message, FIELD_LIMITS.message) ||
+    isTooLong(source, FIELD_LIMITS.source);
+
+  if (tooLong) {
+    return NextResponse.json(
+      {
+        message:
+          "One of the fields is too long. Please shorten your message and try again.",
+      },
       { status: 400 },
     );
   }

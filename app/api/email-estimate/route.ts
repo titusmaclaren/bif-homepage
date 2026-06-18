@@ -17,6 +17,12 @@ import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
 import { renderEstimateHtml } from "@/lib/renderEstimateHtml";
 import type { EstimateResponse } from "@/lib/pricing";
+import {
+  checkRateLimit,
+  cleanText,
+  isTooLong,
+  isValidEmail,
+} from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 export const maxDuration = 15;
@@ -26,13 +32,8 @@ type Body = {
   name?: string;
   company?: string;
   estimate?: EstimateResponse;
+  website?: string;
 };
-
-function isValidEmail(s: string): boolean {
-  // Loose check. Resend validates server-side too; this just rejects the
-  // obviously-broken input before we burn an API call.
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
 
 export async function POST(req: Request) {
   let body: Body;
@@ -45,13 +46,43 @@ export async function POST(req: Request) {
     );
   }
 
-  const email = (body.email || "").trim();
-  const name = (body.name || "").trim();
+  if (cleanText(body.website)) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const rateLimit = checkRateLimit(req, {
+    bucket: "email-estimate",
+    limit: 4,
+    windowMs: 10 * 60 * 1000,
+  });
+  if (!rateLimit.ok) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Too many email requests in a short time. Please wait a few minutes and try again.",
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfter) },
+      },
+    );
+  }
+
+  const email = cleanText(body.email).toLowerCase();
+  const name = cleanText(body.name);
   const estimate = body.estimate;
 
   if (!email || !isValidEmail(email)) {
     return NextResponse.json(
       { ok: false, error: "A valid email is required." },
+      { status: 400 },
+    );
+  }
+
+  if (isTooLong(name, 100) || isTooLong(email, 254)) {
+    return NextResponse.json(
+      { ok: false, error: "Please shorten your details and try again." },
       { status: 400 },
     );
   }

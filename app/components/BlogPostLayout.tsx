@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { BlogPost } from "../lib/blog";
 import { formatPostDate } from "../lib/blog";
 import { FinalCTA } from "./FinalCTA";
@@ -53,11 +54,13 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
               </div>
 
               <div className="relative aspect-[1000/367] overflow-hidden rounded-lg border border-white/10 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.32)]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={post.thumbnail}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 38vw, 100vw"
                 />
               </div>
             </div>

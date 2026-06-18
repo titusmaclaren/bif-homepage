@@ -6,29 +6,21 @@ import { Nav } from "../components/Nav";
 import { StickyQuizCTA } from "../components/StickyQuizCTA";
 import { getAllPosts } from "../lib/blog";
 import { learnSeriesVideos } from "../lib/learn-video-series";
+import { createPageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = {
-  title: "Learn",
-  description:
-    "Video marketing insights, practical production guidance and brand storytelling thinking from Black Iris Films.",
+  ...createPageMetadata({
+    title: "Learn Video Marketing",
+    description:
+      "Video marketing insights, practical production guidance and brand storytelling thinking from Black Iris Films.",
+    path: "/learn",
+  }),
+  title: "Learn Video Marketing",
   alternates: {
-    canonical: "/learn",
+    canonical: "https://blackirisfilms.com/learn",
     types: {
       "application/rss+xml": "/rss.xml",
     },
-  },
-  openGraph: {
-    title: "Black Iris Films Learn",
-    description:
-      "Practical video marketing and production thinking from Black Iris Films.",
-    url: "/learn",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Black Iris Films Learn",
-    description:
-      "Practical video marketing and production thinking from Black Iris Films.",
   },
 };
 

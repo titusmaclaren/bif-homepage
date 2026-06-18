@@ -17,6 +17,7 @@
 import { useEffect, useRef } from "react";
 import { useVideoLightbox, type VideoSource } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS } from "../data/portfolio";
+import { trackEvent } from "../lib/analytics";
 
 const VIMEO_USER = "10691654";
 
@@ -57,13 +58,14 @@ function shuffled<T>(arr: T[], seed: number): T[] {
   return a;
 }
 
-/** Vimeo's default thumb is ~640 wide. Bump to 960 for crispness. Handles
- *  both `..._640?region=us` and legacy `..._640x360.jpg` URLs. */
+/** Keep live Vimeo thumbnails at ~640 wide so the hero does not fetch dozens
+ *  of oversized images on first load. Handles both `..._640?region=us` and
+ *  legacy `..._640x360.jpg` URLs. */
 function biggerThumb(url: string | undefined | null): string | undefined {
   if (!url) return undefined;
   return url
-    .replace(/_\d{2,4}x\d{2,4}(\.(jpg|webp))/i, "_960$1")
-    .replace(/_\d{2,4}(?=(\?|$))/i, "_960");
+    .replace(/_\d{2,4}x\d{2,4}(\.(jpg|webp))/i, "_640$1")
+    .replace(/_\d{2,4}(?=(\?|$))/i, "_640");
 }
 
 function jsonp(url: string, timeout = 7000): Promise<unknown> {
@@ -135,7 +137,13 @@ export function Hero() {
 
     const bands: Band[] = [];
 
-    BAND_LATS.forEach((latDeg, bi) => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isCompactViewport = window.matchMedia("(max-width: 767px)").matches;
+    const activeBandLats = isCompactViewport ? [-18, 0, 18] : BAND_LATS;
+
+    activeBandLats.forEach((latDeg, bi) => {
       const bandEl = document.createElement("div");
       bandEl.className = "bif-hero-band";
       bandEl.dataset.band = String(bi);
@@ -155,8 +163,10 @@ export function Hero() {
 
         const face = document.createElement("div");
         face.className = "bif-hero-face";
+        face.setAttribute("role", "button");
+        face.tabIndex = 0;
         face.innerHTML =
-          '<img alt="" loading="eager" decoding="async" draggable="false" />' +
+          '<img alt="" loading="lazy" decoding="async" fetchpriority="low" draggable="false" width="520" height="292" />' +
           '<div class="bif-hero-play" aria-hidden="true"></div>' +
           '<div class="bif-hero-ttl"></div>';
         tile.appendChild(face);
@@ -192,8 +202,12 @@ export function Hero() {
       const assign = (t: Tile, v: Video) => {
         t.face.dataset.vid = v.id;
         t.face.dataset.title = v.title;
+        t.face.setAttribute("aria-label", `Play ${v.title || "video"}`);
         t.ttl.textContent = v.title || "";
-        if (t.img.getAttribute("src") !== v.thumb) t.img.src = v.thumb;
+        if (t.img.getAttribute("src") !== v.thumb) {
+          t.img.setAttribute("fetchpriority", "low");
+          t.img.src = v.thumb;
+        }
       };
 
       for (let slot = 0; slot < maxSlots; slot++) {
@@ -226,7 +240,7 @@ export function Hero() {
     // Live Vimeo feed (no-auth public JSONP). Replaces placeholders when it lands.
     // On mobile, keep the curated first set so we avoid a second wave of thumbnail loads.
     let cancelled = false;
-    const useLiveVimeoFeed = !window.matchMedia("(max-width: 767px)").matches;
+    const useLiveVimeoFeed = !isCompactViewport && !prefersReducedMotion;
     if (useLiveVimeoFeed) {
       (async () => {
         const out: Video[] = [];
@@ -255,9 +269,7 @@ export function Hero() {
     // Animation loop: spin each band, cull back-hemisphere tiles, fade near the edge.
     let rafId = 0;
     let lastT = performance.now();
-    const tick = (now: number) => {
-      const dt = Math.min(50, now - lastT) / 16.6667;
-      lastT = now;
+    const renderBands = (dt: number) => {
       for (const s of bands) {
         if (!s.paused) s.spin += s.speed * dt;
         s.el.style.transform = `rotateY(${s.spin}deg)`;
@@ -274,9 +286,18 @@ export function Hero() {
           }
         }
       }
+    };
+    const tick = (now: number) => {
+      const dt = Math.min(50, now - lastT) / 16.6667;
+      lastT = now;
+      renderBands(dt);
       rafId = requestAnimationFrame(tick);
     };
-    rafId = requestAnimationFrame(tick);
+    if (prefersReducedMotion) {
+      renderBands(0);
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
 
     // Hover: pause the row + zoom-on-face. Uses mouseover/mouseout for proper
     // delegated bubbling without re-firing on internal element transitions.
@@ -320,9 +341,22 @@ export function Hero() {
             title: face.dataset.title || undefined,
             related: PORTFOLIO_ITEMS.slice(0, 3),
           };
+      trackEvent("view_reel_click", {
+        video_title: video.title,
+        vimeo_id: video.vimeoId,
+        source: "homepage_hero",
+      });
       open(video);
     };
     world.addEventListener("click", onClick);
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const face = (e.target as Element).closest(".bif-hero-face") as HTMLElement | null;
+      if (!face || !face.dataset.vid) return;
+      e.preventDefault();
+      face.click();
+    };
+    world.addEventListener("keydown", onKeyDown);
 
     // Cover-fit the 1920×1080 base canvas to the viewport (no letterbox bars).
     const fit = () => {
@@ -342,7 +376,9 @@ export function Hero() {
       tx = 50 + (e.clientX / window.innerWidth - 0.5) * 5;
       ty = 50 + (e.clientY / window.innerHeight - 0.5) * 4;
     };
-    window.addEventListener("mousemove", onMove);
+    if (!prefersReducedMotion) {
+      window.addEventListener("mousemove", onMove);
+    }
     let parallaxId = 0;
     const parallax = () => {
       cx += (tx - cx) * 0.05;
@@ -350,17 +386,22 @@ export function Hero() {
       sphere.style.perspectiveOrigin = `${cx}% ${cy}%`;
       parallaxId = requestAnimationFrame(parallax);
     };
-    parallaxId = requestAnimationFrame(parallax);
+    if (!prefersReducedMotion) {
+      parallaxId = requestAnimationFrame(parallax);
+    }
 
     return () => {
       cancelled = true;
-      cancelAnimationFrame(rafId);
-      cancelAnimationFrame(parallaxId);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (parallaxId) cancelAnimationFrame(parallaxId);
       world.removeEventListener("mouseover", onOver);
       world.removeEventListener("mouseout", onOut);
       world.removeEventListener("click", onClick);
+      world.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", fit);
-      window.removeEventListener("mousemove", onMove);
+      if (!prefersReducedMotion) {
+        window.removeEventListener("mousemove", onMove);
+      }
       world.innerHTML = "";
     };
   }, [open]);

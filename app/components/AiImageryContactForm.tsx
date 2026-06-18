@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import { trackEvent } from "../lib/analytics";
 
 const creditPacks = [
   "1 Image $100",
@@ -53,6 +54,11 @@ export function AiImageryContactForm() {
       formElement.reset();
       setStatus("sent");
       setFeedback("Thanks. Your AI imagery enquiry has been sent.");
+      trackEvent("contact_form_submission", {
+        form_source: "AI imagery page",
+        pack: String(form.get("pack") || "").trim(),
+        subscribed: form.get("subscribe") === "on",
+      });
     } catch (error) {
       setStatus("error");
       setFeedback(
@@ -140,7 +146,7 @@ export function AiImageryContactForm() {
         {feedback ? (
           <p
             className={`text-[12px] font-medium ${status === "error" ? "text-[#c0392b]" : "text-slate"}`}
-            role="status"
+            role={status === "error" ? "alert" : "status"}
             aria-live="polite"
           >
             {feedback}

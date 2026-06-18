@@ -1,6 +1,5 @@
 import { getAllPosts } from "../lib/blog";
-
-const SITE_URL = "https://www.blackirisfilms.com";
+import { SITE_URL } from "../lib/seo";
 
 export const dynamic = "force-static";
 

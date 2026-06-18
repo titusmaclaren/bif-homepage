@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Estimator } from "@/components/Estimator";
 import { Header } from "@/components/Header";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Video Quote Estimator",
   description:
-    "Get an indicative video production estimate in under a minute.",
-  alternates: { canonical: "/estimate" },
-};
+    "Get an indicative Sydney video production estimate in under a minute for brand films, explainers, social videos and corporate content.",
+  path: "/estimate",
+});
 
 export default function EstimatePage() {
   return (

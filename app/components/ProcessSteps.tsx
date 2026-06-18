@@ -54,9 +54,19 @@ const ADVANCE_MS = 2800;
 export function ProcessSteps() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (paused) return undefined;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion || paused) return undefined;
 
     const id = window.setInterval(
       () => setActive((current) => (current + 1) % steps.length),
@@ -64,7 +74,7 @@ export function ProcessSteps() {
     );
 
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, prefersReducedMotion]);
 
   const fillPct = (active / (steps.length - 1)) * 100;
 

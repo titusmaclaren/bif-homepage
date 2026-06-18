@@ -14,10 +14,15 @@ import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
 import { GoogleReviewsBadge } from "./components/GoogleReviewsBadge";
+import { DEFAULT_TITLE, createPageMetadata } from "./lib/seo";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: DEFAULT_TITLE,
+  description:
+    "Sydney video production agency creating cinematic, emotionally engaging videos for brands, businesses and marketing teams.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   return (

@@ -584,6 +584,10 @@ main h2,
 .bif-hero-face.bif-hero-hover::after { background: linear-gradient(180deg, rgba(8,12,20,0) 46%, rgba(8,12,20,0.74) 100%); }
 .bif-hero-face.bif-hero-hover .bif-hero-ttl { opacity: 1; transform: translateY(0); }
 .bif-hero-face.bif-hero-hover .bif-hero-play { opacity: 1; transform: scale(1); }
+.bif-hero-face:focus-visible {
+  outline: 3px solid #3BDE7A;
+  outline-offset: 5px;
+}
 
 /* Atmosphere overlays */
 .bif-hero-scrim {
@@ -1085,6 +1089,17 @@ main h2,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
   .inwords-card,
   .inwords-card blockquote,
   .inwords-focus,

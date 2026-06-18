@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import { trackEvent } from "../lib/analytics";
 
 const referralOptions = [
   "Google / search",
@@ -73,6 +74,10 @@ export function ContactForm({
       formElement.reset();
       setStatus("sent");
       setFeedback(successMessage);
+      trackEvent("contact_form_submission", {
+        form_source: source,
+        subscribed,
+      });
     } catch (error) {
       setStatus("error");
       setFeedback(
@@ -157,6 +162,7 @@ export function ContactForm({
         <textarea
           className={`${inputClass} min-h-36 resize-y`}
           name="message"
+          maxLength={1200}
           placeholder="Tell us a little about the project..."
         />
       </label>
@@ -186,7 +192,7 @@ export function ContactForm({
             className={`text-[12px] font-medium ${
               status === "error" ? "text-[#c0392b]" : "text-slate"
             }`}
-            role="status"
+            role={status === "error" ? "alert" : "status"}
             aria-live="polite"
           >
             {feedback}

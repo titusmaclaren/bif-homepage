@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostLayout } from "../../components/BlogPostLayout";
 import { getAllPosts, getPostBySlug } from "../../lib/blog";
+import { SITE_NAME, absoluteUrl } from "../../lib/seo";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -23,24 +24,29 @@ export async function generateMetadata({
     return {};
   }
 
+  const canonicalUrl = absoluteUrl(post.urlPath);
+  const thumbnailUrl = absoluteUrl(post.thumbnail);
+
   return {
     title: post.metaTitle,
     description: post.metaDescription,
     alternates: {
-      canonical: post.canonicalUrl,
+      canonical: canonicalUrl,
     },
     authors: [{ name: post.author }],
     openGraph: {
       title: post.metaTitle,
       description: post.metaDescription,
-      url: post.canonicalUrl,
+      url: canonicalUrl,
+      siteName: SITE_NAME,
+      locale: "en_AU",
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
       images: [
         {
-          url: post.thumbnail,
+          url: thumbnailUrl,
           width: 1200,
           height: 675,
           alt: post.title,
@@ -51,7 +57,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.metaDescription,
-      images: [post.thumbnail],
+      images: [thumbnailUrl],
     },
   };
 }

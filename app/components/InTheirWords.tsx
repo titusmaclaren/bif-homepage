@@ -366,12 +366,21 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       className={`inwords-card inwords-${testimonial.size} ${
         open ? "is-open" : ""
       }`}
+      role="button"
       tabIndex={0}
+      aria-expanded={open}
+      aria-label={`Read testimonial from ${testimonial.name}`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={() => setOpen((value) => !value)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setOpen((value) => !value);
+        }
+      }}
     >
       <div className="inwords-card-head">
         <IrisIcon open={open} size={46} />

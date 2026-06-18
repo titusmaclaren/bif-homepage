@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ServiceTile } from "../components/ServicesGrid";
 
@@ -14,6 +15,7 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
   const [maxIndex, setMaxIndex] = useState(0);
   const [step, setStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const measure = useCallback(() => {
     const viewport = viewportRef.current;
@@ -53,11 +55,20 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
   }, [measure]);
 
   useEffect(() => {
-    if (isPaused || maxIndex === 0) return;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion || isPaused || maxIndex === 0) return;
 
     const timer = window.setInterval(goNext, 5000);
     return () => window.clearInterval(timer);
-  }, [goNext, isPaused, maxIndex]);
+  }, [goNext, isPaused, maxIndex, prefersReducedMotion]);
 
   return (
     <section className="bg-white py-14 md:py-16">
@@ -97,8 +108,7 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
                   className="group block min-w-0 shrink-0 basis-[82%] overflow-hidden rounded-md border border-fog bg-off-white text-left shadow-[0_12px_30px_rgba(15,24,38,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,24,38,0.13)] focus:outline-none focus-visible:ring-2 focus-visible:ring-mint sm:basis-[48%] lg:basis-[31%] xl:basis-[23%] 2xl:basis-[19%]"
                 >
                   <span className="relative block aspect-[16/9] overflow-hidden bg-navy-midnight">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={item.image}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
@@ -107,6 +117,8 @@ export function ServiceCarousel({ items }: ServiceCarouselProps) {
                           ? { objectPosition: item.objectPosition }
                           : undefined
                       }
+                      fill
+                      sizes="(min-width: 1536px) 19vw, (min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 48vw, 82vw"
                       loading="lazy"
                     />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/58 via-black/8 to-transparent" />

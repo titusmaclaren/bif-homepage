@@ -15,7 +15,6 @@ const W = (id: string) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/${id}`;
 
 const V = (url: string) => url;
-const VF = (id: string) => `https://vumbnail.com/${id}.jpg`;
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
@@ -59,7 +58,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Product unboxing content for Dell partner marketing, built for clear, useful product communication.",
     client: "Dell / Ingram Micro",
     industry: "Technology",
-    thumb: VF("1143355482"),
+    thumb: "/assets/hero-tech.jpg",
   },
   {
     vimeoId: "1143349142",
@@ -93,7 +92,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Commercial spot for AIE, built around expert-led creative education and career ambition.",
     client: "Academy of Interactive Entertainment",
     industry: "Higher education",
-    thumb: VF("256497496"),
+    thumb: "/assets/thumb-aie-tvc.jpg",
   },
   {
     vimeoId: "842154532",
@@ -299,7 +298,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Charity film built to make the work feel immediate, human and worth supporting.",
     client: "Street Growth",
     industry: "Charity",
-    thumb: VF("278879520"),
+    thumb: "/assets/hero-corporate.jpg",
   },
   {
     vimeoId: "689165776",
@@ -616,7 +615,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Platform update video turning a crypto listing into clear social content for investors.",
     client: "Dacxi",
     industry: "Finance",
-    thumb: VF("680771973"),
+    thumb: "/assets/thumb-842154532.jpg",
   },
 ];
 

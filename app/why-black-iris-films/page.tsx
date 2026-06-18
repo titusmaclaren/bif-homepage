@@ -5,13 +5,14 @@ import { SoundFamiliar } from "../components/SoundFamiliar";
 import { ResearchSection } from "../components/ResearchSection";
 import { ContentSystem } from "../components/ContentSystem";
 import { Footer } from "../components/Footer";
+import { createPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Why Black Iris Films?",
   description:
     "See how Black Iris Films helps brands turn strong stories into useful video, photography and social content libraries.",
-  alternates: { canonical: "/why-black-iris-films" },
-};
+  path: "/why-black-iris-films",
+});
 
 const proofPoints = [
   { value: "15+", label: "years of production experience" },

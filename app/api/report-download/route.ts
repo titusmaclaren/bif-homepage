@@ -1,4 +1,10 @@
 import { NextResponse } from "next/server";
+import {
+  checkRateLimit,
+  cleanText,
+  isTooLong,
+  isValidEmail,
+} from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -14,14 +20,36 @@ type ApiEnvelope = {
 
 export async function POST(request: Request) {
   const form = await request.formData();
-  const name = cleanValue(form.get("name"));
-  const email = cleanValue(form.get("email")).toLowerCase();
-  const subscribe = cleanValue(form.get("subscribe")) === "yes";
-  const honeypot = cleanValue(form.get("website") || form.get("company_url"));
+  const name = cleanText(form.get("name"));
+  const email = cleanText(form.get("email")).toLowerCase();
+  const subscribe = cleanText(form.get("subscribe")) === "yes";
+  const honeypot = cleanText(form.get("website") || form.get("company_url"));
 
   if (honeypot) return redirect(request, REPORT_URL);
+
+  const rateLimit = checkRateLimit(request, {
+    bucket: "report-download",
+    limit: 5,
+    windowMs: 10 * 60 * 1000,
+  });
+  if (!rateLimit.ok) {
+    return sendHtml(
+      429,
+      "Please wait a few minutes",
+      "There have been too many download requests from this connection. Please try again shortly.",
+      { "Retry-After": String(rateLimit.retryAfter) },
+    );
+  }
+
   if (!name) {
     return sendHtml(400, "Name required", "Please enter your name before downloading the report.");
+  }
+  if (isTooLong(name, 100) || isTooLong(email, 254)) {
+    return sendHtml(
+      400,
+      "Details too long",
+      "Please shorten your name or email address and try again.",
+    );
   }
   if (!isValidEmail(email)) {
     return sendHtml(
@@ -198,18 +226,18 @@ async function readJson(response: Response): Promise<ApiEnvelope | null> {
   }
 }
 
-function cleanValue(value: FormDataEntryValue | null): string {
-  return typeof value === "string" ? value.trim() : "";
-}
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function sendHtml(status: number, title: string, message: string) {
+function sendHtml(
+  status: number,
+  title: string,
+  message: string,
+  extraHeaders?: Record<string, string>,
+) {
   return new Response(
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)} | Black Iris Films</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#0b1120;color:#fff;font-family:Montserrat,Arial,sans-serif}main{max-width:520px;border:1px solid rgba(255,255,255,.12);background:#141d2e;padding:34px;border-radius:8px;text-align:center}h1{margin:0 0 12px;font-size:24px}p{color:#a8b4c7;line-height:1.6;margin:0 0 24px}a{display:inline-block;background:#e8b82f;color:#0b1120;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:6px}</style></head><body><main><h1>${escapeHtml(title)}</h1><p>${escapeHtml(message)}</p><a href="${FORM_URL}">Back to the form</a></main></body></html>`,
-    { status, headers: { "Content-Type": "text/html; charset=utf-8" } },
+    {
+      status,
+      headers: { "Content-Type": "text/html; charset=utf-8", ...extraHeaders },
+    },
   );
 }
 
