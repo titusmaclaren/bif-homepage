@@ -61,12 +61,12 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             aria-label="Black Iris Films"
           >
             <Image
-              src="/assets/logo-bif-nav.svg"
+              src="/logos/bif-text-white.png"
               alt="Black Iris Films"
-              width={699}
-              height={170}
+              width={1158}
+              height={218}
               priority
-              className="h-auto w-[214px]"
+              className="h-auto w-[220px]"
             />
           </a>
 

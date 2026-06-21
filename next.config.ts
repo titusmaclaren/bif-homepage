@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import fs from "node:fs";
+import path from "node:path";
 
 const serviceSlugs = [
   "animated-video-production-sydney",
@@ -11,6 +13,16 @@ const serviceSlugs = [
   "startup-video-production-sydney",
   "tech-video-production-sydney",
 ];
+
+// Keep the old Wix blog URLs working without accidentally treating static
+// /blog image files as articles. New posts are picked up at build time.
+const blogDirectory = path.join(process.cwd(), "content", "blog");
+const blogSlugs = fs
+  .readdirSync(blogDirectory)
+  .filter((file) => file.endsWith(".md"))
+  .map((file) => fs.readFileSync(path.join(blogDirectory, file), "utf8"))
+  .map((content) => content.match(/^slug:\s*["']?([^\r\n"']+)/m)?.[1]?.trim())
+  .filter((slug): slug is string => Boolean(slug));
 
 const alternateDomains = [
   "blackirisfilms.com",
@@ -162,16 +174,10 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
-      {
-        source: "/blog/:slug",
-        destination: "/post/:slug",
-        permanent: true,
-      },
-      {
-        source: "/single-post/:slug",
-        destination: "/post/:slug",
-        permanent: true,
-      },
+      ...blogSlugs.flatMap((slug) => [
+        { source: `/blog/${slug}`, destination: `/post/${slug}`, permanent: true },
+        { source: `/single-post/${slug}`, destination: `/post/${slug}`, permanent: true },
+      ]),
     ];
   },
   async rewrites() {
