@@ -66,7 +66,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               width={4952}
               height={613}
               priority
-              className="h-auto w-[196px] sm:w-[242px]"
+              className="h-auto w-[196px] -translate-y-px sm:w-[242px]"
             />
           </a>
 
