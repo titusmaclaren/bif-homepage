@@ -140,7 +140,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
               >
                 <a href="/portfolio" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">VIDEO PORTFOLIO</a>
                 <a href="/photography" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">PHOTOGRAPHY</a>
-                <a href="/ai-powered-content-studio-v2" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
+                <a href="/ai-imagery" className="block rounded-md px-3.5 py-3 text-xs font-semibold leading-tight text-white transition-colors hover:bg-[#111]">AI IMAGERY</a>
               </div>
             </div>
             <a href="/why-black-iris-films" className="nav-link">ABOUT</a>
@@ -193,7 +193,7 @@ export function Nav({ showEstimateBar = false }: NavProps) {
             <div className="grid gap-2.5 mt-3.5 pt-3.5 pb-0.5 pl-3.5 border-l border-white/15">
               <a href="/portfolio" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>VIDEO PORTFOLIO</a>
               <a href="/photography" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>PHOTOGRAPHY</a>
-              <a href="/ai-powered-content-studio-v2" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>AI IMAGERY</a>
+              <a href="/ai-imagery" className="text-[13px] leading-tight text-slate-300 hover:text-white" onClick={closeMenu}>AI IMAGERY</a>
             </div>
           </details>
           <a href="/why-black-iris-films" className="mobile-link" onClick={closeMenu}>ABOUT</a>
