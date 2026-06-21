@@ -145,11 +145,6 @@ const nextConfig: NextConfig = {
       { source: "/blog", destination: "/learn", permanent: true },
       { source: "/faq", destination: "/#faq", permanent: true },
       {
-        source: "/ai-imagery",
-        destination: "/ai-powered-content-studio-v2",
-        permanent: true,
-      },
-      {
         source: "/bondi-to-coogee-walk-in-one-minute",
         destination: "/stories",
         permanent: true,

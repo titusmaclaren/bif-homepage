@@ -12,6 +12,7 @@ const consolidatedRoutes = [
   "/case-studies/amplitel",
   "/case-studies/dacxi-chain",
   "/case-studies/mary-technology",
+  "/ai-imagery",
   "/ai-powered-content-studio-v2",
   "/the-last-10",
   "/the-social-media-theory-of-everything",
