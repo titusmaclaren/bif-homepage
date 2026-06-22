@@ -12,7 +12,14 @@ import { VideoTrigger } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
 const middleRowPriorityIds = new Set(["1143349142", "700347030", "256497496"]);
-const topRowPriorityIds = ["894854950", "321724289", "1111183751"];
+const topRowPriorityIds = [
+  "1109359009",
+  "894854950",
+  "776884299",
+  "1181599954",
+  "839000549",
+  "1111183751",
+];
 const topRowPriorityIdSet = new Set(topRowPriorityIds);
 const topPortfolioBaseItems = PORTFOLIO_ITEMS.filter(
   (item) => !middleRowPriorityIds.has(item.vimeoId),
@@ -128,13 +135,15 @@ export function PortfolioIntro() {
 }
 
 function SteppedPortfolioRow({ items }: { items: PortfolioItem[] }) {
-  const loopedItems = useMemo(() => [...items, ...items], [items]);
+  // The middle copy keeps cards on both sides of the viewport while the row
+  // resets, so the loop has no blank edge at the wrap point.
+  const loopedItems = useMemo(() => [...items, ...items, ...items], [items]);
   const rowRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
   const [centerOffset, setCenterOffset] = useState(0);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(items.length);
   const [isInstant, setIsInstant] = useState(false);
 
   useEffect(() => {
@@ -174,10 +183,10 @@ function SteppedPortfolioRow({ items }: { items: PortfolioItem[] }) {
 
   const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return;
-    if (index < items.length) return;
+    if (index < items.length * 2) return;
 
     setIsInstant(true);
-    setIndex(0);
+    setIndex(items.length);
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => setIsInstant(false));
     });

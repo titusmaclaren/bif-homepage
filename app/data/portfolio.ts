@@ -35,7 +35,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Brand film for a long-term wealth platform built around confidence, clarity and momentum.",
     client: "Wealth 99",
     industry: "Finance",
-    thumb: W("a2a11d_547a7a386bff4519965fcf165a33fba6~mv2.jpg"),
+    thumb: "/assets/portfolio-home-wealth-99.webp",
   },
   {
     vimeoId: "1109359009",
@@ -46,9 +46,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "A compact spec commercial built around everyday tension, choice and emotional payoff.",
     client: "Mastercard",
     industry: "Finance",
-    thumb: V(
-      "https://i.vimeocdn.com/video/2056872529-eb4aaa80c40c49c5e172b40e8d2bba6cf9b806bc9bc368d95c24f96182a62501-d_640?region=us",
-    ),
+    thumb: "/assets/portfolio-home-mastercard-spec.webp",
   },
   {
     vimeoId: "1143355482",
@@ -82,9 +80,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Event coverage shaped for momentum, personality and fast post-event promotion.",
     client: "MaryCon",
     industry: "Legal technology",
-    thumb: V(
-      "https://i.vimeocdn.com/video/2049109787-1c30b5cb912bb36d3d94f57111c4fa9fa4b1a278513979d94c1073fdfb45a0d7-d_640?region=us",
-    ),
+    thumb: "/assets/portfolio-home-marycon.webp",
   },
   {
     vimeoId: "256497496",
@@ -136,7 +132,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Event highlights for the immersive moment-design studio behind major Sydney experiences.",
     client: "Little Red Hood",
     industry: "Events",
-    thumb: W("a2a11d_5d24f983e0e14d4495ec45478724d2eb~mv2.jpg"),
+    thumb: "/assets/portfolio-home-magic-goes-on.webp",
   },
   {
     vimeoId: "700347030",
@@ -158,9 +154,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Thought-leadership interview content for the Dacxi Chain Presents series.",
     client: "Dacxi Chain",
     industry: "Finance",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1689219824-23de33dbcd3a404950733d9a8659e76421449007b9a0482d44690d95c2a411dd-d_640?region=us",
-    ),
+    thumb: "/assets/portfolio-home-ian-lowe.webp",
   },
   {
     vimeoId: "321724289",
@@ -344,9 +338,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Anniversary film celebrating two decades of AIE students, staff and creative careers.",
     client: "Academy of Interactive Entertainment",
     industry: "Higher education",
-    thumb: V(
-      "https://i.vimeocdn.com/video/2144004787-8ec8b4a841942a5935ccb2531af5c3dd407d28189b5c7764919f70ef722088a4-d_640?region=us",
-    ),
+    thumb: "/assets/portfolio-home-aie-20th-anniversary.webp",
   },
   {
     vimeoId: "1181599296",
