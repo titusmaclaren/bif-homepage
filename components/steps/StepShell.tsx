@@ -11,7 +11,7 @@ type Props = {
 
 /**
  * Shared visual shell for every step.
- * Step label (uppercase tracked), display headline (light 300), subtitle,
+ * Step label (uppercase tracked), display headline, subtitle,
  * then content, then an optional footer row with Back + a primary action.
  */
 export function StepShell({
@@ -30,7 +30,7 @@ export function StepShell({
             {stepLabel}
           </div>
         )}
-        <h1 className="font-light text-[32px] sm:text-[40px] leading-[1.15] tracking-[-0.01em] text-navy m-0">
+        <h1 className="font-bold text-[32px] sm:text-[40px] leading-[1.15] tracking-[-0.01em] text-navy m-0">
           {title}
         </h1>
         {subtitle && (
