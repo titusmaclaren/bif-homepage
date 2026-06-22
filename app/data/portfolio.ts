@@ -58,7 +58,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Product unboxing content for Dell partner marketing, built for clear, useful product communication.",
     client: "Dell / Ingram Micro",
     industry: "Technology",
-    thumb: "/assets/hero-tech.jpg",
+    thumb: V(
+      "https://i.vimeocdn.com/video/2091517271-ef7c434e6078591b5d58ac1f890ee891188a48571c876e3af8e3902e40092e0b-d_295x166?region=us",
+    ),
   },
   {
     vimeoId: "1143349142",
@@ -298,7 +300,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Charity film built to make the work feel immediate, human and worth supporting.",
     client: "Street Growth",
     industry: "Charity",
-    thumb: "/assets/hero-corporate.jpg",
+    thumb: V(
+      "https://i.vimeocdn.com/video/713979150-9742d3b31dc01fa691d0f58990a6ead7433d55e2065ad130aa2c5f187b86e752-d_640?region=us",
+    ),
   },
   {
     vimeoId: "689165776",
