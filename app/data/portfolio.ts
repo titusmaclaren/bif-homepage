@@ -25,7 +25,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Brand hero film positioning a global crowdfunding network for retail investors.",
     client: "Dacxi Chain",
     industry: "Finance",
-    thumb: W("a2a11d_70dc6df59e59410ea533f798ee4dc342~mv2.jpg"),
+    thumb: "/assets/portfolio-home-dacxi-chain.webp",
   },
   {
     vimeoId: "776884299",
