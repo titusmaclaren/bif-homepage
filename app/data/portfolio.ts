@@ -120,9 +120,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Founder-led explainer for the global equity crowdfunding network.",
     client: "Dacxi Chain",
     industry: "Finance",
-    thumb: V(
-      "https://i.vimeocdn.com/video/1775261111-548226ab7e62c5e90343b0d552c50caa58bc0643f835f7fa68a0e38e008b6d50-d_640?region=us",
-    ),
+    thumb: "/assets/portfolio-home-dacxi-chain-ecf.webp",
   },
   {
     vimeoId: "894854950",
