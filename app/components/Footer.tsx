@@ -1,7 +1,7 @@
 const footerNav = [
   { href: "/contact", label: "Contact us" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/contact#testimonials", label: "Testimonials" },
   { href: "/case-studies/", label: "Case Studies" },
   { href: "/learn", label: "Blog" },
 ];

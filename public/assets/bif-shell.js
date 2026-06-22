@@ -6,9 +6,10 @@
    page that loads it. Pair with bif-shell.css.
 
    Per-page options (set on <body>):
-     data-bif-sticky="off"   -> skip the sticky quiz CTA
-     data-bif-callout="off"  -> skip the pricing callout
-     data-bif-offset         -> pad content below the fixed header
+   data-bif-sticky="off"   -> skip the sticky quiz CTA
+   data-bif-callout="off"  -> skip the pricing callout
+   data-bif-google="off"   -> retain a page's own Google reviews widget
+   data-bif-offset         -> pad content below the fixed header
    ============================================================ */
 (function () {
   "use strict";
@@ -41,26 +42,17 @@
     return SERVICES.map(function (s) { return '<a href="' + s[0] + '">' + s[1] + '</a>'; }).join("");
   }
 
-  var LOGO_SVG =
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 698.93 170.24" aria-hidden="true">' +
-      '<defs>' +
-        '<clipPath id="bif-shell-cp-1"><rect width="159.33" height="159.48"/></clipPath>' +
-        '<clipPath id="bif-shell-cp-2"><path d="M27.09,45.50C25.32,46.06,22.55,49.42,22.55,49.42L23.39,75.98A15,15,0,0,0,32.70,81.98C39.81,83.54,37.60,80.55,55.50,75.20L55.30,47.32C44.37,44.43,38.99,43.43,35.52,43.43S30.45,44.41,27.09,45.50Z"/></clipPath>' +
-        '<linearGradient id="bif-shell-grad-1" x1="-33.17" y1="-139.91" x2="-33.02" y2="-139.91" gradientTransform="matrix(0, -258.5, -258.5, 0, -36127.06, -8491.93)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#131316"/><stop offset="0.5" stop-color="#2c2d2f"/><stop offset="1" stop-color="#131316"/></linearGradient>' +
-        '<clipPath id="bif-shell-cp-3"><path d="M25.07,77.86L23.39,75.98A4.68,4.68,0,0,0,25.07,77.86M32.74,79.75C28.74,79.75,26.39,78.80,25.05,77.86L49.79,105.57C50.14,105.94,51.85,107.87,53.47,108.19A12.67,12.67,0,0,0,58.31,108.19C60.31,107.57,145.31,78.06,145.31,78.06A3.68,3.68,0,0,0,146.84,76.98L146.81,76.64A1.87,1.87,0,0,0,145.81,76.16L102.83,61.72Z"/></clipPath>' +
-        '<linearGradient id="bif-shell-grad-2" x1="-31.34" y1="-140.75" x2="-31.18" y2="-140.75" gradientTransform="matrix(819.76, 0, 0, -819.76, 25727.96, -115279.36)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#303c59"/><stop offset="0.03" stop-color="#303c59"/><stop offset="0.13" stop-color="#4b5d8b"/><stop offset="0.28" stop-color="#495a87"/><stop offset="0.44" stop-color="#42527a"/><stop offset="0.61" stop-color="#364364"/><stop offset="0.77" stop-color="#273047"/><stop offset="0.92" stop-color="#151a26"/><stop offset="1" stop-color="#151a26"/></linearGradient>' +
-        '<clipPath id="bif-shell-cp-4"><path d="M145.23,78.12H145.23M22.55,49.42L23.34,48.52A5.18,5.18,0,0,0,22.55,49.42M48.61,19.59L23.34,48.52C24.56,47.37,27.32,45.52,32.75,45.35C43,45.05,135.13,73.13,144.86,76.06C147.14,76.75,145.35,78.05,145.23,78.12A2.61,2.61,0,0,0,147.30,75.38L148.19,48.43C148.19,46.51,147.76,46.13,145.92,45.54L57.20,15.89C53.91,16.15,50.96,16.77,48.61,19.59Z"/></clipPath>' +
-        '<linearGradient id="bif-shell-grad-3" x1="-29.81" y1="-139.5" x2="-29.66" y2="-139.5" gradientTransform="matrix(0, -832.34, -832.34, 0, -116032.28, -24683.14)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3d3159"/><stop offset="0.03" stop-color="#443764"/><stop offset="0.09" stop-color="#53427a"/><stop offset="0.16" stop-color="#5c4987"/><stop offset="0.22" stop-color="#5f4b8b"/><stop offset="0.36" stop-color="#5b4785"/><stop offset="0.55" stop-color="#503d75"/><stop offset="0.76" stop-color="#3d2b5b"/><stop offset="0.99" stop-color="#241336"/><stop offset="1" stop-color="#213"/></linearGradient>' +
-      '</defs>' +
-      '<text style="font-size:42px;fill:#f5f6f8;font-family:var(--bif-font);font-weight:800;letter-spacing:.22em" transform="translate(196.41 78.44)">' +
-        '<tspan>BLACK </tspan><tspan style="font-weight:300" x="207.86" y="0">IRIS</tspan><tspan x="314.91" y="0"> </tspan><tspan style="font-weight:500" x="336.58" y="0">FILMS</tspan>' +
-      '</text>' +
-      '<g clip-path="url(#bif-shell-cp-1)">' +
-        '<g clip-path="url(#bif-shell-cp-2)"><rect fill="url(#bif-shell-grad-1)" x="22.55" y="43.41" width="32.95" height="40.15"/></g>' +
-        '<g clip-path="url(#bif-shell-cp-3)"><rect fill="url(#bif-shell-grad-2)" x="18.91" y="42.77" width="120.94" height="119.83" transform="translate(-43.44 67.32) rotate(-44.41)"/></g>' +
-        '<g clip-path="url(#bif-shell-cp-4)"><rect fill="url(#bif-shell-grad-3)" x="47.13" y="1.08" width="65" height="126.99" transform="translate(19.05 125.18) rotate(-88.73)"/></g>' +
-      '</g>' +
-    '</svg>';
+  var WORK = [
+    ["/portfolio", "Video Portfolio"],
+    ["/photography", "Photography"],
+    ["/ai-imagery", "AI Imagery"]
+  ];
+
+  function workLinks() {
+    return WORK.map(function (item) { return '<a href="' + item[0] + '">' + item[1] + '</a>'; }).join("");
+  }
+
+  var LOGO_HTML = '<img src="/assets/black-iris-play-ribbon-logo-white-text.svg" alt="Black Iris Films">';
 
   var HEADER_HTML =
     '<div class="bif-top-cta">' +
@@ -74,15 +66,18 @@
     '</div>' +
     '<header class="bif-header">' +
       '<div class="bif-header-inner">' +
-        '<a class="bif-logo" href="/" aria-label="Black Iris Films">' + LOGO_SVG + '</a>' +
+        '<a class="bif-logo" href="/" aria-label="Black Iris Films">' + LOGO_HTML + '</a>' +
         '<nav class="bif-nav" aria-label="Site navigation">' +
-          '<a class="bif-nav-link" href="/#blog">Learn</a>' +
+          '<a class="bif-nav-link" href="/learn">Learn</a>' +
           '<a class="bif-nav-link" href="/#faq">FAQ</a>' +
           '<div class="bif-services-menu-wrap">' +
             '<button class="bif-services-trigger" type="button" aria-haspopup="true">Services</button>' +
             '<div class="bif-services-menu" aria-label="Services">' + servicesLinks() + '</div>' +
           '</div>' +
-          '<a class="bif-nav-link" href="/#portfolio">Work</a>' +
+          '<div class="bif-services-menu-wrap bif-work-menu-wrap">' +
+            '<button class="bif-services-trigger" type="button" aria-haspopup="true">Work</button>' +
+            '<div class="bif-services-menu bif-work-menu" aria-label="Work">' + workLinks() + '</div>' +
+          '</div>' +
           '<a class="bif-nav-link" href="/why-black-iris-films">About</a>' +
         '</nav>' +
         '<a class="bif-header-cta" href="/contact">Get in touch</a>' +
@@ -90,13 +85,16 @@
       '</div>' +
     '</header>' +
     '<nav class="bif-mobile-menu" aria-label="Mobile navigation" data-bif-mobile-menu>' +
-      '<a class="bif-mobile-link" href="/#blog">Learn</a>' +
+      '<a class="bif-mobile-link" href="/learn">Learn</a>' +
       '<a class="bif-mobile-link" href="/#faq">FAQ</a>' +
       '<details>' +
         '<summary class="bif-mobile-summary">Services</summary>' +
         '<div class="bif-mobile-services">' + servicesLinks() + '</div>' +
       '</details>' +
-      '<a class="bif-mobile-link" href="/#portfolio">Work</a>' +
+      '<details>' +
+        '<summary class="bif-mobile-summary">Work</summary>' +
+        '<div class="bif-mobile-services">' + workLinks() + '</div>' +
+      '</details>' +
       '<a class="bif-mobile-link" href="/why-black-iris-films">About</a>' +
       '<a class="bif-mobile-cta" href="/contact">Get in touch</a>' +
     '</nav>';
@@ -165,10 +163,10 @@
         '<div class="bif-footer-left">' +
           '<nav class="bif-footer-nav" aria-label="Footer navigation">' +
             '<a href="/contact">Contact us</a>' +
-            '<a href="/#portfolio">Portfolio</a>' +
-            '<a href="/#testimonials">Testimonials</a>' +
-            '<a href="/case-studies/">Case Studies</a>' +
-            '<a href="/#blog">Blog</a>' +
+            '<a href="/portfolio">Portfolio</a>' +
+            '<a href="/contact#testimonials">Testimonials</a>' +
+            '<a href="/case-studies">Case Studies</a>' +
+            '<a href="/learn">Blog</a>' +
           '</nav>' +
           '<div class="bif-footer-meta">' +
             '<p>&copy; 2018 - <span data-bif-year>2026</span> Black Iris Films.</p>' +
@@ -202,6 +200,7 @@
 
     var wantSticky = body.getAttribute("data-bif-sticky") !== "off";
     var wantCallout = body.getAttribute("data-bif-callout") !== "off";
+    var wantGoogle = body.getAttribute("data-bif-google") !== "off";
 
     // Header chrome at the very top of the body.
     if (!document.querySelector(".bif-header")) {
@@ -213,7 +212,7 @@
     var tail = "";
     if (wantCallout) tail += CALLOUT_HTML;
     tail += FOOTER_HTML;
-    tail += GOOGLE_HTML;
+    if (wantGoogle) tail += GOOGLE_HTML;
     if (wantSticky) tail += STICKY_HTML;
     body.insertAdjacentHTML("beforeend", tail);
 
