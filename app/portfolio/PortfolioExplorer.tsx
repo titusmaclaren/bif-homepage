@@ -35,6 +35,9 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
   }, [industryFilter, items, typeFilter]);
 
   const hasActiveFilter = typeFilter !== "All" || industryFilter !== "All";
+  const displayedItems = hasActiveFilter
+    ? filteredItems
+    : filteredItems.slice(0, 21);
 
   return (
     <section className="bg-off-white py-10 md:py-12">
@@ -70,9 +73,9 @@ export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
           )}
         </div>
 
-        {filteredItems.length > 0 ? (
+        {displayedItems.length > 0 ? (
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredItems.map((item) => (
+            {displayedItems.map((item) => (
               <PortfolioCard key={item.vimeoId} item={item} />
             ))}
           </div>
