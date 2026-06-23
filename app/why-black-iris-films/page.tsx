@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Nav } from "../components/Nav";
 import { CreativeAlly } from "../components/CreativeAlly";
 import { SoundFamiliar } from "../components/SoundFamiliar";
 import { ResearchSection } from "../components/ResearchSection";
 import { ContentSystem } from "../components/ContentSystem";
 import { Footer } from "../components/Footer";
+import { WhyHeroSlideshow } from "../components/WhyHeroSlideshow";
 import { createPageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -13,12 +15,6 @@ export const metadata: Metadata = createPageMetadata({
     "See how Black Iris Films helps brands turn strong stories into useful video, photography and social content libraries.",
   path: "/why-black-iris-films",
 });
-
-const proofPoints = [
-  { value: "15+", label: "years of production experience" },
-  { value: "30+", label: "industries helped with story-led content" },
-  { value: "1", label: "senior creative partner from brief to delivery" },
-];
 
 type ComparisonStatus = "Rare" | "Sometimes" | "Always";
 
@@ -90,30 +86,33 @@ const elements = [
   {
     title: "Marketing-aware filmmaking",
     body: "The marketing brain shows up before the camera does, from pre-planning and interview questions to lighting, edit choices and delivery formats.",
-    visual: "marketing",
+    image: "/assets/why-principle-marketing.webp",
+    alt: "A producer and marketing strategist planning a video shoot together.",
   },
   {
     title: "Authentic marketing",
     body: "We are not interested in tricks or over-polished spin. The work should present your strongest side while still feeling believable and human.",
-    visual: "authentic",
+    image: "/assets/why-principle-authentic.webp",
+    alt: "A relaxed interview subject preparing for a film shoot.",
   },
   {
     title: "Hands-free, but tailored",
     body: "We keep the process light for your team while still building a custom solution around your goals, audience and internal workflow.",
-    visual: "process",
+    image: "/assets/why-principle-process.webp",
+    alt: "A video crew and clients calmly preparing for a tailored shoot.",
   },
   {
     title: "Advice without ego",
     body: "We will bring clear recommendations, but you have to live with the result. Final decisions stay with you, and the process respects that.",
-    visual: "advice",
+    image: "/assets/why-principle-advice.webp",
+    alt: "A director and client collaboratively reviewing visual ideas.",
   },
 ] satisfies Array<{
   title: string;
   body: string;
-  visual: PrincipleVisual;
+  image: string;
+  alt: string;
 }>;
-
-type PrincipleVisual = "marketing" | "authentic" | "process" | "advice";
 
 type WhyTestimonial = {
   quote: string;
@@ -196,16 +195,16 @@ export default function WhyBlackIrisFilmsPage() {
 
 function WhyHero() {
   return (
-    <section className="bg-navy-midnight text-white py-20 md:py-28">
-      <div className="mx-auto grid max-w-[1260px] gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
-        <div>
+    <section className="overflow-hidden bg-white pb-16 pt-28 md:pb-24 md:pt-36">
+      <div className="mx-auto grid max-w-[1260px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
+        <div className="relative z-10">
           <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-mint">
             Why Black Iris Films?
           </p>
-          <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] md:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-bold leading-[1.04] text-navy md:text-5xl lg:text-6xl">
             We turn strong stories into content your brand can keep using.
           </h1>
-          <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-white/72 md:text-lg">
+          <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-slate md:text-lg">
             Black Iris Films is built for teams who need more than a beautiful video.
             We combine filmmaking craft with marketing-team experience, then leave you
             with a practical library of assets for websites, campaigns, social and sales.
@@ -219,21 +218,13 @@ function WhyHero() {
             </a>
             <a
               href="#why-comparison"
-              className="inline-flex items-center py-3 text-sm font-semibold text-white/82 transition-colors hover:text-mint"
+              className="inline-flex items-center py-3 text-sm font-semibold text-navy/82 transition-colors hover:text-mint"
             >
               See how we work
             </a>
           </div>
         </div>
-
-        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-          {proofPoints.map((point) => (
-            <div key={point.label} className="rounded-lg border border-white/12 bg-white/6 p-5">
-              <div className="text-3xl font-bold text-mint">{point.value}</div>
-              <p className="mt-2 text-[13px] leading-relaxed text-white/72">{point.label}</p>
-            </div>
-          ))}
-        </div>
+        <WhyHeroSlideshow />
       </div>
     </section>
   );
@@ -352,7 +343,18 @@ function ElementsSection() {
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {elements.map((item, index) => (
             <article key={item.title} className="rounded-lg border border-fog/70 bg-white p-4 shadow-[0_14px_34px_rgba(41,51,77,0.04)] md:p-5">
-              <PrincipleDiagram visual={item.visual} index={index + 1} />
+              <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-md border border-fog/70 bg-off-white">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 1280px) 280px, (min-width: 768px) 44vw, 88vw"
+                  className="object-cover"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-white/92 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-navy shadow-sm">
+                  Principle {index + 1}
+                </span>
+              </div>
               <h3 className="text-lg font-bold leading-snug text-navy">{item.title}</h3>
               <p className="mt-4 text-[13.5px] leading-relaxed text-slate">{item.body}</p>
             </article>
@@ -360,154 +362,6 @@ function ElementsSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function PrincipleDiagram({
-  visual,
-  index,
-}: {
-  visual: PrincipleVisual;
-  index: number;
-}) {
-  if (visual === "marketing") {
-    return (
-      <div
-        role="img"
-        aria-label="Diagram showing audience, message, shoot and edit connected by marketing-aware filmmaking."
-        className="mb-5 overflow-hidden rounded-md border border-fog/70 bg-off-white p-4"
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-mint">
-            Principle {index}
-          </span>
-          <span className="rounded-full bg-mint/12 px-2.5 py-1 text-[10px] font-bold text-mint">
-            Strategy before camera
-          </span>
-        </div>
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-          <DiagramNode label="Audience" />
-          <DiagramArrow />
-          <DiagramNode label="Message" />
-          <div className="col-span-3 mx-auto h-5 w-px bg-fog" />
-          <DiagramNode label="Shoot" />
-          <DiagramArrow />
-          <DiagramNode label="Edit" />
-        </div>
-      </div>
-    );
-  }
-
-  if (visual === "authentic") {
-    return (
-      <div
-        role="img"
-        aria-label="Diagram showing polished marketing balanced with human authenticity."
-        className="mb-5 overflow-hidden rounded-md border border-fog/70 bg-[#f7f8f5] p-4"
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-mint">
-            Principle {index}
-          </span>
-          <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-navy shadow-sm">
-            Believable wins
-          </span>
-        </div>
-        <div className="relative h-28">
-          <div className="absolute left-0 top-3 h-20 w-20 rounded-full border border-navy/12 bg-white p-3">
-            <div className="h-full rounded-full bg-navy/10" />
-          </div>
-          <div className="absolute right-0 top-3 h-20 w-20 rounded-full border border-mint/30 bg-mint/12 p-3">
-            <div className="h-full rounded-full bg-mint/35" />
-          </div>
-          <div className="absolute left-1/2 top-6 h-14 w-24 -translate-x-1/2 rounded-md border border-fog/70 bg-white px-3 py-2 text-center shadow-sm">
-            <div className="text-[10px] font-bold text-navy">Strong side</div>
-            <div className="mt-1 text-[9px] font-medium text-slate">human faults</div>
-          </div>
-          <div className="absolute bottom-1 left-1/2 h-7 w-px bg-mint/45" />
-        </div>
-      </div>
-    );
-  }
-
-  if (visual === "process") {
-    return (
-      <div
-        role="img"
-        aria-label="Diagram showing a hands-free process with tailored production inputs."
-        className="mb-5 overflow-hidden rounded-md border border-fog/70 bg-white p-4"
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-mint">
-            Principle {index}
-          </span>
-          <span className="rounded-full bg-slate-ice/70 px-2.5 py-1 text-[10px] font-bold text-navy">
-            Low lift
-          </span>
-        </div>
-        <div className="grid grid-cols-4 gap-1.5">
-          {["Brief", "Plan", "Shoot", "Deliver"].map((label, step) => (
-            <div key={label} className="rounded-md bg-off-white p-2 text-center">
-              <div className="mx-auto mb-2 h-5 w-5 rounded-full bg-mint/15 text-[10px] font-bold leading-5 text-mint">
-                {step + 1}
-              </div>
-              <div className="text-[9.5px] font-bold text-navy">{label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 rounded-md bg-navy px-3 py-2 text-[10px] font-bold text-white">
-          Custom to team, budget and channel mix
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      role="img"
-      aria-label="Diagram showing recommendations meeting the final client decision."
-      className="mb-5 overflow-hidden rounded-md border border-fog/70 bg-navy p-4 text-white"
-    >
-      <div className="mb-4 flex items-center justify-between">
-        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-mint">
-          Principle {index}
-        </span>
-        <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold text-white">
-          Clear advice
-        </span>
-      </div>
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-        <div className="rounded-md bg-white/10 p-3">
-          <div className="text-[10px] font-bold text-mint">Our view</div>
-          <div className="mt-2 h-2 rounded-full bg-white/70" />
-          <div className="mt-1.5 h-2 w-2/3 rounded-full bg-white/35" />
-        </div>
-        <div className="h-px w-5 bg-mint" />
-        <div className="rounded-md bg-mint p-3 text-navy">
-          <div className="text-[10px] font-bold">Your call</div>
-          <div className="mt-2 grid grid-cols-2 gap-1">
-            <span className="h-5 rounded-sm bg-white/70" />
-            <span className="h-5 rounded-sm bg-white/35" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DiagramNode({ label }: { label: string }) {
-  return (
-    <div className="rounded-md border border-fog/70 bg-white px-2 py-3 text-center text-[10px] font-bold text-navy shadow-sm">
-      {label}
-    </div>
-  );
-}
-
-function DiagramArrow() {
-  return (
-    <div className="relative h-px w-4 bg-mint">
-      <span className="absolute -right-0.5 -top-1 h-2 w-2 rotate-45 border-r border-t border-mint" />
-    </div>
   );
 }
 
