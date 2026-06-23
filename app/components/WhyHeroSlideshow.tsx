@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/assets/why-hero-woman.webp",
+    src: "/assets/why-hero-woman-transparent.png",
     alt: "A campaign content collage featuring a business leader in an office interview.",
   },
   {
-    src: "/assets/why-hero-man.webp",
+    src: "/assets/why-hero-man-transparent.png",
     alt: "A campaign content collage featuring a business leader in a city office.",
   },
 ];
@@ -34,7 +34,7 @@ export function WhyHeroSlideshow() {
   }, []);
 
   return (
-    <div className="relative mx-auto aspect-[3/4] w-full max-w-[500px] overflow-hidden rounded-lg bg-[#ffffff] md:h-full md:w-auto md:max-w-full">
+    <div className="relative mx-auto aspect-[3/4] w-full max-w-[500px] overflow-hidden rounded-lg bg-transparent md:h-full md:w-auto md:max-w-full">
       {slides.map((slide, index) => (
         <Image
           key={slide.src}

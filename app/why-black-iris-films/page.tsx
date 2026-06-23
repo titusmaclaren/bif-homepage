@@ -181,8 +181,9 @@ export default function WhyBlackIrisFilmsPage() {
         <WhyHero />
         <section className="bg-black px-6 py-7 text-center md:py-8">
           <p className="mx-auto max-w-5xl text-lg font-semibold leading-snug text-white md:text-2xl">
-            Great campaigns don&apos;t run on one video. They run on a consistent
-            stream of content across every channel.
+            Great campaigns don&apos;t run on one video. They run on a
+            <br className="hidden md:block" /> consistent stream of content across every
+            channel.
           </p>
         </section>
         <CreativeAlly />
@@ -201,10 +202,7 @@ export default function WhyBlackIrisFilmsPage() {
 
 function WhyHero() {
   return (
-    <section
-      className="overflow-hidden bg-[#ffffff] pb-16 pt-28 md:h-[66.667svh] md:min-h-[560px] md:pb-6 md:pt-20"
-      style={{ backgroundColor: "#ffffff" }}
-    >
+    <section className="overflow-hidden bg-off-white pb-16 pt-28 md:h-[66.667svh] md:min-h-[560px] md:pb-6 md:pt-20">
       <div className="mx-auto grid max-w-[1260px] items-center gap-12 px-6 md:h-full lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
         <div className="relative z-10">
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.04] text-navy md:text-5xl lg:text-6xl">
