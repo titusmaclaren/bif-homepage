@@ -195,19 +195,15 @@ export default function WhyBlackIrisFilmsPage() {
 
 function WhyHero() {
   return (
-    <section className="overflow-hidden bg-white pb-16 pt-28 md:pb-24 md:pt-36">
+    <section className="overflow-hidden bg-[#ffffff] pb-16 pt-28 md:pb-24 md:pt-36">
       <div className="mx-auto grid max-w-[1260px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
         <div className="relative z-10">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.22em] text-mint">
-            Why Black Iris Films?
-          </p>
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.04] text-navy md:text-5xl lg:text-6xl">
-            We turn strong stories into content your brand can keep using.
+            One production. A library of content that works harder.
           </h1>
           <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-slate md:text-lg">
-            Black Iris Films is built for teams who need more than a beautiful video.
-            We combine filmmaking craft with marketing-team experience, then leave you
-            with a practical library of assets for websites, campaigns, social and sales.
+            We turn one shoot into a complete suite of video, photography and motion
+            assets&mdash;so your story keeps working across every channel.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
