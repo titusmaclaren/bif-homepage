@@ -120,25 +120,6 @@ export function PortfolioIntro() {
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a
-          href="/estimate/"
-          className="inline-flex items-center gap-2.5 rounded-sm bg-mint px-6 py-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-mint-bright"
-        >
-          Get an estimate in 1-min
-          <svg
-            aria-hidden="true"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.4"
-          >
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </a>
       </div>
     </section>
   );
