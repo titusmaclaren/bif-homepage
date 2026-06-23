@@ -202,10 +202,10 @@ export default function WhyBlackIrisFilmsPage() {
 function WhyHero() {
   return (
     <section
-      className="overflow-hidden bg-[#ffffff] pb-16 pt-28 md:pb-24 md:pt-36"
+      className="overflow-hidden bg-[#ffffff] pb-16 pt-28 md:h-[66.667svh] md:min-h-[560px] md:pb-6 md:pt-20"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="mx-auto grid max-w-[1260px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
+      <div className="mx-auto grid max-w-[1260px] items-center gap-12 px-6 md:h-full lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
         <div className="relative z-10">
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.04] text-navy md:text-5xl lg:text-6xl">
             One production. A library of content that works harder.

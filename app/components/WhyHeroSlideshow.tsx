@@ -34,7 +34,7 @@ export function WhyHeroSlideshow() {
   }, []);
 
   return (
-    <div className="relative mx-auto aspect-[3/4] w-full max-w-[500px] overflow-hidden rounded-lg bg-[#ffffff]">
+    <div className="relative mx-auto aspect-[3/4] w-full max-w-[500px] overflow-hidden rounded-lg bg-[#ffffff] md:h-full md:w-auto md:max-w-full">
       {slides.map((slide, index) => (
         <Image
           key={slide.src}
