@@ -9,9 +9,8 @@
  * zooms the thumbnail; click opens the shared VideoLightbox so we get the
  * structured info + related cards consistently with the portfolio.
  *
- * The portfolio is used as initial thumbnails (so the mosaic is full and
- * on-brand on first paint); a JSONP call to Vimeo's public feed for user
- * 10691654 then replaces them with the live channel.
+ * A deliberate subset of the portfolio provides the thumbnails, so the
+ * homepage reel remains stable even when new Vimeo uploads are published.
  */
 
 import { useEffect, useRef } from "react";
@@ -19,7 +18,18 @@ import { useVideoLightbox, type VideoSource } from "./VideoLightbox";
 import { PORTFOLIO_ITEMS } from "../data/portfolio";
 import { trackEvent } from "../lib/analytics";
 
-const VIMEO_USER = "10691654";
+// The homepage reel is intentionally curated. Keep this separate from the
+// wider portfolio so new Vimeo uploads do not appear here by surprise.
+const HERO_VIDEO_IDS = new Set([
+  "742487127", "776884299", "1109359009", "1143355482", "1143349142",
+  "1111183751", "256497496", "842154532", "1060728418", "860013506",
+  "894854950", "700347030", "839000549", "321724289", "558903975",
+  "496723120", "295364237", "387582839", "344738613", "706749897",
+  "356091891", "137334907", "657351049", "137334669", "846528202",
+  "278879520", "689165776", "381263461", "792128309", "1181599954",
+  "1181599296", "1065385276", "941172837", "915048133", "1001827462",
+  "766366126", "717795825", "680771973",
+]);
 
 // Sphere geometry (in the 1920×1080 base canvas).
 const R = 1500;
@@ -32,11 +42,13 @@ const BAND_LATS = [-30, -18, -6, 6, 18, 30];
 
 type Video = { id: string; title: string; thumb: string };
 
-const INITIAL_VIDEOS: Video[] = PORTFOLIO_ITEMS.map((p) => ({
-  id: p.vimeoId,
-  title: p.title,
-  thumb: p.thumb,
-}));
+const INITIAL_VIDEOS: Video[] = PORTFOLIO_ITEMS.filter((p) => HERO_VIDEO_IDS.has(p.vimeoId)).map(
+  (p) => ({
+    id: p.vimeoId,
+    title: p.title,
+    thumb: p.thumb,
+  }),
+);
 
 function mulberry32(seed: number) {
   return function () {
@@ -56,42 +68,6 @@ function shuffled<T>(arr: T[], seed: number): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-/** Keep live Vimeo thumbnails at ~640 wide so the hero does not fetch dozens
- *  of oversized images on first load. Handles both `..._640?region=us` and
- *  legacy `..._640x360.jpg` URLs. */
-function biggerThumb(url: string | undefined | null): string | undefined {
-  if (!url) return undefined;
-  return url
-    .replace(/_\d{2,4}x\d{2,4}(\.(jpg|webp))/i, "_640$1")
-    .replace(/_\d{2,4}(?=(\?|$))/i, "_640");
-}
-
-function jsonp(url: string, timeout = 7000): Promise<unknown> {
-  return new Promise((resolve, reject) => {
-    const cb = "bif_cb_" + Math.random().toString(36).slice(2);
-    const script = document.createElement("script");
-    const timer = setTimeout(() => {
-      cleanup();
-      reject(new Error("timeout"));
-    }, timeout);
-    const cleanup = () => {
-      clearTimeout(timer);
-      delete (window as unknown as Record<string, unknown>)[cb];
-      script.remove();
-    };
-    (window as unknown as Record<string, unknown>)[cb] = (data: unknown) => {
-      cleanup();
-      resolve(data);
-    };
-    script.onerror = () => {
-      cleanup();
-      reject(new Error("script error"));
-    };
-    script.src = url + (url.includes("?") ? "&" : "?") + "callback=" + cb;
-    document.head.appendChild(script);
-  });
 }
 
 export function Hero() {
@@ -194,11 +170,13 @@ export function Hero() {
 
     const fillTiles = (list: Video[]) => {
       if (!list || !list.length) return;
-      const G = shuffled(list, 4242);
-      const n = G.length;
+      const videos = Array.from(new Map(list.map((video) => [video.id, video])).values());
+      if (!videos.length) return;
       const maxSlots = Math.max(...bands.map((s) => s.tiles.length));
-      const usedInBand = bands.map(() => new Set<string>());
-      let p = 0;
+      let deck = shuffled(videos, 4242);
+      let deckIndex = 0;
+      let deckNumber = 0;
+      let lastId = "";
 
       const assign = (t: Tile, v: Video) => {
         t.face.dataset.vid = v.id;
@@ -212,75 +190,31 @@ export function Hero() {
         }
       };
 
+      const nextVideo = () => {
+        if (deckIndex >= deck.length) {
+          deckNumber++;
+          deck = shuffled(videos, 4242 + deckNumber * 7919);
+          // Do not let the final card from one pass repeat immediately at the
+          // beginning of the next shuffled pass.
+          if (deck.length > 1 && deck[0].id === lastId) {
+            deck = [...deck.slice(1), deck[0]];
+          }
+          deckIndex = 0;
+        }
+        const video = deck[deckIndex++];
+        lastId = video.id;
+        return video;
+      };
+
       for (let slot = 0; slot < maxSlots; slot++) {
         for (let bi = 0; bi < bands.length; bi++) {
-          const t = bands[bi].tiles[slot];
-          if (!t) continue;
-          let v: Video | null = null;
-          let tries = 0;
-          while (tries < n) {
-            const cand = G[p % n];
-            p++;
-            if (!usedInBand[bi].has(cand.id)) {
-              v = cand;
-              break;
-            }
-            tries++;
-          }
-          if (!v) {
-            v = G[p % n];
-            p++;
-          }
-          usedInBand[bi].add(v.id);
-          assign(t, v);
+          const tile = bands[bi].tiles[slot];
+          if (tile) assign(tile, nextVideo());
         }
       }
     };
 
     fillTiles(INITIAL_VIDEOS);
-
-    // Live Vimeo feed (no-auth public JSONP). It is deliberately delayed until
-    // the browser is idle, so it cannot compete with the first visible cards.
-    // On mobile, keep the curated first set so we avoid a second wave of thumbnail loads.
-    let cancelled = false;
-    let idleId: number | undefined;
-    let usedIdleCallback = false;
-    const useLiveVimeoFeed = !isCompactViewport && !prefersReducedMotion;
-    const hydrateLiveVimeoFeed = async () => {
-      const out: Video[] = [];
-      for (let page = 1; page <= 3; page++) {
-        try {
-          const data = (await jsonp(
-            `https://vimeo.com/api/v2/user${VIMEO_USER}/videos.json?page=${page}`,
-          )) as Array<{ id: number | string; title: string; thumbnail_large?: string; thumbnail_medium?: string }>;
-          if (cancelled) return;
-          if (!Array.isArray(data) || !data.length) break;
-          for (const item of data) {
-            const thumb = biggerThumb(item.thumbnail_large || item.thumbnail_medium);
-            if (item.id && thumb) {
-              out.push({ id: String(item.id), title: item.title || "", thumb });
-            }
-          }
-          if (data.length < 20) break;
-        } catch {
-          break;
-        }
-      }
-      if (!cancelled && out.length) fillTiles(out);
-    };
-    if (useLiveVimeoFeed) {
-      const requestIdleCallback = Reflect.get(window, "requestIdleCallback") as
-        | ((callback: IdleRequestCallback, options?: IdleRequestOptions) => number)
-        | undefined;
-      if (requestIdleCallback) {
-        usedIdleCallback = true;
-        idleId = requestIdleCallback.call(window, () => void hydrateLiveVimeoFeed(), {
-          timeout: 8000,
-        });
-      } else {
-        idleId = window.setTimeout(() => void hydrateLiveVimeoFeed(), 5000);
-      }
-    }
 
     // Animation loop: spin each band, cull back-hemisphere tiles, fade near the edge.
     let rafId = 0;
@@ -423,7 +357,6 @@ export function Hero() {
     }
 
     return () => {
-      cancelled = true;
       if (rafId) cancelAnimationFrame(rafId);
       if (parallaxId) cancelAnimationFrame(parallaxId);
       world.removeEventListener("mouseover", onOver);
@@ -431,14 +364,6 @@ export function Hero() {
       world.removeEventListener("click", onClick);
       world.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", fit);
-      if (idleId !== undefined) {
-        if (usedIdleCallback) {
-          const cancelIdleCallback = Reflect.get(window, "cancelIdleCallback") as
-            | ((handle: number) => void)
-            | undefined;
-          cancelIdleCallback?.(idleId);
-        } else window.clearTimeout(idleId);
-      }
       if (!prefersReducedMotion) {
         window.removeEventListener("mousemove", onMove);
       }
