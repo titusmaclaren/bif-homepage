@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const cases = [
   {
     intro: "A tech conference needed to prove its value to partners. Here's what happened.",
@@ -51,12 +53,12 @@ export function CaseStudies() {
                 rel="noopener noreferrer"
                 className="group relative aspect-[16/9] overflow-hidden bg-fog/40 block"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={c.image}
                   alt=""
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                  loading="lazy"
                 />
               </a>
               <div className="flex flex-1 flex-col p-5 md:p-6">

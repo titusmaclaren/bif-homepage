@@ -4,7 +4,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 // Real client logos pulled from the BIF Wix logos gallery.
 const logoBase = (id: string) =>
-  `https://static.wixstatic.com/media/${id}/v1/fit/w_240,h_240,q_90,enc_avif,quality_auto/${id}`;
+  // Logos render at 40-48px tall. A 96px source keeps them crisp on high-DPI
+  // displays without downloading five times the required pixels.
+  `https://static.wixstatic.com/media/${id}/v1/fit/w_96,h_96,q_85,enc_avif,quality_auto/${id}`;
 
 const logoIds = [
   "a2a11d_7c1ef1b67917431fba2b701d0e4de99f~mv2.png",

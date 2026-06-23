@@ -125,7 +125,6 @@ export function Hero() {
       tiles: Tile[];
       spin: number;
       speed: number;
-      paused: boolean;
       hoverCount: number;
     };
 
@@ -186,7 +185,6 @@ export function Hero() {
         tiles,
         spin: (bi * 23) % 360,
         speed,
-        paused: false,
         hoverCount: 0,
       });
     });
@@ -204,9 +202,10 @@ export function Hero() {
         t.face.dataset.title = v.title;
         t.face.setAttribute("aria-label", `Play ${v.title || "video"}`);
         t.ttl.textContent = v.title || "";
-        if (t.img.getAttribute("src") !== v.thumb) {
-          t.img.setAttribute("fetchpriority", "low");
-          t.img.src = v.thumb;
+        // Native lazy loading does not reliably understand this 3D scene. Keep
+        // initial sources off the DOM until their tiles are approaching the viewer.
+        if (t.img.dataset.src !== v.thumb) {
+          t.img.dataset.src = v.thumb;
         }
       };
 
@@ -237,41 +236,63 @@ export function Hero() {
 
     fillTiles(INITIAL_VIDEOS);
 
-    // Live Vimeo feed (no-auth public JSONP). Replaces placeholders when it lands.
+    // Live Vimeo feed (no-auth public JSONP). It is deliberately delayed until
+    // the browser is idle, so it cannot compete with the first visible cards.
     // On mobile, keep the curated first set so we avoid a second wave of thumbnail loads.
     let cancelled = false;
+    let idleId: number | undefined;
+    let usedIdleCallback = false;
     const useLiveVimeoFeed = !isCompactViewport && !prefersReducedMotion;
-    if (useLiveVimeoFeed) {
-      (async () => {
-        const out: Video[] = [];
-        for (let page = 1; page <= 3; page++) {
-          try {
-            const data = (await jsonp(
-              `https://vimeo.com/api/v2/user${VIMEO_USER}/videos.json?page=${page}`,
-            )) as Array<{ id: number | string; title: string; thumbnail_large?: string; thumbnail_medium?: string }>;
-            if (cancelled) return;
-            if (!Array.isArray(data) || !data.length) break;
-            for (const item of data) {
-              const thumb = biggerThumb(item.thumbnail_large || item.thumbnail_medium);
-              if (item.id && thumb) {
-                out.push({ id: String(item.id), title: item.title || "", thumb });
-              }
+    const hydrateLiveVimeoFeed = async () => {
+      const out: Video[] = [];
+      for (let page = 1; page <= 3; page++) {
+        try {
+          const data = (await jsonp(
+            `https://vimeo.com/api/v2/user${VIMEO_USER}/videos.json?page=${page}`,
+          )) as Array<{ id: number | string; title: string; thumbnail_large?: string; thumbnail_medium?: string }>;
+          if (cancelled) return;
+          if (!Array.isArray(data) || !data.length) break;
+          for (const item of data) {
+            const thumb = biggerThumb(item.thumbnail_large || item.thumbnail_medium);
+            if (item.id && thumb) {
+              out.push({ id: String(item.id), title: item.title || "", thumb });
             }
-            if (data.length < 20) break;
-          } catch {
-            break;
           }
+          if (data.length < 20) break;
+        } catch {
+          break;
         }
-        if (!cancelled && out.length) fillTiles(out);
-      })();
+      }
+      if (!cancelled && out.length) fillTiles(out);
+    };
+    if (useLiveVimeoFeed) {
+      const requestIdleCallback = Reflect.get(window, "requestIdleCallback") as
+        | ((callback: IdleRequestCallback, options?: IdleRequestOptions) => number)
+        | undefined;
+      if (requestIdleCallback) {
+        usedIdleCallback = true;
+        idleId = requestIdleCallback.call(window, () => void hydrateLiveVimeoFeed(), {
+          timeout: 8000,
+        });
+      } else {
+        idleId = window.setTimeout(() => void hydrateLiveVimeoFeed(), 5000);
+      }
     }
 
     // Animation loop: spin each band, cull back-hemisphere tiles, fade near the edge.
     let rafId = 0;
     let lastT = performance.now();
+    const loadThumbnail = (t: Tile, priority: "high" | "low") => {
+      const src = t.img.dataset.src;
+      if (!src || t.img.getAttribute("src") === src) return;
+      t.img.loading = "eager";
+      t.img.fetchPriority = priority;
+      t.img.src = src;
+    };
     const renderBands = (dt: number) => {
       for (const s of bands) {
-        if (!s.paused) s.spin += s.speed * dt;
+        const speedMultiplier = !isCompactViewport && s.hoverCount > 0 ? 0.25 : 1;
+        s.spin += s.speed * dt * speedMultiplier;
         s.el.style.transform = `rotateY(${s.spin}deg)`;
         for (const t of s.tiles) {
           const a = (t.thetaDeg + s.spin) * DEG;
@@ -281,8 +302,12 @@ export function Hero() {
             t.el.classList.toggle("bif-hero-behind", behind);
           }
           if (!behind) {
+            // Load what is visible first, then quietly warm the next cards.
+            loadThumbnail(t, c > 0.78 ? "high" : "low");
             const o = Math.min(1, (c - 0.16) / 0.22);
             t.el.style.opacity = o.toFixed(3);
+          } else if (c > 0.04) {
+            loadThumbnail(t, "low");
           }
         }
       }
@@ -299,28 +324,32 @@ export function Hero() {
       rafId = requestAnimationFrame(tick);
     }
 
-    // Hover: pause the row + zoom-on-face. Uses mouseover/mouseout for proper
+    // Hover: slow the desktop row + zoom-on-face. Uses mouseover/mouseout for proper
     // delegated bubbling without re-firing on internal element transitions.
     const onOver = (e: MouseEvent) => {
+      if (isCompactViewport) return;
       const face = (e.target as Element).closest(".bif-hero-face") as HTMLElement | null;
       if (!face) return;
+      const fromFace = (e.relatedTarget as Element | null)?.closest?.(".bif-hero-face");
+      if (fromFace === face) return;
       const bandEl = face.closest(".bif-hero-band") as HTMLElement | null;
       if (!bandEl) return;
       const s = bands[Number(bandEl.dataset.band)];
-      s.hoverCount++;
-      s.paused = true;
+      if (fromFace?.closest(".bif-hero-band") !== bandEl) s.hoverCount++;
       face.classList.add("bif-hero-hover");
     };
     const onOut = (e: MouseEvent) => {
+      if (isCompactViewport) return;
       const face = (e.target as Element).closest(".bif-hero-face") as HTMLElement | null;
       if (!face) return;
       const related = (e.relatedTarget as Element | null)?.closest?.(".bif-hero-face");
-      const sameBand = related && related.closest(".bif-hero-band") === face.closest(".bif-hero-band");
+      if (related === face) return;
       const bandEl = face.closest(".bif-hero-band") as HTMLElement | null;
       if (!bandEl) return;
       const s = bands[Number(bandEl.dataset.band)];
-      s.hoverCount = Math.max(0, s.hoverCount - 1);
-      if (s.hoverCount === 0 && !sameBand) s.paused = false;
+      if (related?.closest(".bif-hero-band") !== bandEl) {
+        s.hoverCount = Math.max(0, s.hoverCount - 1);
+      }
       face.classList.remove("bif-hero-hover");
     };
     world.addEventListener("mouseover", onOver);
@@ -399,6 +428,14 @@ export function Hero() {
       world.removeEventListener("click", onClick);
       world.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", fit);
+      if (idleId !== undefined) {
+        if (usedIdleCallback) {
+          const cancelIdleCallback = Reflect.get(window, "cancelIdleCallback") as
+            | ((handle: number) => void)
+            | undefined;
+          cancelIdleCallback?.(idleId);
+        } else window.clearTimeout(idleId);
+      }
       if (!prefersReducedMotion) {
         window.removeEventListener("mousemove", onMove);
       }
