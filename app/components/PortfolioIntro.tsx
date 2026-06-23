@@ -13,11 +13,16 @@ import { PORTFOLIO_ITEMS, type PortfolioItem } from "../data/portfolio";
 
 const middleRowPriorityIds = new Set(["1143349142", "700347030", "321724289"]);
 const bottomRowPriorityIds = new Set(["1143355482", "256497496"]);
+const nonTechnodollyAieIds = new Set([
+  "496723120",
+  "1181599954",
+  "1181599296",
+]);
 const topRowPriorityIds = [
   "1109359009",
   "894854950",
   "776884299",
-  "1181599954",
+  "558903975",
   "839000549",
   "1111183751",
 ];
@@ -25,7 +30,8 @@ const topRowPriorityIdSet = new Set(topRowPriorityIds);
 const topPortfolioBaseItems = PORTFOLIO_ITEMS.filter(
   (item) =>
     !middleRowPriorityIds.has(item.vimeoId) &&
-    !bottomRowPriorityIds.has(item.vimeoId),
+    !bottomRowPriorityIds.has(item.vimeoId) &&
+    !nonTechnodollyAieIds.has(item.vimeoId),
 );
 const topPortfolioItems = [
   ...topRowPriorityIds

@@ -172,7 +172,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Recruitment social highlighting AIE's motion-control technodolly and studio capability.",
     client: "Academy of Interactive Entertainment",
     industry: "Higher education",
-    thumb: W("a2a11d_c99348ba9f78404194e482ea98c8ca36~mv2.jpg"),
+    thumb: "/assets/portfolio-home-technodolly.webp",
   },
   {
     vimeoId: "496723120",
@@ -336,7 +336,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       "Anniversary film celebrating two decades of AIE students, staff and creative careers.",
     client: "Academy of Interactive Entertainment",
     industry: "Higher education",
-    thumb: "/assets/portfolio-home-aie-20th-anniversary.webp",
+    thumb: V(
+      "https://i.vimeocdn.com/video/2144004787-8ec8b4a841942a5935ccb2531af5c3dd407d28189b5c7764919f70ef722088a4-d_640?region=us",
+    ),
   },
   {
     vimeoId: "1181599296",
