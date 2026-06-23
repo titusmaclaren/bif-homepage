@@ -89,7 +89,7 @@ export function ResearchStrip() {
         </div>
 
         <a
-          href="/why-black-iris-films#social-media-theory-of-everything"
+          href="/the-social-media-theory-of-everything"
           className="inline-flex shrink-0 items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold transition-colors hover:text-[#FFD700]"
         >
           See the research
