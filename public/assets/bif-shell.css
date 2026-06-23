@@ -704,7 +704,7 @@ body.show-quiz-sticky .quiz-sticky {
   .quiz-sticky p { font-size: 13px; margin-bottom: 14px; }
 }
 @media (max-width: 767px) {
-  .bif-top-cta-inner { font-size: 13px; }
+  .bif-top-cta-inner { font-size: 11px; }
   .bif-top-cta-desktop { display: none; }
   .bif-top-cta-mobile { display: inline; }
   .bif-header-inner { padding: 0 20px; }

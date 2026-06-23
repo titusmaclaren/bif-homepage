@@ -201,6 +201,18 @@
     var wantSticky = body.getAttribute("data-bif-sticky") !== "off";
     var wantCallout = body.getAttribute("data-bif-callout") !== "off";
     var wantGoogle = body.getAttribute("data-bif-google") !== "off";
+    var replaceShell = body.hasAttribute("data-bif-replace-shell");
+
+    // A few older static pages still contain a copied site shell. Remove only
+    // that chrome before inserting the shared version so future navigation and
+    // footer updates apply to those pages too.
+    if (replaceShell) {
+      Array.prototype.forEach.call(body.children, function (child) {
+        if (child.matches(".bif-top-cta, .bif-header, .bif-mobile-menu, .bif-footer, .bif-google-widget")) {
+          child.remove();
+        }
+      });
+    }
 
     // Header chrome at the very top of the body.
     if (!document.querySelector(".bif-header")) {
