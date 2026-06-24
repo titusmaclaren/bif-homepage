@@ -58,6 +58,7 @@ const contentSecurityPolicy = [
     "'unsafe-inline'",
     ...(isProductionBuild ? [] : ["'unsafe-eval'"]),
     "https://vimeo.com",
+    "https://www.youtube.com",
     ...(usesGoogleAnalyticsStack ? ["https://www.googletagmanager.com"] : []),
   ].join(" "),
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
