@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { LearnSeriesVideo } from "../lib/learn-video-series";
 
 type LearnVideoSeriesProps = {
@@ -8,26 +8,46 @@ type LearnVideoSeriesProps = {
 };
 
 export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
-  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
-  const [revealedVideoId, setRevealedVideoId] = useState<string | null>(null);
-  const revealTimerRef = useRef<number | null>(null);
+  const [startedVideoIds, setStartedVideoIds] = useState<Set<string>>(
+    () => new Set(),
+  );
+  const [playingVideoIds, setPlayingVideoIds] = useState<Set<string>>(
+    () => new Set(),
+  );
 
   useEffect(() => {
-    return () => {
-      if (revealTimerRef.current) window.clearTimeout(revealTimerRef.current);
+    const revealPlayingPreview = (event: MessageEvent) => {
+      if (event.origin !== "https://www.youtube-nocookie.com") return;
+
+      let payload: { event?: string; id?: string; info?: number } | null = null;
+      try {
+        payload = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+      } catch {
+        return;
+      }
+
+      if (
+        payload?.event === "onStateChange" &&
+        payload.info === 1 &&
+        payload.id?.startsWith("learn-preview-")
+      ) {
+        const videoId = payload.id.replace("learn-preview-", "");
+        setPlayingVideoIds((current) => {
+          if (current.has(videoId)) return current;
+          return new Set(current).add(videoId);
+        });
+      }
     };
+
+    window.addEventListener("message", revealPlayingPreview);
+    return () => window.removeEventListener("message", revealPlayingPreview);
   }, []);
 
   const activatePreview = (videoId: string) => {
-    if (activeVideoId === videoId) return;
-    if (revealTimerRef.current) window.clearTimeout(revealTimerRef.current);
-    setActiveVideoId(videoId);
-    setRevealedVideoId(null);
-    // Let YouTube start behind the thumbnail so its unavoidable startup
-    // controls have time to disappear before the moving preview is revealed.
-    revealTimerRef.current = window.setTimeout(() => {
-      setRevealedVideoId(videoId);
-    }, 1400);
+    setStartedVideoIds((current) => {
+      if (current.has(videoId)) return current;
+      return new Set(current).add(videoId);
+    });
   };
 
   return (
@@ -51,8 +71,8 @@ export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
 
         <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {videos.map((video) => {
-            const isActive = activeVideoId === video.id;
-            const isRevealed = revealedVideoId === video.id;
+            const hasStarted = startedVideoIds.has(video.id);
+            const isPlaying = playingVideoIds.has(video.id);
 
             return (
               <a
@@ -67,15 +87,16 @@ export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
                   <img
                     src={video.thumbnail}
                     alt=""
-                    className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${
-                      isRevealed ? "scale-[1.03] opacity-0" : "opacity-100"
+                    className={`absolute inset-0 z-10 h-full w-full object-cover transition duration-500 ${
+                      isPlaying ? "scale-[1.03] opacity-0" : "opacity-100"
                     }`}
                     loading="lazy"
                   />
-                  {isActive && (
+                  {hasStarted && (
                     <iframe
+                      id={`learn-preview-${video.id}`}
                       title={`Preview: ${video.title}`}
-                      src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${video.id}&autohide=1&showinfo=0`}
+                      src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${video.id}&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`}
                       className="pointer-events-none absolute -inset-[8%] h-[116%] w-[116%] max-w-none border-0"
                       allow="autoplay; encrypted-media"
                       loading="lazy"
@@ -83,7 +104,7 @@ export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
                       aria-hidden="true"
                     />
                   )}
-                  {!isActive && (
+                  {!isPlaying && (
                     <>
                       <span className="absolute right-2 top-2 z-10 rounded-full bg-black/58 px-2 py-1 text-[10px] font-bold leading-none text-white backdrop-blur-sm">
                         {video.duration}
