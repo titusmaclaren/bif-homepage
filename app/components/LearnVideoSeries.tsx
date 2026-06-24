@@ -147,7 +147,7 @@ function LearnVideoCard({ video }: { video: LearnSeriesVideo }) {
         {/* Keep YouTube's loading and branding screen behind a plain black layer. */}
         <span
           className={`pointer-events-none absolute inset-0 z-20 bg-black transition-opacity duration-300 ${
-            isPlaying ? "opacity-0" : "opacity-100"
+            hasStarted && !isPlaying ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden="true"
         />
