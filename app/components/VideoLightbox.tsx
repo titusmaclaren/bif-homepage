@@ -211,8 +211,6 @@ export function VideoLightboxProvider({ children }: { children: React.ReactNode 
                 <div className="flex flex-col gap-1.5 mt-4 shrink-0">
                   <a
                     href="/estimate/"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-sm bg-mint hover:bg-mint-bright px-5 py-3 text-[12.5px] font-bold uppercase tracking-wider text-white transition-colors"
                   >
                     Get a pricing range

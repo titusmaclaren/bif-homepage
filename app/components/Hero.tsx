@@ -37,6 +37,8 @@ const TILE_W = 520;
 const PERSP = 900;
 const DEG = Math.PI / 180;
 const WORLD_PITCH = 11;
+const VISIBLE_ARC_CUTOFF = 0.4;
+const PRELOAD_ARC_CUTOFF = 0.16;
 const BAND_SPEEDS = [0.060, -0.082, 0.052, -0.074, 0.064, -0.090];
 const BAND_LATS = [-30, -18, -6, 6, 18, 30];
 
@@ -168,43 +170,54 @@ export function Hero() {
       });
     });
 
-    const fillTiles = (list: Video[]) => {
-      if (!list || !list.length) return;
-      const videos = Array.from(new Map(list.map((video) => [video.id, video])).values());
-      if (!videos.length) return;
-      const maxSlots = Math.max(...bands.map((s) => s.tiles.length));
-      let deck = shuffled(videos, 4242);
-      let deckIndex = 0;
-      let deckNumber = 0;
-      let lastId = "";
+    let videos: Video[] = [];
+    let deck: Video[] = [];
+    let deckIndex = 0;
+    let deckNumber = 0;
+    let lastId = "";
 
-      const assign = (t: Tile, v: Video) => {
-        t.face.dataset.vid = v.id;
-        t.face.dataset.title = v.title;
-        t.face.setAttribute("aria-label", `Play ${v.title || "video"}`);
-        t.ttl.textContent = v.title || "";
-        // Native lazy loading does not reliably understand this 3D scene. Keep
-        // initial sources off the DOM until their tiles are approaching the viewer.
-        if (t.img.dataset.src !== v.thumb) {
-          t.img.dataset.src = v.thumb;
-        }
-      };
+    const assign = (t: Tile, v: Video) => {
+      t.face.dataset.vid = v.id;
+      t.face.dataset.title = v.title;
+      t.face.setAttribute("aria-label", `Play ${v.title || "video"}`);
+      t.ttl.textContent = v.title || "";
+      // Native lazy loading does not reliably understand this 3D scene. Keep
+      // initial sources off the DOM until their tiles are approaching the viewer.
+      if (t.img.dataset.src !== v.thumb) {
+        t.img.dataset.src = v.thumb;
+      }
+    };
 
-      const nextVideo = () => {
+    const nextVideo = (excludedIds = new Set<string>()) => {
+      let fallback: Video | undefined;
+      for (let attempt = 0; attempt < videos.length; attempt++) {
         if (deckIndex >= deck.length) {
           deckNumber++;
           deck = shuffled(videos, 4242 + deckNumber * 7919);
-          // Do not let the final card from one pass repeat immediately at the
-          // beginning of the next shuffled pass.
           if (deck.length > 1 && deck[0].id === lastId) {
             deck = [...deck.slice(1), deck[0]];
           }
           deckIndex = 0;
         }
-        const video = deck[deckIndex++];
-        lastId = video.id;
-        return video;
-      };
+        const candidate = deck[deckIndex++];
+        fallback ??= candidate;
+        if (!excludedIds.has(candidate.id)) {
+          lastId = candidate.id;
+          return candidate;
+        }
+      }
+      return fallback as Video;
+    };
+
+    const fillTiles = (list: Video[]) => {
+      if (!list || !list.length) return;
+      videos = Array.from(new Map(list.map((video) => [video.id, video])).values());
+      if (!videos.length) return;
+      deck = shuffled(videos, 4242);
+      deckIndex = 0;
+      deckNumber = 0;
+      lastId = "";
+      const maxSlots = Math.max(...bands.map((s) => s.tiles.length));
 
       for (let slot = 0; slot < maxSlots; slot++) {
         for (let bi = 0; bi < bands.length; bi++) {
@@ -227,6 +240,7 @@ export function Hero() {
       t.img.src = src;
     };
     const renderBands = (dt: number) => {
+      const tilesInView: Array<{ tile: Tile; c: number }> = [];
       for (const s of bands) {
         const speedMultiplier = !isCompactViewport && s.hoverCount > 0 ? 0.25 : 1;
         s.spin += s.speed * dt * speedMultiplier;
@@ -234,18 +248,34 @@ export function Hero() {
         for (const t of s.tiles) {
           const a = (t.thetaDeg + s.spin) * DEG;
           const c = Math.cos(a);
-          const behind = c < 0.16;
-          if (behind !== t.el.classList.contains("bif-hero-behind")) {
-            t.el.classList.toggle("bif-hero-behind", behind);
-          }
-          if (!behind) {
-            // Load what is visible first, then quietly warm the next cards.
-            loadThumbnail(t, c > 0.78 ? "high" : "low");
-            const o = Math.min(1, (c - 0.16) / 0.22);
-            t.el.style.opacity = o.toFixed(3);
-          } else if (c > 0.04) {
-            loadThumbnail(t, "low");
-          }
+          tilesInView.push({ tile: t, c });
+        }
+      }
+
+      // There are more physical tile positions than curated projects. Give
+      // every card that is actually visible a unique video, and refresh a
+      // collision while it is still hidden at the edge of the sphere.
+      const visibleIds = new Set<string>();
+      for (const { tile, c } of tilesInView) {
+        if (c < VISIBLE_ARC_CUTOFF) continue;
+        if (visibleIds.has(tile.face.dataset.vid || "")) {
+          assign(tile, nextVideo(visibleIds));
+        }
+        if (tile.face.dataset.vid) visibleIds.add(tile.face.dataset.vid);
+      }
+
+      for (const { tile, c } of tilesInView) {
+        const behind = c < VISIBLE_ARC_CUTOFF;
+        if (behind !== tile.el.classList.contains("bif-hero-behind")) {
+          tile.el.classList.toggle("bif-hero-behind", behind);
+        }
+        if (!behind) {
+          // Load what is visible first, then quietly warm the next cards.
+          loadThumbnail(tile, c > 0.78 ? "high" : "low");
+          const o = Math.min(1, (c - VISIBLE_ARC_CUTOFF) / 0.22);
+          tile.el.style.opacity = o.toFixed(3);
+        } else if (c > PRELOAD_ARC_CUTOFF) {
+          loadThumbnail(tile, "low");
         }
       }
     };
@@ -391,8 +421,6 @@ export function Hero() {
           <a
             className="bif-hero-cta"
             href="/estimate"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <span>Get a 1-minute estimate</span>
             <span className="bif-hero-arrow" aria-hidden />

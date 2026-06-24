@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { LearnSeriesVideo } from "../lib/learn-video-series";
 
 type LearnVideoSeriesProps = {
@@ -9,6 +9,26 @@ type LearnVideoSeriesProps = {
 
 export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  const [revealedVideoId, setRevealedVideoId] = useState<string | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (revealTimerRef.current) window.clearTimeout(revealTimerRef.current);
+    };
+  }, []);
+
+  const activatePreview = (videoId: string) => {
+    if (activeVideoId === videoId) return;
+    if (revealTimerRef.current) window.clearTimeout(revealTimerRef.current);
+    setActiveVideoId(videoId);
+    setRevealedVideoId(null);
+    // Let YouTube start behind the thumbnail so its unavoidable startup
+    // controls have time to disappear before the moving preview is revealed.
+    revealTimerRef.current = window.setTimeout(() => {
+      setRevealedVideoId(videoId);
+    }, 1400);
+  };
 
   return (
     <section className="bg-white px-6 py-12 md:py-16 lg:px-10">
@@ -32,14 +52,15 @@ export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
         <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {videos.map((video) => {
             const isActive = activeVideoId === video.id;
+            const isRevealed = revealedVideoId === video.id;
 
             return (
               <a
                 key={video.id}
                 href={video.href}
                 className="group block min-w-0"
-                onFocus={() => setActiveVideoId(video.id)}
-                onMouseEnter={() => setActiveVideoId(video.id)}
+                onFocus={() => activatePreview(video.id)}
+                onMouseEnter={() => activatePreview(video.id)}
               >
                 <div className="relative aspect-video overflow-hidden rounded-lg border border-fog/80 bg-navy-midnight shadow-[0_16px_42px_rgba(15,24,38,0.1)]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -47,18 +68,19 @@ export function LearnVideoSeries({ videos }: LearnVideoSeriesProps) {
                     src={video.thumbnail}
                     alt=""
                     className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${
-                      isActive ? "scale-[1.03] opacity-0" : "opacity-100"
+                      isRevealed ? "scale-[1.03] opacity-0" : "opacity-100"
                     }`}
                     loading="lazy"
                   />
                   {isActive && (
                     <iframe
                       title={`Preview: ${video.title}`}
-                      src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${video.id}`}
-                      className="pointer-events-none absolute inset-0 h-full w-full border-0"
-                      allow="autoplay; encrypted-media; picture-in-picture"
+                      src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${video.id}&autohide=1&showinfo=0`}
+                      className="pointer-events-none absolute -inset-[8%] h-[116%] w-[116%] max-w-none border-0"
+                      allow="autoplay; encrypted-media"
                       loading="lazy"
                       tabIndex={-1}
+                      aria-hidden="true"
                     />
                   )}
                   {!isActive && (
