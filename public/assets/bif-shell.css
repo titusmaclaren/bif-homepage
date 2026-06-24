@@ -634,6 +634,11 @@ body.show-quiz-sticky .quiz-sticky {
   padding: 0 0 8px;
   font-family: var(--bif-font);
 }
+/* Service pages deliberately transition from their white content area into
+   the black footer. Keep that band visible even before the card animates. */
+body[data-bif-service-page] .pricing-callout-section {
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+}
 .pricing-callout {
   max-width: 940px;
   margin: 0 auto;
