@@ -7,125 +7,19 @@ type LearnVideoSeriesProps = {
   videos: LearnSeriesVideo[];
 };
 
-type YouTubePlayer = {
-  destroy: () => void;
-  mute: () => void;
-  playVideo: () => void;
-};
-
-type YouTubeApi = {
-  Player: new (
-    element: HTMLElement,
-    options: {
-      videoId: string;
-      playerVars: Record<string, number | string>;
-      events: {
-        onReady: (event: { target: YouTubePlayer }) => void;
-        onStateChange: (event: { data: number }) => void;
-      };
-    },
-  ) => YouTubePlayer;
-  PlayerState: { PLAYING: number };
-};
-
-declare global {
-  interface Window {
-    YT?: YouTubeApi;
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
-
-let youtubeApiPromise: Promise<YouTubeApi> | null = null;
-
-function loadYouTubeApi() {
-  if (window.YT?.Player) return Promise.resolve(window.YT);
-  if (youtubeApiPromise) return youtubeApiPromise;
-
-  youtubeApiPromise = new Promise<YouTubeApi>((resolve, reject) => {
-    const existingReadyHandler = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      existingReadyHandler?.();
-      if (window.YT?.Player) resolve(window.YT);
-    };
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[data-learn-youtube-api="true"]',
-    );
-    if (existingScript) {
-      existingScript.addEventListener(
-        "error",
-        () => reject(new Error("The YouTube player could not load.")),
-        { once: true },
-      );
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://www.youtube.com/iframe_api";
-    script.async = true;
-    script.dataset.learnYoutubeApi = "true";
-    script.addEventListener(
-      "error",
-      () => reject(new Error("The YouTube player could not load.")),
-      { once: true },
-    );
-    document.head.append(script);
-  });
-
-  return youtubeApiPromise;
-}
-
 function LearnVideoCard({ video }: { video: LearnSeriesVideo }) {
-  const playerHostRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<YouTubePlayer | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (!hasStarted || !playerHostRef.current || playerRef.current) return;
+    if (!hasStarted || !videoRef.current) return;
 
-    let cancelled = false;
-    loadYouTubeApi()
-      .then((youtube) => {
-        if (cancelled || !playerHostRef.current) return;
-
-        playerRef.current = new youtube.Player(playerHostRef.current, {
-          videoId: video.id,
-          playerVars: {
-            autoplay: 1,
-            controls: 0,
-            disablekb: 1,
-            fs: 0,
-            iv_load_policy: 3,
-            loop: 1,
-            modestbranding: 1,
-            mute: 1,
-            origin: window.location.origin,
-            playsinline: 1,
-            playlist: video.id,
-            rel: 0,
-          },
-          events: {
-            onReady: ({ target }) => {
-              target.mute();
-              target.playVideo();
-            },
-            onStateChange: ({ data }) => {
-              if (data === youtube.PlayerState.PLAYING) setIsPlaying(true);
-            },
-          },
-        });
-      })
-      .catch(() => {
-        // Keep the neutral black loading state rather than exposing YouTube UI.
-      });
-
-    return () => {
-      cancelled = true;
-      playerRef.current?.destroy();
-      playerRef.current = null;
-    };
-  }, [hasStarted, video.id]);
+    videoRef.current.muted = true;
+    videoRef.current.play().catch(() => {
+      setIsPlaying(false);
+    });
+  }, [hasStarted]);
 
   const startPreview = () => setHasStarted(true);
 
@@ -138,13 +32,27 @@ function LearnVideoCard({ video }: { video: LearnSeriesVideo }) {
     >
       <div className="relative aspect-video overflow-hidden rounded-lg border border-fog/80 bg-black shadow-[0_16px_42px_rgba(15,24,38,0.1)]">
         {hasStarted && (
-          <div
-            ref={playerHostRef}
-            className="pointer-events-none absolute -inset-[8%] h-[116%] w-[116%] [&>iframe]:h-full [&>iframe]:w-full [&>iframe]:border-0"
+          <video
+            ref={videoRef}
+            src={video.preview}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={video.thumbnail}
+            tabIndex={-1}
+            onCanPlay={() => {
+              videoRef.current?.play().catch(() => setIsPlaying(false));
+            }}
+            onPlaying={() => setIsPlaying(true)}
+            onError={() => {
+              setHasStarted(false);
+              setIsPlaying(false);
+            }}
             aria-hidden="true"
           />
         )}
-        {/* Keep YouTube's loading and branding screen behind a plain black layer. */}
         <span
           className={`pointer-events-none absolute inset-0 z-20 bg-black transition-opacity duration-300 ${
             hasStarted && !isPlaying ? "opacity-100" : "opacity-0"
