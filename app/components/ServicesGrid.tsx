@@ -40,6 +40,12 @@ export const SERVICE_TILES: ServiceTile[] = [
     description: "Useful content for internal and external audiences.",
   },
   {
+    label: "Events",
+    href: "/event-video-production-sydney",
+    image: "/assets/portfolio-home-marycon.webp",
+    description: "Highlights, launches, galas and post-event content.",
+  },
+  {
     label: "Explainer",
     href: "/explainer-video-production-sydney",
     image: W("a2a11d_5bf50a7c15f64e3b989846e5b591a9d3~mv2.jpg"),

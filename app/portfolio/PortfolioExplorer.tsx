@@ -17,8 +17,6 @@ type PortfolioExplorerProps = {
   items: PortfolioItem[];
 };
 
-const featuredIds = new Set(["742487127", "776884299", "1109359009"]);
-
 export function PortfolioExplorer({ items }: PortfolioExplorerProps) {
   const [typeFilter, setTypeFilter] = useState<FilterValue>("All");
   const [industryFilter, setIndustryFilter] = useState<FilterValue>("All");
@@ -126,7 +124,6 @@ function FilterSelect({
 }
 
 function PortfolioCard({ item }: { item: PortfolioItem }) {
-  const isFeatured = featuredIds.has(item.vimeoId);
   const videoTypeLabel = getVideoTypeGroups(item)[0];
   const industryLabel = getIndustryGroups(item)[0];
 
@@ -149,11 +146,6 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
         <span className="absolute left-3 top-3 rounded-sm bg-white/92 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-navy">
           {videoTypeLabel}
         </span>
-        {isFeatured && (
-          <span className="absolute right-3 top-3 rounded-sm bg-mint px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
-            Reel
-          </span>
-        )}
         <span className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <span className="grid h-12 w-12 place-items-center rounded-full bg-mint text-white shadow-xl">
             <svg

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const services = [
   { href: "/corporate-video-production-sydney", label: "Corporate Video Production Sydney" },
+  { href: "/event-video-production-sydney", label: "Event Video Production Sydney" },
   { href: "/financial-video-production-sydney", label: "Finance Video Production Sydney" },
   { href: "/higher-education-video-production-sydney", label: "Higher Education Video Production Sydney" },
   { href: "/explainer-video-production-sydney", label: "Explainer Video Production Sydney" },

@@ -1756,41 +1756,13 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 5: PORTFOLIO GRID ════════ -->
-<section class="portfolio-section">
+<!-- SECTION 5: SHARED PORTFOLIO BROWSER -->
+<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="Brand films and commercials" data-bif-default-industry="All">
   <div class="container">
-    <div class="eyebrow fade-in">PORTFOLIO</div>
-    <h2 class="fade-in">Our Work</h2>
-    <div class="portfolio-grid fade-in">
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/742487127?autoplay=1','The Power of the Dacxi Chain','Dacxi Group','Build emotional connection with a fintech audience','Brand Hero Film','A cinematic brand film that leads with emotion and story.')">
-        <img src="/assets/thumb-working-bif.jpg" alt="The Power of the Dacxi Chain">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Dacxi, Brand Hero Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1054733425?autoplay=1','Little Red Hood Moment Designers','Little Red Hood','Position a luxury events brand through cinematic storytelling','Brand Film','A brand film capturing the world of luxury event design.')">
-        <img src="/assets/thumb-1054733425.jpg" alt="Little Red Hood Moment Designers">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Little Red Hood, Brand Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1181599954?autoplay=1','AIE 20th Anniversary','AIE','Celebrate a milestone and reinforce brand legacy','Anniversary Film','A cinematic tribute marking 20 years of AIE.')">
-        <img src="/assets/thumb-aie-1181599954.jpg" alt="AIE 20th Anniversary">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">AIE, Anniversary Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/295364237?autoplay=1','Unbreakable','F45 / Invictus Games','Associate a fitness brand with resilience and service','Brand Event Film','A powerful brand film linking F45 with Invictus Games.')">
-        <img src="/assets/thumb-295364237.jpg" alt="Unbreakable">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">F45 x Invictus, Brand Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/387582839?autoplay=1','Game Plus Sydney Launch','Game Plus','Introduce a new brand to market with impact','Brand Launch Film','A launch film capturing the energy of Game Plus.')">
-        <img src="/assets/thumb-387582839.jpg" alt="Game Plus Sydney Launch">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Game Plus, Launch Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/346047743?autoplay=1','Tech Life Sydney in Flow Motion','Black Iris Films','Showcase Sydney\'s tech ecosystem cinematically','Brand Film','A cinematic flow-motion tour through Sydney tech offices.')">
-        <img src="/assets/thumb-346047743.jpg" alt="Tech Life Sydney in Flow Motion">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Tech Life Sydney</span></div>
-      </div>
-    </div>
-    <p class="portfolio-note">More available upon request.</p>
+    <h2 class="fade-in">Brand film and commercial work</h2>
+    <div data-bif-portfolio-embed></div>
   </div>
 </section>
-
 <!-- ════════ LIGHTBOX ════════ -->
 <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="lightbox-panel">
@@ -2286,5 +2258,6 @@
   </script>
   <script src="/assets/bif-shell.js" defer></script>
 <script src="/legacy/services/lightbox-portfolio.js" defer></script>
+<script src="/legacy/services/portfolio-embed.js" defer></script>
 </body>
 </html>

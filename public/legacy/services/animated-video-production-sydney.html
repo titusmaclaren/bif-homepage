@@ -1756,41 +1756,13 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 5: PORTFOLIO GRID ════════ -->
-<section class="portfolio-section">
+<!-- SECTION 5: SHARED PORTFOLIO BROWSER -->
+<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="Explainers and animation" data-bif-default-industry="All">
   <div class="container">
-    <div class="eyebrow fade-in">PORTFOLIO</div>
-    <h2 class="fade-in">Our Work</h2>
-    <div class="portfolio-grid fade-in">
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1060728418?autoplay=1','Amplitel Customer Portal','Amplitel','Explain a digital product to enterprise customers','Animated Explainer','Fully animated walkthrough of the Amplitel customer portal.')">
-        <img src="/assets/thumb-amplitel-portal.jpg" alt="Amplitel Customer Portal">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Amplitel, Animated Explainer</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/137334907?autoplay=1','Manad Plus Explainer','Manad Plus','Explain accounting software to SME buyers','Animated Explainer','Custom 2D animated explainer for Manad Plus.')">
-        <img src="/assets/thumb-137334907.jpg" alt="Manad Plus Explainer">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Manad Plus, 2D Animation</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/318108717?autoplay=1','Animated Explainer Package','Black Iris Films','Demonstrate animation capabilities','Animation Showcase','A showcase of BIF\'s animated production style.')">
-        <img src="/assets/thumb-318108717.jpg" alt="Animated Explainer Package">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">BIF, Animation Showcase</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/496723120?autoplay=1','3D Animation and VFX Course','AIE','Showcase 3D animation and VFX work','3D Animation','3D animation and VFX showcase from AIE.')">
-        <img src="/assets/thumb-aie-3d.jpg" alt="3D Animation and VFX Course">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">AIE, 3D Animation</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/977299657?autoplay=1','What Is Asset Tokenisation','Dacxi','Visualise a complex fintech concept','Motion Graphics','Motion graphics explainer for Dacxi.')">
-        <img src="/assets/thumb-977299657.jpg" alt="What Is Asset Tokenisation">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Dacxi, Motion Graphics</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/344738613?autoplay=1','KPMG Tax Estimator','KPMG / Independent Reserve','Explain a financial product in 30 seconds','Animated Ad','Animated 30-second ad for the KPMG tax estimator.')">
-        <img src="/assets/thumb-344738613.jpg" alt="KPMG Tax Estimator">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">KPMG x IndRes, Animated Ad</span></div>
-      </div>
-    </div>
-    <p class="portfolio-note">More available upon request.</p>
+    <h2 class="fade-in">Animated and explainer video work</h2>
+    <div data-bif-portfolio-embed></div>
   </div>
 </section>
-
 <!-- ════════ LIGHTBOX ════════ -->
 <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="lightbox-panel">
@@ -2286,5 +2258,6 @@
   </script>
   <script src="/assets/bif-shell.js" defer></script>
 <script src="/legacy/services/lightbox-portfolio.js" defer></script>
+<script src="/legacy/services/portfolio-embed.js" defer></script>
 </body>
 </html>

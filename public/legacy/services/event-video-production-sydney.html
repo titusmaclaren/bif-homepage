@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Startup & Scaleup Video Production Sydney | Black Iris Films</title>
-  <link rel="canonical" href="https://blackirisfilms.com/startup-video-production-sydney">
-  <meta property="og:title" content="Startup & Scaleup Video Production Sydney | Black Iris Films">
-  <meta property="og:description" content="Black Iris Films produces video for Sydney startups and scaleups. Fortune-500 quality at SME budgets. Pitch videos, launch films, social content. Fixed price.">
-  <meta property="og:url" content="https://blackirisfilms.com/startup-video-production-sydney">
+  <title>Event Video Production Sydney | Black Iris Films</title>
+  <link rel="canonical" href="https://blackirisfilms.com/event-video-production-sydney">
+  <meta property="og:title" content="Event Video Production Sydney | Black Iris Films">
+  <meta property="og:description" content="Cinematic event video production in Sydney for conferences, launches, galas, charity events and brand activations, with optional event photography.">
+  <meta property="og:url" content="https://blackirisfilms.com/event-video-production-sydney">
   <meta property="og:site_name" content="Black Iris Films">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://blackirisfilms.com/assets/hero-brand-generated.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Startup & Scaleup Video Production Sydney | Black Iris Films">
-  <meta name="twitter:description" content="Black Iris Films produces video for Sydney startups and scaleups. Fortune-500 quality at SME budgets. Pitch videos, launch films, social content. Fixed price.">
+  <meta name="twitter:title" content="Event Video Production Sydney | Black Iris Films">
+  <meta name="twitter:description" content="Cinematic event video production in Sydney for conferences, launches, galas, charity events and brand activations, with optional event photography.">
   <meta name="twitter:image" content="https://blackirisfilms.com/assets/hero-brand-generated.png">
-  <meta name="description" content="Black Iris Films produces video for Sydney startups and scaleups. Fortune-500 quality at SME budgets. Pitch videos, launch films, social content. Fixed price.">
+  <meta name="description" content="Cinematic event video production in Sydney for conferences, launches, galas, charity events and brand activations, with optional event photography.">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +87,8 @@
       align-items: center;
       gap: 28px;
     }
-    .site-nav a {
+    .site-nav a,
+    .nav-dropdown-toggle {
       color: #ffffff;
       font-size: 13px;
       font-weight: 500;
@@ -97,7 +98,72 @@
       font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       transition: opacity 0.2s;
     }
-    .site-nav a:hover { opacity: 0.7; text-decoration: none; }
+    .site-nav a:hover,
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown-toggle:focus {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+    .nav-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-dropdown-toggle {
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: default;
+    }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      width: 360px;
+      padding: 10px;
+      background: #050505;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.42);
+      transform: translate(-50%, 8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    }
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -22px;
+      height: 22px;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 600;
+    }
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus {
+      opacity: 1;
+      background: #111;
+      color: #ffffff;
+      outline: none;
+    }
     .btn-get-started {
       background: #3d9e5f;
       color: #ffffff !important;
@@ -149,53 +215,32 @@
       margin-top: 8px;
     }
     .mobile-nav.open { display: flex; }
-    .nav-dropdown-toggle {
+    .mobile-services summary {
+      list-style: none;
       color: #ffffff;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      text-decoration: none;
+      cursor: pointer;
       font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      transition: opacity 0.2s;
     }
-    .nav-dropdown-toggle:hover,
-    .nav-dropdown-toggle:focus { opacity: 0.7; }
-    .nav-dropdown { position: relative; display: flex; align-items: center; }
-    .nav-dropdown-toggle { background: none; border: 0; padding: 0; cursor: default; }
-    .nav-dropdown-menu {
-      position: absolute;
-      top: calc(100% + 20px);
-      left: 50%;
-      width: 360px;
-      padding: 10px;
-      background: #050505;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.42);
-      transform: translate(-50%, 8px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-      z-index: 1001;
-    }
-    .nav-dropdown-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -22px; height: 22px; }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
-    .nav-dropdown-menu a { display: block; padding: 12px 14px; border-radius: 6px; color: #ffffff; font-size: 12px; line-height: 1.25; letter-spacing: 0.02em; text-transform: none; font-weight: 600; }
-    .nav-dropdown-menu a:hover,
-    .nav-dropdown-menu a:focus { opacity: 1; background: #111; color: #ffffff; outline: none; }
-    .mobile-services summary { list-style: none; color: #ffffff; font-size: 15px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
     .mobile-services summary::-webkit-details-marker { display: none; }
-    .mobile-service-links { display: grid; gap: 10px; margin-top: 14px; padding: 14px 0 2px 14px; border-left: 1px solid rgba(255,255,255,0.16); }
-    .mobile-service-links a { font-size: 13px; line-height: 1.35; letter-spacing: 0.02em; text-transform: none; color: #cbd5e1; }
-    .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 26px; }
-    .hero-actions .btn-green { padding: 14px 30px; min-width: 190px; text-align: center; }
-    .hero-how-button { appearance: none; border: 0; background: transparent; color: #ffffff; cursor: pointer; display: inline-flex; align-items: center; gap: 9px; font-family: inherit; font-size: 14px; font-weight: 700; padding: 10px 0; text-decoration: none; }
-    .hero-how-button:hover { color: #3d9e5f; }
-    .hero-how-button .play-icon { width: 22px; height: 22px; border-radius: 999px; background: #ffffff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .hero-how-button .play-icon::before { content: ''; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid #000; margin-left: 2px; }
+    .mobile-service-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 14px 0 2px 14px;
+      border-left: 1px solid rgba(255,255,255,0.16);
+    }
+    .mobile-service-links a {
+      font-size: 13px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: #cbd5e1;
+    }
+
     /* ── SECTION UTILITY ── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     .section-pad { padding: 80px 0; }
@@ -225,6 +270,18 @@
       cursor: pointer;
     }
     .btn-green:hover { background: #348a52; text-decoration: none !important; }
+    .btn-dark {
+      display: inline-block;
+      background: #080808;
+      color: #ffffff !important;
+      padding: 15px 34px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: #222; text-decoration: none !important; }
 
     /* ── FADE-IN ANIMATIONS ── */
     .fade-in {
@@ -276,13 +333,13 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('/assets/hero-startup-generated.png') center/cover no-repeat;
+      background: url('/assets/portfolio-home-marycon.webp') center/cover no-repeat;
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.5) 100%);
+      background: rgba(0, 0, 0, 0.6);
     }
     .hero-inner {
       position: relative;
@@ -329,62 +386,55 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+    .hero-actions .btn-green {
+      padding: 14px 30px;
+      min-width: 190px;
+      text-align: center;
+    }
+    .hero-how-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+    .hero-how-button:hover { color: #3d9e5f; }
+    .hero-how-button .play-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-how-button .play-icon::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #000;
+      margin-left: 2px;
+    }
 
     /* ── HERO FORM ── */
-    .hero-right { flex: 0 0 380px; }
-    .quote-panel {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 32px 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    .quote-panel h3 {
-      font-size: 22px;
-      margin-bottom: 4px;
-      color: #000;
-    }
-    .quote-panel .panel-sub {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
-    .quote-panel label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 5px;
-    }
-    .quote-panel input,
-    .quote-panel select,
-    .quote-panel textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 4px;
-      font-size: 14px;
-      font-family: inherit;
-      margin-bottom: 14px;
-      background: #fff;
-      color: #1a1a1a;
-      transition: border 0.2s;
-    }
-    .quote-panel input:focus,
-    .quote-panel select:focus,
-    .quote-panel textarea:focus {
-      outline: none;
-      border-color: #3d9e5f;
-    }
-    .quote-panel textarea { height: 80px; resize: vertical; }
-    .quote-panel .btn-green { width: 100%; text-align: center; font-size: 15px; padding: 13px; }
-    .quote-panel .panel-phone {
-      text-align: center;
-      margin-top: 14px;
-      font-size: 13px;
-      color: #666;
-    }
-    .quote-panel .panel-phone a { color: #1a1a1a; font-weight: 600; }
-
     /* ── SECTION 2: SOCIAL PROOF STRIP ── */
     .social-proof {
       background: #ffffff;
@@ -937,52 +987,80 @@
     }
 
     /* ── SECTION 10: FINAL CTA ── */
-    .final-cta {
-      background: #000000;
-      padding: 100px 0;
-      text-align: center;
+    .contact-team-section {
+      background: #ffffff;
+      padding: 96px 0 72px;
     }
-    .final-cta h2 { color: #ffffff; font-size: 44px; margin-bottom: 16px; }
-    .final-cta p {
-      color: rgba(255,255,255,0.6);
+    .contact-team-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 72px;
+      align-items: center;
+    }
+    .contact-team-copy h2 {
+      color: #000;
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 360px;
+    }
+    .contact-team-copy p {
+      color: #111;
       font-size: 17px;
-      max-width: 560px;
-      margin: 0 auto 32px;
+      line-height: 1.55;
+      margin-bottom: 28px;
+      max-width: 430px;
+    }
+    .contact-team-copy .contact-phone {
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .contact-team-copy .contact-phone a {
+      color: #000;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .contact-team-image {
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #111;
+    }
+    .contact-team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pricing-callout-section {
+      background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+      padding: 0 0 8px;
+    }
+    .pricing-callout {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 30px 34px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .pricing-callout h2 {
+      color: #000;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .pricing-callout p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
     }
 
-    .btn-dark {
-      display: inline-block;
-      background: #050505;
-      color: #ffffff !important;
-      padding: 14px 30px;
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: 8px;
-      text-decoration: none !important;
-      transition: background 0.2s;
-    }
-    .btn-dark:hover { background: #222; text-decoration: none !important; }
-    .contact-team-section { background: #ffffff; padding: 96px 0 72px; }
-    .contact-team-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
-    .contact-team-copy h2 { color: #000; font-size: 44px; line-height: 1.15; margin-bottom: 24px; max-width: 360px; }
-    .contact-team-copy p { color: #111; font-size: 17px; line-height: 1.55; margin-bottom: 28px; max-width: 430px; }
-    .contact-team-copy .contact-phone { margin-top: 20px; margin-bottom: 0; }
-    .contact-team-copy .contact-phone a { color: #000; font-weight: 800; text-decoration: none; }
-    .contact-team-image { aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #111; }
-    .contact-team-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .pricing-callout-section { background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%); padding: 0 0 8px; }
-    .pricing-callout { max-width: 940px; margin: 0 auto; padding: 30px 34px; background: #ffffff; border: 1px solid #e8e8e8; border-radius: 8px; box-shadow: 0 18px 45px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .pricing-callout h2 { color: #000; font-size: 24px; margin-bottom: 6px; }
-    .pricing-callout p { color: #666; font-size: 14px; line-height: 1.5; margin: 0; }
-    @media (max-width: 900px) {
-      .contact-team-grid { grid-template-columns: 1fr; gap: 36px; }
-      .contact-team-copy h2 { font-size: 34px; }
-      .pricing-callout { margin: 0 24px; }
-    }
-    @media (max-width: 600px) {
-      .contact-team-section { padding: 68px 0 48px; }
-      .pricing-callout { align-items: flex-start; flex-direction: column; padding: 26px 24px; }
-    }
     /* ── FOOTER ── */
     .site-footer {
       background: #000000;
@@ -1049,7 +1127,6 @@
       .mobile-menu-btn { display: block; }
       .hero-inner { flex-direction: column; gap: 36px; }
       .hero-left h1 { font-size: 36px; }
-      .hero-right { flex: none; width: 100%; }
       .featured-grid { flex-direction: column; }
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
       .problems-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1057,7 +1134,9 @@
       .footer-right { text-align: left; }
       .footer-social { justify-content: flex-start; }
       .dark-statement h2 { font-size: 34px; }
-      .final-cta h2 { font-size: 34px; }
+      .contact-team-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-team-copy h2 { font-size: 34px; }
+      .pricing-callout { margin: 0 24px; }
       .lightbox-panel { max-width: 96vw; }
       .lightbox-meta { flex-direction: column; gap: 6px; }
     }
@@ -1070,33 +1149,122 @@
       .social-proof-inner { flex-direction: column; text-align: center; }
       .logo-strip { justify-content: center; }
       .testimonial-cards { flex-direction: column; }
+      .contact-team-section { padding: 68px 0 48px; }
+      .pricing-callout {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 26px 24px;
+      }
     }
-.quiz-sticky { position: fixed; left: 50%; bottom: 18px; transform: translate(-50%, 14px); opacity: 0; visibility: hidden; pointer-events: none; z-index: 950; width: min(438px, calc(100% - 32px)); min-height: 148px; display: grid; grid-template-columns: 112px 1fr; background: #ffffff; color: #161b26; border: 1px solid rgba(11,17,32,0.10); border-radius: 4px; box-shadow: 0 18px 54px rgba(0,0,0,0.28); overflow: hidden; transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s; }
-    body.show-quiz-sticky .quiz-sticky { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
-    .quiz-sticky-media { width: 100%; height: 100%; object-fit: cover; object-position: 46% 42%; }
-    .quiz-sticky-content { position: relative; padding: 18px 42px 18px 20px; }
-    .quiz-sticky-close { position: absolute; top: 10px; right: 12px; width: 24px; height: 24px; display: grid; place-items: center; background: transparent; border: none; color: #c5c8d0; font-size: 22px; line-height: 1; cursor: pointer; }
+
+    /* ===== STICKY QUIZ CTA ===== */
+    .quiz-sticky {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translate(-50%, 14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 950;
+      width: min(438px, calc(100% - 32px));
+      min-height: 148px;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      background: #ffffff;
+      color: #161b26;
+      border: 1px solid rgba(11,17,32,0.10);
+      border-radius: 4px;
+      box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+      overflow: hidden;
+      transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s;
+    }
+    body.show-quiz-sticky .quiz-sticky {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+       transition-delay: 0s;
+      transition-delay: 0s;
+    }
+    .quiz-sticky-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 46% 42%;
+    }
+    .quiz-sticky-content {
+      position: relative;
+      padding: 18px 42px 18px 20px;
+    }
+    .quiz-sticky-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: none;
+      color: #c5c8d0;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
     .quiz-sticky-close:hover { color: #161b26; }
-    .quiz-sticky h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #161b26; }
-    .quiz-sticky p { font-size: 14px; color: #343a46; line-height: 1.35; margin-bottom: 20px; }
-    .quiz-sticky-link { display: inline-flex; align-items: center; gap: 14px; color: #161b26; font-size: 15px; font-weight: 700; text-decoration: none; }
-    .quiz-sticky-link:hover { color: #3d9e5f; text-decoration: none; }
+    .quiz-sticky h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #161b26;
+    }
+    .quiz-sticky p {
+      font-size: 14px;
+      color: #343a46;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+    .quiz-sticky-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: #161b26;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .quiz-sticky-link:hover {
+      color: #3d9e5f;
+      text-decoration: none;
+    }
     .quiz-sticky-link:hover .quiz-sticky-label { text-decoration: underline; }
-    .quiz-sticky-link .quiz-sticky-arrow { font-size: 24px; line-height: 1; text-decoration: none; transform: translateY(-1px); }
+    .quiz-sticky-link .quiz-sticky-arrow {
+      font-size: 24px;
+      line-height: 1;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
     @media (max-width: 768px) {
-      .quiz-sticky { grid-template-columns: 94px 1fr; min-height: 142px; bottom: 14px; }
+      .quiz-sticky {
+        grid-template-columns: 94px 1fr;
+        min-height: 142px;
+        bottom: 14px;
+      }
       .quiz-sticky-content { padding: 16px 36px 16px 18px; }
       .quiz-sticky h3 { font-size: 16px; margin-bottom: 8px; }
       .quiz-sticky p { font-size: 13px; margin-bottom: 14px; }
     }
     @media (max-width: 600px) {
-      .quiz-sticky { grid-template-columns: 82px 1fr; min-height: 108px; }
+      .quiz-sticky {
+        grid-template-columns: 82px 1fr;
+        min-height: 108px;
+      }
       .quiz-sticky-content { padding: 14px 34px 14px 16px; }
       .quiz-sticky h3 { font-size: 15px; }
       .quiz-sticky p { display: none; }
       .quiz-sticky-link { font-size: 14px; }
     }
-
   </style>
 
   <script type="application/ld+json">
@@ -1104,8 +1272,8 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Black Iris Films",
-    "description": "Sydney-based video production agency specialising in corporate, education, and brand content.",
-    "url": "",
+    "description": "Sydney-based video production agency specialising in event video, corporate video, brand content and photography.",
+    "url": "https://blackirisfilms.com/event-video-production-sydney",
     "telephone": "+61282013504",
     "email": "info@blackirisfilms.com",
     "address": {
@@ -1119,7 +1287,7 @@
       "name": "Sydney"
     },
     "priceRange": "$$",
-    "image": "https://bif-services.vercel.app/favicon.png",
+    "image": "https://blackirisfilms.com/favicon.png",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
@@ -1130,8 +1298,8 @@
       "@type": "Offer",
       "itemOffered": {
         "@type": "Service",
-        "name": "Startup & Scaleup Video Production",
-        "description": "Video production for Sydney startups. Fortune-500 quality at SME budgets. Fixed price.",
+        "name": "Event Video Production Sydney",
+        "description": "Cinematic event video production in Sydney for conferences, launches, galas, charity events and brand activations, with optional event photography.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "Black Iris Films"
@@ -1664,16 +1832,17 @@
 
 <!-- ════════ SECTION 1: HERO ════════ -->
 <section class="hero">
-  <div class="hero-bg" role="img" aria-label="Black Iris Films video production service shoot"></div>
+  <div class="hero-bg" role="img" aria-label="Event video production at a Sydney industry event"></div>
   <div class="hero-inner">
     <div class="hero-left fade-in">
-      <div class="eyebrow">STARTUP & SCALEUP VIDEO PRODUCTION, SYDNEY</div>
-      <h1>Fortune-500 Quality at Startup Budgets</h1>
-      <p>You have just raised a round and need to look the part. We produce pitch videos, launch films, and social content for startups that need to punch above their weight.</p>
-            <div class="hero-actions">
+      <div class="eyebrow">EVENT VIDEO PRODUCTION SYDNEY</div>
+      <h1>Event Videos That Keep the Room Alive After Everyone Leaves</h1>
+      <p>Cinematic event video production for conferences, launches, galas, charity events and brand activations. We capture the energy in the room and turn it into highlight films, social cutdowns and useful post-event content.</p>
+      <div class="hero-actions">
         <a href="/estimate/" class="btn-green">Get an estimate</a>
         <button type="button" class="hero-how-button" id="heroHowItWorks" onclick="openVideoOnlyLightbox('https://player.vimeo.com/video/280487304?h=fecbc652be&autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479')"><span class="play-icon" aria-hidden="true"></span>How it works</button>
-      </div><div class="hero-google-badge">
+      </div>
+      <div class="hero-google-badge">
         <svg class="g-icon" viewBox="0 0 24 24" width="20" height="20"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         <span class="star-rating">5.0</span>
         <span class="stars">★★★★★</span>
@@ -1736,12 +1905,12 @@
   <div class="container">
     <div class="featured-grid fade-in">
       <div class="featured-video">
-        <iframe src="https://player.vimeo.com/video/860013506?badge=0&autopause=0&player_id=0&app_id=58479" title="Working with Black Iris Films" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe src="https://player.vimeo.com/video/930195266?badge=0&autopause=0&player_id=0&app_id=58479" title="Working with Black Iris Films | Little Red Hood" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
       <div class="featured-testimonial">
         <div class="client-label">CLIENT TESTIMONIAL</div>
-        <blockquote>"I would recommend Black Iris Films unambiguously. This is a group of accessible, really polished professionals that have taken all of our video content to the next level and what we've been able to achieve with that result has been just fantastic."</blockquote>
-        <div class="attribution">Ian Lowe <span>- CEO, Dacxi Global</span></div>
+        <blockquote>"Black Iris Films is nothing short of exceptional. You not only understand our business concept and values but also tailor your services to our needs. The team is creative, professional, and always goes above and beyond."</blockquote>
+        <div class="attribution">Lyna Duong <span>- Little Red Hood</span></div>
         <div class="stars-small">★★★★★</div>
       </div>
     </div>
@@ -1751,16 +1920,30 @@
 <!-- ════════ SECTION 4: DARK STATEMENT ════════ -->
 <section class="dark-statement fade-in">
   <div class="container">
-    <h2>No more videos that look like everyone else's.</h2>
-    <p>Brand films, explainer videos, testimonial videos, internal communications, product launch videos, case study videos, social media content &amp; more.</p>
+    <h2>No more event videos that feel like a checklist.</h2>
+    <p>Conference highlights, launch films, gala recaps, charity event videos, sponsor content, speaker reels, social cutdowns &amp; optional event photography.</p>
   </div>
 </section>
 
 <!-- SECTION 5: SHARED PORTFOLIO BROWSER -->
-<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="Brand films and commercials" data-bif-default-industry="All">
+<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="Events and highlights" data-bif-default-industry="Events and hospitality">
   <div class="container">
-    <h2 class="fade-in">Startup and scaleup video work</h2>
+    <h2 class="fade-in">Event video work</h2>
     <div data-bif-portfolio-embed></div>
+  </div>
+</section>
+<section class="contact-team-section fade-in">
+  <div class="container">
+    <div class="contact-team-grid">
+      <div class="contact-team-copy">
+        <h2>Add event photography to the same brief</h2>
+        <p>Need stills as well as video? We can capture a polished event photo gallery alongside your highlight film, giving you imagery for socials, PR, speakers, sponsors and post-event reporting.</p>
+        <a href="/photography#albums" class="btn-dark">View event photography</a>
+      </div>
+      <div class="contact-team-image">
+        <img src="/assets/portfolio-home-magic-goes-on.webp" alt="Event photography and video coverage example">
+      </div>
+    </div>
   </div>
 </section>
 <!-- ════════ LIGHTBOX ════════ -->
@@ -1802,19 +1985,19 @@
   </div>
 </div>
 
-<!-- ════════ SECTION 6: PROBLEMS ════════ -->
+<!-- SECTION 6: PROBLEMS -->
 <section class="problems-section">
   <div class="container">
-    <div class="eyebrow fade-in">COMMON STARTUP VIDEO CHALLENGES</div>
-    <h2 class="fade-in">Sound familiar?</h2>
-    <p class="fade-in">These are the challenges our startup clients bring to us.</p>
+    <div class="eyebrow fade-in">COMMON EVENT VIDEO CHALLENGES</div>
+    <h2 class="fade-in">The moments are live once. The content has to keep working.</h2>
+    <p class="fade-in">Events move quickly, lighting is unpredictable, and the best moments are rarely repeated. We plan around that reality so you walk away with polished content, not just footage.</p>
     <div class="problems-grid">
-      <div class="problem-card fade-in">&ldquo;We just raised a round and need to look like we belong.&rdquo;</div>
-      <div class="problem-card fade-in">&ldquo;Our budget is tight but we need to look premium.&rdquo;</div>
-      <div class="problem-card fade-in">&ldquo;We need a video for our pitch deck and it needs to be incredible.&rdquo;</div>
-      <div class="problem-card fade-in">&ldquo;Our product launch is in three weeks and we have nothing.&rdquo;</div>
-      <div class="problem-card fade-in">&ldquo;We can't afford a big agency but we can't afford to look cheap either.&rdquo;</div>
-      <div class="problem-card fade-in">&ldquo;We need multiple videos but we only have budget for one shoot day.&rdquo;</div>
+      <div class="problem-card fade-in">"We need the event to look premium, not like phone footage."</div>
+      <div class="problem-card fade-in">"We need social cutdowns while the event is still fresh."</div>
+      <div class="problem-card fade-in">"Sponsors and speakers need content after the event."</div>
+      <div class="problem-card fade-in">"The room has energy, but our old event videos never captured it."</div>
+      <div class="problem-card fade-in">"We need to show people why they should come next year."</div>
+      <div class="problem-card fade-in">"We want one crew that can handle video and photography."</div>
     </div>
     <div class="problems-cta fade-in">
       <a href="/estimate/" class="btn-green">Get an estimate</a>
@@ -1822,124 +2005,53 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 7: WHY BLACK IRIS FILMS ════════ -->
+<!-- SECTION 7: WHY BLACK IRIS FILMS -->
 <section class="why-section">
   <div class="container">
-    <h2 class="fade-in">Why Black Iris Films?</h2>
-    <p class="why-sub fade-in">Video that looks and feels like the calibre company you actually are.</p>
-    <p class="why-body fade-in">We deliver premium work through smart production planning, not by cutting corners. One shoot day, multiple outputs, fixed price. Exactly what startups need.</p>
+    <h2 class="fade-in">Why Black Iris Films for event video?</h2>
+    <p class="why-sub fade-in">We make event content feel cinematic, human and useful across every channel.</p>
+    <p class="why-body fade-in">A strong event film is not just a recap. It should capture atmosphere, credibility, community and momentum. We work fast, stay light on our feet, and shape the final edits around how the content will actually be used after the event.</p>
     <div class="why-grid">
-      <div class="why-card fade-in">
-        <div class="why-number">01</div>
-        <h4>Built for startup pace</h4>
-        <p>10-day turnaround. We understand your timeline is driven by funding rounds and launches, not quarterly cycles.</p>
-      </div>
-      <div class="why-card fade-in">
-        <div class="why-number">02</div>
-        <h4>Fixed price, always</h4>
-        <p>No hourly billing, no scope creep. Critical when every dollar is tracked.</p>
-      </div>
-      <div class="why-card fade-in">
-        <div class="why-number">03</div>
-        <h4>Multi-output production</h4>
-        <p>One shoot day can produce a hero film, social cuts, a pitch video, and internal content.</p>
-      </div>
-      <div class="why-card fade-in">
-        <div class="why-number">04</div>
-        <h4>We understand your audience</h4>
-        <p>We work with fintech, SaaS, health tech, and deep tech regularly. We know how to communicate to investors and buyers.</p>
-      </div>
+      <div class="why-card fade-in"><div class="why-number">01</div><h4>Senior crew, small footprint</h4><p>We capture the room without getting in the way of guests, speakers or the run sheet.</p></div>
+      <div class="why-card fade-in"><div class="why-number">02</div><h4>Built for post-event value</h4><p>Highlight films, social cutdowns, sponsor content and speaker snippets can all come from the same coverage.</p></div>
+      <div class="why-card fade-in"><div class="why-number">03</div><h4>Video and photo together</h4><p>Add event photography when you want one creative team covering the full content brief.</p></div>
+      <div class="why-card fade-in"><div class="why-number">04</div><h4>Clear, fixed scope</h4><p>We agree the deliverables upfront so you know exactly what you are getting after the event.</p></div>
     </div>
-    <p class="why-plug fade-in">We plug straight into your team, no learning curve, no agency overhead. Think of us as your in-house production department, without the headcount.</p>
+    <p class="why-plug fade-in">From gala nights and launches to conferences and charity events, we help turn one live moment into a library of content.</p>
   </div>
 </section>
 
-<!-- ════════ SECTION 8: TESTIMONIALS ════════ -->
+<!-- SECTION 8: TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="container">
     <div class="eyebrow fade-in">WHAT PEOPLE SAY</div>
-    <h2 class="fade-in">Startups that trusted us</h2>
+    <h2 class="fade-in">Event and brand teams that trusted us</h2>
     <div class="testimonial-cards">
       <div class="testimonial-card fade-in">
-        <div class="stars-small">★★★★★</div>
-        <blockquote>&ldquo;Discovered Black Iris Films online and downloaded their insightful report on video marketing. The depth of their industry knowledge was immediately apparent. They understand how to turn strategy into compelling visual content.&rdquo;</blockquote>
-        <div class="attribution">Leon Matti <span>- Founder, Smart Makeover</span></div>
+        <div class="stars-small">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Black Iris Films is nothing short of exceptional. You not only understand our business concept and values but also tailor your services to our needs. The team is creative, professional, and always goes above and beyond."</blockquote>
+        <div class="attribution">Lyna Duong <span>- Little Red Hood</span></div>
       </div>
       <div class="testimonial-card fade-in">
-        <div class="stars-small">★★★★★</div>
-        <blockquote>&ldquo;I would recommend Black Iris Films unambiguously to any company that wants to take a creative and emotionally compelling approach to video-driven marketing. They consistently delivered work that exceeded our expectations.&rdquo;</blockquote>
-        <div class="attribution">Ian Lowe <span>- CEO, Dacxi Group</span></div>
+        <div class="stars-small">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Black Iris Films have a well-honed professionalism in storytelling through film and video. They have a firm grip on the visual narrative and excel at their ability to tailor content to a target audience."</blockquote>
+        <div class="attribution">Will Aslett <span>- Development Executive, Freelance</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════ SECTION 9: FAQ ════════ -->
+<!-- SECTION 9: FAQ -->
 <section class="faq-section">
   <div class="container">
     <h2 class="fade-in">Frequently Asked Questions</h2>
     <div class="faq-list">
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What kind of video do I need after raising a round?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Typically a brand or launch film plus social content. If B2B, add a product demo. We help you prioritise.</div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What does startup video production cost?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Most projects range from $7,000 to $25,000. We always quote upfront.</div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          How fast can you deliver?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">10 business days from approved brief. Expedited timelines available.</div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Can you work within our brand guidelines?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Yes. If you have them, we work within them. If not, we help shape the direction.</div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Do you offer ongoing content production?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Yes. Retainers start at $7,000 per month.</div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-in">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What do you need from us to start?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">A brief on your product, audience, and immediate goal. We handle the rest.</div>
-        </div>
-      </div>
-
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">What types of events do you film?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">We film conferences, launches, gala dinners, awards nights, charity events, brand activations, corporate events and social events. We can create a hero highlight film plus shorter social edits.</div></div></div>
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">Can you also provide event photography?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Yes. Event photography can be added to the same brief, which keeps the visual style consistent and gives you stills for PR, socials, websites, sponsors and speakers.</div></div></div>
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">How quickly can we get the edit?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Most event edits are scoped around a clear post-event deadline. We can prioritise fast social cutdowns when you need content while the event is still fresh.</div></div></div>
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">Do you record speakers and presentations?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Yes, if that is part of the brief. We can capture keynote presentations, panels, vox pops, interviews, atmosphere and crowd reactions depending on what the final content needs to do.</div></div></div>
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">Can you create different versions for LinkedIn, Instagram and sponsors?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Yes. We can create vertical, square and widescreen versions, plus separate speaker, sponsor or highlight cutdowns from the same event coverage.</div></div></div>
+      <div class="faq-item fade-in"><button class="faq-question" onclick="toggleFaq(this)">What does event video production cost?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">It depends on event length, crew size, deliverables and turnaround. We scope the project upfront and provide a fixed quote, so you know the cost before we start.</div></div></div>
     </div>
   </div>
 </section>
@@ -1949,8 +2061,8 @@
   <div class="container">
     <div class="contact-team-grid">
       <div class="contact-team-copy">
-        <h2>Contact our video team</h2>
-        <p>Got more questions about our live-action or animated video production process? Our team is here to help with insights on process, planning and your next project.</p>
+        <h2>Talk to us about your event</h2>
+        <p>Tell us what is happening, when it is happening, and what content you need afterwards. We will help shape the simplest coverage plan for the outcome.</p>
         <a href="/contact" class="btn-dark">Contact our team</a>
         <p class="contact-phone">or call us on <a href="tel:+610282013504">(02) 8201 3504</a>.</p>
       </div>

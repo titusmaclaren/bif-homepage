@@ -28,6 +28,7 @@
 
   var SERVICES = [
     ["/corporate-video-production-sydney", "Corporate Video Production Sydney"],
+    ["/event-video-production-sydney", "Event Video Production Sydney"],
     ["/financial-video-production-sydney", "Finance Video Production Sydney"],
     ["/higher-education-video-production-sydney", "Higher Education Video Production Sydney"],
     ["/explainer-video-production-sydney", "Explainer Video Production Sydney"],

@@ -502,6 +502,7 @@
     ".lightbox-related-cat{display:block;margin-top:2px;font-size:11px;color:rgba(255,255,255,0.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}" +
     "@media(max-width:767px){.lightbox-media{gap:12px;}.lightbox-related{grid-template-columns:1fr;}.lightbox-related-card:nth-child(n+2){display:none;}}";
 
+  window.BIF_PORTFOLIO_ITEMS = BIF_PORTFOLIO;
   function byId(id) { return document.getElementById(id); }
   function findItem(id) { for (var i = 0; i < BIF_PORTFOLIO.length; i++) if (BIF_PORTFOLIO[i].vimeoId === id) return BIF_PORTFOLIO[i]; return null; }
   function vimeoIdFromUrl(url) { var m = /\/video\/(\d+)/.exec(url || ""); return m ? m[1] : ""; }

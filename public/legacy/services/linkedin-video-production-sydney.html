@@ -1756,41 +1756,13 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 5: PORTFOLIO GRID ════════ -->
-<section class="portfolio-section">
+<!-- SECTION 5: SHARED PORTFOLIO BROWSER -->
+<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="Social and education" data-bif-default-industry="All">
   <div class="container">
-    <div class="eyebrow fade-in">PORTFOLIO</div>
-    <h2 class="fade-in">Our Work</h2>
-    <div class="portfolio-grid fade-in">
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/981278175?autoplay=1','Emotional Marketing','Black Iris Films','Establish thought leadership on LinkedIn','Thought Leadership','A thought leadership piece built for LinkedIn.')">
-        <img src="/assets/thumb-981278175.jpg" alt="Emotional Marketing">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">BIF, Thought Leadership</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/980518651?autoplay=1','Humanity First, Facts Second','Black Iris Films','Drive engagement through provocative content','Social Content','Short, punchy social video for LinkedIn.')">
-        <img src="/assets/thumb-980518651.jpg" alt="Humanity First, Facts Second">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">BIF, Social Content</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/754222312?autoplay=1','Working with BIF | Dacxi','Dacxi Group','Build credibility through client storytelling','Client Testimonial','Client testimonial formatted for LinkedIn.')">
-        <img src="/assets/thumb-754222312.jpg" alt="Working with BIF | Dacxi">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Dacxi, Client Story</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/930195266?autoplay=1','Working with BIF | Little Red Hood','Little Red Hood','Demonstrate client relationships on social','Client Story','Client story video cut for social media.')">
-        <img src="/assets/thumb-930195266.jpg" alt="Working with BIF | Little Red Hood">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Little Red Hood, Client Story</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/421006652?autoplay=1','Taking Business Online','Black Iris Films','Generate leads through social content','Social Promo','Social-first promotional video for LinkedIn.')">
-        <img src="/assets/thumb-421006652.jpg" alt="Taking Business Online">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">BIF, Promo</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/943964025?autoplay=1','Client Testimonials','Black Iris Films','Create shareable social proof','Client Testimonials','Compilation of testimonials for social sharing.')">
-        <img src="/assets/thumb-ssw-ms.jpg" alt="Client Testimonials">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">BIF, Social Proof</span></div>
-      </div>
-    </div>
-    <p class="portfolio-note">More available upon request.</p>
+    <h2 class="fade-in">LinkedIn and social video work</h2>
+    <div data-bif-portfolio-embed></div>
   </div>
 </section>
-
 <!-- ════════ LIGHTBOX ════════ -->
 <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="lightbox-panel">
@@ -2286,5 +2258,6 @@
   </script>
   <script src="/assets/bif-shell.js" defer></script>
 <script src="/legacy/services/lightbox-portfolio.js" defer></script>
+<script src="/legacy/services/portfolio-embed.js" defer></script>
 </body>
 </html>

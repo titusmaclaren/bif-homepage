@@ -20,6 +20,7 @@ const consolidatedRoutes = [
   "/animated-video-production-sydney",
   "/brand-film-production-sydney",
   "/corporate-video-production-sydney",
+  "/event-video-production-sydney",
   "/explainer-video-production-sydney",
   "/financial-video-production-sydney",
   "/higher-education-video-production-sydney",

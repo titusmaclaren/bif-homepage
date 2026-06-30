@@ -1756,41 +1756,13 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 5: PORTFOLIO GRID ════════ -->
-<section class="portfolio-section">
+<!-- SECTION 5: SHARED PORTFOLIO BROWSER -->
+<section class="portfolio-section bif-portfolio-embed-section" data-bif-portfolio-section data-bif-default-type="All" data-bif-default-industry="Technology and SaaS">
   <div class="container">
-    <div class="eyebrow fade-in">PORTFOLIO</div>
-    <h2 class="fade-in">Our Work</h2>
-    <div class="portfolio-grid fade-in">
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/1060728418?autoplay=1','Amplitel Customer Portal','Amplitel','Onboard enterprise customers to a new digital product','Animated Product Demo','Animated walkthrough of a new enterprise portal.')">
-        <img src="/assets/thumb-amplitel-portal.jpg" alt="Amplitel Customer Portal">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Amplitel, Product Demo</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/911075713?autoplay=1','Microsoft Dynamics CRM at SSW','SSW','Demonstrate CRM platform capabilities','Product Showcase','Product showcase for SSW\'s Microsoft Dynamics CRM.')">
-        <img src="/assets/thumb-911075713.jpg" alt="Microsoft Dynamics CRM at SSW">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">SSW, Product Showcase</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/977299657?autoplay=1','What Is Asset Tokenisation','Dacxi','Explain a complex fintech concept','Tech Explainer','Explainer for Dacxi\'s tokenisation model.')">
-        <img src="/assets/thumb-977299657.jpg" alt="What Is Asset Tokenisation">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Dacxi, Fintech Explainer</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/346047743?autoplay=1','Tech Life Sydney in Flow Motion','Black Iris Films','Showcase Sydney\'s tech ecosystem','Brand Film','Cinematic flow-motion tour of Sydney tech offices.')">
-        <img src="/assets/thumb-346047743.jpg" alt="Tech Life Sydney in Flow Motion">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">Tech Life Sydney</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/137334669?autoplay=1','SSW FireBootCamp','SSW','Promote developer training programme','Promotional Film','Creative promotional short film for SSW\'s developer bootcamp.')">
-        <img src="/assets/thumb-137334669.jpg" alt="SSW FireBootCamp">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">SSW, Promo Film</span></div>
-      </div>
-      <div class="portfolio-card fade-in" onclick="openLightbox('https://player.vimeo.com/video/344738613?autoplay=1','KPMG Tax Estimator','KPMG / Independent Reserve','Launch a crypto tax tool','30-Second Ad','Product ad for KPMG and Independent Reserve.')">
-        <img src="/assets/thumb-344738613.jpg" alt="KPMG Tax Estimator">
-        <div class="card-overlay"><div class="card-play-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg></div><span style="color:#fff;font-size:13px;font-weight:600">KPMG x IndRes, 30-Sec</span></div>
-      </div>
-    </div>
-    <p class="portfolio-note">More available upon request.</p>
+    <h2 class="fade-in">Technology and SaaS video work</h2>
+    <div data-bif-portfolio-embed></div>
   </div>
 </section>
-
 <!-- ════════ LIGHTBOX ════════ -->
 <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="lightbox-panel">
@@ -2286,5 +2258,6 @@
   </script>
   <script src="/assets/bif-shell.js" defer></script>
 <script src="/legacy/services/lightbox-portfolio.js" defer></script>
+<script src="/legacy/services/portfolio-embed.js" defer></script>
 </body>
 </html>
