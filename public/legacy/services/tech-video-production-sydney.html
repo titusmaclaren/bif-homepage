@@ -1808,8 +1808,10 @@
           <div class="lightbox-glance-label">At a glance</div>
           <dl class="lightbox-meta">
             <div class="lightbox-meta-row" id="lightboxClientRow"><dt>Client:</dt><dd id="lightboxClient"></dd></div>
+            <div class="lightbox-meta-row" id="lightboxIndustryRow"><dt>Industry:</dt><dd id="lightboxIndustry"></dd></div>
             <div class="lightbox-meta-row" id="lightboxFormatRow"><dt>Video format:</dt><dd id="lightboxFormat"></dd></div>
             <div class="lightbox-meta-row" id="lightboxGoalRow"><dt>Goal:</dt><dd id="lightboxGoal"></dd></div>
+            <div class="lightbox-meta-row" id="lightboxPlatformsRow"><dt>Platforms:</dt><dd id="lightboxPlatforms"></dd></div>
           </dl>
         </div>
         <div class="lightbox-cta">
@@ -1822,6 +1824,7 @@
         <div class="video-embed-wrapper">
           <iframe id="lightboxIframe" src="" title="Video" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
+        <div class="lightbox-related" id="lightboxRelated"></div>
       </div>
     </div>
   </div>
@@ -2282,5 +2285,6 @@
     })();
   </script>
   <script src="/assets/bif-shell.js" defer></script>
+<script src="/legacy/services/lightbox-portfolio.js" defer></script>
 </body>
 </html>
