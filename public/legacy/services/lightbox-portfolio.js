@@ -488,17 +488,19 @@
 ];
 
   var RELATED_CSS =
-    ".lightbox-related{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;}" +
+    ".lightbox-media{gap:16px;overflow:hidden;min-width:0;}" +
+    ".lightbox-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:0;min-width:0;width:100%;overflow:hidden;}" +
     ".lightbox-panel.video-only .lightbox-related{display:none!important;}" +
-    ".lightbox-related-card{display:block;text-align:left;background:none;border:0;padding:0;cursor:pointer;color:#fff;font:inherit;}" +
-    ".lightbox-related-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);}" +
+    ".lightbox-related-card{display:block;min-width:0;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;color:#fff;font:inherit;overflow:hidden;border-radius:6px;}" +
+    ".lightbox-related-thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);}" +
     ".lightbox-related-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}" +
     ".lightbox-related-card:hover .lightbox-related-thumb img{transform:scale(1.05);}" +
     ".lightbox-related-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,0.3);transition:opacity .2s ease;}" +
     ".lightbox-related-card:hover .lightbox-related-play{opacity:1;}" +
-    ".lightbox-related-play-circle{width:28px;height:28px;border-radius:999px;background:#61B383;display:flex;align-items:center;justify-content:center;}" +
+    ".lightbox-related-play-circle{width:32px;height:32px;border-radius:999px;background:#61B383;display:flex;align-items:center;justify-content:center;}" +
     ".lightbox-related-title{display:block;margin-top:6px;font-size:12px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}" +
-    ".lightbox-related-cat{display:block;margin-top:2px;font-size:11px;color:rgba(255,255,255,0.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}";
+    ".lightbox-related-cat{display:block;margin-top:2px;font-size:11px;color:rgba(255,255,255,0.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}" +
+    "@media(max-width:767px){.lightbox-media{gap:12px;}.lightbox-related{grid-template-columns:1fr;}.lightbox-related-card:nth-child(n+2){display:none;}}";
 
   function byId(id) { return document.getElementById(id); }
   function findItem(id) { for (var i = 0; i < BIF_PORTFOLIO.length; i++) if (BIF_PORTFOLIO[i].vimeoId === id) return BIF_PORTFOLIO[i]; return null; }
