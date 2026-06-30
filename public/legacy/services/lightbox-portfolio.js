@@ -487,6 +487,153 @@
   }
 ];
 
+  var SERVICE_PORTFOLIO_ORDERS = {
+    "corporate-video-production-sydney": [
+      "742487127",
+      "776884299",
+      "344738613",
+      "1060728418",
+      "1111183751",
+      "321724289",
+      "1143355482",
+      "1143349142",
+      "894854950",
+      "839000549",
+      "792128309",
+      "717795825",
+      "680771973",
+      "295364237",
+      "387582839",
+      "356091891",
+      "657351049",
+      "1181599954",
+      "1065385276"
+    ],
+    "financial-video-production-sydney": [
+      "742487127",
+      "776884299",
+      "1109359009",
+      "842154532",
+      "860013506",
+      "700347030",
+      "839000549",
+      "344738613",
+      "706749897",
+      "657351049",
+      "846528202",
+      "689165776",
+      "792128309",
+      "717795825",
+      "680771973",
+      "977299657",
+      "679925784"
+    ],
+    "higher-education-video-production-sydney": [
+      "256497496",
+      "558903975",
+      "496723120",
+      "1181599954",
+      "1181599296",
+      "766366126"
+    ],
+    "explainer-video-production-sydney": [
+      "1060728418",
+      "860013506",
+      "496723120",
+      "137334907",
+      "657351049",
+      "381263461",
+      "792128309",
+      "1001827462",
+      "717795825",
+      "977299657",
+      "679925784"
+    ],
+    "tech-video-production-sydney": [
+      "742487127",
+      "1143355482",
+      "1143349142",
+      "1111183751",
+      "842154532",
+      "1060728418",
+      "860013506",
+      "700347030",
+      "839000549",
+      "321724289",
+      "356091891",
+      "137334907",
+      "657351049",
+      "137334669",
+      "846528202",
+      "689165776",
+      "1001827462",
+      "680771973",
+      "977299657",
+      "679925784"
+    ],
+    "animated-video-production-sydney": [
+      "1060728418",
+      "137334907",
+      "657351049",
+      "717795825",
+      "977299657",
+      "679925784"
+    ],
+    "brand-film-production-sydney": [
+      "742487127",
+      "776884299",
+      "1109359009",
+      "846528202",
+      "278879520",
+      "381263461",
+      "256497496",
+      "344738613",
+      "1062734110",
+      "1054733425"
+    ],
+    "startup-video-production-sydney": [
+      "742487127",
+      "776884299",
+      "842154532",
+      "860013506",
+      "894854950",
+      "387582839",
+      "846528202",
+      "381263461",
+      "792128309",
+      "1001827462",
+      "679925784"
+    ],
+    "linkedin-video-production-sydney": [
+      "1111183751",
+      "839000549",
+      "1060728418",
+      "321724289",
+      "706749897",
+      "137334669",
+      "387582839",
+      "846528202",
+      "381263461",
+      "792128309",
+      "742487127",
+      "776884299",
+      "842154532",
+      "860013506",
+      "344738613",
+      "977299657"
+    ],
+    "event-video-production-sydney": [
+      "1111183751",
+      "894854950",
+      "941172837",
+      "915048133",
+      "295364237",
+      "938937003",
+      "356091891",
+      "1065385276"
+    ]
+  };
+
   var RELATED_CSS =
     ".lightbox-media{gap:16px;overflow:hidden;min-width:0;}" +
     ".lightbox-related{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:0;min-width:0;width:100%;overflow:hidden;}" +
@@ -503,6 +650,7 @@
     "@media(max-width:767px){.lightbox-media{gap:12px;}.lightbox-related{grid-template-columns:1fr;}.lightbox-related-card:nth-child(n+2){display:none;}}";
 
   window.BIF_PORTFOLIO_ITEMS = BIF_PORTFOLIO;
+  window.BIF_SERVICE_PORTFOLIO_ORDERS = SERVICE_PORTFOLIO_ORDERS;
   function byId(id) { return document.getElementById(id); }
   function findItem(id) { for (var i = 0; i < BIF_PORTFOLIO.length; i++) if (BIF_PORTFOLIO[i].vimeoId === id) return BIF_PORTFOLIO[i]; return null; }
   function vimeoIdFromUrl(url) { var m = /\/video\/(\d+)/.exec(url || ""); return m ? m[1] : ""; }

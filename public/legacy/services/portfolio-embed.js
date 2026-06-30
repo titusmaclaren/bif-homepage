@@ -40,6 +40,21 @@
     return groups.length ? groups : [item[fallback]];
   }
 
+  function getServiceSlug(section) {
+    var explicit = section.getAttribute("data-bif-service");
+    if (explicit) return explicit;
+    var match = window.location.pathname.match(/\/([^\/]+)\/?$/);
+    return match ? match[1] : "";
+  }
+
+  function orderItemsByIds(items, ids) {
+    var byId = {};
+    items.forEach(function (item) { byId[item.vimeoId] = item; });
+    return ids
+      .map(function (id) { return byId[id]; })
+      .filter(Boolean);
+  }
+
   function esc(value) {
     return String(value == null ? "" : value)
       .replace(/&/g, "&amp;")
@@ -95,11 +110,14 @@
 
   function initEmbed(root) {
     var items = Array.isArray(window.BIF_PORTFOLIO_ITEMS) ? window.BIF_PORTFOLIO_ITEMS : [];
+    var serviceOrders = window.BIF_SERVICE_PORTFOLIO_ORDERS || {};
     var section = root.closest("[data-bif-portfolio-section]") || root;
-    var defaultType = section.getAttribute("data-bif-default-type") || "All";
-    var defaultIndustry = section.getAttribute("data-bif-default-industry") || "All";
+    var serviceOrder = serviceOrders[getServiceSlug(section)];
+    var defaultType = serviceOrder ? "All" : section.getAttribute("data-bif-default-type") || "All";
+    var defaultIndustry = serviceOrder ? "All" : section.getAttribute("data-bif-default-industry") || "All";
     var typeValue = defaultType;
     var industryValue = defaultIndustry;
+    var usingServiceOrder = Array.isArray(serviceOrder) && serviceOrder.length > 0;
 
     function itemMatches(item) {
       var typeGroups = groupsFor(item, VIDEO_TYPE_FILTERS, "category");
@@ -122,8 +140,10 @@
 
     function render() {
       var active = typeValue !== "All" || industryValue !== "All";
-      var shown = items.filter(itemMatches);
-      if (!active) shown = shown.slice(0, 21);
+      var shown = usingServiceOrder && !active
+        ? orderItemsByIds(items, serviceOrder)
+        : items.filter(itemMatches);
+      if (!active && !usingServiceOrder) shown = shown.slice(0, 21);
       root.innerHTML =
         '<div class="bif-portfolio-controls">' +
           '<div class="bif-portfolio-control-grid">' +
@@ -140,10 +160,12 @@
     root.addEventListener("change", function (event) {
       if (event.target.matches("[data-bif-industry-filter]")) {
         industryValue = event.target.value;
+        usingServiceOrder = false;
         render();
       }
       if (event.target.matches("[data-bif-type-filter]")) {
         typeValue = event.target.value;
+        usingServiceOrder = false;
         render();
       }
     });
@@ -153,6 +175,7 @@
       if (clear) {
         typeValue = "All";
         industryValue = "All";
+        usingServiceOrder = false;
         render();
         return;
       }
