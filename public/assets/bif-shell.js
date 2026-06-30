@@ -138,7 +138,7 @@
 
   var STICKY_HTML =
     '<aside class="quiz-sticky" aria-label="Pricing quiz" data-bif-quiz-sticky>' +
-      '<img class="quiz-sticky-media" src="/assets/sticky-estimate-portrait.png" alt="">' +
+      '<img class="quiz-sticky-media" src="/assets/sticky-estimate-portrait.webp" alt="">' +
       '<div class="quiz-sticky-content">' +
         '<button type="button" class="quiz-sticky-close" aria-label="Hide pricing quiz" data-bif-quiz-close>&times;</button>' +
         '<h3>1-minute video estimate</h3>' +

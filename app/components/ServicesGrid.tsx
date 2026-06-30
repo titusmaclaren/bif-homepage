@@ -78,7 +78,7 @@ export const SERVICE_TILES: ServiceTile[] = [
   {
     label: "AI Powered Content Studio",
     href: "/ai-powered-content-studio-v2",
-    image: "/services/ai-powered-content-studio-character-sheet.png",
+    image: "/services/ai-powered-content-studio-character-sheet.webp",
     objectPosition: "50% 34%",
     description: "AI-assisted imagery systems and campaign assets.",
   },

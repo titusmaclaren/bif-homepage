@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/assets/why-hero-woman-transparent.png",
+    src: "/assets/why-hero-woman-transparent.webp",
     alt: "A campaign content collage featuring a business leader in an office interview.",
   },
   {
-    src: "/assets/why-hero-man-transparent.png",
+    src: "/assets/why-hero-man-transparent.webp",
     alt: "A campaign content collage featuring a business leader in a city office.",
   },
 ];

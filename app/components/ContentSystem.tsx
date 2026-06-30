@@ -42,23 +42,23 @@ const cards: ContentCard[] = [
 
 const visuals: Record<ContentCard["visual"], { src: string; alt: string }> = {
   strategy: {
-    src: "/content-system/strategy.png",
+    src: "/content-system/strategy.webp",
     alt: "Cinematic portrait used to represent emotion-first story strategy.",
   },
   direction: {
-    src: "/content-system/creative-direction.png",
+    src: "/content-system/creative-direction.webp",
     alt: "Storyboards and creative references arranged on a production desk.",
   },
   production: {
-    src: "/content-system/production.png",
+    src: "/content-system/production.webp",
     alt: "Film crew capturing an interview in a studio.",
   },
   multiplication: {
-    src: "/content-system/multiplication.png",
+    src: "/content-system/multiplication.webp",
     alt: "A library of video, social and audio assets created from one production.",
   },
   value: {
-    src: "/content-system/library.png",
+    src: "/content-system/library.webp",
     alt: "A content library dashboard with organised video and brand assets.",
   },
 };
