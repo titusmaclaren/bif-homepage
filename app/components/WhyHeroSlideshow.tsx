@@ -45,7 +45,7 @@ export function WhyHeroSlideshow() {
           className={`object-cover transition-opacity duration-700 motion-reduce:transition-none ${
             activeSlide === index ? "opacity-100" : "opacity-0"
           }`}
-          priority={index === 0}
+          priority
         />
       ))}
     </div>
