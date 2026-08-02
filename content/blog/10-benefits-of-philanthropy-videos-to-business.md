@@ -2,6 +2,7 @@
 title: "10 Ways You Can Benefit from Philanthropy in Business"
 slug: "10-benefits-of-philanthropy-videos-to-business"
 date: "2018-08-01"
+updated: "2026-08-01"
 description: "Philanthropy in business has become a trend that is sweeping the globe. It's not just big, it's huge. Large businesses are more likely to capitalize on this."
 author: "Black Iris Films"
 thumbnail: "/blog/10-benefits-of-philanthropy-videos-to-business-hero.jpg"
@@ -13,7 +14,7 @@ metaDescription: "Philanthropy in business has become a trend that is sweeping t
 canonicalUrl: "https://blackirisfilms.com/post/10-benefits-of-philanthropy-videos-to-business"
 published: true
 ---
-Philanthropy in business has become a trend that is sweeping the globe. It's not just big, it's huge. Large businesses are more likely to capitalize on this trend, however smaller businesses are realizing its advantages as well. Video is the [#1](/learn) form of communication, in fact according to a Forrester Research study: one minute of video is worth 1.8 million words.
+Philanthropy has moved from a business trend to an established way for organisations of every size to build trust and social impact. Video remains one of the clearest ways to show that work, the people behind it and the difference it makes.
 
 ![](/blog/10-benefits-of-philanthropy-videos-to-business-hero.jpg)
 

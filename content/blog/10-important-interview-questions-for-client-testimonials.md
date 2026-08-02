@@ -2,6 +2,7 @@
 title: "10 Important Interview Questions for Client Testimonials"
 slug: "10-important-interview-questions-for-client-testimonials"
 date: "2018-10-17"
+updated: "2026-08-01"
 description: "Get the most from client testimonial videos with these 10 essential interview questions. Turn warm leads into paying customers."
 author: "Black Iris Films"
 thumbnail: "/blog/10-important-interview-questions-for-client-testimonials-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Get the most from client testimonial videos with these 10 esse
 canonicalUrl: "https://blackirisfilms.com/post/10-important-interview-questions-for-client-testimonials"
 published: true
 ---
-Client testimonials are an extremely effective way of getting your warm leads over the bottom line. As we've previously mentioned, you should make each of your client interviews into it's own 'Success Story Video'. When you have 4-6, edit the results into one full Client Testimonial Video.
+Client testimonial videos remain one of the most effective ways to help warm leads make a confident decision. As we've previously mentioned, you should make each client interview into its own 'Success Story Video'. When you have 4-6, edit the results into one full Client Testimonial Video.
 
 ![Man being interviewed](/blog/10-important-interview-questions-for-client-testimonials-hero.jpg)
 

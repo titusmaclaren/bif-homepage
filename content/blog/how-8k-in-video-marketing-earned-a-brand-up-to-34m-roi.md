@@ -2,6 +2,7 @@
 title: "How $8k in Video Marketing Can Earn a Brand $34m ROI"
 slug: "how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi"
 date: "2024-03-14"
+updated: "2026-08-01"
 description: "Discover how an $8k investment in video marketing earned a brand up to $34m ROI. Learn how a video on a landing page can increase conversions by up to 80%."
 author: "Black Iris Films"
 thumbnail: "/blog/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi-hero.jpg"
@@ -14,7 +15,7 @@ metaDescription: "Discover how an $8k investment in video marketing earned a bra
 canonicalUrl: "https://blackirisfilms.com/post/how-8k-in-video-marketing-earned-a-brand-up-to-34m-roi"
 published: true
 ---
-How much of a risk is video marketing? Does it earn a good return on investment (ROI)? We reviewed a sample animated explainer video to find out.
+Video ROI depends on traffic, offer quality, attribution and the useful life of the asset. This article explores a deliberately optimistic scenario—not measured client attribution—to show how even a small conversion improvement can change the economics of an $8k explainer video.
 
 Below is an explainer video we created for Manad Plus:
 

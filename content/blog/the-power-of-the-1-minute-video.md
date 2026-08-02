@@ -2,6 +2,7 @@
 title: "The Power of the 1-Minute Video"
 slug: "the-power-of-the-1-minute-video"
 date: "2018-12-05"
+updated: "2026-08-01"
 description: "Short-form video drives big results. Learn why 1-minute videos are a powerful marketing tool for engagement and retention."
 author: "Black Iris Films"
 thumbnail: "/blog/the-power-of-the-1-minute-video-hero.jpg"
@@ -18,7 +19,7 @@ metaDescription: "Short-form video drives big results. Learn why 1-minute videos
 canonicalUrl: "https://blackirisfilms.com/post/the-power-of-the-1-minute-video"
 published: true
 ---
-A lot of people resented the 1-minute limit for Instagram™ videos, but it can actually work in your favour. A 1-minute video has a lot of benefits to video marketing...
+Instagram no longer has the one-minute constraint that inspired this article, but the discipline of telling a complete story in about 60 seconds still works across Reels, Shorts and other placements. A one-minute video offers several practical benefits...
 
 ![Hand outstretched towards the sunset](/blog/the-power-of-the-1-minute-video-hero.jpg)
 

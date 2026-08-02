@@ -5,19 +5,26 @@ import {
   PRICING_VERSION,
   FALLBACK_ESTIMATE,
   ESCALATION_ESTIMATE,
+  normalizeEstimateResponse,
   type EstimateResponse,
 } from "@/lib/pricing";
 import { captureLead } from "@/lib/leadCapture";
 import { subscribeToNewsletter } from "@/lib/beehiiv";
 import {
   checkRateLimit,
+  cleanSingleLine,
   cleanText,
   isTooLong,
   isValidEmail,
+  isSameOriginRequest,
+  readJsonObject,
+  RequestBodyError,
 } from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
+
+const MAX_BODY_BYTES = 16 * 1024;
 
 type Answers = {
   goal?: string;
@@ -105,17 +112,36 @@ function tryExtractJson(text: string): string | null {
 }
 
 export async function POST(req: Request) {
-  let answers: Answers = {};
-  try {
-    answers = (await req.json()) as Answers;
-  } catch {
+  if (!isSameOriginRequest(req)) {
     return NextResponse.json(
-      { error: "Could not read request body.", fallback: true, ...FALLBACK_ESTIMATE },
-      { status: 400 },
+      {
+        error: "Cross-origin estimate requests are not allowed.",
+        fallback: true,
+        ...FALLBACK_ESTIMATE,
+        pricing_version: PRICING_VERSION,
+      },
+      { status: 403 },
     );
   }
 
-  if (cleanText(answers.details?.website)) {
+  let answers: Answers = {};
+  try {
+    answers = (await readJsonObject(req, MAX_BODY_BYTES)) as Answers;
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error:
+          error instanceof RequestBodyError
+            ? error.message
+            : "Could not read request body.",
+        fallback: true,
+        ...FALLBACK_ESTIMATE,
+      },
+      { status: error instanceof RequestBodyError ? error.status : 400 },
+    );
+  }
+
+  if (cleanSingleLine(answers.details?.website)) {
     return NextResponse.json({
       ...FALLBACK_ESTIMATE,
       pricing_version: PRICING_VERSION,
@@ -144,16 +170,16 @@ export async function POST(req: Request) {
   }
 
   answers = {
-    goal: cleanText(answers.goal),
-    videoType: cleanText(answers.videoType),
-    length: cleanText(answers.length),
-    vibe: cleanText(answers.vibe),
-    scope: cleanText(answers.scope),
+    goal: cleanSingleLine(answers.goal),
+    videoType: cleanSingleLine(answers.videoType),
+    length: cleanSingleLine(answers.length),
+    vibe: cleanSingleLine(answers.vibe),
+    scope: cleanSingleLine(answers.scope),
     brief: cleanText(answers.brief),
     details: {
-      name: cleanText(answers.details?.name),
-      email: cleanText(answers.details?.email).toLowerCase(),
-      company: cleanText(answers.details?.company),
+      name: cleanSingleLine(answers.details?.name),
+      email: cleanSingleLine(answers.details?.email).toLowerCase(),
+      company: cleanSingleLine(answers.details?.company),
       newsletter: answers.details?.newsletter === true,
     },
   };
@@ -229,7 +255,11 @@ export async function POST(req: Request) {
   }
 
   try {
-    const anthropic = new Anthropic({ apiKey });
+    const anthropic = new Anthropic({
+      apiKey,
+      maxRetries: 1,
+      timeout: 20_000,
+    });
 
     // Reshape to the snake_case keys the reference library documents.
     const userPayload = {
@@ -259,7 +289,7 @@ export async function POST(req: Request) {
 
     const jsonSlice = tryExtractJson(text);
     if (!jsonSlice) {
-      console.error("No JSON found in Claude response. Raw:", text);
+      console.error("No JSON found in Claude response.");
       const fallbackPayload: EstimateResponse = {
         ...FALLBACK_ESTIMATE,
         pricing_version: PRICING_VERSION,
@@ -269,11 +299,26 @@ export async function POST(req: Request) {
       return NextResponse.json(fallbackPayload, { status: 200 });
     }
 
-    let parsed: EstimateResponse;
+    let parsed: unknown;
     try {
-      parsed = JSON.parse(jsonSlice) as EstimateResponse;
+      parsed = JSON.parse(jsonSlice) as unknown;
     } catch (err) {
-      console.error("Failed to parse Claude JSON", err, "Raw:", text);
+      console.error(
+        "Failed to parse Claude JSON:",
+        err instanceof Error ? err.message : "Unknown parse error",
+      );
+      const fallbackPayload: EstimateResponse = {
+        ...FALLBACK_ESTIMATE,
+        pricing_version: PRICING_VERSION,
+        fallback: true,
+      };
+      after(() => runPostSubmit(answers, fallbackPayload));
+      return NextResponse.json(fallbackPayload, { status: 200 });
+    }
+
+    const normalized = normalizeEstimateResponse(parsed);
+    if (!normalized) {
+      console.error("Claude returned an invalid estimate shape.");
       const fallbackPayload: EstimateResponse = {
         ...FALLBACK_ESTIMATE,
         pricing_version: PRICING_VERSION,
@@ -284,13 +329,16 @@ export async function POST(req: Request) {
     }
 
     const finalPayload: EstimateResponse = {
-      ...parsed,
+      ...normalized,
       pricing_version: PRICING_VERSION,
     };
     after(() => runPostSubmit(answers, finalPayload));
     return NextResponse.json(finalPayload);
   } catch (err) {
-    console.error("Anthropic call failed", err);
+    console.error(
+      "Anthropic call failed:",
+      err instanceof Error ? err.message : "Unknown error",
+    );
     const fallbackPayload: EstimateResponse = {
       ...FALLBACK_ESTIMATE,
       pricing_version: PRICING_VERSION,

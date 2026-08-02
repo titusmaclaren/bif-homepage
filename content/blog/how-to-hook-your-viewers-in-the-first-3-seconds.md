@@ -2,6 +2,7 @@
 title: "5 Ways to Engage Your Viewers with a 3 Second Hook"
 slug: "how-to-hook-your-viewers-in-the-first-3-seconds"
 date: "2023-02-01"
+updated: "2026-08-01"
 description: "Engage your viewers in just 3 seconds! Discover 5 creative ways to hook your audience and make them stop scrolling through their social feeds."
 author: "Black Iris Films"
 thumbnail: "/blog/how-to-hook-your-viewers-in-the-first-3-seconds-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Engage your viewers in just 3 seconds! Discover 5 creative way
 canonicalUrl: "https://blackirisfilms.com/post/how-to-hook-your-viewers-in-the-first-3-seconds"
 published: true
 ---
-It’s become pretty common knowledge for social videos that you have to hook your audience in the first 3 seconds. Something attention-grabbing enough to stop them scrolling through their social feed. What isn’t so common knowledge is how you do it.
+For short-form social video in 2026, the first few seconds still have to earn your audience's attention. You need something strong enough to stop the scroll, but what isn’t so common knowledge is how to do it.
 
 ![Girl's eyes looking at camera](/blog/how-to-hook-your-viewers-in-the-first-3-seconds-hero.jpg)
 

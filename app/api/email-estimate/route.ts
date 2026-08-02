@@ -16,16 +16,24 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
 import { renderEstimateHtml } from "@/lib/renderEstimateHtml";
-import type { EstimateResponse } from "@/lib/pricing";
+import {
+  normalizeEstimateResponse,
+  type EstimateResponse,
+} from "@/lib/pricing";
 import {
   checkRateLimit,
-  cleanText,
+  cleanSingleLine,
   isTooLong,
   isValidEmail,
+  isSameOriginRequest,
+  readJsonObject,
+  RequestBodyError,
 } from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 export const maxDuration = 15;
+
+const MAX_BODY_BYTES = 32 * 1024;
 
 type Body = {
   email?: string;
@@ -36,17 +44,30 @@ type Body = {
 };
 
 export async function POST(req: Request) {
-  let body: Body;
-  try {
-    body = (await req.json()) as Body;
-  } catch {
+  if (!isSameOriginRequest(req)) {
     return NextResponse.json(
-      { ok: false, error: "Invalid JSON body" },
-      { status: 400 },
+      { ok: false, error: "Cross-origin email requests are not allowed." },
+      { status: 403 },
     );
   }
 
-  if (cleanText(body.website)) {
+  let body: Body;
+  try {
+    body = (await readJsonObject(req, MAX_BODY_BYTES)) as Body;
+  } catch (error) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          error instanceof RequestBodyError
+            ? error.message
+            : "Invalid JSON body",
+      },
+      { status: error instanceof RequestBodyError ? error.status : 400 },
+    );
+  }
+
+  if (cleanSingleLine(body.website)) {
     return NextResponse.json({ ok: true });
   }
 
@@ -69,9 +90,9 @@ export async function POST(req: Request) {
     );
   }
 
-  const email = cleanText(body.email).toLowerCase();
-  const name = cleanText(body.name);
-  const estimate = body.estimate;
+  const email = cleanSingleLine(body.email).toLowerCase();
+  const name = cleanSingleLine(body.name);
+  const estimate = normalizeEstimateResponse(body.estimate);
 
   if (!email || !isValidEmail(email)) {
     return NextResponse.json(
@@ -87,9 +108,9 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!estimate || typeof estimate !== "object") {
+  if (!estimate) {
     return NextResponse.json(
-      { ok: false, error: "Estimate missing." },
+      { ok: false, error: "Estimate missing or invalid." },
       { status: 400 },
     );
   }

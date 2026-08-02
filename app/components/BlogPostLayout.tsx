@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { BlogPost } from "../lib/blog";
-import { formatPostDate } from "../lib/blog";
+import { formatPostDate, formatPostUpdatedDate } from "../lib/blog";
 import { FinalCTA } from "./FinalCTA";
 import { Footer } from "./Footer";
 import { Nav } from "./Nav";
@@ -31,6 +31,8 @@ export function BlogPostLayout({ post }: BlogPostLayoutProps) {
                   <span>{formatPostDate(post.date)}</span>
                   <span className="text-white/22">/</span>
                   <span>{post.readingTime}</span>
+                  <span className="text-white/22">/</span>
+                  <span>{formatPostUpdatedDate(post.updated)}</span>
                 </div>
 
                 <h1 className="max-w-4xl text-4xl font-bold leading-[1.04] md:text-5xl lg:text-[58px]">

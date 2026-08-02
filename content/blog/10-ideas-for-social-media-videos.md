@@ -2,6 +2,7 @@
 title: "10 Ideas for Social Media Videos"
 slug: "10-ideas-for-social-media-videos"
 date: "2018-12-12"
+updated: "2026-08-01"
 description: "Stuck for social media video ideas? Here are 10 creative concepts to boost engagement and showcase your brand"
 author: "Black Iris Films"
 thumbnail: "/blog/10-ideas-for-social-media-videos-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Stuck for social media video ideas? Here are 10 creative conce
 canonicalUrl: "https://blackirisfilms.com/post/10-ideas-for-social-media-videos"
 published: true
 ---
-Running short of inspiration for social media videos for your business? Well hopefully this list will help generate some creative solutions.
+Running short of inspiration for social media videos for your business? These ideas still work in 2026, especially when adapted for vertical feeds, short-form series and platform-native edits.
 
 ![](/blog/10-ideas-for-social-media-videos-hero.jpg)
 

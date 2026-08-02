@@ -2,6 +2,7 @@
 title: "How NOT to Look Like an A**hole in Your Marketing Videos"
 slug: "how-not-to-look-like-an-a-hole-in-your-marketing-videos"
 date: "2018-08-22"
+updated: "2026-08-01"
 description: "Avoid common mistakes that make marketing videos feel inauthentic. Tips for building genuine emotional connections on camera."
 author: "Black Iris Films"
 thumbnail: "/blog/how-not-to-look-like-an-a-hole-in-your-marketing-videos-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Avoid common mistakes that make marketing videos feel inauthen
 canonicalUrl: "https://blackirisfilms.com/post/how-not-to-look-like-an-a-hole-in-your-marketing-videos"
 published: true
 ---
-We've all seen it. Someone pops up on your social media feed that just makes you cringe. If you want people to form an emotional connection with your brand, then there's a few basic rules you can follow to avoid the dreaded 'a**hole' look.
+We've all seen a presenter appear in the feed and make the audience recoil. Confidence lands best when it feels human, so a few basic choices can help you avoid the dreaded 'a**hole' look.
 
 ![](/blog/how-not-to-look-like-an-a-hole-in-your-marketing-videos-hero.jpg)
 

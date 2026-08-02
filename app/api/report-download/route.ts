@@ -4,6 +4,9 @@ import {
   cleanText,
   isTooLong,
   isValidEmail,
+  isSameOriginRequest,
+  readUrlEncodedForm,
+  RequestBodyError,
 } from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
@@ -11,6 +14,7 @@ export const maxDuration = 30;
 
 const REPORT_URL = "/the-social-media-theory-of-everything/9389162002";
 const FORM_URL = "/the-social-media-theory-of-everything#lead-form";
+const MAX_BODY_BYTES = 8 * 1024;
 
 type ApiEnvelope = {
   data?: { id?: string; name?: string };
@@ -19,7 +23,27 @@ type ApiEnvelope = {
 };
 
 export async function POST(request: Request) {
-  const form = await request.formData();
+  if (!isSameOriginRequest(request)) {
+    return sendHtml(
+      403,
+      "Submission blocked",
+      "Cross-origin form submissions are not allowed.",
+    );
+  }
+
+  let form: URLSearchParams;
+  try {
+    form = await readUrlEncodedForm(request, MAX_BODY_BYTES);
+  } catch (error) {
+    return sendHtml(
+      error instanceof RequestBodyError ? error.status : 400,
+      "Invalid form submission",
+      error instanceof RequestBodyError
+        ? error.message
+        : "The form submission could not be read.",
+    );
+  }
+
   const name = cleanText(form.get("name"));
   const email = cleanText(form.get("email")).toLowerCase();
   const subscribe = cleanText(form.get("subscribe")) === "yes";
@@ -91,6 +115,7 @@ export async function POST(request: Request) {
         status: "active",
         resubscribe: true,
       }),
+      signal: AbortSignal.timeout(8_000),
     },
   );
   const subscriberBody = await readJson(subscriberResponse);
@@ -98,7 +123,6 @@ export async function POST(request: Request) {
   if (!subscriberResponse.ok) {
     console.error("MailerLite subscriber upsert failed", {
       status: subscriberResponse.status,
-      response: subscriberBody,
     });
     return sendHtml(
       subscriberResponse.status === 422 ? 400 : 502,
@@ -119,13 +143,21 @@ export async function POST(request: Request) {
   }
 
   const groupUrl = `https://connect.mailerlite.com/api/subscribers/${encodeURIComponent(subscriberId)}/groups/${encodeURIComponent(reportGroupId)}`;
-  const unassignResponse = await fetch(groupUrl, { method: "DELETE", headers });
+  const unassignResponse = await fetch(groupUrl, {
+    method: "DELETE",
+    headers,
+    signal: AbortSignal.timeout(8_000),
+  });
   if (!unassignResponse.ok && unassignResponse.status !== 404) {
     console.error("MailerLite report group unassign failed", unassignResponse.status);
     return sendHtml(502, "Download request failed", "The report email could not be refreshed. Please try again.");
   }
 
-  const assignResponse = await fetch(groupUrl, { method: "POST", headers });
+  const assignResponse = await fetch(groupUrl, {
+    method: "POST",
+    headers,
+    signal: AbortSignal.timeout(8_000),
+  });
   if (!assignResponse.ok) {
     console.error("MailerLite report group assign failed", assignResponse.status);
     return sendHtml(502, "Download request failed", "The report email could not be triggered. Please try again.");
@@ -179,6 +211,7 @@ async function addWixNewsletterContact({
             labelKeys: { items: labelKeys },
           },
         }),
+        signal: AbortSignal.timeout(8_000),
       },
     );
     if (!contactResponse.ok && contactResponse.status !== 409) {
@@ -202,6 +235,7 @@ async function addWixNewsletterContact({
             },
           },
         }),
+        signal: AbortSignal.timeout(8_000),
       },
     );
     if (!consentResponse.ok) {

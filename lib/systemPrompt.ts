@@ -4,6 +4,7 @@
  * lifetime of the process, so we don't pay disk IO on every request.
  */
 
+import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { PRICING_VERSION } from "./pricing";

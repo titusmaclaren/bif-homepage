@@ -2,6 +2,7 @@
 title: "Striking the Perfect Duration in your B2B Video Marketing Strategy"
 slug: "striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
 date: "2023-10-25"
+updated: "2026-08-01"
 description: "Video duration can be a double-edged sword. Too long, and you risk losing viewer interest. Too short, and you might not convey your message effectively. •."
 author: "Black Iris Films"
 thumbnail: "/blog/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy-hero.jpg"
@@ -15,10 +16,10 @@ metaDescription: "Video duration can be a double-edged sword. Too long, and you 
 canonicalUrl: "https://blackirisfilms.com/post/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
 published: true
 ---
-Video duration can be a double-edged sword. Too long, and you risk losing viewer interest. Too short, and you might not convey your message effectively.
+There is no universal ideal duration for B2B video in 2026: the right length depends on the audience, platform and job the video needs to do. Too long, and you risk losing interest; too short, and you may not convey enough value.
 
-- According to LinkedIn, B2B videos should ideally be between 30 seconds and 2 minutes for maximum engagement.
-- Keep It Short: No explainer video should exceed 2 minutes. The majority prefer videos to be 60 seconds or less.
+- Match the platform: Use concise cuts for social discovery and let high-intent explainers or case studies run longer when the detail is useful.
+- Earn every second: Review retention data, remove repetition and create modular cutdowns for different placements.
 
 🎬 Find more video marketing strategy tips on nailing the ideal duration in our comprehensive video.
 

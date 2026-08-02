@@ -2,6 +2,7 @@
 title: "DIY Video for Business - Train Yourself With Your Smartphone"
 slug: "diy-video-for-business-train-yourself-with-your-smartphone"
 date: "2018-11-07"
+updated: "2026-08-01"
 description: "Learn DIY video tips for business using your smartphone. Budget-friendly techniques to create professional marketing content."
 author: "Black Iris Films"
 thumbnail: "/blog/diy-video-for-business-train-yourself-with-your-smartphone-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Learn DIY video tips for business using your smartphone. Budge
 canonicalUrl: "https://blackirisfilms.com/post/diy-video-for-business-train-yourself-with-your-smartphone"
 published: true
 ---
-Like anything in business, you get what you pay for and we honestly recommend getting professionals to create the videos for your business (at least the more important ones). Before doing that, however, it’s definitely beneficial to get some practice with on-camera presentation and figure out what works and what doesn’t.
+Professional production still matters for high-stakes brand assets, but modern phone cameras are excellent for practising your delivery and producing timely, lower-risk updates. Before a formal shoot, it is useful to rehearse on camera and learn what feels natural.
 
 ![](/blog/diy-video-for-business-train-yourself-with-your-smartphone-hero.jpg)
 

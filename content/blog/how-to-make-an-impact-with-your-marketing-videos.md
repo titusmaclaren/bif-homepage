@@ -2,6 +2,7 @@
 title: "How to Make an IMPACT With Your Marketing Videos"
 slug: "how-to-make-an-impact-with-your-marketing-videos"
 date: "2018-10-24"
+updated: "2026-08-01"
 description: "Make your marketing videos matter. Learn how to create purposeful, impactful video content that resonates with your audience."
 author: "Black Iris Films"
 thumbnail: "/blog/how-to-make-an-impact-with-your-marketing-videos-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Make your marketing videos matter. Learn how to create purpose
 canonicalUrl: "https://blackirisfilms.com/post/how-to-make-an-impact-with-your-marketing-videos"
 published: true
 ---
-Okay, just a heads up - we're going to suggest doing something to solve meaningful problems again. But hear us out!
+Okay, just a heads up - we're going to suggest using your marketing to help solve a meaningful problem. In 2026, audiences are especially quick to spot the difference between genuine action and purpose-washing.
 
 ![](/blog/how-to-make-an-impact-with-your-marketing-videos-hero.jpg)
 

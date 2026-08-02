@@ -1,7 +1,8 @@
 ---
-title: "Why Emotionally Connected Customers Spend 2x More"
+title: "Why Emotionally Connected Customers Are More Valuable"
 slug: "why-emotionally-connected-customers-spend-2-more"
 date: "2025-10-21"
+updated: "2026-08-01"
 description: "Why emotional connection matters more than satisfaction, and how the FEEL, SHOW, DELIVER framework helps brands create video content people actually care about."
 author: "Black Iris Films"
 thumbnail: "/blog/why-emotionally-connected-customers-spend-2-more-hero.png"
@@ -10,7 +11,7 @@ tags:
   - Engagement
   - Emotional Marketing
   - Brand Storytelling
-metaTitle: "Why Emotionally Connected Customers Spend 2x More"
+metaTitle: "Why Emotionally Connected Customers Are More Valuable"
 metaDescription: "Learn why emotionally connected customers are more valuable, and how brands can use the FEEL, SHOW, DELIVER framework to create video content that moves people."
 canonicalUrl: "https://blackirisfilms.com/post/why-emotionally-connected-customers-spend-2-more"
 published: true
@@ -38,7 +39,7 @@ Are there any brands that just mean more to you? Social accounts that you'll sto
 
 Harvard Business Review found emotionally connected customers are worth 52% more over their lifetime than customers who are merely satisfied.
 
-Satisfaction is fading. Emotion lasts.
+Satisfaction is the baseline. Emotion builds memory, preference and loyalty.
 
 ## Satisfaction is the floor, not the ceiling
 

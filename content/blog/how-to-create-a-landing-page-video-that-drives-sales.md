@@ -2,6 +2,7 @@
 title: "How to Create a Landing Page Video That Drives Sales"
 slug: "how-to-create-a-landing-page-video-that-drives-sales"
 date: "2018-07-25"
+updated: "2026-08-01"
 description: "Learn how to create landing page videos that convert visitors into customers. Structure, tips, and strategy for sales-driving video."
 author: "Black Iris Films"
 thumbnail: "/blog/how-to-create-a-landing-page-video-that-drives-sales-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Learn how to create landing page videos that convert visitors 
 canonicalUrl: "https://blackirisfilms.com/post/how-to-create-a-landing-page-video-that-drives-sales"
 published: true
 ---
-A great landing page video, also known as a homepage video, a website video, or a Video Sales Letter (VSL) is crucial to maximizing your conversions and the resulting revenue. According to news shared by Hubspot, embedding videos in landing pages can increase conversion rates by 80%.
+A strong landing page video—also known as a homepage video, website video or Video Sales Letter (VSL)—can improve understanding and conversion when it answers the right questions quickly. The result depends on the offer, audience, page and measurement method, so test it against a clear baseline.
 
 Our preferred name is the VSL, because it keeps the purpose of the landing page video clear - a value proposition to the potential client or customer for why you are the best solution to their problem.
 

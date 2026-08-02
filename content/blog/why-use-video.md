@@ -2,6 +2,7 @@
 title: "Why Use Video?"
 slug: "why-use-video"
 date: "2018-07-04"
+updated: "2026-08-01"
 description: "Why should your business use video marketing? Key stats and strategies for using video to drive leads through your marketing funnel."
 author: "Black Iris Films"
 thumbnail: "/blog/why-use-video-hero.jpg"
@@ -15,11 +16,11 @@ metaDescription: "Why should your business use video marketing? Key stats and st
 canonicalUrl: "https://blackirisfilms.com/post/why-use-video"
 published: true
 ---
-A marketing funnel is currently the best method for marketing your business, as it creates paths for your prospects to follow that lead directly to your sale. Video is often seen as an afterthought when it comes to online marketing but, in fact, it should really be the MVP on your team. If you use video correctly, it should function as the oil in your sales machine, rewarding customers for taking the previous step and encouraging them to take the next step.
+A clear customer journey gives prospects useful paths from discovery to decision, and video can support each step rather than sit as an afterthought. Used well, it can demonstrate value, answer objections and encourage the next action.
 
 ![](/blog/why-use-video-hero.jpg)
 
-Here are 10 statistics that show how valuable video has become in recent years (according to a Cisco study):
+The figures below are retained as a historical snapshot from the original 2018 article, not as current benchmarks. In 2026, use first-party analytics and current platform reporting to decide how video contributes to your funnel.
 
 - Video is projected to claim more than 80% of all web traffic by 2019.
 - 87% of online marketers are currently using video content in their digital marketing strategies.

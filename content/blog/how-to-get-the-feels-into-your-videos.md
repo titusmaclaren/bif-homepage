@@ -2,6 +2,7 @@
 title: "How to Get the 'Feels' Into Your Videos"
 slug: "how-to-get-the-feels-into-your-videos"
 date: "2018-08-08"
+updated: "2026-08-01"
 description: "Emotional connection drives marketing results. Learn practical techniques to inject genuine feeling into your business videos."
 author: "Black Iris Films"
 thumbnail: "/blog/how-to-get-the-feels-into-your-videos-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Emotional connection drives marketing results. Learn practical
 canonicalUrl: "https://blackirisfilms.com/post/how-to-get-the-feels-into-your-videos"
 published: true
 ---
-In a world of massively overwhelming, omnipresent marketing, the number 1 thing that people now respond to is emotional effect. We’re so adept at technology that we navigate the internet based on feel. If a brand feels good to us, we're more likely to buy from them.
+In a world of overwhelming marketing and increasingly automated content, genuine emotional effect is one of the strongest ways to stand out. We’re so adept at technology that we navigate the internet based on feel. If a brand feels good to us, we're more likely to buy from them.
 
 First we feel, then we think.
 

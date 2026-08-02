@@ -2,6 +2,7 @@
 title: "Video Marketing Metrics: An Agency Guide"
 slug: "an-agency-guide-to-video-marketing-metrics"
 date: "2024-01-31"
+updated: "2026-08-01"
 description: "Discover how to decode video marketing metrics with our in-depth guide. Learn key terms and strategies from a leading Sydney video marketing agency."
 author: "Black Iris Films"
 thumbnail: "/blog/an-agency-guide-to-video-marketing-metrics-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Discover how to decode video marketing metrics with our in-dep
 canonicalUrl: "https://blackirisfilms.com/post/an-agency-guide-to-video-marketing-metrics"
 published: true
 ---
-As any agency knows, metrics are the heartbeat of any marketing campaign, video included. Yet, the terms can sometimes seem like a foreign language. Here are some key terms to understand:
+Metrics remain the heartbeat of any marketing campaign, video included, but platform-specific definitions and privacy changes mean context matters as much as the headline number. Here are some key terms to understand:
 
 - Views: Counted differently across platforms, YouTube counts after 30 seconds, Facebook after 3.
 - Play Rate: The percentage of viewers who clicked play.

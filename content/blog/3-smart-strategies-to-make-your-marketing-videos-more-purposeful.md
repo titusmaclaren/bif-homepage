@@ -2,6 +2,7 @@
 title: "3 Smart Strategies to Make Your Marketing Videos More Purposeful"
 slug: "3-smart-strategies-to-make-your-marketing-videos-more-purposeful"
 date: "2018-10-02"
+updated: "2026-08-01"
 description: "Stop making aimless marketing videos. Here are 3 smart strategies to make your video content more purposeful and results-driven."
 author: "Black Iris Films"
 thumbnail: "/blog/3-smart-strategies-to-make-your-marketing-videos-more-purposeful-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Stop making aimless marketing videos. Here are 3 smart strateg
 canonicalUrl: "https://blackirisfilms.com/post/3-smart-strategies-to-make-your-marketing-videos-more-purposeful"
 published: true
 ---
-People quite often create marketing videos with an 'if you build it they will come' attitude but this, sadly, isn't always the case. Marketing videos in today's digital landscape should be purposeful.
+People still create marketing videos with an 'if you build it they will come' attitude, but in 2026 every asset needs a clear audience, channel and next action.
 
 A well-planned and strategic marketing video will hook your viewer's attention, keep it, and funnel them through to your website. If they aren't purposeful, you could be wasting money creating a worthless asset, instead of an asset that adds value to your business.
 

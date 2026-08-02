@@ -62,16 +62,9 @@ function missingEnv() {
 
 function json(data: unknown, init?: ResponseInit) {
   const headers = new Headers(init?.headers);
-  headers.set("Access-Control-Allow-Origin", "*");
-  headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-  headers.set("Access-Control-Allow-Headers", "Content-Type");
   headers.set("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
 
   return NextResponse.json(data, { ...init, headers });
-}
-
-export function OPTIONS() {
-  return json({});
 }
 
 async function getAccessToken() {
@@ -87,6 +80,7 @@ async function getAccessToken() {
       grant_type: "refresh_token",
     }),
     cache: "no-store",
+    signal: AbortSignal.timeout(8_000),
   });
 
   const data = (await response.json()) as GoogleTokenResponse;
@@ -151,6 +145,7 @@ export async function GET() {
             Authorization: `Bearer ${accessToken}`,
           },
           next: { revalidate: 3600 },
+          signal: AbortSignal.timeout(8_000),
         },
       );
 
@@ -178,14 +173,15 @@ export async function GET() {
       reviews,
     });
   } catch (error) {
+    console.error(
+      "Google reviews request failed:",
+      error instanceof Error ? error.message : "Unknown error",
+    );
     return json(
       {
         configured: true,
         reviews: [],
-        message:
-          error instanceof Error
-            ? error.message
-            : "Unable to load Google reviews",
+        message: "Unable to load Google reviews right now.",
       },
       { status: 502 },
     );

@@ -2,6 +2,7 @@
 title: "B2B Video Marketing: Engaging the Millennial Decision-Makers"
 slug: "b2b-video-marketing-engaging-the-millennial-decision-makers"
 date: "2024-01-08"
+updated: "2026-08-01"
 description: "Learn how to engage Millennial B2B decision-makers with video marketing. Strategies for the generation reshaping business buying."
 author: "Black Iris Films"
 thumbnail: "/blog/b2b-video-marketing-engaging-the-millennial-decision-makers-hero.jpg"
@@ -18,7 +19,7 @@ published: true
 ---
 [https://www.youtube.com/watch?v=PtKBwTh1YME](https://www.youtube.com/watch?v=PtKBwTh1YME)
 
-Once upon a time, in the not-so-distant past, a generational shift began to transform the landscape of business. As the sun set on the era dominated by Baby Boomers and Gen Xers, a new dawn broke with Millennials stepping into decision-making roles. Born between 1980 and 2000, this generation brought with them a new set of preferences, reshaping the way businesses communicate. This story isn't just about change; it's about adaptation and the power of b2b video marketing in the age of Millennials.
+Millennials now occupy many senior B2B decision-making roles, while Gen Z increasingly influences research and vendor shortlists. The opportunity is no longer about anticipating a generational shift; it is about communicating clearly with digitally fluent buying committees.
 
 ## Understanding the Millennial Mindset
 

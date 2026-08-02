@@ -42,6 +42,7 @@ export async function generateMetadata({
       locale: "en_AU",
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated,
       authors: [post.author],
       tags: post.tags,
       images: [

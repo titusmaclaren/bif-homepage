@@ -3,14 +3,19 @@ import { sendEmail } from "@/lib/email";
 import { subscribeToNewsletter } from "@/lib/beehiiv";
 import {
   checkRateLimit,
+  cleanSingleLine,
   cleanText,
   isTooLong,
   isValidEmail,
+  isSameOriginRequest,
+  readJsonObject,
+  RequestBodyError,
 } from "@/lib/requestSecurity";
 
 export const runtime = "nodejs";
 
 const DEFAULT_TO_EMAIL = "info@blackirisfilms.com";
+const MAX_BODY_BYTES = 16 * 1024;
 const FIELD_LIMITS = {
   name: 100,
   phone: 50,
@@ -45,18 +50,33 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
-  let payload: ContactPayload;
-
-  try {
-    payload = (await request.json()) as ContactPayload;
-  } catch {
+  if (!isSameOriginRequest(request)) {
     return NextResponse.json(
-      { message: "Invalid form submission." },
-      { status: 400 },
+      { message: "Cross-origin form submissions are not allowed." },
+      { status: 403 },
     );
   }
 
-  if (cleanText(payload.website)) {
+  let payload: ContactPayload;
+
+  try {
+    payload = (await readJsonObject(
+      request,
+      MAX_BODY_BYTES,
+    )) as ContactPayload;
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message:
+          error instanceof RequestBodyError
+            ? error.message
+            : "Invalid form submission.",
+      },
+      { status: error instanceof RequestBodyError ? error.status : 400 },
+    );
+  }
+
+  if (cleanSingleLine(payload.website)) {
     return NextResponse.json({ ok: true });
   }
 
@@ -78,14 +98,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const name = cleanText(payload.name);
-  const phone = cleanText(payload.phone);
-  const email = cleanText(payload.email).toLowerCase();
-  const company = cleanText(payload.company);
-  const pack = cleanText(payload.pack);
-  const foundUs = cleanText(payload.foundUs);
+  const name = cleanSingleLine(payload.name);
+  const phone = cleanSingleLine(payload.phone);
+  const email = cleanSingleLine(payload.email).toLowerCase();
+  const company = cleanSingleLine(payload.company);
+  const pack = cleanSingleLine(payload.pack);
+  const foundUs = cleanSingleLine(payload.foundUs);
   const message = cleanText(payload.message);
-  const source = cleanText(payload.source) || "Website contact form";
+  const source =
+    cleanSingleLine(payload.source) || "Website contact form";
   const subscribed = payload.subscribed === true;
 
   const isAiImagery = source.toLowerCase().includes("ai imagery");

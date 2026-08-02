@@ -18,7 +18,7 @@ export const SOCIAL = {
   vimeo: "https://vimeo.com/blackirisfilms",
   linkedin: "https://www.linkedin.com/company/black-iris-films/",
   youtube: "https://www.youtube.com/channel/UCHmhhExvQyjn5lnbt4m3Wrw",
-  facebook: "http://www.facebook.com/blackirisfilms",
+  facebook: "https://www.facebook.com/blackirisfilms",
 };
 
 export const NAV = {

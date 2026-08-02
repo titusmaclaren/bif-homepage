@@ -2,6 +2,7 @@
 title: "10 Ways to Make the World a Better Place with Video Marketing"
 slug: "10-ways-to-make-the-world-a-better-place-with-video-marketing"
 date: "2018-07-11"
+updated: "2026-08-01"
 description: "Use your video marketing for good. 10 ways responsible capitalism and purpose-driven content can grow your brand and help the world."
 author: "Black Iris Films"
 thumbnail: "/blog/10-ways-to-make-the-world-a-better-place-with-video-marketing-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Use your video marketing for good. 10 ways responsible capital
 canonicalUrl: "https://blackirisfilms.com/post/10-ways-to-make-the-world-a-better-place-with-video-marketing"
 published: true
 ---
-So you'd like something in your job to feel good about but can't find the financial justification? Well you're in luck!
+Want your work to create measurable social value without losing commercial focus? You're in luck.
 
 Video Marketing is widely varied and far reaching, so it's a power that we believe should be used for growth, and for good. Responsible Capitalism is a brilliant trend that's sweeping the globe. Simply put, it's using the power of business to help the less fortunate. It's fantastic because it provides profit incentive for businesses to be philanthropic. The gap between the rich and the poor is growing worldwide and we believe that this is one way we can all serve to shrink that gap, while increasing revenue.
 

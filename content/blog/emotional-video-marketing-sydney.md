@@ -1,7 +1,8 @@
 ---
-title: "Emotional Video Marketing in Sydney (2025 Guide)"
+title: "Emotional Video Marketing in Sydney (2026 Guide)"
 slug: "emotional-video-marketing-sydney"
 date: "2024-07-01"
+updated: "2026-08-01"
 description: "Discover the science behind emotional marketing. Learn how targeting feelings over facts drives brand loyalty, recall, and conversions."
 author: "Black Iris Films"
 thumbnail: "/blog/emotional-video-marketing-sydney-hero.jpg"
@@ -15,12 +16,12 @@ tags:
   - "emotional marketing"
   - "B2C"
   - "retention"
-metaTitle: "Emotional Video Marketing in Sydney (2025 Guide)"
+metaTitle: "Emotional Video Marketing in Sydney (2026 Guide)"
 metaDescription: "Discover the science behind emotional marketing. Learn how targeting feelings over facts drives brand loyalty, recall, and conversions."
 canonicalUrl: "https://blackirisfilms.com/post/emotional-video-marketing-sydney"
 published: true
 ---
-Did you know that 95% of a purchasing decision is made with our subconscious mind? Our emotions, in fact, play the primary role when it comes to buying decisions. We decide emotionally and then justify with logic. Therefore, it makes sense that communicating your value in a way that feels human and relatable should be the top priority in sales and marketing.
+Buying decisions are rarely purely rational. People notice, remember and act on stories that make them feel something, then use facts to validate the choice. Communicating your value in a human and relatable way should therefore be a priority in sales and marketing.
 This isn't merely a belief—it's an objective, measurable truth. Let’s delve into the compelling world of emotional marketing and understand why it’s pivotal for your brand’s success.
 
 ![the emotional brain](/blog/emotional-video-marketing-sydney-hero.jpg)

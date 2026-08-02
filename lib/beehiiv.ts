@@ -1,3 +1,5 @@
+import "server-only";
+
 const BEEHIIV_API = "https://api.beehiiv.com/v2";
 
 type SubscribeInput = {
@@ -72,14 +74,11 @@ export async function subscribeToNewsletter(
         signal: controller.signal,
       },
     );
-    clearTimeout(timer);
-
     if (!response.ok) {
-      const text = await response.text().catch(() => "");
-      console.error("[beehiiv] non-2xx", response.status, text.slice(0, 400));
+      console.error("[beehiiv] non-2xx", response.status);
       return {
         ok: false,
-        error: `Beehiiv ${response.status}: ${text.slice(0, 400)}`,
+        error: `Beehiiv request failed with status ${response.status}`,
       };
     }
 
@@ -87,5 +86,7 @@ export async function subscribeToNewsletter(
   } catch (err) {
     console.error("[beehiiv] subscription failed", err);
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  } finally {
+    clearTimeout(timer);
   }
 }

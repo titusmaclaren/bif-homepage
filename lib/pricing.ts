@@ -26,6 +26,132 @@ export type EstimateResponse = {
   fallback?: boolean;
 };
 
+const ESTIMATE_TEXT_LIMITS = {
+  scope_band: 120,
+  rationale: 1200,
+  description: 1200,
+  escalation_reason: 600,
+  pricing_version: 40,
+};
+
+const MAX_ESTIMATE_AMOUNT = 1_000_000;
+
+export function normalizeEstimateResponse(
+  value: unknown,
+): EstimateResponse | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+
+  const input = value as Record<string, unknown>;
+  const scopeBand = boundedString(
+    input.scope_band,
+    ESTIMATE_TEXT_LIMITS.scope_band,
+  );
+  const rationale = boundedString(
+    input.rationale,
+    ESTIMATE_TEXT_LIMITS.rationale,
+  );
+  const productionDescription = boundedString(
+    input.production_description,
+    ESTIMATE_TEXT_LIMITS.description,
+  );
+  const postProductionDescription = boundedString(
+    input.post_production_description,
+    ESTIMATE_TEXT_LIMITS.description,
+  );
+  const preProductionDescription = nullableBoundedString(
+    input.pre_production_description,
+    ESTIMATE_TEXT_LIMITS.description,
+  );
+  const escalationReason = nullableBoundedString(
+    input.escalation_reason,
+    ESTIMATE_TEXT_LIMITS.escalation_reason,
+  );
+  const pricingVersion = optionalBoundedString(
+    input.pricing_version,
+    ESTIMATE_TEXT_LIMITS.pricing_version,
+  );
+  const amounts = {
+    production_low: estimateAmount(input.production_low),
+    production_high: estimateAmount(input.production_high),
+    post_production_low: estimateAmount(input.post_production_low),
+    post_production_high: estimateAmount(input.post_production_high),
+    pre_production_low: estimateAmount(input.pre_production_low),
+    pre_production_high: estimateAmount(input.pre_production_high),
+    total_low: estimateAmount(input.total_low),
+    total_high: estimateAmount(input.total_high),
+  };
+
+  if (
+    scopeBand === null ||
+    rationale === null ||
+    productionDescription === null ||
+    postProductionDescription === null ||
+    preProductionDescription === undefined ||
+    escalationReason === undefined ||
+    pricingVersion === null ||
+    Object.values(amounts).some((amount) => amount === null) ||
+    typeof input.escalate !== "boolean"
+  ) {
+    return null;
+  }
+
+  if (
+    (amounts.production_low as number) > (amounts.production_high as number) ||
+    (amounts.post_production_low as number) >
+      (amounts.post_production_high as number) ||
+    (amounts.pre_production_low as number) >
+      (amounts.pre_production_high as number) ||
+    (amounts.total_low as number) > (amounts.total_high as number)
+  ) {
+    return null;
+  }
+
+  return {
+    scope_band: scopeBand,
+    production_low: amounts.production_low as number,
+    production_high: amounts.production_high as number,
+    post_production_low: amounts.post_production_low as number,
+    post_production_high: amounts.post_production_high as number,
+    pre_production_low: amounts.pre_production_low as number,
+    pre_production_high: amounts.pre_production_high as number,
+    total_low: amounts.total_low as number,
+    total_high: amounts.total_high as number,
+    rationale,
+    production_description: productionDescription,
+    post_production_description: postProductionDescription,
+    pre_production_description: preProductionDescription,
+    escalate: input.escalate,
+    escalation_reason: escalationReason,
+    ...(pricingVersion ? { pricing_version: pricingVersion } : {}),
+    ...(input.fallback === true ? { fallback: true } : {}),
+  };
+}
+
+function boundedString(value: unknown, maxLength: number) {
+  return typeof value === "string" && value.length <= maxLength ? value : null;
+}
+
+function optionalBoundedString(value: unknown, maxLength: number) {
+  if (value === undefined) return undefined;
+  return boundedString(value, maxLength);
+}
+
+function nullableBoundedString(value: unknown, maxLength: number) {
+  if (value === null) return null;
+  return boundedString(value, maxLength) ?? undefined;
+}
+
+function estimateAmount(value: unknown) {
+  return typeof value === "number" &&
+    Number.isFinite(value) &&
+    value >= 0 &&
+    value <= MAX_ESTIMATE_AMOUNT
+    ? Math.round(value)
+    : null;
+}
+
 export const FALLBACK_ESTIMATE: EstimateResponse = {
   scope_band: "Brand Hero Film",
   production_low: 8500,

@@ -1,3 +1,4 @@
+import "server-only";
 import nodemailer from "nodemailer";
 
 const DEFAULT_FROM = "Black Iris Films <info@blackirisfilms.com>";
@@ -32,6 +33,9 @@ function getTransporter() {
     host,
     port,
     secure,
+    connectionTimeout: 8_000,
+    greetingTimeout: 8_000,
+    socketTimeout: 10_000,
     auth: {
       user: getRequiredEnv("SMTP_USER"),
       pass: getRequiredEnv("SMTP_PASS").replace(/\s+/g, ""),
@@ -49,6 +53,8 @@ export async function sendEmail(payload: SendPayload): Promise<SendResult> {
       text: payload.text,
       html: payload.html,
       replyTo: payload.replyTo,
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
 
     return { ok: true, id: result.messageId || "" };

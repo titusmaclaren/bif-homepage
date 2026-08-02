@@ -5,6 +5,7 @@ export type BlogFrontmatter = {
   title: string;
   slug: string;
   date: string;
+  updated: string;
   description: string;
   author: string;
   thumbnail: string;
@@ -49,6 +50,29 @@ export function formatPostDate(date: string) {
     day: "numeric",
     year: "numeric",
   }).format(new Date(`${date}T00:00:00`));
+}
+
+export function formatPostUpdatedDate(date: string) {
+  const parsedDate = new Date(`${date}T00:00:00`);
+  const day = String(parsedDate.getDate()).padStart(2, "0");
+  const lastDigit = parsedDate.getDate() % 10;
+  const lastTwoDigits = parsedDate.getDate() % 100;
+  const suffix =
+    lastTwoDigits >= 11 && lastTwoDigits <= 13
+      ? "th"
+      : lastDigit === 1
+        ? "st"
+        : lastDigit === 2
+          ? "nd"
+          : lastDigit === 3
+            ? "rd"
+            : "th";
+  const monthAndYear = new Intl.DateTimeFormat("en-AU", {
+    month: "long",
+    year: "numeric",
+  }).format(parsedDate);
+
+  return `Updated ${day}${suffix} ${monthAndYear}`;
 }
 
 function readPosts() {
@@ -112,6 +136,7 @@ function parseFrontmatter(raw: string, filename: string) {
     title: requireString(data, "title", filename),
     slug: requireString(data, "slug", filename),
     date: requireString(data, "date", filename),
+    updated: requireString(data, "updated", filename),
     description: requireString(data, "description", filename),
     author: requireString(data, "author", filename),
     thumbnail: requireString(data, "thumbnail", filename),

@@ -2,6 +2,7 @@
 title: "Why You Should Create a 'Hook' Snippet of Your Marketing Videos"
 slug: "why-you-should-create-a-hook-snippet-of-your-marketing-videos"
 date: "2018-08-13"
+updated: "2026-08-01"
 description: "Boost engagement by creating short hook snippets of your marketing videos. Drive traffic from social media to your full content."
 author: "Black Iris Films"
 thumbnail: "/blog/why-you-should-create-a-hook-snippet-of-your-marketing-videos-hero.jpg"
@@ -16,9 +17,9 @@ metaDescription: "Boost engagement by creating short hook snippets of your marke
 canonicalUrl: "https://blackirisfilms.com/post/why-you-should-create-a-hook-snippet-of-your-marketing-videos"
 published: true
 ---
-Say you've got a marketing video that's 2 minutes long. It's really important that people see it but when it comes time to promote it on Facebook™ and other social media, you're hit with a dilemma:
+Say you've got a two-minute marketing video that deserves to be seen. In 2026, the useful question is not one universal ad length, but how to adapt the strongest hook for each social placement and audience.
 
-The recommended length for any ad is 15-30 seconds.
+A concise hook cut—often 6 to 30 seconds—can introduce the value and lead interested viewers to the full story.
 
 ![](/blog/why-you-should-create-a-hook-snippet-of-your-marketing-videos-hero.jpg)
 

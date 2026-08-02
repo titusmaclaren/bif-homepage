@@ -2,6 +2,7 @@
 title: "Why You Should be Using More Text in Your Marketing Videos"
 slug: "why-you-should-be-using-text-in-your-marketing-videos"
 date: "2018-07-18"
+updated: "2026-08-01"
 description: "Most social videos play on mute. Learn why adding text overlays, captions, and titles to your marketing videos boosts engagement."
 author: "Black Iris Films"
 thumbnail: "/blog/why-you-should-be-using-text-in-your-marketing-videos-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Most social videos play on mute. Learn why adding text overlay
 canonicalUrl: "https://blackirisfilms.com/post/why-you-should-be-using-text-in-your-marketing-videos"
 published: true
 ---
-Marketing videos, primarily, are now seen through social media. When videos pop up on your Facebook, LinkedIn or Instagram feed, the sound is usually switched off for most people. So, you want to make sure that you deliver value visually first and foremost, before trying to use sound.
+Marketing videos now appear across social feeds, search results, landing pages and messaging apps, often before a viewer chooses to enable sound. Deliver the core value visually first, then use sound to deepen the experience.
 
 ![](/blog/why-you-should-be-using-text-in-your-marketing-videos-hero.jpg)
 

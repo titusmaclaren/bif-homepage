@@ -2,6 +2,7 @@
 title: "Client Testimonial Videos - When, Where & How"
 slug: "client-testimonial-videos-when-where-how"
 date: "2018-10-10"
+updated: "2026-08-01"
 description: "Client testimonial videos build trust and drive conversions. Learn when, where, and how to produce them for maximum impact."
 author: "Black Iris Films"
 thumbnail: "/blog/client-testimonial-videos-when-where-how-hero.jpg"
@@ -16,7 +17,7 @@ metaDescription: "Client testimonial videos build trust and drive conversions. L
 canonicalUrl: "https://blackirisfilms.com/post/client-testimonial-videos-when-where-how"
 published: true
 ---
-Having a video of your clients recommending your products or services can be a hugely powerful tool, but there are several important factors to consider when creating them.
+Client testimonial videos remain powerful because buyers increasingly look for specific, credible proof before contacting a supplier, but there are several important factors to consider when creating them.
 
 ![](/blog/client-testimonial-videos-when-where-how-hero.jpg)
 

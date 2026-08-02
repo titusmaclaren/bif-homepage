@@ -9,6 +9,7 @@
  * is sent.
  */
 
+import "server-only";
 import type { EstimateResponse } from "./pricing";
 
 type Answers = {
@@ -51,13 +52,13 @@ export async function captureLead(
     submittedAt: new Date().toISOString(),
   };
 
-  try {
-    // 8-second ceiling. Apps Script web apps normally respond in 1-3s; if
-    // Google is slow, we'd rather drop this lead capture than have the
-    // serverless function time out.
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
+  // 8-second ceiling. Apps Script web apps normally respond in 1-3s; if
+  // Google is slow, we'd rather drop this lead capture than have the
+  // serverless function time out.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
 
+  try {
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -67,16 +68,12 @@ export async function captureLead(
       // on POST. fetch follows redirects by default, but make sure.
       redirect: "follow",
     });
-    clearTimeout(timer);
-
     if (!res.ok) {
-      console.error(
-        "[leadCapture] webhook returned non-2xx",
-        res.status,
-        await res.text().catch(() => ""),
-      );
+      console.error("[leadCapture] webhook returned non-2xx", res.status);
     }
   } catch (err) {
     console.error("[leadCapture] webhook POST failed", err);
+  } finally {
+    clearTimeout(timer);
   }
 }

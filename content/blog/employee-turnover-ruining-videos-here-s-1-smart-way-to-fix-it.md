@@ -2,6 +2,7 @@
 title: "Employee Turnover Ruining Videos? Here's 1 Smart Way to Fix It"
 slug: "employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
 date: "2018-08-29"
+updated: "2026-08-01"
 description: "Employee turnover ruining your marketing videos? Here"
 author: "Black Iris Films"
 thumbnail: "/blog/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it-hero.jpg"
@@ -15,7 +16,7 @@ metaDescription: "Employee turnover ruining your marketing videos? Here"
 canonicalUrl: "https://blackirisfilms.com/post/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
 published: true
 ---
-So you make a video featuring your fantastic employees because you know that people want to do business with people and you want to be relatable. You might also know that your business is successful because the people who deliver your products or services are experts. You shoot the video, edit it, go through a couple of rounds of feedback and eventually go live with it, only to have 1 of your employees announce they're leaving a week later. This is a problem a lot of businesses face but they quite often don't see it coming.
+Featuring real employees can make a brand video more relatable, but staff changes can date that asset sooner than expected. You can reduce the risk by planning the story around enduring roles, capabilities and culture rather than one individual's tenure.
 
 ![](/blog/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it-hero.jpg)
 
