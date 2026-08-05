@@ -28,7 +28,7 @@ export function PrimaryButton({
     "text-[15px] font-medium tracking-[0.02em] transition-all duration-200",
     disabled
       ? "bg-border-light text-text-secondary cursor-not-allowed"
-      : "bg-navy text-white hover:bg-[color:var(--color-navy-deeper)] cursor-pointer",
+      : "bg-navy text-white hover:bg-navy-dusk cursor-pointer",
     className,
   ].join(" ");
 

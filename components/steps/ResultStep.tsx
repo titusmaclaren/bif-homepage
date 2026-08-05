@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useState } from "react";
+import { Check, Mail } from "lucide-react";
 import { StepShell } from "./StepShell";
 import { PhaseCard } from "../primitives/PhaseCard";
 import { PrimaryButton } from "../primitives/PrimaryButton";
@@ -8,9 +10,25 @@ import type { EstimateResponse } from "@/lib/pricing";
 
 type Props = {
   estimate: EstimateResponse;
+  recipient: {
+    name: string;
+    email: string;
+    company: string;
+    website?: string;
+  };
   errorMessage?: string;
   onStartOver: () => void;
 };
+
+type EmailStatus = "idle" | "sending" | "sent" | "error";
+
+type EmailEstimateResponse = {
+  ok?: boolean;
+  error?: string;
+};
+
+const DEFAULT_EMAIL_ERROR =
+  "We couldn't send that just now. Please try again or book a call.";
 
 function formatRange(low: number, high: number): string {
   const fmt = (n: number) =>
@@ -20,17 +38,14 @@ function formatRange(low: number, high: number): string {
 
 /**
  * Final screen. Either the per-phase breakdown (standard) or the "let's
- * scope this properly" escalation variant. Both offer the booking CTA.
- *
- * The "Email this estimate to me" button is intentionally hidden until the
- * Google Apps Script transactional-send path is wired up. Resend works end
- * to end but requires MX records on a subdomain that Wix DNS doesn't
- * support. The Apps Script approach reuses our existing webhook and sends
- * from the Workspace account, which lands in Primary rather than
- * Promotions. See /api/email-estimate and lib/renderEstimateHtml for the
- * bits that stay in place meanwhile.
+ * scope this properly" escalation variant. Both offer booking and email CTAs.
  */
-export function ResultStep({ estimate, errorMessage, onStartOver }: Props) {
+export function ResultStep({
+  estimate,
+  recipient,
+  errorMessage,
+  onStartOver,
+}: Props) {
   if (estimate.escalate) {
     return (
       <StepShell
@@ -50,6 +65,7 @@ export function ResultStep({ estimate, errorMessage, onStartOver }: Props) {
           <PrimaryButton href={BOOKING_URL} target="_blank">
             Book a call
           </PrimaryButton>
+          <EmailEstimateButton estimate={estimate} recipient={recipient} />
           <button
             type="button"
             onClick={onStartOver}
@@ -135,6 +151,7 @@ export function ResultStep({ estimate, errorMessage, onStartOver }: Props) {
           <PrimaryButton href={BOOKING_URL} target="_blank">
             Book a quote call
           </PrimaryButton>
+          <EmailEstimateButton estimate={estimate} recipient={recipient} />
         </div>
         {estimate.fallback && (
           <p className="mt-3 text-[12px] text-text-secondary">
@@ -162,5 +179,98 @@ export function ResultStep({ estimate, errorMessage, onStartOver }: Props) {
         )}
       </div>
     </StepShell>
+  );
+}
+
+function EmailEstimateButton({
+  estimate,
+  recipient,
+}: {
+  estimate: EstimateResponse;
+  recipient: Props["recipient"];
+}) {
+  const [status, setStatus] = useState<EmailStatus>("idle");
+  const [message, setMessage] = useState("");
+  const sendingRef = useRef(false);
+  const statusId = "email-estimate-status";
+  const idleLabel = estimate.escalate
+    ? "Email this summary to me"
+    : "Email this estimate to me";
+
+  const sendEstimate = async () => {
+    if (sendingRef.current || status === "sent") return;
+
+    sendingRef.current = true;
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/email-estimate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: recipient.email,
+          name: recipient.name,
+          company: recipient.company,
+          website: recipient.website,
+          estimate,
+        }),
+      });
+      const data = (await response
+        .json()
+        .catch(() => null)) as EmailEstimateResponse | null;
+
+      if (!response.ok || data?.ok !== true) {
+        setStatus("error");
+        setMessage(data?.error || DEFAULT_EMAIL_ERROR);
+        return;
+      }
+
+      setStatus("sent");
+      setMessage(`Sent to ${recipient.email}.`);
+    } catch {
+      setStatus("error");
+      setMessage(DEFAULT_EMAIL_ERROR);
+    } finally {
+      sendingRef.current = false;
+    }
+  };
+
+  const buttonLabel =
+    status === "sending"
+      ? "Sending..."
+      : status === "sent"
+        ? estimate.escalate
+          ? "Summary sent"
+          : "Estimate sent"
+        : idleLabel;
+
+  return (
+    <div className="flex flex-col items-stretch gap-2 sm:items-start">
+      <button
+        type="button"
+        onClick={sendEstimate}
+        disabled={status === "sending" || status === "sent"}
+        aria-busy={status === "sending"}
+        aria-describedby={message ? statusId : undefined}
+        className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-lg border border-navy/20 bg-white px-7 text-[15px] font-medium tracking-[0.02em] text-navy transition-colors duration-200 hover:border-navy hover:bg-off-white disabled:cursor-not-allowed disabled:opacity-65"
+      >
+        {status === "sent" ? <Check size={16} /> : <Mail size={16} />}
+        {buttonLabel}
+      </button>
+      {message ? (
+        <p
+          id={statusId}
+          role={status === "error" ? "alert" : undefined}
+          aria-live="polite"
+          className={[
+            "max-w-[34ch] text-[12px] leading-[1.5]",
+            status === "error" ? "text-[#9b2c2c]" : "text-text-secondary",
+          ].join(" ")}
+        >
+          {message}
+        </p>
+      ) : null}
+    </div>
   );
 }

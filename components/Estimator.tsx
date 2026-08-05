@@ -245,6 +245,7 @@ export function Estimator() {
         return (
           <ResultStep
             estimate={estimate}
+            recipient={answers.details}
             errorMessage={submitError}
             onStartOver={startOver}
           />
