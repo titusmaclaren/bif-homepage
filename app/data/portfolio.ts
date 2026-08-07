@@ -159,7 +159,7 @@ export const SERVICE_PORTFOLIO_ORDERS: Record<string, string[]> = {
 };
 
 const W = (id: string) =>
-  `https://static.wixstatic.com/media/${id}/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/${id}`;
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-thumb.avif`;
 
 const V = (url: string) => url;
 

@@ -3,8 +3,8 @@
 
 import Image from "next/image";
 
-const W = (id: string, w = 800, h = 600) =>
-  `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
+const W = (id: string) =>
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-service.avif`;
 
 export type ServiceTile = {
   label: string;

@@ -15,7 +15,7 @@ const serviceSlugs = [
   "tech-video-production-sydney",
 ];
 
-// Keep the old Wix blog URLs working without accidentally treating static
+// Keep the legacy blog URLs working without accidentally treating static
 // /blog image files as articles. New posts are picked up at build time.
 const blogDirectory = path.join(process.cwd(), "content", "blog");
 const blogSlugs = fs
@@ -68,8 +68,6 @@ const contentSecurityPolicy = [
     "'self'",
     "data:",
     "blob:",
-    "https://static.wixstatic.com",
-    "https://video.wixstatic.com",
     "https://i.vimeocdn.com",
     "https://i.ytimg.com",
     "https://img.youtube.com",
@@ -125,8 +123,6 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "static.wixstatic.com" },
-      { protocol: "https", hostname: "video.wixstatic.com" },
       { protocol: "https", hostname: "i.vimeocdn.com" },
     ],
   },

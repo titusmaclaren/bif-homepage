@@ -2,11 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-// Real client logos pulled from the BIF Wix logos gallery.
+// Real client logos preserved from the original BIF gallery.
 const logoBase = (id: string) =>
-  // Logos render at 40-48px tall. A 96px source keeps them crisp on high-DPI
-  // displays without downloading five times the required pixels.
-  `https://static.wixstatic.com/media/${id}/v1/fit/w_96,h_96,q_85,enc_avif,quality_auto/${id}`;
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-logo.avif`;
+
+const portrait = (id: string) =>
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-face.avif`;
 
 const logoIds = [
   "a2a11d_7c1ef1b67917431fba2b701d0e4de99f~mv2.png",
@@ -45,21 +46,21 @@ const regularSnippets: ClientSnippet[] = [
       "Such a pleasure working with Black Iris Films. Super professional, great attention to detail and extremely creative.",
     name: "Catherine Allison",
     role: "Director of Marketing, ACS",
-    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
+    image: portrait("a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg"),
   },
   {
     quote:
       "He captured exciting footage and engaging interviews through warm interactions with the guests.",
     name: "Scott Newton",
     role: "Marketing Director, Game Plus",
-    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
+    image: portrait("a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg"),
   },
   {
     quote:
       "Working with Black Iris Films for our IllumiaSkin 7+1 LED Face Mask video was a game-changer.",
     name: "Jess Smith",
     role: "Chief Marketing Officer, Ergo Health",
-    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
+    image: portrait("a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg"),
   },
 ];
 
@@ -69,7 +70,7 @@ const dacxiSnippets: ClientSnippet[] = [
       "This is a group of accessible, really polished professionals that have taken all of our video content to the next level.",
     name: "Ian Lowe",
     role: "CEO, Dacxi Group",
-    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
+    image: portrait("a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg"),
   },
   {
     quote: "For our corporate videos, Titus is unparalleled in his filmmaking prowess.",

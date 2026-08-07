@@ -18,6 +18,9 @@ export const metadata: Metadata = createPageMetadata({
 
 type ComparisonStatus = "Rare" | "Sometimes" | "Always";
 
+const portrait = (id: string) =>
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-face.avif`;
+
 const comparisonRows = [
   {
     label: "Emotion-first strategy",
@@ -137,7 +140,7 @@ const whyTestimonials: WhyTestimonial[] = [
     name: "Jess Smith",
     role: "Chief Marketing Officer",
     company: "Ergo Health",
-    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
+    image: portrait("a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg"),
   },
   {
     quote:
@@ -145,7 +148,7 @@ const whyTestimonials: WhyTestimonial[] = [
     name: "Catherine Allison",
     role: "Director of Marketing",
     company: "ACS",
-    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
+    image: portrait("a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg"),
   },
   {
     quote:
@@ -153,7 +156,7 @@ const whyTestimonials: WhyTestimonial[] = [
     name: "Scott Newton",
     role: "Marketing Director",
     company: "Game Plus",
-    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
+    image: portrait("a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg"),
   },
   {
     quote:
@@ -161,7 +164,7 @@ const whyTestimonials: WhyTestimonial[] = [
     name: "Ian Lowe",
     role: "CEO",
     company: "Dacxi Group",
-    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
+    image: portrait("a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg"),
   },
   {
     quote:
@@ -169,7 +172,7 @@ const whyTestimonials: WhyTestimonial[] = [
     name: "Leon Matti",
     role: "Founder",
     company: "Smart Makeover",
-    image: "https://static.wixstatic.com/media/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg",
+    image: portrait("a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg"),
   },
 ];
 

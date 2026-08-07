@@ -12,6 +12,9 @@ type Testimonial = {
   link?: string;
 };
 
+const portrait = (id: string) =>
+  `/assets/legacy-media/${id.replace(/~mv2\.[^.]+$/, "")}-face.avif`;
+
 const testimonials: Testimonial[] = [
   {
     rating: 5,
@@ -27,7 +30,7 @@ const testimonials: Testimonial[] = [
     name: "Catherine Allison",
     jobTitle: "Director of Marketing",
     company: "ACS",
-    image: "https://static.wixstatic.com/media/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg",
+    image: portrait("a2a11d_8362c3cc5ff040518ca46f9641f2e702~mv2.jpeg"),
   },
   {
     rating: 5,
@@ -35,7 +38,7 @@ const testimonials: Testimonial[] = [
     name: "Ian Lowe",
     jobTitle: "CEO",
     company: "Dacxi Group",
-    image: "https://static.wixstatic.com/media/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg",
+    image: portrait("a2a11d_0073e219688f4de3a57a8d4ad04f73e3~mv2.jpg"),
   },
   {
     rating: 5,
@@ -43,7 +46,7 @@ const testimonials: Testimonial[] = [
     name: "Scott Newton",
     jobTitle: "Marketing Director",
     company: "Game Plus",
-    image: "https://static.wixstatic.com/media/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg",
+    image: portrait("a2a11d_4a1ce52240a342c6b163fcba94fd532b~mv2.jpeg"),
   },
   {
     rating: 5,
@@ -51,7 +54,7 @@ const testimonials: Testimonial[] = [
     name: "Marlon Marescia",
     jobTitle: "Facebook Ads Strategist",
     company: "Sales Driven",
-    image: "https://static.wixstatic.com/media/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg",
+    image: portrait("a2a11d_fc338e0ac17e49af8a93a0c8f1bf7a55~mv2.jpeg"),
   },
   {
     rating: 5,
@@ -59,7 +62,7 @@ const testimonials: Testimonial[] = [
     name: "Jess Smith",
     jobTitle: "Chief Marketing Officer",
     company: "Ergo Health",
-    image: "https://static.wixstatic.com/media/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg",
+    image: portrait("a2a11d_6e50de6a55414d09bc5517a836042ff4~mv2.jpeg"),
   },
   {
     rating: 5,
@@ -67,7 +70,7 @@ const testimonials: Testimonial[] = [
     name: "Leon Matti",
     jobTitle: "Founder",
     company: "Smart Makeover",
-    image: "https://static.wixstatic.com/media/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg",
+    image: portrait("a2a11d_5057b54b50e24496a9250c8b5d3b5a1b~mv2.jpg"),
   },
   {
     rating: 5,
@@ -75,7 +78,7 @@ const testimonials: Testimonial[] = [
     name: "Will Aslett",
     jobTitle: "Development Executive",
     company: "Freelance",
-    image: "https://static.wixstatic.com/media/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg",
+    image: portrait("a2a11d_bc4e8ccb07cc4dd596f77cd89a6f5af0~mv2.jpg"),
   },
   {
     rating: 5,
@@ -83,7 +86,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah Taylor",
     jobTitle: "Owner / Director",
     company: "Meetings Into Minutes",
-    image: "https://static.wixstatic.com/media/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg",
+    image: portrait("a2a11d_bd0c317419aa45f2aaf662033c85597a~mv2.jpg"),
   },
   {
     rating: 5,
@@ -91,7 +94,7 @@ const testimonials: Testimonial[] = [
     name: "Eva Williams",
     jobTitle: "Journalist",
     company: "FixThePhoto.com",
-    image: "https://static.wixstatic.com/media/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png/v1/fill/w_160,h_160,q_85,enc_avif,quality_auto/a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png",
+    image: portrait("a2a11d_3ec815283fe140b292cde5f503ad4c4b~mv2.png"),
     link: "https://fixthephoto.com/black-iris-films-review.html",
   },
 ];

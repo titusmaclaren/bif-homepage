@@ -77,7 +77,7 @@
     "description": "Campaign video announcing a key Dacxi Chain milestone in a simple, shareable format.",
     "client": "Dacxi Chain",
     "industry": "Finance",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_135680b1145a4b178e98c233cc2acc8e~mv2.png/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_135680b1145a4b178e98c233cc2acc8e~mv2.png"
+    "thumb": "/assets/legacy-media/a2a11d_135680b1145a4b178e98c233cc2acc8e-thumb.avif"
   },
   {
     "vimeoId": "1060728418",
@@ -86,7 +86,7 @@
     "description": "Animated product update for Australia's largest mobile tower infrastructure provider.",
     "client": "Amplitel",
     "industry": "Infrastructure",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_5a7993d17bef4c758695eeb784c53ca5~mv2.png"
+    "thumb": "/assets/legacy-media/a2a11d_5a7993d17bef4c758695eeb784c53ca5-thumb.avif"
   },
   {
     "vimeoId": "860013506",
@@ -131,7 +131,7 @@
     "description": "Client testimonial film shaped around credibility, community and professional momentum.",
     "client": "ACS",
     "industry": "Technology",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_bc86da95e5544cfb8284e49a4e40b966~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_bc86da95e5544cfb8284e49a4e40b966~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_bc86da95e5544cfb8284e49a4e40b966-thumb.avif"
   },
   {
     "vimeoId": "558903975",
@@ -149,7 +149,7 @@
     "description": "Course overview video introducing AIE's 3D animation and VFX training pathway.",
     "client": "Academy of Interactive Entertainment",
     "industry": "Higher education",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_3e4c2b7cc3cd4a01b870fa5e42b4169c-thumb.avif"
   },
   {
     "vimeoId": "295364237",
@@ -158,7 +158,7 @@
     "description": "Event film capturing energy, resilience and community for F45 and Invictus Games.",
     "client": "F45 / Invictus Games",
     "industry": "Health and fitness",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_ab86965a0cfd4d06a36a1c407e3b0c6a~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_ab86965a0cfd4d06a36a1c407e3b0c6a~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_ab86965a0cfd4d06a36a1c407e3b0c6a-thumb.avif"
   },
   {
     "vimeoId": "387582839",
@@ -176,7 +176,7 @@
     "description": "Direct-response promotional video for a tax estimator campaign with Independent Reserve and KPMG.",
     "client": "Independent Reserve / KPMG",
     "industry": "Finance",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_a38f971881434c1993120599d2f3d057~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_a38f971881434c1993120599d2f3d057~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_a38f971881434c1993120599d2f3d057-thumb.avif"
   },
   {
     "vimeoId": "706749897",
@@ -257,7 +257,7 @@
     "description": "Explainer video introducing the Game Plus model and its value for game developers.",
     "client": "Game Plus",
     "industry": "Games",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_5bf50a7c15f64e3b989846e5b591a9d3~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_5bf50a7c15f64e3b989846e5b591a9d3~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_5bf50a7c15f64e3b989846e5b591a9d3-thumb.avif"
   },
   {
     "vimeoId": "792128309",
@@ -266,7 +266,7 @@
     "description": "Education-led social video teaching consistent long-term investing.",
     "client": "Wealth 99",
     "industry": "Finance",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_9bbe0636b2f84cab82f668122e3b26d7~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_9bbe0636b2f84cab82f668122e3b26d7~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_9bbe0636b2f84cab82f668122e3b26d7-thumb.avif"
   },
   {
     "vimeoId": "1181599954",
@@ -293,7 +293,7 @@
     "description": "Premium venue service video showcasing the corporate events experience.",
     "client": "Doltone House",
     "industry": "Hospitality",
-    "thumb": "https://static.wixstatic.com/media/a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg/v1/fill/w_1200,h_675,q_90,enc_avif,quality_auto/a2a11d_68ec1497b8d44019a8e015af33a89475~mv2.jpg"
+    "thumb": "/assets/legacy-media/a2a11d_68ec1497b8d44019a8e015af33a89475-thumb.avif"
   },
   {
     "vimeoId": "1062734110",

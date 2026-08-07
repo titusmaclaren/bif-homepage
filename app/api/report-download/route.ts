@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
+import { subscribeToNewsletter } from "@/lib/beehiiv";
 import {
   checkRateLimit,
   cleanText,
@@ -164,86 +165,16 @@ export async function POST(request: Request) {
   }
 
   if (subscribe) {
-    await addWixNewsletterContact({ email, firstName, lastName });
+    after(() =>
+      subscribeToNewsletter({
+        email,
+        name,
+        source: "social-media-theory-report",
+      }),
+    );
   }
 
   return redirect(request, `${REPORT_URL}?sent=1`);
-}
-
-async function addWixNewsletterContact({
-  email,
-  firstName,
-  lastName,
-}: {
-  email: string;
-  firstName: string;
-  lastName: string;
-}) {
-  const apiKey = process.env.WIX_API_KEY;
-  if (!apiKey) return;
-
-  const siteId = process.env.WIX_SITE_ID;
-  const labelKeys = (
-    process.env.WIX_NEWSLETTER_LABEL_KEYS ||
-    "custom.theory-download,custom.newsletter"
-  )
-    .split(",")
-    .map((label) => label.trim())
-    .filter(Boolean);
-  const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Authorization: apiKey,
-    ...(siteId ? { "wix-site-id": siteId } : {}),
-  };
-
-  try {
-    const contactResponse = await fetch(
-      "https://www.wixapis.com/contacts/v4/contacts",
-      {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          allowDuplicates: false,
-          info: {
-            name: { first: firstName, last: lastName },
-            emails: { items: [{ tag: "MAIN", email }] },
-            labelKeys: { items: labelKeys },
-          },
-        }),
-        signal: AbortSignal.timeout(8_000),
-      },
-    );
-    if (!contactResponse.ok && contactResponse.status !== 409) {
-      console.error("Wix newsletter contact failed", contactResponse.status);
-    }
-
-    const consentResponse = await fetch(
-      "https://www.wixapis.com/marketing-consent/v1/marketing-consent/upsert",
-      {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          marketingConsent: {
-            details: { type: "EMAIL", email },
-            state: "CONFIRMED",
-            lastConfirmationActivity: {
-              source: "FORM",
-              description: "Subscribed through the Social Media Theory of Everything report form.",
-              updatedDate: new Date().toISOString(),
-              optInLevel: "SINGLE_CONFIRMATION",
-            },
-          },
-        }),
-        signal: AbortSignal.timeout(8_000),
-      },
-    );
-    if (!consentResponse.ok) {
-      console.error("Wix newsletter consent failed", consentResponse.status);
-    }
-  } catch (error) {
-    console.error("Wix newsletter integration failed", error);
-  }
 }
 
 function redirect(request: Request, path: string) {

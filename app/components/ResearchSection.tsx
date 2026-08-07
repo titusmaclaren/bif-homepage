@@ -62,7 +62,7 @@ export function ResearchSection() {
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden border border-white/10 shadow-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://static.wixstatic.com/media/a2a11d_5fcc85e25e9e472d9286ef2f850f88c2~mv2.png/v1/crop/x_24,y_0,w_627,h_900/fill/w_623,h_900,al_c,q_90,enc_avif,quality_auto/EmotionStudy_PromoGraphic_v1.png"
+                src="/assets/legacy-media/theory-study.avif"
                 alt="The (Social Media) Theory of Everything study"
                 className="absolute inset-0 w-full h-full object-cover"
               />
