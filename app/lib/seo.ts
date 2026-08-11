@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://blackirisfilms.com";
+export const SITE_URL = "https://www.blackirisfilms.com";
 
 export const SITE_NAME = "Black Iris Films";
 
@@ -13,7 +13,7 @@ export const DEFAULT_OG_IMAGE = "/assets/hero-brand-generated.png";
 
 export function absoluteUrl(path = "/") {
   if (path.startsWith("http://") || path.startsWith("https://")) {
-    return path.replace("https://www.blackirisfilms.com", SITE_URL);
+    return path.replace(/^https:\/\/(?:www\.)?blackirisfilms\.com/, SITE_URL);
   }
 
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

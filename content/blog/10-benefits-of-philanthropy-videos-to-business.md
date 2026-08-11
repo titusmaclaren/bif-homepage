@@ -11,7 +11,7 @@ tags:
   - "Video Production"
 metaTitle: "10 Ways You Can Benefit from Philanthropy in Business"
 metaDescription: "Philanthropy in business has become a trend that is sweeping the globe. It's not just big, it's huge. Large businesses are more likely to capitalize on this."
-canonicalUrl: "https://blackirisfilms.com/post/10-benefits-of-philanthropy-videos-to-business"
+canonicalUrl: "https://www.blackirisfilms.com/post/10-benefits-of-philanthropy-videos-to-business"
 published: true
 ---
 Philanthropy has moved from a business trend to an established way for organisations of every size to build trust and social impact. Video remains one of the clearest ways to show that work, the people behind it and the difference it makes.

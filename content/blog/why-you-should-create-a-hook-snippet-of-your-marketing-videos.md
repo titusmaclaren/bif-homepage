@@ -14,7 +14,7 @@ tags:
   - "Hook"
 metaTitle: "Why You Should Create a 'Hook' Snippet of Your Marketing Videos"
 metaDescription: "Boost engagement by creating short hook snippets of your marketing videos. Drive traffic from social media to your full content."
-canonicalUrl: "https://blackirisfilms.com/post/why-you-should-create-a-hook-snippet-of-your-marketing-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-you-should-create-a-hook-snippet-of-your-marketing-videos"
 published: true
 ---
 Say you've got a two-minute marketing video that deserves to be seen. In 2026, the useful question is not one universal ad length, but how to adapt the strongest hook for each social placement and audience.

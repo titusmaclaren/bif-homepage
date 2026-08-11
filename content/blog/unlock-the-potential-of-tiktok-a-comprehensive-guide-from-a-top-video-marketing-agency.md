@@ -14,7 +14,7 @@ tags:
   - "TikTok"
 metaTitle: "Unlock the Potential of TikTok: A Comprehensive Guide from a Top Video Marketing Agency"
 metaDescription: "Unlock the Potential of TikTok with our Comprehensive Guide! Get expert insights from a leading TikTok Marketing Agency in Sydney, NSW, Australia. 🎬👇"
-canonicalUrl: "https://blackirisfilms.com/post/unlock-the-potential-of-tiktok-a-comprehensive-guide-from-a-top-video-marketing-agency"
+canonicalUrl: "https://www.blackirisfilms.com/post/unlock-the-potential-of-tiktok-a-comprehensive-guide-from-a-top-video-marketing-agency"
 published: true
 ---
 TikTok is more than dance challenges and viral memes; it is a discovery, search and entertainment platform that can support marketing when the content feels native and useful.

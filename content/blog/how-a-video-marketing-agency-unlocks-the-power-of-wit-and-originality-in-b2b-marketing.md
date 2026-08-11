@@ -13,7 +13,7 @@ tags:
   - "Humour"
 metaTitle: "Unlocking The Power of Wit and Originality in B2B Video Marketing - Agency Insights"
 metaDescription: "Unlock the power of wit and originality in B2B marketing with a leading video marketing agency in Sydney, NSW. Watch our concise video to learn more!"
-canonicalUrl: "https://blackirisfilms.com/post/how-a-video-marketing-agency-unlocks-the-power-of-wit-and-originality-in-b2b-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-a-video-marketing-agency-unlocks-the-power-of-wit-and-originality-in-b2b-marketing"
 published: true
 ---
 In an AI-saturated B2B feed, wit and a recognisable point of view can make video content feel distinctly human. Humour isn't just for B2C; it has a place in B2B marketing as well.

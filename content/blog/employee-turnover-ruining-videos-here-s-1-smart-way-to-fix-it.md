@@ -3,7 +3,7 @@ title: "Employee Turnover Ruining Videos? Here's 1 Smart Way to Fix It"
 slug: "employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
 date: "2018-08-29"
 updated: "2026-08-01"
-description: "Employee turnover ruining your marketing videos? Here"
+description: "Protect marketing videos from staff turnover by building stories around lasting roles, capabilities and culture instead of individual employees."
 author: "Black Iris Films"
 thumbnail: "/blog/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it-hero.jpg"
 tags:
@@ -12,8 +12,8 @@ tags:
   - "Engagement"
   - "strategy"
 metaTitle: "Employee Turnover Ruining Videos? Here's 1 Smart Way to Fix It"
-metaDescription: "Employee turnover ruining your marketing videos? Here"
-canonicalUrl: "https://blackirisfilms.com/post/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
+metaDescription: "Protect marketing videos from staff turnover by building stories around lasting roles, capabilities and culture instead of individual employees."
+canonicalUrl: "https://www.blackirisfilms.com/post/employee-turnover-ruining-videos-here-s-1-smart-way-to-fix-it"
 published: true
 ---
 Featuring real employees can make a brand video more relatable, but staff changes can date that asset sooner than expected. You can reduce the risk by planning the story around enduring roles, capabilities and culture rather than one individual's tenure.

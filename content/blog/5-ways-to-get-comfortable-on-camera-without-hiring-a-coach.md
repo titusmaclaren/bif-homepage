@@ -13,7 +13,7 @@ tags:
   - "authenticity"
 metaTitle: "5 Ways to Get Comfortable on Camera Without Hiring a Coach"
 metaDescription: "Camera shy? Here are 5 practical ways to get comfortable on camera for your business videos, no presentation coach required."
-canonicalUrl: "https://blackirisfilms.com/post/5-ways-to-get-comfortable-on-camera-without-hiring-a-coach"
+canonicalUrl: "https://www.blackirisfilms.com/post/5-ways-to-get-comfortable-on-camera-without-hiring-a-coach"
 published: true
 ---
 Presenting on camera can be difficult, especially when you're unused to seeing and hearing yourself recorded. These tips can help you feel more natural and confident.

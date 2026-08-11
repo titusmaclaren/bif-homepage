@@ -14,7 +14,7 @@ tags:
   - "philanthropy"
 metaTitle: "10 Ways to Make the World a Better Place with Video Marketing"
 metaDescription: "Use your video marketing for good. 10 ways responsible capitalism and purpose-driven content can grow your brand and help the world."
-canonicalUrl: "https://blackirisfilms.com/post/10-ways-to-make-the-world-a-better-place-with-video-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/10-ways-to-make-the-world-a-better-place-with-video-marketing"
 published: true
 ---
 Want your work to create measurable social value without losing commercial focus? You're in luck.

@@ -29,6 +29,8 @@ const alternateDomains = [
   "blackirisfilms.com",
   "blackirisfilms.com.au",
   "www.blackirisfilms.com.au",
+  "services.blackirisfilms.com",
+  "stories.blackirisfilms.com",
   "titusmaclaren.com",
   "www.titusmaclaren.com",
 ];

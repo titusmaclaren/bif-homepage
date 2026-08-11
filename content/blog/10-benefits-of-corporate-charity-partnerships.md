@@ -13,7 +13,7 @@ tags:
   - "philanthropy"
 metaTitle: "10 Benefits of Corporate Charity Partnerships"
 metaDescription: "Discover 10 strategic benefits of corporate charity partnerships, from tax deductions and PR wins to market differentiation."
-canonicalUrl: "https://blackirisfilms.com/post/10-benefits-of-corporate-charity-partnerships"
+canonicalUrl: "https://www.blackirisfilms.com/post/10-benefits-of-corporate-charity-partnerships"
 published: true
 ---
 In 2026, pairing with a charity isn't just good karma—it's a practical way to strengthen trust, culture and community impact. Discover how corporate-charity partnerships can elevate your brand and make a meaningful difference.

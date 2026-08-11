@@ -3,7 +3,7 @@ title: "Capture, Engage, Convert: A Video Marketing Agency’s Blueprint for B2B
 slug: "capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success"
 date: "2023-11-14"
 updated: "2026-08-01"
-description: "Unlock B2B success with a video marketing agency"
+description: "A practical B2B video marketing framework for capturing attention, sustaining engagement and turning interested prospects into customers."
 author: "Black Iris Films"
 thumbnail: "/blog/capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success-hero.jpg"
 tags:
@@ -14,8 +14,8 @@ tags:
   - "targeting"
   - "Hook"
 metaTitle: "Capture, Engage, Convert: A Video Marketing Agency’s Blueprint for B2B Success"
-metaDescription: "Unlock B2B success with a video marketing agency"
-canonicalUrl: "https://blackirisfilms.com/post/capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success"
+metaDescription: "A practical B2B video marketing framework for capturing attention, sustaining engagement and turning interested prospects into customers."
+canonicalUrl: "https://www.blackirisfilms.com/post/capture-engage-convert-a-video-marketing-agency-s-blueprint-for-b2b-success"
 published: true
 ---
 ### First Impressions Count in Video Marketing

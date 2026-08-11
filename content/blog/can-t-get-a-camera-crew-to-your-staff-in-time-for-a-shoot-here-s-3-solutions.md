@@ -3,7 +3,7 @@ title: "Can't get a camera crew to your staff in time for a shoot? Here's 3 solu
 slug: "can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions"
 date: "2018-09-04"
 updated: "2026-08-01"
-description: "Need a video fast but can"
+description: "Need video content fast when a crew cannot reach every person or location? Explore three practical remote and smartphone production options."
 author: "Black Iris Films"
 thumbnail: "/blog/can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions-hero.jpg"
 tags:
@@ -12,8 +12,8 @@ tags:
   - "Engagement"
   - "strategy"
 metaTitle: "Can't get a camera crew to your staff in time for a shoot? Here's 3 solutions"
-metaDescription: "Need a video fast but can"
-canonicalUrl: "https://blackirisfilms.com/post/can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions"
+metaDescription: "Need video content fast when a crew cannot reach every person or location? Explore three practical remote and smartphone production options."
+canonicalUrl: "https://www.blackirisfilms.com/post/can-t-get-a-camera-crew-to-your-staff-in-time-for-a-shoot-here-s-3-solutions"
 published: true
 ---
 Urgent deadlines and distributed teams still create the same problem: the message is ready, but a camera crew cannot reach everyone in time. Modern phones, remote capture kits and clear production guidance provide several practical answers.

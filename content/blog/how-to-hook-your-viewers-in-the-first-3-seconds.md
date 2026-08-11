@@ -14,7 +14,7 @@ tags:
   - "3 second hook"
 metaTitle: "5 Ways to Engage Your Viewers with a 3 Second Hook"
 metaDescription: "Engage your viewers in just 3 seconds! Discover 5 creative ways to hook your audience and make them stop scrolling through their social feeds."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-hook-your-viewers-in-the-first-3-seconds"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-hook-your-viewers-in-the-first-3-seconds"
 published: true
 ---
 For short-form social video in 2026, the first few seconds still have to earn your audience's attention. You need something strong enough to stop the scroll, but what isn’t so common knowledge is how to do it.

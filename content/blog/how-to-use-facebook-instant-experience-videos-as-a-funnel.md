@@ -14,7 +14,7 @@ tags:
   - "Social Media"
 metaTitle: "How to Use Facebook Instant Experience Videos as a Funnel"
 metaDescription: "Learn how to use Facebook Instant Experience videos as a marketing funnel to capture attention and drive conversions on mobile."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-use-facebook-instant-experience-videos-as-a-funnel"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-use-facebook-instant-experience-videos-as-a-funnel"
 published: true
 ---
 An interesting video appears in your mobile feed; you tap to learn more and it opens into a fast, full-screen landing experience. Meta Instant Experiences, formerly Facebook Canvas, can still support a mobile ad funnel when the format is available and fits your campaign objective.

@@ -16,7 +16,7 @@ tags:
   - "instagram"
 metaTitle: "The Power of the 1-Minute Video"
 metaDescription: "Short-form video drives big results. Learn why 1-minute videos are a powerful marketing tool for engagement and retention."
-canonicalUrl: "https://blackirisfilms.com/post/the-power-of-the-1-minute-video"
+canonicalUrl: "https://www.blackirisfilms.com/post/the-power-of-the-1-minute-video"
 published: true
 ---
 Instagram no longer has the one-minute constraint that inspired this article, but the discipline of telling a complete story in about 60 seconds still works across Reels, Shorts and other placements. A one-minute video offers several practical benefits...

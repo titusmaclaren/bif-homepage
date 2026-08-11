@@ -3,7 +3,7 @@ title: "Starting with Audience Needs: Value Exchange and Buyer's Journey"
 slug: "starting-with-audience-needs-value-exchange-and-buyer-s-journey"
 date: "2023-11-22"
 updated: "2026-08-01"
-description: "Create impactful videos that cater to your audience"
+description: "Create stronger videos by aligning audience needs, value exchange and each stage of the buyer's journey before production begins."
 author: "Black Iris Films"
 thumbnail: "/blog/starting-with-audience-needs-value-exchange-and-buyer-s-journey-hero.jpg"
 tags:
@@ -14,8 +14,8 @@ tags:
   - "value exchange"
   - "buyer's journey"
 metaTitle: "Starting with Audience Needs: Value Exchange and Buyer's Journey"
-metaDescription: "Create impactful videos that cater to your audience"
-canonicalUrl: "https://blackirisfilms.com/post/starting-with-audience-needs-value-exchange-and-buyer-s-journey"
+metaDescription: "Create stronger videos by aligning audience needs, value exchange and each stage of the buyer's journey before production begins."
+canonicalUrl: "https://www.blackirisfilms.com/post/starting-with-audience-needs-value-exchange-and-buyer-s-journey"
 published: true
 ---
 Algorithms and formats keep changing, but impactful video still starts with your audience's needs. Offer a clear value exchange and tailor the content to the prospect's current stage in the decision-making process.

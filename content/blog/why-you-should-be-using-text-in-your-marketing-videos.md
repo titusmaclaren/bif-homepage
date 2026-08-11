@@ -13,7 +13,7 @@ tags:
   - "Social Media"
 metaTitle: "Why You Should be Using More Text in Your Marketing Videos"
 metaDescription: "Most social videos play on mute. Learn why adding text overlays, captions, and titles to your marketing videos boosts engagement."
-canonicalUrl: "https://blackirisfilms.com/post/why-you-should-be-using-text-in-your-marketing-videos"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-you-should-be-using-text-in-your-marketing-videos"
 published: true
 ---
 Marketing videos now appear across social feeds, search results, landing pages and messaging apps, often before a viewer chooses to enable sound. Deliver the core value visually first, then use sound to deepen the experience.

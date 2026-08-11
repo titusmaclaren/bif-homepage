@@ -14,7 +14,7 @@ tags:
   - "B2B"
 metaTitle: "How to Make Your Video Headline and Thumbnail Work Together in B2B Marketing"
 metaDescription: "Improve your video marketing engagement with a better headline, post copy & video thumbnail."
-canonicalUrl: "https://blackirisfilms.com/post/how-to-make-your-video-headline-and-thumbnail-work-together-in-b2b-marketing"
+canonicalUrl: "https://www.blackirisfilms.com/post/how-to-make-your-video-headline-and-thumbnail-work-together-in-b2b-marketing"
 published: true
 ---
 In B2B marketing, the headline and thumbnail often determine whether a video earns the first click, while watch time and qualified actions reveal whether the content succeeds. The headline, summary and visual should work together to set an accurate, compelling expectation.

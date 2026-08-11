@@ -18,7 +18,7 @@ tags:
   - "retention"
 metaTitle: "Emotional Video Marketing in Sydney (2026 Guide)"
 metaDescription: "Discover the science behind emotional marketing. Learn how targeting feelings over facts drives brand loyalty, recall, and conversions."
-canonicalUrl: "https://blackirisfilms.com/post/emotional-video-marketing-sydney"
+canonicalUrl: "https://www.blackirisfilms.com/post/emotional-video-marketing-sydney"
 published: true
 ---
 Buying decisions are rarely purely rational. People notice, remember and act on stories that make them feel something, then use facts to validate the choice. Communicating your value in a human and relatable way should therefore be a priority in sales and marketing.

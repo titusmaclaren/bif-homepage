@@ -13,7 +13,7 @@ tags:
   - "strategy"
 metaTitle: "DIY Video for Business - Train Yourself With Your Smartphone"
 metaDescription: "Learn DIY video tips for business using your smartphone. Budget-friendly techniques to create professional marketing content."
-canonicalUrl: "https://blackirisfilms.com/post/diy-video-for-business-train-yourself-with-your-smartphone"
+canonicalUrl: "https://www.blackirisfilms.com/post/diy-video-for-business-train-yourself-with-your-smartphone"
 published: true
 ---
 Professional production still matters for high-stakes brand assets, but modern phone cameras are excellent for practising your delivery and producing timely, lower-risk updates. Before a formal shoot, it is useful to rehearse on camera and learn what feels natural.

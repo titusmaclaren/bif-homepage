@@ -71,5 +71,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  return <BlogPostLayout post={post} />;
+  const canonicalUrl = absoluteUrl(post.urlPath);
+  const thumbnailUrl = absoluteUrl(post.thumbnail);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDescription,
+    image: [thumbnailUrl],
+    datePublished: post.date,
+    dateModified: post.updated,
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: absoluteUrl("/"),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: absoluteUrl("/"),
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/assets/bif-logo-icon.png"),
+        width: 180,
+        height: 180,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+    url: canonicalUrl,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <BlogPostLayout post={post} />
+    </>
+  );
 }

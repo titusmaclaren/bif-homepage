@@ -13,7 +13,7 @@ tags:
   - "B2B"
 metaTitle: "Striking the Perfect Duration in your B2B Video Marketing Strategy"
 metaDescription: "Video duration can be a double-edged sword. Too long, and you risk losing viewer interest. Too short, and you might not convey your message effectively. •."
-canonicalUrl: "https://blackirisfilms.com/post/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
+canonicalUrl: "https://www.blackirisfilms.com/post/striking-the-perfect-duration-in-your-b2b-video-marketing-strategy"
 published: true
 ---
 There is no universal ideal duration for B2B video in 2026: the right length depends on the audience, platform and job the video needs to do. Too long, and you risk losing interest; too short, and you may not convey enough value.

@@ -13,7 +13,7 @@ tags:
   - "storytelling"
 metaTitle: "The Art of Visual Storytelling"
 metaDescription: "Uncover the secrets of captivating silent videos in our guide to the art of visual storytelling. Elevate your video production in Sydney, NSW."
-canonicalUrl: "https://blackirisfilms.com/post/the-art-of-visual-storytelling"
+canonicalUrl: "https://www.blackirisfilms.com/post/the-art-of-visual-storytelling"
 published: true
 ---
 Many feed-based viewing sessions begin muted or in low-attention environments, so visual storytelling remains essential in 2026. Subtitles support accessibility and comprehension, but also think creatively about how to communicate the message without relying on sound.

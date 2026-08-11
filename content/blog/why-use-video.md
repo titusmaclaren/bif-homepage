@@ -13,7 +13,7 @@ tags:
   - "strategy"
 metaTitle: "Why Use Video?"
 metaDescription: "Why should your business use video marketing? Key stats and strategies for using video to drive leads through your marketing funnel."
-canonicalUrl: "https://blackirisfilms.com/post/why-use-video"
+canonicalUrl: "https://www.blackirisfilms.com/post/why-use-video"
 published: true
 ---
 A clear customer journey gives prospects useful paths from discovery to decision, and video can support each step rather than sit as an afterthought. Used well, it can demonstrate value, answer objections and encourage the next action.

@@ -6,7 +6,7 @@ import { Nav } from "../components/Nav";
 import { StickyQuizCTA } from "../components/StickyQuizCTA";
 import { getAllPosts } from "../lib/blog";
 import { learnSeriesVideos } from "../lib/learn-video-series";
-import { createPageMetadata } from "../lib/seo";
+import { absoluteUrl, createPageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   }),
   title: "Learn Video Marketing",
   alternates: {
-    canonical: "https://blackirisfilms.com/learn",
+    canonical: absoluteUrl("/learn"),
     types: {
       "application/rss+xml": "/rss.xml",
     },
