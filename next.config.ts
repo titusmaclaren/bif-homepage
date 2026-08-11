@@ -35,6 +35,23 @@ const alternateDomains = [
   "www.titusmaclaren.com",
 ];
 
+const legacyPhotographyDomains = [
+  "artists.blackirisfilms.com",
+  "www.artists.blackirisfilms.com",
+  "bw-portraits.blackirisfilms.com",
+  "www.bw-portraits.blackirisfilms.com",
+  "corporate-portraits.blackirisfilms.com",
+  "www.corporate-portraits.blackirisfilms.com",
+  "events.blackirisfilms.com",
+  "www.events.blackirisfilms.com",
+  "fashion.blackirisfilms.com",
+  "www.fashion.blackirisfilms.com",
+  "lingerie.blackirisfilms.com",
+  "www.lingerie.blackirisfilms.com",
+  "social-media-photos.blackirisfilms.com",
+  "www.social-media-photos.blackirisfilms.com",
+];
+
 const isPreviewDeployment =
   Boolean(process.env.VERCEL_ENV) && process.env.VERCEL_ENV !== "production";
 
@@ -130,6 +147,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...legacyPhotographyDomains.map((domain) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: domain }],
+        destination: "https://www.blackirisfilms.com/photography",
+        permanent: true,
+      })),
       ...alternateDomains.map((domain) => ({
         source: "/:path*",
         has: [{ type: "host" as const, value: domain }],
