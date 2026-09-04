@@ -118,10 +118,10 @@ export function Hero() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const isCompactViewport = window.matchMedia("(max-width: 767px)").matches;
-    // The desktop latitude spacing leaves intentional air between six bands.
-    // With only three on a phone, use a tighter arc so black gaps do not open
-    // up between otherwise full-width cards.
-    const activeBandLats = isCompactViewport ? [-11, 0, 11] : BAND_LATS;
+    // Keep the tighter mobile spacing, but include enough latitude bands to
+    // fill tall portrait viewports instead of exposing the black stage above
+    // and below the mosaic.
+    const activeBandLats = isCompactViewport ? [-22, -11, 0, 11, 22] : BAND_LATS;
 
     activeBandLats.forEach((latDeg, bi) => {
       const bandEl = document.createElement("div");
