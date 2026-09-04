@@ -118,10 +118,10 @@ export function Hero() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const isCompactViewport = window.matchMedia("(max-width: 767px)").matches;
-    // Keep the tighter mobile spacing, but include enough latitude bands to
-    // fill tall portrait viewports instead of exposing the black stage above
-    // and below the mosaic.
-    const activeBandLats = isCompactViewport ? [-22, -11, 0, 11, 22] : BAND_LATS;
+    // A 13.5° mobile pitch leaves approximately the same angular gutter
+    // between rows as the 2.4° horizontal tile gutter, while five bands still
+    // fill tall portrait viewports.
+    const activeBandLats = isCompactViewport ? [-27, -13.5, 0, 13.5, 27] : BAND_LATS;
 
     activeBandLats.forEach((latDeg, bi) => {
       const bandEl = document.createElement("div");
