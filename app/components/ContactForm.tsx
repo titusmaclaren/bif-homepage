@@ -5,6 +5,7 @@ import { trackEvent } from "../lib/analytics";
 
 const referralOptions = [
   "Google / search",
+  "AI assistant / LLM",
   "Referral / word of mouth",
   "LinkedIn",
   "Instagram",
