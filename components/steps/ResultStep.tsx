@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { trackEvent } from "@/app/lib/analytics";
 import { Check, Mail } from "lucide-react";
 import { StepShell } from "./StepShell";
 import { PhaseCard } from "../primitives/PhaseCard";
@@ -24,6 +25,7 @@ type EmailStatus = "idle" | "sending" | "sent" | "error";
 
 type EmailEstimateResponse = {
   ok?: boolean;
+  accepted?: boolean;
   error?: string;
 };
 
@@ -220,16 +222,31 @@ function EmailEstimateButton({
         .json()
         .catch(() => null)) as EmailEstimateResponse | null;
 
-      if (!response.ok || data?.ok !== true) {
+      if (!response.ok || data?.ok !== true || data.accepted !== true) {
         setStatus("error");
+        trackEvent("form_error", {
+          form_source: "estimator_email",
+          error_type: "email_request_failed",
+        });
         setMessage(data?.error || DEFAULT_EMAIL_ERROR);
         return;
       }
 
       setStatus("sent");
+      trackEvent("estimate_email_sent", {
+        estimate_type: estimate.escalate
+          ? "escalation"
+          : estimate.fallback
+            ? "server_fallback"
+            : "generated",
+      });
       setMessage(`Sent to ${recipient.email}.`);
     } catch {
       setStatus("error");
+      trackEvent("form_error", {
+        form_source: "estimator_email",
+        error_type: "email_request_failed",
+      });
       setMessage(DEFAULT_EMAIL_ERROR);
     } finally {
       sendingRef.current = false;

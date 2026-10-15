@@ -240,7 +240,8 @@
     }
   </style>
 <link rel="stylesheet" href="/assets/bif-shell.css">
-</head>
+  <script>window.bifAnalyticsQueue=window.bifAnalyticsQueue||[];window.bifAnalytics=window.bifAnalytics||{trackEvent:function(eventName,params){window.bifAnalyticsQueue.push({eventName:eventName,params:params||{}});}};</script>
+  <script src="/analytics.js" defer></script></head>
 <body data-bif-sticky="off" data-bif-callout="off" data-bif-footer-overlap>
 
 
@@ -453,6 +454,21 @@
     <a href="/estimate" class="quiz-sticky-link">Start quiz <span aria-hidden="true">&rarr;</span></a>
   </div>
 </aside>
+
+<script>
+(function() {
+  const form = document.querySelector('#lead-form form');
+  if (!form) return;
+  let started = false;
+  form.addEventListener('focusin', function() {
+    if (started) return;
+    started = true;
+    if (window.bifAnalytics && typeof window.bifAnalytics.trackEvent === 'function') {
+      window.bifAnalytics.trackEvent('form_start', { form_source: 'social_media_report' });
+    }
+  });
+})();
+</script>
 
 <script>
   // Mobile menu toggle

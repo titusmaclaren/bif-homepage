@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { type FocusEvent, useMemo, useRef, useState } from "react";
+import { trackEvent } from "@/app/lib/analytics";
 import { ProgressBar } from "./ProgressBar";
 import { SingleChoiceStep } from "./steps/SingleChoiceStep";
 import { RecommendationStep } from "./steps/RecommendationStep";
@@ -52,6 +53,17 @@ export function Estimator() {
   const [submitting, setSubmitting] = useState(false);
   const [estimate, setEstimate] = useState<EstimateResponse | null>(null);
   const [submitError, setSubmitError] = useState("");
+  const started = useRef(false);
+
+  const startForm = () => {
+    if (started.current) return;
+    started.current = true;
+    trackEvent("form_start", { form_source: "estimator" });
+  };
+
+  const handleFocus = (event: FocusEvent<HTMLElement>) => {
+    if (event.target !== event.currentTarget) startForm();
+  };
 
   const questionById = useMemo(() => {
     const map: Record<string, (typeof QUESTIONS)[number]> = {};
@@ -79,6 +91,7 @@ export function Estimator() {
     setSubmitting(true);
     setEstimate(null);
     setSubmitError("");
+    trackEvent("estimate_start", { form_source: "estimator" });
     advance();
     try {
       const res = await fetch("/api/estimate", {
@@ -86,21 +99,46 @@ export function Estimator() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(answers),
       });
-      const data = (await res.json()) as EstimateResponse & { error?: string };
+      const data = (await res.json()) as EstimateResponse & {
+        error?: string;
+        accepted?: boolean;
+      };
       if (!res.ok || data.error) {
+        trackEvent("form_error", {
+          form_source: "estimator",
+          error_type: "estimate_request_failed",
+        });
         setSubmitError(
           data.error ||
             "Something went wrong while creating your estimate. Showing a fallback range for now.",
         );
         setEstimate({ ...FALLBACK_ESTIMATE });
+        trackEvent("estimate_complete", {
+          estimate_type: "client_error_fallback",
+        });
       } else {
         setEstimate(data);
+        if (data.accepted !== true) return;
+        const estimateType = data.escalate
+          ? "escalation"
+          : data.fallback
+            ? "server_fallback"
+            : "generated";
+        trackEvent("estimate_complete", { estimate_type: estimateType });
+        trackEvent("quiz_complete", { estimate_type: estimateType });
       }
     } catch {
       setSubmitError(
         "Something went wrong while creating your estimate. Showing a fallback range for now.",
       );
       setEstimate({ ...FALLBACK_ESTIMATE });
+      trackEvent("form_error", {
+        form_source: "estimator",
+        error_type: "estimate_request_failed",
+      });
+      trackEvent("estimate_complete", {
+        estimate_type: "client_error_fallback",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -265,6 +303,8 @@ export function Estimator() {
       <ProgressBar step={step} total={STEP_COUNT} />
       <main className="estimator-main mx-auto max-w-3xl px-5 sm:px-8 py-10 sm:py-16">
         <div
+          onFocusCapture={handleFocus}
+          onClickCapture={startForm}
           className={[
             "transition-opacity duration-[250ms] ease-out",
             fading ? "opacity-0" : "opacity-100",

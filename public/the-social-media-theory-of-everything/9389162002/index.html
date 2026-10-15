@@ -30,7 +30,8 @@
   <text x="300" y="500" fill="#B9C4D6" font-family="sans-serif" font-size="18" letter-spacing="6" text-anchor="middle">BLACK IRIS FILMS</text>
 </svg>
 </template>
-</head>
+  <script>window.bifAnalyticsQueue=window.bifAnalyticsQueue||[];window.bifAnalytics=window.bifAnalytics||{trackEvent:function(eventName,params){window.bifAnalyticsQueue.push({eventName:eventName,params:params||{}});}};</script>
+  <script src="/analytics.js" defer></script></head>
 <body>
 
 <div class="deck-stage" id="deckStage">
@@ -1598,6 +1599,17 @@
 
   toast.hidden = false;
   requestAnimationFrame(() => toast.classList.add('is-visible'));
+
+  fetch('/api/report-download?receipt=consume', { credentials: 'same-origin' })
+    .then((response) => response.ok ? response.json() : null)
+    .then((data) => {
+      if (data && data.accepted === true && window.bifAnalytics && typeof window.bifAnalytics.trackEvent === 'function') {
+        window.bifAnalytics.trackEvent('report_request', {
+          form_source: 'social_media_report',
+        });
+      }
+    })
+    .catch(() => {});
 
   const cleanUrl = new URL(window.location.href);
   cleanUrl.searchParams.delete('sent');

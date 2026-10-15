@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { AnalyticsEvents } from "./components/AnalyticsEvents";
 import { AnalyticsScripts } from "./components/AnalyticsScripts";
 import { VideoLightboxProvider } from "./components/VideoLightbox";
 import {
@@ -25,10 +24,6 @@ const montserrat = localFont({
   variable: "--font-montserrat",
   display: "swap",
 });
-
-const shouldEnableAnalytics =
-  process.env.VERCEL_ENV === "production" &&
-  Boolean(process.env.NEXT_PUBLIC_GTM_ID || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -125,7 +120,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-white text-navy">
         <AnalyticsScripts />
         <VideoLightboxProvider>{children}</VideoLightboxProvider>
-        {shouldEnableAnalytics ? <AnalyticsEvents /> : null}
       </body>
     </html>
   );

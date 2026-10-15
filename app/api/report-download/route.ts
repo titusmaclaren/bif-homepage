@@ -16,12 +16,39 @@ export const maxDuration = 30;
 const REPORT_URL = "/the-social-media-theory-of-everything/9389162002";
 const FORM_URL = "/the-social-media-theory-of-everything#lead-form";
 const MAX_BODY_BYTES = 8 * 1024;
+const RECEIPT_COOKIE = "bif_report_receipt";
 
 type ApiEnvelope = {
   data?: { id?: string; name?: string };
   contact?: { id?: string };
   marketingConsent?: { state?: string };
 };
+
+export async function GET(request: Request) {
+  if (
+    !isSameOriginRequest(request) ||
+    new URL(request.url).searchParams.get("receipt") !== "consume"
+  ) {
+    return NextResponse.json({ accepted: false }, { status: 404 });
+  }
+
+  const hasReceipt = request.headers
+    .get("cookie")
+    ?.split(";")
+    .some((cookie) => cookie.trim() === `${RECEIPT_COOKIE}=1`);
+  const response = NextResponse.json(
+    { accepted: hasReceipt === true },
+    { headers: { "Cache-Control": "no-store" } },
+  );
+  response.cookies.set(RECEIPT_COOKIE, "", {
+    httpOnly: true,
+    maxAge: 0,
+    path: "/api/report-download",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+  return response;
+}
 
 export async function POST(request: Request) {
   if (!isSameOriginRequest(request)) {
@@ -174,7 +201,15 @@ export async function POST(request: Request) {
     );
   }
 
-  return redirect(request, `${REPORT_URL}?sent=1`);
+  const response = redirect(request, `${REPORT_URL}?sent=1`);
+  response.cookies.set(RECEIPT_COOKIE, "1", {
+    httpOnly: true,
+    maxAge: 60,
+    path: "/api/report-download",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+  return response;
 }
 
 function redirect(request: Request, path: string) {

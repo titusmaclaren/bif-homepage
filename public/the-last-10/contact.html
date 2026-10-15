@@ -392,7 +392,8 @@ a { color: inherit; }
 .footer-info a:hover { color: var(--color-text-muted); }
 </style>
 <link rel="stylesheet" href="/assets/bif-shell.css">
-</head>
+  <script>window.bifAnalyticsQueue=window.bifAnalyticsQueue||[];window.bifAnalytics=window.bifAnalytics||{trackEvent:function(eventName,params){window.bifAnalyticsQueue.push({eventName:eventName,params:params||{}});}};</script>
+  <script src="/analytics.js" defer></script></head>
 <body data-bif-offset data-bif-sticky="off" data-bif-callout="off">
 
 <!-- Form -->
@@ -471,6 +472,17 @@ a { color: inherit; }
 <script>
 // Handle form submission
 const form = document.getElementById('contactForm');
+let formStarted = false;
+function track(eventName, params) {
+  if (window.bifAnalytics && typeof window.bifAnalytics.trackEvent === 'function') {
+    window.bifAnalytics.trackEvent(eventName, params);
+  }
+}
+form.addEventListener('focusin', () => {
+  if (formStarted) return;
+  formStarted = true;
+  track('form_start', { form_source: 'The Last $10 contact page' });
+});
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const btn = form.querySelector('.btn-submit');
@@ -502,16 +514,21 @@ form.addEventListener('submit', async (e) => {
         website: String(formData.get('_honey') || '').trim()
       }),
     });
+    const data = await res.json().catch(() => null);
     if (res.ok) {
       document.getElementById('formContainer').style.display = 'none';
       document.getElementById('successMessage').classList.add('visible');
+      if (data && data.accepted === true) {
+        track('generate_lead', { lead_type: 'contact_enquiry', form_source: 'The Last $10 contact page' });
+      }
     } else {
-      const data = await res.json().catch(() => null);
+      track('form_error', { form_source: 'The Last $10 contact page', error_type: 'submission_failed' });
       btn.textContent = 'Something went wrong — try again';
       btn.textContent = data && data.message ? data.message : 'Something went wrong - try again';
       btn.disabled = false;
     }
   } catch (error) {
+    track('form_error', { form_source: 'The Last $10 contact page', error_type: 'submission_failed' });
     btn.textContent = 'Something went wrong - try again';
     btn.disabled = false;
   }

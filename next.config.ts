@@ -60,6 +60,11 @@ const hasGoogleAnalytics = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
 const hasGoogleTagManager = Boolean(process.env.NEXT_PUBLIC_GTM_ID);
 const usesGoogleAnalyticsStack = hasGoogleAnalytics || hasGoogleTagManager;
 
+// Direct GA mode sends its own page_view after SPA history changes and sets
+// send_page_view:false. Disable GA4 Enhanced Measurement's browser-history
+// page-change option for that stream. When GTM is configured, its container
+// owns pageviews and this runtime only forwards custom events to dataLayer.
+
 // Plain-English header notes:
 // - X-Content-Type-Options stops browsers from guessing file types.
 // - Referrer-Policy limits how much URL information is sent to other sites.

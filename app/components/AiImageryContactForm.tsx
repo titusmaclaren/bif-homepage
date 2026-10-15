@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FocusEvent, type FormEvent, useRef, useState } from "react";
 import { trackEvent } from "../lib/analytics";
 
 const creditPacks = [
@@ -16,6 +16,13 @@ type SubmitStatus = "idle" | "sending" | "sent" | "error";
 export function AiImageryContactForm() {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [feedback, setFeedback] = useState("");
+  const started = useRef(false);
+
+  function handleFocus(event: FocusEvent<HTMLFormElement>) {
+    if (started.current || event.target === event.currentTarget) return;
+    started.current = true;
+    trackEvent("form_start", { form_source: "AI imagery page" });
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -44,23 +51,32 @@ export function AiImageryContactForm() {
         }),
       });
 
+      const data = (await response.json().catch(() => null)) as {
+        message?: string;
+        accepted?: boolean;
+      } | null;
+      const pack = String(form.get("pack") || "").trim();
+
       if (!response.ok) {
-        const data = (await response.json().catch(() => null)) as {
-          message?: string;
-        } | null;
         throw new Error(data?.message || "Unable to send your enquiry.");
       }
 
       formElement.reset();
       setStatus("sent");
       setFeedback("Thanks. Your AI imagery enquiry has been sent.");
-      trackEvent("contact_form_submission", {
-        form_source: "AI imagery page",
-        pack: String(form.get("pack") || "").trim(),
-        subscribed: form.get("subscribe") === "on",
-      });
+      if (data?.accepted === true) {
+        trackEvent("generate_lead", {
+          lead_type: "contact_enquiry",
+          form_source: "AI imagery page",
+          pack,
+        });
+      }
     } catch (error) {
       setStatus("error");
+      trackEvent("form_error", {
+        form_source: "AI imagery page",
+        error_type: "submission_failed",
+      });
       setFeedback(
         error instanceof Error
           ? error.message
@@ -75,6 +91,7 @@ export function AiImageryContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocusCapture={handleFocus}
       className="rounded-lg border border-fog/80 bg-white p-5 shadow-[0_18px_50px_rgba(15,24,38,0.16)] sm:p-7"
     >
       <input

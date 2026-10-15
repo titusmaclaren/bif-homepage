@@ -77,7 +77,7 @@ export async function POST(request: Request) {
   }
 
   if (cleanSingleLine(payload.website)) {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, accepted: false });
   }
 
   const rateLimit = checkRateLimit(request, {
@@ -258,5 +258,5 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, accepted: true });
 }

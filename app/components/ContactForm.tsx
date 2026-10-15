@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FocusEvent, type FormEvent, useRef, useState } from "react";
 import { trackEvent } from "../lib/analytics";
 
 const referralOptions = [
@@ -29,6 +29,13 @@ export function ContactForm({
 }: ContactFormProps) {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [feedback, setFeedback] = useState("");
+  const started = useRef(false);
+
+  function handleFocus(event: FocusEvent<HTMLFormElement>) {
+    if (started.current || event.target === event.currentTarget) return;
+    started.current = true;
+    trackEvent("form_start", { form_source: source });
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -64,23 +71,30 @@ export function ContactForm({
         }),
       });
 
-      if (!response.ok) {
-        const data = (await response.json().catch(() => null)) as {
-          message?: string;
-        } | null;
+      const data = (await response.json().catch(() => null)) as {
+        message?: string;
+        accepted?: boolean;
+      } | null;
 
+      if (!response.ok) {
         throw new Error(data?.message || "Unable to send your enquiry.");
       }
 
       formElement.reset();
       setStatus("sent");
       setFeedback(successMessage);
-      trackEvent("contact_form_submission", {
-        form_source: source,
-        subscribed,
-      });
+      if (data?.accepted === true) {
+        trackEvent("generate_lead", {
+          lead_type: "contact_enquiry",
+          form_source: source,
+        });
+      }
     } catch (error) {
       setStatus("error");
+      trackEvent("form_error", {
+        form_source: source,
+        error_type: "submission_failed",
+      });
       setFeedback(
         error instanceof Error
           ? error.message
@@ -95,6 +109,7 @@ export function ContactForm({
   return (
     <form
       onSubmit={handleSubmit}
+      onFocusCapture={handleFocus}
       className="rounded-lg border border-fog/80 bg-white p-5 shadow-[0_18px_50px_rgba(15,24,38,0.08)] sm:p-7"
     >
       <input

@@ -145,6 +145,8 @@ export async function POST(req: Request) {
     return NextResponse.json({
       ...FALLBACK_ESTIMATE,
       pricing_version: PRICING_VERSION,
+      fallback: true,
+      accepted: false,
     });
   }
 
@@ -233,7 +235,7 @@ export async function POST(req: Request) {
       pricing_version: PRICING_VERSION,
     };
     after(() => runPostSubmit(answers, escalationPayload));
-    return NextResponse.json(escalationPayload);
+    return NextResponse.json({ ...escalationPayload, accepted: true });
   }
 
   // We prefer BIF_ANTHROPIC_API_KEY because Claude Code itself exports
@@ -249,9 +251,10 @@ export async function POST(req: Request) {
     const fallbackPayload: EstimateResponse = {
       ...FALLBACK_ESTIMATE,
       pricing_version: PRICING_VERSION,
+      fallback: true,
     };
     after(() => runPostSubmit(answers, fallbackPayload));
-    return NextResponse.json(fallbackPayload);
+    return NextResponse.json({ ...fallbackPayload, accepted: true });
   }
 
   try {
@@ -296,7 +299,7 @@ export async function POST(req: Request) {
         fallback: true,
       };
       after(() => runPostSubmit(answers, fallbackPayload));
-      return NextResponse.json(fallbackPayload, { status: 200 });
+      return NextResponse.json({ ...fallbackPayload, accepted: true }, { status: 200 });
     }
 
     let parsed: unknown;
@@ -313,7 +316,7 @@ export async function POST(req: Request) {
         fallback: true,
       };
       after(() => runPostSubmit(answers, fallbackPayload));
-      return NextResponse.json(fallbackPayload, { status: 200 });
+      return NextResponse.json({ ...fallbackPayload, accepted: true }, { status: 200 });
     }
 
     const normalized = normalizeEstimateResponse(parsed);
@@ -325,7 +328,7 @@ export async function POST(req: Request) {
         fallback: true,
       };
       after(() => runPostSubmit(answers, fallbackPayload));
-      return NextResponse.json(fallbackPayload, { status: 200 });
+      return NextResponse.json({ ...fallbackPayload, accepted: true }, { status: 200 });
     }
 
     const finalPayload: EstimateResponse = {
@@ -333,7 +336,7 @@ export async function POST(req: Request) {
       pricing_version: PRICING_VERSION,
     };
     after(() => runPostSubmit(answers, finalPayload));
-    return NextResponse.json(finalPayload);
+    return NextResponse.json({ ...finalPayload, accepted: true });
   } catch (err) {
     console.error(
       "Anthropic call failed:",
@@ -345,6 +348,6 @@ export async function POST(req: Request) {
       fallback: true,
     };
     after(() => runPostSubmit(answers, fallbackPayload));
-    return NextResponse.json(fallbackPayload, { status: 200 });
+    return NextResponse.json({ ...fallbackPayload, accepted: true }, { status: 200 });
   }
 }
