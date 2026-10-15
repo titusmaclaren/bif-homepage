@@ -179,7 +179,7 @@
         '</div>' +
         '<div class="bif-footer-right">' +
           '<div class="bif-footer-contact">' +
-            '<a href="tel:+610282013504">Contact: (02) 8201 3504</a>' +
+            '<a href="tel:+61282013504">Contact: (02) 8201 3504</a>' +
             '<a href="mailto:info@blackirisfilms.com?subject=Video%20Enquiry">Email: info@blackirisfilms.com</a>' +
           '</div>' +
           '<div class="bif-socials" aria-label="Social links">' +

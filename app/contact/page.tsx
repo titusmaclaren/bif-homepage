@@ -77,7 +77,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="tel:+610282013504"
+                  href="tel:+61282013504"
                   className="group flex items-center gap-4 text-white"
                 >
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-mint transition-colors group-hover:border-mint">
